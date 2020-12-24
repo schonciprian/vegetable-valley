@@ -1,0 +1,19 @@
+@use "App";
+
+.container {
+  @extend %display-flex-center;
+  margin-top: 30px;
+  border-radius: 25px;
+
+  //background-color: @extend $dark-color-blue;
+
+}
+
+.weather-side {
+  height: 400px;
+  width: 300px;
+  position: relative;
+  float: left;
+  border-radius: 25px;
+  background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80");
+}
