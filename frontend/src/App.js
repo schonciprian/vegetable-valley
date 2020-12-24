@@ -16,7 +16,7 @@ function App() {
           <div className="App">
             <Header />
             <Navbar />
-            <div>
+            <div className="main-container">
                 <Route exact path="/">Home page</Route>
                 <Route exact path="/grow-guides">There are some infos about vegetable growing...</Route>
                 <Route exact path="/my-jobs">There are my jobs to do separated for every month</Route>
