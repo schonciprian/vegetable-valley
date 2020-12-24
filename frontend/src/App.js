@@ -7,6 +7,7 @@ import Weather from "./component/weather/Weather";
 
 
 import './stylesheet/App.css';
+import './stylesheet/Weather_forecast.css';
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
           <div className="App">
             <Header />
             <Navbar />
-            <div className="container">
+            <div>
                 <Route exact path="/">Home page</Route>
                 <Route exact path="/grow-guides">There are some infos about vegetable growing...</Route>
                 <Route exact path="/my-jobs">There are my jobs to do separated for every month</Route>
