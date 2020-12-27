@@ -47,7 +47,23 @@ export default function Weather() {
     const country = weather.sys.country;
 
     let {daily} = weatherForecast;
+    let dailyForecast = [];
 
+    let count = 0;
+
+    if (weatherForecast.length !== 0 ) {daily.map( oneDay => {
+        if (count < 4) {
+            count += 1;
+            let sunrise = new Date(oneDay.sunrise * 1000);
+            let sunset = new Date(oneDay.sunset * 1000);
+
+            dailyForecast.push({
+                sunrise: sunrise.toLocaleString(),
+                sunset: sunset.toLocaleString(),
+                dailyTemp: (oneDay.temp.day).toFixed(1),
+            })
+        }})
+    }
 
     return (
         <div>
@@ -96,22 +112,23 @@ export default function Weather() {
                     </div>
                     <div className="week-container">
                         <ul className="week-list">
-                            <li className="active">
-                                <i className="day-icon" data-feather="sun"/>
-                                <span className="day-name">Tue</span>
-                                <span className="day-temp">29°C</span>
-                            </li>
-                            <li>
-                                <i className="day-icon" data-feather="cloud"/>
-                                <span className="day-name">Wed</span>
-                                <span className="day-temp">21°C</span>
-                            </li>
-                            <li>
-                                <i className="day-icon" data-feather="cloud-snow"/>
-                                <span className="day-name">Thu</span><span className="day-temp">08°C</span></li>
+                            {/*
                             <li>
                                 <i className="day-icon" data-feather="cloud-rain"/>
-                                <span className="day-name">Fry</span><span className="day-temp">19°C</span></li>
+                                <span className="day-name">Fry</span>
+                                <span className="day-temp">19°C</span>
+                            </li>
+                            */}
+
+                            {dailyForecast.map((oneDayForecast) => (
+                                <li>
+                                    <i className="day-icon" data-feather="sun"/>
+                                    <span className="day-name">{oneDayForecast.sunrise}</span>
+                                    <span className="day-name">{oneDayForecast.sunset}</span>
+                                    <span className="day-temp">{oneDayForecast.dailyTemp}°C</span>
+                                </li>
+                            ))}
+
                             <div className="clear"/>
                         </ul>
                     </div>
