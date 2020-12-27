@@ -5,13 +5,20 @@ import { MapPin, Sun } from 'react-feather';
 
 export default function Weather() {
     const [weather, setWeather] = useState([]);
+    const [weatherForecast, setWeatherForecast] = useState([]);
     const [city, setCity] = useState("Gyor");
+    let [coordinate, setCoordinate] = useState({"lon":17.64,"lat":47.68});
 
-    useEffect(() => {
-        axios
-            .get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f6c317d5027246f70ca2f9fcbc4ea46c`)
-            .then((response) => setWeather(response.data));
-    }, [city]);
+
+    useEffect(() => axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f6c317d5027246f70ca2f9fcbc4ea46c`)
+        .then(response => {
+            setWeather(response.data);
+            setCoordinate(response.data.coord)
+        })
+        .then(() => axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinate.lat}&lon=${coordinate.lon}&units=metric&exclude=minutely,hourly&appid=f6c317d5027246f70ca2f9fcbc4ea46c`))
+        .then(response => {
+            setWeatherForecast(response.data);
+        }), [city]);
 
     if (weather.length === 0) {
         return <div>Loading...</div>;
@@ -32,6 +39,7 @@ export default function Weather() {
     const cityName = weather.name;
     const country = weather.sys.country;
 
+    let {daily} = weatherForecast;
 
 
     return (
