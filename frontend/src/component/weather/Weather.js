@@ -46,15 +46,15 @@ export default function Weather() {
     const cityName = weather.name;
     const country = weather.sys.country;
 
-    let {daily} = weatherForecast;
+    let {timezone_offset, daily} = weatherForecast;
     let dailyForecast = [];
 
     let count = 0;
 
     if (weatherForecast.length !== 0 ) {daily.forEach( oneDay => {
         if (count > 0 && count < 5) {
-            let sunrise = new Date(oneDay.sunrise * 1000);
-            let sunset = new Date(oneDay.sunset * 1000);
+            let sunrise = new Date((oneDay.sunrise + timezone_offset - 3600) * 1000);
+            let sunset = new Date((oneDay.sunset + timezone_offset - 3600) * 1000);
 
             dailyForecast.push({
                 date: sunrise.getDate(),
