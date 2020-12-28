@@ -122,6 +122,21 @@ export default function Weather() {
                         <MapPin className="location-icon"/>
                         <span className="location">{cityName}, {country}</span>
                     </div>
+                    <div className="weather-extras-container">
+                        <div className="today-extras">
+                            <span>PRECIPITATION</span>
+                            <span>20 %</span>
+                        </div>
+                        <div className="today-extras">
+                            <span>HUMIDITY</span>
+                            <span>40 %</span>
+                        </div>
+                        <div className="today-extras">
+                            <span>WIND</span>
+                            <span>20 km/h</span>
+                        </div>
+
+                    </div>
                     <div className="weather-container">
                         <CloudOff className="weather-icon"/>
                         <h1 className="weather-temp">{temp}</h1>
@@ -132,32 +147,25 @@ export default function Weather() {
                 <div className="info-side">
                     <div className="today-info-container">
                         <div className="today-info">
-                            <div className="precipitation"><span className="title">PRECIPITATION</span><span
-                                className="value">0 %</span>
-                                <div className="clear"/>
+                            <div className="precipitation">
+                                <span className="title">PRECIPITATION</span>
+                                <span className="value">0 %</span>
                             </div>
-                            <div className="humidity"><span className="title">HUMIDITY</span><span
-                                className="value">34 %</span>
-                                <div className="clear"/>
+                            <div className="humidity">
+                                <span className="title">HUMIDITY</span>
+                                <span className="value">34 %</span>
                             </div>
-                            <div className="wind"><span className="title">WIND</span><span className="value">{windSpeed} km/h</span>
-                                <div className="clear"/>
+                            <div className="wind">
+                                <span className="title">WIND</span>
+                                <span className="value">{windSpeed} km/h</span>
                             </div>
                         </div>
                     </div>
                     <div className="week-container">
                         <ul className="week-list">
-                            {/*
-                            <li>
-                                <i className="day-icon" data-feather="cloud-rain"/>
-                                <span className="day-name">Fry</span>
-                                <span className="day-temp">19°C</span>
-                            </li>
-                            */}
-
-                            {dailyForecast.map((oneDayForecast) => (
-                                <li key={oneDayForecast.date} className="daily-weather-forecast">
-                                    {/*<Sun className="day-icon" data-feather="sun"/>*/}
+                            {dailyForecast.map((oneDayForecast, index) => (
+                                <li key={index}
+                                    className={(index === 0) ? "daily-weather-forecast active" : "daily-weather-forecast"}>
                                     <span className="day-name">{oneDayForecast.month}. {oneDayForecast.date}.</span>
                                     <span className="day-name">{getDay(oneDayForecast.day)}</span>
                                     <div className="sunrise-container">
@@ -168,12 +176,9 @@ export default function Weather() {
                                         <Sunset className="sunset-icon"/>
                                         <span className="day-name">{oneDayForecast.sunset}</span>
                                     </div>
-
                                     <span className="day-temp">{oneDayForecast.dailyTemp}°C</span>
                                 </li>
                             ))}
-
-                            <div className="clear"/>
                         </ul>
                     </div>
                     <div className="location-container">
