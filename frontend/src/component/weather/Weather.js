@@ -155,7 +155,7 @@ export default function Weather() {
         }
     }
 
-    const customFeatherTag = getFeatherName();
+    const CustomFeatherTag = getFeatherName();
 
     return (
         <div>
@@ -195,7 +195,7 @@ export default function Weather() {
 
                     </div>
                     <div className="weather-container">
-                        <customFeatherTag className="weather-icon"/>
+                        <CustomFeatherTag className="weather-icon"/>
                         <h1 className="weather-temp">{temp}</h1>
                         <h3 className="weather-desc">{weatherType}</h3>
                     </div>
