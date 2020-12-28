@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { MapPin, Sun } from 'react-feather';
+import {MapPin, Sun, Sunrise, Sunset} from 'react-feather';
 
 
 export default function Weather() {
@@ -31,17 +31,17 @@ export default function Weather() {
         return <div>Loading...</div>;
     }
 
-    let {temp, feels_like, temp_min, temp_max, pressure} = weather.main;
+    let {temp, /*feels_like, temp_min, temp_max, pressure*/} = weather.main;
     temp = (temp-273.15).toFixed(1);
-    feels_like = (feels_like-273.15).toFixed(1);
-    temp_min = (temp_min-273.15).toFixed(1);
-    temp_max = (temp_max-273.15).toFixed(1);
+    // feels_like = (feels_like-273.15).toFixed(1);
+    // temp_min = (temp_min-273.15).toFixed(1);
+    // temp_max = (temp_max-273.15).toFixed(1);
 
     const windSpeed = ((weather.wind.speed)*3.6).toFixed(1);
 
-    const {main, description} = weather.weather[0];
+    const {main, /*description*/} = weather.weather[0];
     const weatherType = main;
-    const weatherTypeDescription = description;
+    // const weatherTypeDescription = description;
 
     const cityName = weather.name;
     const country = weather.sys.country;
@@ -51,19 +51,51 @@ export default function Weather() {
 
     let count = 0;
 
-    if (weatherForecast.length !== 0 ) {daily.map( oneDay => {
-        if (count < 4) {
-            count += 1;
+    if (weatherForecast.length !== 0 ) {daily.forEach( oneDay => {
+        if (count > 0 && count < 5) {
             let sunrise = new Date(oneDay.sunrise * 1000);
             let sunset = new Date(oneDay.sunset * 1000);
 
             dailyForecast.push({
-                sunrise: sunrise.toLocaleString(),
-                sunset: sunset.toLocaleString(),
+                date: sunrise.getDate(),
+                day: sunrise.getDay(),
+                sunrise: (sunrise.getHours() < 10 ? '0' + sunrise.getHours() : sunrise.getHours()) +
+                    ':' +
+                    (sunrise.getMinutes() < 10 ? '0' + sunrise.getMinutes() : sunrise.getMinutes())  +
+                    ':' +
+                    (sunrise.getSeconds() < 10 ? '0' + sunrise.getSeconds() : sunrise.getSeconds()),
+                sunset: (sunset.getHours() < 10 ? '0' + sunset.getHours() : sunset.getHours()) +
+                    ':' +
+                    (sunset.getMinutes() < 10 ? '0' + sunset.getMinutes() : sunset.getMinutes()) +
+                    ':' +
+                    (sunset.getSeconds() < 10 ? '0' + sunset.getSeconds() : sunset.getSeconds()),
                 dailyTemp: (oneDay.temp.day).toFixed(1),
             })
-        }})
+        }
+        count += 1;
+    })}
+
+    const getDay = (day) => {
+        switch(day) {
+        case 0:
+            return 'Sunday';
+        case 1:
+            return 'Monday';
+        case 2:
+            return 'Tuesday';
+        case 3:
+            return 'Wednesday';
+        case 4:
+            return 'Thursday';
+        case 5:
+            return 'Friday';
+        case 6:
+            return 'Saturday';
+        default:
+            return 'Sunday';
+        }
     }
+
 
     return (
         <div>
