@@ -6,7 +6,7 @@ $border-radius: 25px;
 .container {
   @extend %display-flex-center;
 
-  height: 400px;
+  height: 450px;
   width: fit-content;
 
   margin: 50px auto 0 auto;
@@ -102,9 +102,11 @@ $border-radius: 25px;
 .info-side {
   @extend %display-flex-center;
   flex-direction: column;
+  justify-content: space-around;
   position: relative;
   float: left;
-  height: 383px;
+  //height: 383px;
+  height: inherit;
   padding-top: 25px;
 }
 
