@@ -1,6 +1,12 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {MapPin, Sun, Sunrise, Sunset, CloudOff, CloudRain, Cloud, CloudSnow} from 'react-feather';
+import {getDayTemperatureDailyForecast,
+        getNightTemperatureDailyForecast,
+        getPrecipitationDailyForecast,
+        getRainDailyForecast,
+        getWindDailyForecast,
+        getHumidityDailyForecast} from "./DailyForecastGetterFunctions";
 
 
 export default function Weather() {
@@ -101,42 +107,6 @@ export default function Weather() {
         setIndexOfDailyForecast(index);
     }
 
-    const getDayTemperatureDailyForecast = () => {
-        return (dailyForecast.length !== 0) ?
-            (dailyForecast[indexOfDailyForecast].dayTemp).toFixed(1) :
-            "";
-    }
-
-    const getNightTemperatureDailyForecast = () => {
-        return (dailyForecast.length !== 0) ?
-            (dailyForecast[indexOfDailyForecast].nightTemp).toFixed(1) :
-            "";
-    }
-
-    const getPrecipitationDailyForecast = () => {
-        return (dailyForecast.length !== 0) ?
-            dailyForecast[indexOfDailyForecast].precipitation :
-            "";
-    }
-
-    const getRainDailyForecast = () => {
-        return (dailyForecast.length !== 0) ?
-            dailyForecast[indexOfDailyForecast].rain :
-            "";
-    }
-
-    const getWindDailyForecast = () => {
-        return (dailyForecast.length !== 0) ?
-            dailyForecast[indexOfDailyForecast].wind :
-            "";
-    }
-
-    const getHumidityDailyForecast = () => {
-        return (dailyForecast.length !== 0) ?
-            dailyForecast[indexOfDailyForecast].humidity :
-            "";
-    }
-
     // Change weatherType to React-feather's equivalent
     const getFeatherName = () => {
         switch(weatherType) {
@@ -206,29 +176,41 @@ export default function Weather() {
                         <div className="today-info">
                             <div>
                                 <span className="title">DAY</span>
-                                <span className="value">{getDayTemperatureDailyForecast()} °C</span>
+                                <span className="value">
+                                    {getDayTemperatureDailyForecast(dailyForecast, indexOfDailyForecast)} °C
+                                </span>
                             </div>
                             <div>
                                 <span className="title">NIGHT</span>
-                                <span className="value">{getNightTemperatureDailyForecast()} °C</span>
+                                <span className="value">
+                                    {getNightTemperatureDailyForecast(dailyForecast, indexOfDailyForecast)} °C
+                                </span>
                             </div>
                             <div>
                                 <span className="title">WIND</span>
-                                <span className="value">{getWindDailyForecast()} km/h</span>
+                                <span className="value">
+                                    {getWindDailyForecast(dailyForecast, indexOfDailyForecast)} km/h
+                                </span>
                             </div>
                         </div>
                         <div className="today-info">
                             <div>
                                 <span className="title">PRECIPITATION</span>
-                                <span className="value">{getPrecipitationDailyForecast()} %</span>
+                                <span className="value">
+                                    {getPrecipitationDailyForecast(dailyForecast, indexOfDailyForecast)} %
+                                </span>
                             </div>
                             <div>
                                 <span className="title">RAIN</span>
-                                <span className="value">{getRainDailyForecast()} mm</span>
+                                <span className="value">
+                                    {getRainDailyForecast(dailyForecast, indexOfDailyForecast)} mm
+                                </span>
                             </div>
                             <div>
                                 <span className="title">HUMIDITY</span>
-                                <span className="value">{getHumidityDailyForecast()} %</span>
+                                <span className="value">
+                                    {getHumidityDailyForecast(dailyForecast, indexOfDailyForecast)} %
+                                </span>
                             </div>
                         </div>
                     </div>
