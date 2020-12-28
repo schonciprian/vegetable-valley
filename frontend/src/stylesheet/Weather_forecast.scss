@@ -69,6 +69,23 @@ $border-radius: 25px;
   }
 }
 
+.weather-extras-container {
+  width: 80%;
+  position: absolute;
+  top: 150px;
+  left: 25px;
+
+  .today-extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
 .location {
   display: inline-block;
   margin-top: 10px;
@@ -164,11 +181,11 @@ $border-radius: 25px;
   box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2)
 }
 
-//.week-list>li.active {
-//  background: #fff;
-//  color: #222831;
-//  border-radius: 10px;
-//}
+.week-list>li.active {
+  background: #fff;
+  color: #222831;
+  border-radius: 10px;
+}
 
 .week-list>li .day-name {
   display: block;
