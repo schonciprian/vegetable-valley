@@ -153,10 +153,19 @@ export default function Weather() {
                             */}
 
                             {dailyForecast.map((oneDayForecast) => (
-                                <li>
-                                    <i className="day-icon" data-feather="sun"/>
-                                    <span className="day-name">{oneDayForecast.sunrise}</span>
-                                    <span className="day-name">{oneDayForecast.sunset}</span>
+                                <li key={oneDayForecast.date} className="daily-weather-forecast">
+                                    <Sun className="day-icon" data-feather="sun"/>
+                                    <span className="day-name">{oneDayForecast.date}</span>
+                                    <span className="day-name">{getDay(oneDayForecast.day)}</span>
+                                    <div className="sunrise-container">
+                                        <Sunrise className="sunrise-icon"/>
+                                        <span className="day-name">{oneDayForecast.sunrise}</span>
+                                    </div>
+                                    <div className="sunset-container">
+                                        <Sunset className="sunset-icon"/>
+                                        <span className="day-name">{oneDayForecast.sunset}</span>
+                                    </div>
+
                                     <span className="day-temp">{oneDayForecast.dailyTemp}°C</span>
                                 </li>
                             ))}
