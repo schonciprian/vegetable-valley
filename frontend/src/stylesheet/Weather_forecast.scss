@@ -115,7 +115,7 @@ $border-radius: 25px;
 .today-info {
   height: auto;
   padding: 15px;
-  margin: 0 25px 25px 25px;
+  margin: 0 25px 0 25px;
   border-radius: 10px;
 }
 
@@ -162,11 +162,11 @@ $border-radius: 25px;
   box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2)
 }
 
-.week-list>li.active {
-  background: #fff;
-  color: #222831;
-  border-radius: 10px;
-}
+//.week-list>li.active {
+//  background: #fff;
+//  color: #222831;
+//  border-radius: 10px;
+//}
 
 .week-list>li .day-name {
   display: block;
@@ -179,6 +179,22 @@ $border-radius: 25px;
   height: 30px;
   width: auto;
   margin: 0 auto;
+  color: darkorange;
+}
+
+.week-list>li .sunrise-container,
+.week-list>li .sunset-container {
+  width: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sunrise-icon,
+.sunset-icon {
+  margin: 10px 10px 0 0;
+  height: 19px;
+  color: darkorange;
 }
 
 .week-list>li .day-temp {
@@ -186,11 +202,12 @@ $border-radius: 25px;
   text-align: center;
   margin: 10px 0 0 0;
   font-weight: 700;
+  font-size: 20px;
 }
 
 .location-container {
   width: 70%;
-  padding: 25px 35px;
+  padding: 15px 35px;
 }
 
 .location-button {
