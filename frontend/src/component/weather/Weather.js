@@ -26,6 +26,10 @@ export default function Weather() {
             setWeatherForecast(response.data);
         }), [city]);
 
+    if (weather.length === 0) {
+        return <div>Loading...</div>;
+    }
+
     let {temp, humidity} = weather.main;
     temp = (temp-273.15).toFixed(1);
     const todayWindSpeed = ((weather.wind.speed)*3.6).toFixed(0);
