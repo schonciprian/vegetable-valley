@@ -31,13 +31,13 @@ export default function Weather() {
         return <div>Loading...</div>;
     }
 
-    let {temp, /*feels_like, temp_min, temp_max, pressure*/} = weather.main;
+    let {temp, feels_like, temp_min, temp_max, pressure, humidity} = weather.main;
     temp = (temp-273.15).toFixed(1);
     // feels_like = (feels_like-273.15).toFixed(1);
     // temp_min = (temp_min-273.15).toFixed(1);
     // temp_max = (temp_max-273.15).toFixed(1);
 
-    const windSpeed = ((weather.wind.speed)*3.6).toFixed(1);
+    const todayWindSpeed = ((weather.wind.speed)*3.6).toFixed(0);
     const rain = (weather.rain !== undefined ? weather.rain : {"1h":0, "3h":0});
     console.log(rain["1h"]);
 
@@ -125,15 +125,15 @@ export default function Weather() {
                     <div className="weather-extras-container">
                         <div className="today-extras">
                             <span>PRECIPITATION</span>
-                            <span>20 %</span>
+                            <span>{rain["1h"].toFixed(1)} mm</span>
                         </div>
                         <div className="today-extras">
                             <span>HUMIDITY</span>
-                            <span>40 %</span>
+                            <span>{humidity} %</span>
                         </div>
                         <div className="today-extras">
                             <span>WIND</span>
-                            <span>20 km/h</span>
+                            <span>{todayWindSpeed} km/h</span>
                         </div>
 
                     </div>
@@ -149,7 +149,7 @@ export default function Weather() {
                         <div className="today-info">
                             <div className="precipitation">
                                 <span className="title">PRECIPITATION</span>
-                                <span className="value">0 %</span>
+                                <span className="value">{rain["1h"]} mm</span>
                             </div>
                             <div className="humidity">
                                 <span className="title">HUMIDITY</span>
@@ -157,7 +157,7 @@ export default function Weather() {
                             </div>
                             <div className="wind">
                                 <span className="title">WIND</span>
-                                <span className="value">{windSpeed} km/h</span>
+                                <span className="value">{todayWindSpeed} km/h</span>
                             </div>
                         </div>
                     </div>
