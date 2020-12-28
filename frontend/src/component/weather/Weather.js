@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {MapPin, Sun, Sunrise, Sunset} from 'react-feather';
+import {MapPin, Sun, Sunrise, Sunset, CloudOff} from 'react-feather';
 
 
 export default function Weather() {
@@ -38,6 +38,8 @@ export default function Weather() {
     // temp_max = (temp_max-273.15).toFixed(1);
 
     const windSpeed = ((weather.wind.speed)*3.6).toFixed(1);
+    const rain = (weather.rain !== undefined ? weather.rain : {"1h":0, "3h":0});
+    console.log(rain["1h"]);
 
     const {main, /*description*/} = weather.weather[0];
     const weatherType = main;
@@ -57,6 +59,7 @@ export default function Weather() {
             let sunset = new Date((oneDay.sunset + timezone_offset - 3600) * 1000);
 
             dailyForecast.push({
+                month: sunrise.getMonth() + 1,
                 date: sunrise.getDate(),
                 day: sunrise.getDay(),
                 sunrise: (sunrise.getHours() < 10 ? '0' + sunrise.getHours() : sunrise.getHours()) +
@@ -106,7 +109,7 @@ export default function Weather() {
                 <div onClick={() => setCity("Mosonmagyaróvár")}>Mosonmagyaróvár</div>
                 <div onClick={() => setCity("Budapest XVIII. kerület")}>XVIII kerület</div>
                 <div onClick={() => setCity("London")}>London</div>
-                <div onClick={() => setCity("Barcelona")}>Barcelona</div>
+                <div onClick={() => setCity("Paris")}>Paris</div>
                 <div onClick={() => setCity("Moskva")}>Moszkva</div>
             </div>
 
@@ -120,7 +123,7 @@ export default function Weather() {
                         <span className="location">{cityName}, {country}</span>
                     </div>
                     <div className="weather-container">
-                        <Sun className="weather-icon"/>
+                        <CloudOff className="weather-icon"/>
                         <h1 className="weather-temp">{temp}</h1>
                         <h3 className="weather-desc">{weatherType}</h3>
                     </div>
@@ -154,8 +157,8 @@ export default function Weather() {
 
                             {dailyForecast.map((oneDayForecast) => (
                                 <li key={oneDayForecast.date} className="daily-weather-forecast">
-                                    <Sun className="day-icon" data-feather="sun"/>
-                                    <span className="day-name">{oneDayForecast.date}</span>
+                                    {/*<Sun className="day-icon" data-feather="sun"/>*/}
+                                    <span className="day-name">{oneDayForecast.month}. {oneDayForecast.date}.</span>
                                     <span className="day-name">{getDay(oneDayForecast.day)}</span>
                                     <div className="sunrise-container">
                                         <Sunrise className="sunrise-icon"/>
