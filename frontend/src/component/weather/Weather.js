@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {MapPin, Sun, Sunrise, Sunset, CloudOff} from 'react-feather';
+import {MapPin, Sun, Sunrise, Sunset, CloudOff, CloudRain, Cloud, CloudSnow} from 'react-feather';
 
 
 export default function Weather() {
     const [weather, setWeather] = useState([]);
     const [weatherForecast, setWeatherForecast] = useState([]);
     const [city, setCity] = useState("Gyor");
+    const [indexOfDailyForecast, setIndexOfDailyForecast] = useState(0);
     // QUESTION: if I want to set the coordinates in the first API call and the second wants to use it
     // it will use the previous coordinates despite of it knows the correct coordinates.
     // For make working it well, I need to set longitude and latitude separately, but why?
@@ -63,6 +64,12 @@ export default function Weather() {
                 sunrise: calculateSunriseSunset(sunrise),
                 sunset: calculateSunriseSunset(sunset),
                 dailyTemp: (oneDay.temp.day).toFixed(1),
+                dayTemp: oneDay.temp.day,
+                nightTemp: oneDay.temp.night,
+                wind: (oneDay.wind_speed).toFixed(1),
+                humidity: (oneDay.humidity).toFixed(1),
+                precipitation: oneDay.pop * 100,
+                rain: (oneDay.rain) ? (oneDay.rain).toFixed(1) : 0,
             })
         }
         count += 1;
@@ -90,9 +97,65 @@ export default function Weather() {
         }
     }
 
-    if (weather.length === 0) {
-        return <div>Loading...</div>;
+    const changeIndexOfDailyForecast = (index) => {
+        setIndexOfDailyForecast(index);
     }
+
+    const getDayTemperatureDailyForecast = () => {
+        return (dailyForecast.length !== 0) ?
+            (dailyForecast[indexOfDailyForecast].dayTemp).toFixed(1) :
+            "";
+    }
+
+    const getNightTemperatureDailyForecast = () => {
+        return (dailyForecast.length !== 0) ?
+            (dailyForecast[indexOfDailyForecast].nightTemp).toFixed(1) :
+            "";
+    }
+
+    const getPrecipitationDailyForecast = () => {
+        return (dailyForecast.length !== 0) ?
+            dailyForecast[indexOfDailyForecast].precipitation :
+            "";
+    }
+
+    const getRainDailyForecast = () => {
+        return (dailyForecast.length !== 0) ?
+            dailyForecast[indexOfDailyForecast].rain :
+            "";
+    }
+
+    const getWindDailyForecast = () => {
+        return (dailyForecast.length !== 0) ?
+            dailyForecast[indexOfDailyForecast].wind :
+            "";
+    }
+
+    const getHumidityDailyForecast = () => {
+        return (dailyForecast.length !== 0) ?
+            dailyForecast[indexOfDailyForecast].humidity :
+            "";
+    }
+
+    // Change weatherType to React-feather's equivalent
+    const getFeatherName = () => {
+        switch(weatherType) {
+            case 'Sun':
+                return Sun;
+            case 'Rain':
+                return CloudRain;
+            case 'Clear':
+                return CloudOff;
+            case 'Snow':
+                return CloudSnow;
+            case 'Clouds':
+                return Cloud;
+            default:
+                return Sun;
+        }
+    }
+
+    const customFeatherTag = getFeatherName();
 
     return (
         <div>
@@ -132,7 +195,7 @@ export default function Weather() {
 
                     </div>
                     <div className="weather-container">
-                        <CloudOff className="weather-icon"/>
+                        <customFeatherTag className="weather-icon"/>
                         <h1 className="weather-temp">{temp}</h1>
                         <h3 className="weather-desc">{weatherType}</h3>
                     </div>
@@ -141,31 +204,31 @@ export default function Weather() {
                 <div className="info-side">
                     <div className="today-info-container">
                         <div className="today-info">
-                            <div className="precipitation">
+                            <div>
                                 <span className="title">DAY</span>
-                                <span className="value">{rain["1h"]} °C</span>
+                                <span className="value">{getDayTemperatureDailyForecast()} °C</span>
                             </div>
-                            <div className="humidity">
+                            <div>
                                 <span className="title">NIGHT</span>
-                                <span className="value">34 °C</span>
+                                <span className="value">{getNightTemperatureDailyForecast()} °C</span>
                             </div>
-                            <div className="wind">
+                            <div>
                                 <span className="title">WIND</span>
-                                <span className="value">{todayWindSpeed} km/h</span>
+                                <span className="value">{getWindDailyForecast()} km/h</span>
                             </div>
                         </div>
                         <div className="today-info">
-                            <div className="precipitation">
+                            <div>
                                 <span className="title">PRECIPITATION</span>
-                                <span className="value">{rain["1h"]} %</span>
+                                <span className="value">{getPrecipitationDailyForecast()} %</span>
                             </div>
-                            <div className="wind">
+                            <div>
                                 <span className="title">RAIN</span>
-                                <span className="value">{todayWindSpeed} mm</span>
+                                <span className="value">{getRainDailyForecast()} mm</span>
                             </div>
-                            <div className="humidity">
+                            <div>
                                 <span className="title">HUMIDITY</span>
-                                <span className="value">34 %</span>
+                                <span className="value">{getHumidityDailyForecast()} %</span>
                             </div>
                         </div>
                     </div>
@@ -173,7 +236,8 @@ export default function Weather() {
                         <ul className="week-list">
                             {dailyForecast.map((oneDayForecast, index) => (
                                 <li key={index}
-                                    className={(index === 0) ? "daily-weather-forecast active" : "daily-weather-forecast"}>
+                                    className={(index === 0) ? "daily-weather-forecast active" : "daily-weather-forecast"}
+                                    onClick={() => changeIndexOfDailyForecast(index)}>
                                     <span className="day-name">{oneDayForecast.month}. {oneDayForecast.date}.</span>
                                     <span className="day-name">{getDay(oneDayForecast.day)}</span>
                                     <div className="sunrise-container">
