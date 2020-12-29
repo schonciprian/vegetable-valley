@@ -84,6 +84,16 @@ body {
   background-color: #4B5682;
   --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
 }
+@media (max-width: 1352px) {
+  .container {
+    padding-top: 40px;
+  }
+}
+@media (min-width: 1352px) {
+  .container {
+    padding-left: 25px;
+  }
+}
 
 .weather-side {
   height: 490px;
