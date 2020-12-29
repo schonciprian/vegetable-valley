@@ -23,7 +23,7 @@ $border-radius: 25px;
 
 .weather-side {
   height: 490px;
-  width: 300px;
+  width: 320px;
 
   position: relative;
   float: left;
@@ -60,7 +60,7 @@ $border-radius: 25px;
 .date-container {
   position: absolute;
   top: 25px;
-  left: 25px;
+  left: 20px;
 
   .date-dayname {
     margin: 0;
@@ -85,6 +85,17 @@ $border-radius: 25px;
     margin-bottom: 20px;
     font-size: 18px;
     font-weight: 700;
+  }
+}
+
+.today-location-container {
+  @extend %display-flex-center;
+  align-items: flex-start;
+
+  svg {
+    min-height: 24px;
+    min-width: 24px;
+    margin: 10px 5px 0 0;
   }
 }
 

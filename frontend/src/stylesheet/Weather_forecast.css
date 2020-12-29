@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
-.week-list, .today-info-container, .info-side, .container, .weather-infos, .navbar, .header {
+.week-list, .today-info-container, .info-side, .today-location-container, .container, .weather-infos, .navbar, .header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,7 +87,7 @@ body {
 
 .weather-side {
   height: 490px;
-  width: 300px;
+  width: 320px;
   position: relative;
   float: left;
   border-radius: 25px;
@@ -118,7 +118,7 @@ body {
 .date-container {
   position: absolute;
   top: 25px;
-  left: 25px;
+  left: 20px;
 }
 .date-container .date-dayname {
   margin: 0;
@@ -140,6 +140,15 @@ body {
   margin-bottom: 20px;
   font-size: 18px;
   font-weight: 700;
+}
+
+.today-location-container {
+  align-items: flex-start;
+}
+.today-location-container svg {
+  min-height: 24px;
+  min-width: 24px;
+  margin: 10px 5px 0 0;
 }
 
 .location {
