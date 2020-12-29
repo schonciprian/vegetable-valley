@@ -98,7 +98,7 @@ export default function Weather() {
                 <div onClick={() => setCity("Mosonmagyaróvár")}>Mosonmagyaróvár</div>
                 <div onClick={() => setCity("Budapest XVIII. kerület")}>XVIII kerület</div>
                 <div onClick={() => setCity("London")}>London</div>
-                <div onClick={() => setCity("Paris")}>Paris</div>
+                <div onClick={() => setCity("Chicago")}>Chicago</div>
                 <div onClick={() => setCity("Moskva")}>Moszkva</div>
             </div>
 
