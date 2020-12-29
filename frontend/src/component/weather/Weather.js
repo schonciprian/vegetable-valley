@@ -74,8 +74,8 @@ export default function Weather() {
                 dayTemp: oneDay.temp.day,
                 nightTemp: oneDay.temp.night,
                 wind: (oneDay.wind_speed).toFixed(1),
-                humidity: (oneDay.humidity).toFixed(1),
-                precipitation: oneDay.pop * 100,
+                humidity: (oneDay.humidity).toFixed(0),
+                precipitation: (oneDay.pop * 100).toFixed(0),
                 rain: (oneDay.rain) ? (oneDay.rain).toFixed(1) : 0,
                 snow: (oneDay.snow) ? (oneDay.snow).toFixed(1) : 0,
             })
@@ -186,7 +186,8 @@ export default function Weather() {
                         <ul className="week-list">
                             {dailyForecast.map((oneDayForecast, index) => (
                                 <li key={index}
-                                    className={(index === 0) ? "daily-weather-forecast active" : "daily-weather-forecast"}
+                                    data-index={index}
+                                    className={(index === indexOfDailyForecast) ? "daily-weather-forecast active" : "daily-weather-forecast"}
                                     onClick={() => changeIndexOfDailyForecast(index)}>
                                     <span className="day-name">{oneDayForecast.month}. {oneDayForecast.date}.</span>
                                     <span className="day-name">{getDay(oneDayForecast.day)}</span>
