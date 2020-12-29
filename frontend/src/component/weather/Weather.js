@@ -26,7 +26,7 @@ export default function Weather() {
     let latitude;
     let longitude;
 
-    useEffect(() => axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f6c317d5027246f70ca2f9fcbc4ea46c`)
+    useEffect(() => axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f6c317d5027246f70ca2f9fcbc4ea46c`)
         .then(response => {
             // setCoordinate(response.data.coord)
             setWeather(response.data);
