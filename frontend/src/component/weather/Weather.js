@@ -5,6 +5,7 @@ import {getDayTemperatureDailyForecast,
         getNightTemperatureDailyForecast,
         getPrecipitationDailyForecast,
         getRainDailyForecast,
+        getSnowDailyForecast,
         getWindDailyForecast,
         getHumidityDailyForecast,
         getDay} from "./DailyForecastGetterFunctions";
@@ -72,6 +73,7 @@ export default function Weather() {
                 humidity: (oneDay.humidity).toFixed(1),
                 precipitation: oneDay.pop * 100,
                 rain: (oneDay.rain) ? (oneDay.rain).toFixed(1) : 0,
+                snow: (oneDay.snow) ? (oneDay.snow).toFixed(1) : 0,
             })
         }
         count += 1;
@@ -160,6 +162,12 @@ export default function Weather() {
                                 <span className="title">RAIN</span>
                                 <span className="value">
                                     {getRainDailyForecast(dailyForecast, indexOfDailyForecast)} mm
+                                </span>
+                            </div>
+                            <div>
+                                <span className="title">SNOW</span>
+                                <span className="value">
+                                    {getSnowDailyForecast(dailyForecast, indexOfDailyForecast)} mm
                                 </span>
                             </div>
                             <div>
