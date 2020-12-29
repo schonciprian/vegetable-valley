@@ -140,6 +140,11 @@ $border-radius: 25px;
   border-radius: 10px;
 }
 
+.forecast-icon {
+  text-align: center;
+  color: darkorange;
+}
+
 .today-info>div:not(:last-child) {
   margin: 0 0 10px 0;
 }
@@ -166,6 +171,7 @@ $border-radius: 25px;
 .week-list>li {
   float: left;
   padding: 15px;
+  margin: 0 5px;
   cursor: pointer;
   -webkit-transition: 200ms ease;
   -o-transition: 200ms ease;

@@ -78,6 +78,7 @@ export default function Weather() {
                 precipitation: (oneDay.pop * 100).toFixed(0),
                 rain: (oneDay.rain) ? (oneDay.rain).toFixed(1) : 0,
                 snow: (oneDay.snow) ? (oneDay.snow).toFixed(1) : 0,
+                weather: oneDay.weather[0].main,
             })
         }
         count += 1;
@@ -88,6 +89,8 @@ export default function Weather() {
     }
 
     const CustomFeatherTag = getFeatherName(weatherType);
+    const CustomFeatherTag2 = getFeatherName(dailyForecast[indexOfDailyForecast].weather);
+
 
     return (
         <div>
@@ -136,6 +139,9 @@ export default function Weather() {
                 <div className="info-side">
                     <div className="today-info-container">
                         <div className="today-info">
+                            <div className="forecast-icon">
+                                <CustomFeatherTag2 />
+                            </div>
                             <div>
                                 <span className="title">DAY</span>
                                 <span className="value">
