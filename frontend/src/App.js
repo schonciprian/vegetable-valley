@@ -13,7 +13,7 @@ import './stylesheet/Weather_forecast.css';
 function App() {
   return (
       <Router>
-          <div className="App">
+          <div>
             <Header />
             <Navbar />
             <div className="main-container">
