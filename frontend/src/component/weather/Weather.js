@@ -111,12 +111,13 @@ export default function Weather() {
                 <div className="weather-side">
                     <div className="weather-gradient"/>
                     <div className="date-container">
-                        <h2 className="date-dayname">{getDay(today.getDay())}</h2>
-                        <span className="date-day">{date}</span>
                         <div className="today-location-container">
                             <MapPin/>
                             <span className="location">{cityName}, {country}</span>
                         </div>
+                        <h2 className="date-dayname">{getDay(today.getDay())}</h2>
+                        <span className="date-day">{date}</span>
+
                     </div>
                     <div className="weather-extras-container">
                         <div className="today-extras">
