@@ -49,6 +49,10 @@ export default function Weather() {
     const weatherType = weather.weather[0].main;
     const cityName = weather.name;
     const country = weather.sys.country;
+    const today = new Date((weather.dt + weather.timezone - 3600) * 1000)
+    const date = today.getDate() + ' ' + getMonth(today.getMonth()) + ' ' + today.getFullYear();
+
+
 
     // Creating a new object from weatherForecast API response with necessary information about the weather
     const {timezone_offset, daily} = weatherForecast;
@@ -102,8 +106,8 @@ export default function Weather() {
                 <div className="weather-side">
                     <div className="weather-gradient"/>
                     <div className="date-container">
-                        <h2 className="date-dayname">Tuesday*</h2>
-                        <span className="date-day">15 Jan 2019*</span>
+                        <h2 className="date-dayname">{getDay(today.getDay())}</h2>
+                        <span className="date-day">{date}</span>
                         <MapPin className="location-icon"/>
                         <span className="location">{cityName}, {country}</span>
                     </div>
