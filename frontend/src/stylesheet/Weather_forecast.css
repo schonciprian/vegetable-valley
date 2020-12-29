@@ -75,7 +75,7 @@ body {
 .container {
   flex-wrap: wrap;
   height: fit-content;
-  width: 70%;
+  width: 80%;
   margin: 50px auto 150px auto;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
@@ -210,7 +210,7 @@ body {
 .week-list {
   flex-wrap: wrap;
   list-style-type: none;
-  padding: 0;
+  padding: 20px;
   margin: 10px 35px;
   -webkit-box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
@@ -218,6 +218,7 @@ body {
 }
 
 .week-list > li {
+  width: 120px;
   float: left;
   padding: 15px;
   margin: 0 5px;
@@ -246,7 +247,7 @@ body {
 
 .week-list > li .day-name {
   display: block;
-  margin: 10px 0 0 0;
+  margin: 10px 0;
   text-align: center;
 }
 
@@ -260,10 +261,14 @@ body {
 
 .week-list > li .sunrise-container,
 .week-list > li .sunset-container {
-  width: 100px;
+  margin: 0;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
+}
+.week-list > li .sunrise-container svg,
+.week-list > li .sunset-container svg {
+  margin: 0;
 }
 
 .sunrise-icon,
