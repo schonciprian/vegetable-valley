@@ -86,7 +86,7 @@ body {
 }
 
 .weather-side {
-  height: 450px;
+  height: 490px;
   width: 300px;
   position: relative;
   float: left;
@@ -130,7 +130,7 @@ body {
 .weather-extras-container {
   width: 85%;
   position: absolute;
-  top: 150px;
+  top: 190px;
   left: 25px;
 }
 .weather-extras-container .today-extras {
