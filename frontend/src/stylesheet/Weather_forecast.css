@@ -64,8 +64,12 @@ body {
 
 .weather-infos {
   justify-content: space-around;
+  flex-wrap: wrap;
   font-size: 30px;
   color: #7F8EC0;
+}
+.weather-infos div {
+  margin: 0 15px;
 }
 
 .container {
@@ -74,6 +78,7 @@ body {
   width: 70%;
   margin: 50px auto 150px auto;
   font-family: "Montserrat", sans-serif;
+  font-size: 20px;
   border-radius: 25px;
   color: #eeeeee;
   background-color: #4B5682;
