@@ -98,6 +98,11 @@ body {
 .weather-infos {
   @extend %display-flex-center;
   justify-content: space-around;
+  flex-wrap: wrap;
   font-size: 30px;
   color: $text-color-yellow-hover;
+
+  div {
+    margin: 0 15px;
+  }
 }
