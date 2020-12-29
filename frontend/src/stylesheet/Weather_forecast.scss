@@ -17,7 +17,7 @@ $border-radius: 25px;
   border-radius: $border-radius;
 
   color: #eeeeee;
-  background-color: #4B5682;
+  //background-color: #4B5682;
   --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
   @media (max-width: 1352px) {
     padding-top: 40px;
@@ -192,7 +192,7 @@ $border-radius: 25px;
   width: 120px;
   float: left;
   padding: 15px;
-  margin: 0 5px;
+  margin: 10px;
   cursor: pointer;
   -webkit-transition: 200ms ease;
   -o-transition: 200ms ease;
