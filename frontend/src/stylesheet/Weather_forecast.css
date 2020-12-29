@@ -8,7 +8,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #151A30;
+  background-color: #040617;
 }
 
 .header {
@@ -31,7 +31,7 @@ body {
 }
 .header a {
   text-decoration: none;
-  color: #4B5682;
+  color: #eeeeee;
 }
 
 .navbar {
@@ -56,7 +56,7 @@ body {
 .navbar a {
   margin: 20px;
   text-decoration: none;
-  color: #4B5682;
+  color: #eeeeee;
 }
 .navbar a:hover {
   color: #7F8EC0;
@@ -66,7 +66,8 @@ body {
   justify-content: space-around;
   flex-wrap: wrap;
   font-size: 30px;
-  color: #7F8EC0;
+  color: #eeeeee;
+  padding: 20px;
 }
 .weather-infos div {
   margin: 0 15px;
@@ -81,7 +82,7 @@ body {
   font-size: 20px;
   border-radius: 25px;
   color: #eeeeee;
-  background-color: #040617;
+  background-color: #0F1329;
   --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
 }
 @media (max-width: 1352px) {
