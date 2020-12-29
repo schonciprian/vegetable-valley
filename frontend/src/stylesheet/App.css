@@ -1,0 +1,74 @@
+.navbar, .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  width: 100%;
+  height: 150px;
+  font-family: Mountains of Christmas;
+  font-size: 75px;
+  letter-spacing: 5px;
+  background: linear-gradient(#040617, #0F1329);
+}
+@media screen and (max-width: 775px) {
+  .header {
+    font-size: 65px;
+  }
+}
+@media screen and (max-width: 625px) {
+  .header {
+    font-size: 50px;
+  }
+}
+.header a {
+  text-decoration: none;
+  color: #4B5682;
+}
+
+.navbar {
+  width: 100%;
+  height: 75px;
+  font-family: Mountains of Christmas;
+  font-size: 35px;
+  letter-spacing: 5px;
+  text-align: center;
+  background-color: #0F1329;
+}
+@media screen and (max-width: 775px) {
+  .navbar {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 625px) {
+  .navbar {
+    font-size: 20px;
+  }
+}
+.navbar a {
+  margin: 20px;
+  text-decoration: none;
+  color: #4B5682;
+}
+.navbar a:hover {
+  color: #7F8EC0;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+  background-color: #151A30;
+}
+
+.weather-infos {
+  font-size: 30px;
+  color: #4B5682;
+}
+
+/*# sourceMappingURL=App.css.map */
