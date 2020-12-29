@@ -6,7 +6,11 @@ import {getDayTemperatureDailyForecast,
         getPrecipitationDailyForecast,
         getRainDailyForecast,
         getWindDailyForecast,
-        getHumidityDailyForecast} from "./DailyForecastGetterFunctions";
+        getHumidityDailyForecast,
+        getDay} from "./DailyForecastGetterFunctions";
+import {getMonth,
+        calculateSunriseSunset,
+        getFeatherName} from "./TodaysWeatherFunctions";
 
 
 export default function Weather() {
@@ -50,14 +54,6 @@ export default function Weather() {
     let dailyForecast = [];
     let count = 0;
 
-    const calculateSunriseSunset = (dateTime) => {
-        return (dateTime.getHours() < 10 ? '0' + dateTime.getHours() : dateTime.getHours()) +
-            ':' +
-            (dateTime.getMinutes() < 10 ? '0' + dateTime.getMinutes() : dateTime.getMinutes())  +
-            ':' +
-            (dateTime.getSeconds() < 10 ? '0' + dateTime.getSeconds() : dateTime.getSeconds())
-    }
-
     if (weatherForecast.length !== 0 ) {daily.forEach( oneDay => {
         if (count > 0 && count < 5) {
             let sunrise = new Date((oneDay.sunrise + timezone_offset - 3600) * 1000);
@@ -81,51 +77,11 @@ export default function Weather() {
         count += 1;
     })}
 
-    // Get the name of the day, 0 is Sunday ...
-    const getDay = (day) => {
-        switch(day) {
-        case 0:
-            return 'Sunday';
-        case 1:
-            return 'Monday';
-        case 2:
-            return 'Tuesday';
-        case 3:
-            return 'Wednesday';
-        case 4:
-            return 'Thursday';
-        case 5:
-            return 'Friday';
-        case 6:
-            return 'Saturday';
-        default:
-            return 'Sunday';
-        }
-    }
-
     const changeIndexOfDailyForecast = (index) => {
         setIndexOfDailyForecast(index);
     }
 
-    // Change weatherType to React-feather's equivalent
-    const getFeatherName = () => {
-        switch(weatherType) {
-            case 'Sun':
-                return Sun;
-            case 'Rain':
-                return CloudRain;
-            case 'Clear':
-                return CloudOff;
-            case 'Snow':
-                return CloudSnow;
-            case 'Clouds':
-                return Cloud;
-            default:
-                return Sun;
-        }
-    }
-
-    const CustomFeatherTag = getFeatherName();
+    const CustomFeatherTag = getFeatherName(weatherType);
 
     return (
         <div>
