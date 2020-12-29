@@ -88,8 +88,10 @@ export default function Weather() {
         setIndexOfDailyForecast(index);
     }
 
-    const CustomFeatherTag = getFeatherName(weatherType);
-    const CustomFeatherTag2 = getFeatherName(dailyForecast[indexOfDailyForecast].weather);
+    const TodayFeatherTag = getFeatherName(weatherType);
+    const ForecastFeatherTag = (dailyForecast.length !== 0) ?
+        getFeatherName(dailyForecast[indexOfDailyForecast].weather) :
+        "div";
 
 
     return (
@@ -130,7 +132,7 @@ export default function Weather() {
 
                     </div>
                     <div className="weather-container">
-                        <CustomFeatherTag className="weather-icon"/>
+                        <TodayFeatherTag className="weather-icon"/>
                         <h1 className="weather-temp">{temp}</h1>
                         <h3 className="weather-desc">{weatherType}</h3>
                     </div>
@@ -140,7 +142,7 @@ export default function Weather() {
                     <div className="today-info-container">
                         <div className="today-info">
                             <div className="forecast-icon">
-                                <CustomFeatherTag2 />
+                                <ForecastFeatherTag />
                             </div>
                             <div>
                                 <span className="title">DAY</span>
