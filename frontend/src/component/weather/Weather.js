@@ -104,7 +104,7 @@ export default function Weather() {
                 <div onClick={() => setCity("Budapest XVIII. kerület")}>XVIII kerület</div>
                 <div onClick={() => setCity("London")}>London</div>
                 <div onClick={() => setCity("Chicago")}>Chicago</div>
-                <div onClick={() => setCity("Moskva")}>Moszkva</div>
+                <div onClick={() => setCity("Moscow")}>Moscow</div>
             </div>
 
             <div className="container">
@@ -218,7 +218,7 @@ export default function Weather() {
                     <div className="location-container">
                         <button className="location-button">
                             <MapPin className="location-icon"/>
-                            <span>Change location</span>
+                            <span>Change location not working</span>
                         </button>
                     </div>
                 </div>
