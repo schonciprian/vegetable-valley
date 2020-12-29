@@ -89,11 +89,13 @@ $border-radius: 25px;
 .location {
   display: inline-block;
   margin-top: 10px;
+  font-size: 25px;
+  font-weight: 600;
 }
 
 .location-icon {
   display: inline-block;
-  height: 0.8em;
+  height: 1em;
   width: auto;
   margin-right: 5px;
 }
