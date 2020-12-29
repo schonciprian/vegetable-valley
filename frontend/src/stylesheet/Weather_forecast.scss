@@ -71,10 +71,14 @@ $border-radius: 25px;
   left: 20px;
 
   .date-dayname {
+    position: absolute;
+    top: 75px;
     margin: 0;
   }
 
   .date-day {
+    position: absolute;
+    top: 110px;
     display: block;
   }
 }
@@ -83,7 +87,7 @@ $border-radius: 25px;
   width: 85%;
   position: absolute;
   top: 190px;
-  left: 25px;
+  left: 20px;
 
   .today-extras {
     display: flex;
@@ -99,16 +103,20 @@ $border-radius: 25px;
 .today-location-container {
   @extend %display-flex-center;
   align-items: flex-start;
+  margin-bottom: 10px;
 
   svg {
     min-height: 24px;
     min-width: 24px;
     margin: 10px 5px 0 0;
+    color: darkorange;
   }
 }
 
 .location {
+  width: 270px;
   display: inline-block;
+  word-wrap: break-word;
   margin-top: 10px;
   font-size: 25px;
   font-weight: 600;
@@ -124,7 +132,7 @@ $border-radius: 25px;
 .weather-container {
   position: absolute;
   bottom: 25px;
-  left: 25px;
+  left: 20px;
 
   .weather-temp {
     margin: 0;

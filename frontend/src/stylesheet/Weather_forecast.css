@@ -132,9 +132,13 @@ body {
   left: 20px;
 }
 .date-container .date-dayname {
+  position: absolute;
+  top: 75px;
   margin: 0;
 }
 .date-container .date-day {
+  position: absolute;
+  top: 110px;
   display: block;
 }
 
@@ -142,7 +146,7 @@ body {
   width: 85%;
   position: absolute;
   top: 190px;
-  left: 25px;
+  left: 20px;
 }
 .weather-extras-container .today-extras {
   display: flex;
@@ -155,15 +159,19 @@ body {
 
 .today-location-container {
   align-items: flex-start;
+  margin-bottom: 10px;
 }
 .today-location-container svg {
   min-height: 24px;
   min-width: 24px;
   margin: 10px 5px 0 0;
+  color: darkorange;
 }
 
 .location {
+  width: 270px;
   display: inline-block;
+  word-wrap: break-word;
   margin-top: 10px;
   font-size: 25px;
   font-weight: 600;
@@ -179,7 +187,7 @@ body {
 .weather-container {
   position: absolute;
   bottom: 25px;
-  left: 25px;
+  left: 20px;
 }
 .weather-container .weather-temp {
   margin: 0;
