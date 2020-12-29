@@ -17,7 +17,7 @@ body {
   font-family: Mountains of Christmas;
   font-size: 75px;
   letter-spacing: 5px;
-  background: linear-gradient(#040617, #0F1329);
+  background: linear-gradient(#040617, #040617, #040617, #0F1329);
 }
 @media screen and (max-width: 775px) {
   .header {
@@ -81,6 +81,7 @@ body {
   font-size: 20px;
   border-radius: 25px;
   color: #eeeeee;
+  background-color: #040617;
   --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
 }
 @media (max-width: 1352px) {

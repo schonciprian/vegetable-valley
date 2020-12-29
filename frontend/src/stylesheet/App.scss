@@ -39,7 +39,7 @@ body {
   font-size: 75px;
   letter-spacing: 5px;
 
-  background: linear-gradient($darkest-color-blue, $darker-color-blue);
+  background: linear-gradient($darkest-color-blue, $darkest-color-blue, $darkest-color-blue, $darker-color-blue);
 
   @media screen and (max-width: 775px) {
     font-size: 65px;
