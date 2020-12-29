@@ -232,8 +232,8 @@ body {
   list-style-type: none;
   padding: 20px;
   margin: 10px 35px;
-  -webkit-box-shadow: 0 0 30px -5px rgba(127, 142, 192, 0.35);
-  box-shadow: 0 0 30px -5px rgba(127, 142, 192, 0.35);
+  -webkit-box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
+  box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
   border-radius: 10px;
 }
 
