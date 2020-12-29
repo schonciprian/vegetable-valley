@@ -273,8 +273,7 @@ body {
 
 .sunrise-icon,
 .sunset-icon {
-  margin: 10px 10px 0 0;
-  height: 19px;
+  margin: 10px 0;
   color: darkorange;
 }
 
