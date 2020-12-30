@@ -99,34 +99,40 @@ export default function Weather() {
         <div>
             <CitySwitcherComponent setCity={setCity}/>
 
-            <div className="container">
-                <div className="weather-side">
-                    <div className="weather-gradient"/>
-                    <div className="date-container">
+            <div className="weather-container">
+
+                <div className="today-weather-side">
+                    <div className="today-weather-gradient"/>
+
+                    <div className="today-date-container">
                         <div className="today-location-container">
                             <MapPin/>
-                            <span className="location">{cityName}, {country}</span>
+                            <span className="today-location">{cityName}, {country}</span>
                         </div>
-                        <h2 className="date-dayname">{getDay(today.getDay())}</h2>
-                        <span className="date-day">{date}</span>
 
+                        <h2 className="date-dayname">{getDay(today.getDay())}</h2>
+
+                        <span className="date-day">{date}</span>
                     </div>
+
                     <div className="weather-extras-container">
                         <div className="today-extras">
                             <span>PRECIPITATION</span>
                             <span>{rain["1h"].toFixed(1)} mm</span>
                         </div>
+
                         <div className="today-extras">
                             <span>HUMIDITY</span>
                             <span>{humidity} %</span>
                         </div>
+
                         <div className="today-extras">
                             <span>WIND</span>
                             <span>{todayWindSpeed} km/h</span>
                         </div>
-
                     </div>
-                    <div className="weather-container">
+
+                    <div className="today-weather-container">
                         <TodayFeatherTag className="weather-icon"/>
                         <h1 className="weather-temp">{temp}</h1>
                         <h3 className="weather-desc">{weatherType}</h3>

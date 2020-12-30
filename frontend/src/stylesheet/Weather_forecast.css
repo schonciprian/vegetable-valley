@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
-.week-list, .today-info-container, .info-side, .today-location-container, .container, .navbar, .header {
+.week-list, .today-info-container, .info-side, .today-location-container, .weather-container, .navbar, .header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,30 +78,30 @@ body {
   margin: 15px;
 }
 
-.container {
+.weather-container {
   flex-wrap: wrap;
   height: fit-content;
   width: 80%;
   margin: 50px auto 150px auto;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
-  border-radius: 25px;
   color: #eeeeee;
   background-color: #0F1329;
+  border-radius: 25px;
   --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
 }
 @media (max-width: 1352px) {
-  .container {
+  .weather-container {
     padding-top: 40px;
   }
 }
 @media (min-width: 1352px) {
-  .container {
+  .weather-container {
     padding-left: 25px;
   }
 }
 
-.weather-side {
+.today-weather-side {
   height: 490px;
   width: 320px;
   position: relative;
@@ -118,12 +118,12 @@ body {
   transform: translateZ(0) scale(1.02) perspective(1000px);
 }
 
-.weather-side:hover {
+.today-weather-side:hover {
   -webkit-transform: scale(1.1) perspective(1500px) rotateY(10deg);
   transform: scale(1.1) perspective(1500px) rotateY(10deg);
 }
 
-.weather-gradient {
+.today-weather-gradient {
   width: 100%;
   height: 100%;
   background-image: var(--gradient);
@@ -131,17 +131,17 @@ body {
   opacity: 0.8;
 }
 
-.date-container {
+.today-date-container {
   position: absolute;
   top: 25px;
   left: 20px;
 }
-.date-container .date-dayname {
+.today-date-container .date-dayname {
   position: absolute;
   top: 75px;
   margin: 0;
 }
-.date-container .date-day {
+.today-date-container .date-day {
   position: absolute;
   top: 110px;
   display: block;
@@ -173,7 +173,7 @@ body {
   color: darkorange;
 }
 
-.location {
+.today-location {
   width: 270px;
   display: inline-block;
   word-wrap: break-word;
@@ -189,17 +189,17 @@ body {
   margin-right: 5px;
 }
 
-.weather-container {
+.today-weather-container {
   position: absolute;
   bottom: 25px;
   left: 20px;
 }
-.weather-container .weather-temp {
+.today-weather-container .weather-temp {
   margin: 0;
   font-weight: 700;
   font-size: 4em;
 }
-.weather-container .weather-desc {
+.today-weather-container .weather-desc {
   margin: 0;
 }
 
