@@ -157,8 +157,10 @@ $border-radius: 25px;
 .today-info-container {
   @extend %display-flex-center;
   flex-wrap: wrap;
-  width: 100%;
-  margin: 10px 0;
+  //width: 91.5%;
+  margin: 10px 35px;
+  background-color: #151A30;
+  border-radius: 10px;
 }
 
 .today-info {
@@ -195,6 +197,7 @@ $border-radius: 25px;
   -webkit-box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
   box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
   border-radius: 10px;
+  background-color: #151A30;
 }
 
 .week-list>li {

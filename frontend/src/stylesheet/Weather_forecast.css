@@ -206,8 +206,9 @@ body {
 
 .today-info-container {
   flex-wrap: wrap;
-  width: 100%;
-  margin: 10px 0;
+  margin: 10px 35px;
+  background-color: #151A30;
+  border-radius: 10px;
 }
 
 .today-info {
@@ -243,6 +244,7 @@ body {
   -webkit-box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
   box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
   border-radius: 10px;
+  background-color: #151A30;
 }
 
 .week-list > li {
