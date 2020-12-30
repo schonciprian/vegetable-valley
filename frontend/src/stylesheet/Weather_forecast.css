@@ -275,15 +275,10 @@ body {
   border-radius: 10px;
 }
 
-.week-list > li .day-name,
-.week-list > li .day-date {
+.week-list > li .day-name {
   display: block;
   margin: 10px 0;
   text-align: center;
-}
-
-.week-list > li .day-name {
-  color: darkorange;
 }
 
 .week-list > li .day-icon {
