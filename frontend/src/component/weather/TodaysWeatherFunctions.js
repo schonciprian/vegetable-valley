@@ -50,6 +50,10 @@ export function getFeatherName(weatherType) {
             return CloudSnow;
         case 'Clouds':
             return Cloud;
+        case 'Drizzle':
+            return CloudDrizzle;
+        case 'Mist':
+            return 'div';   // No mist feather-icon
         default:
             return Sun;
     }
