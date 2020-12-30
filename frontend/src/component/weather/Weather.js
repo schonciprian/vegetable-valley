@@ -12,6 +12,7 @@ import {getDayTemperatureDailyForecast,
 import {getMonth,
         calculateSunriseSunset,
         getFeatherName} from "./TodaysWeatherFunctions";
+import CitySwitcherComponent from "./CitySwitcherComponent";
 
 
 export default function Weather() {
@@ -96,16 +97,7 @@ export default function Weather() {
 
     return (
         <div>
-            <div className="weather-infos">
-                <div onClick={() => setCity("Budapest")}>Budapest</div>
-                <div onClick={() => setCity("Győr")}>Győr</div>
-                <div onClick={() => setCity("Pápa")}>Pápa</div>
-                <div onClick={() => setCity("Mosonmagyaróvár")}>Mosonmagyaróvár</div>
-                <div onClick={() => setCity("Budapest XVIII. kerület")}>XVIII kerület</div>
-                <div onClick={() => setCity("London")}>London</div>
-                <div onClick={() => setCity("Chicago")}>Chicago</div>
-                <div onClick={() => setCity("Moscow")}>Moscow</div>
-            </div>
+            <CitySwitcherComponent setCity={setCity}/>
 
             <div className="container">
                 <div className="weather-side">

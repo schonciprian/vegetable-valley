@@ -89,16 +89,3 @@ body {
     color: $text-color-yellow-hover;
   }
 }
-
-.weather-infos {
-  @extend %display-flex-center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  font-size: 30px;
-  color: #eeeeee;
-  padding: 20px;
-
-  div {
-    margin: 0 15px;
-  }
-}

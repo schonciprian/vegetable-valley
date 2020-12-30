@@ -1,7 +1,38 @@
 @import "App";
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
 
+//*****************//
+// ** Variables ** //
+//*****************//
+
 $border-radius: 25px;
+$color-whisper: #eeeeee;
+
+%display-flex-space-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+//********************//
+// ** City changer ** //
+//********************//
+
+.available-cities {
+  @extend %display-flex-space-around;
+  flex-wrap: wrap;
+
+  padding: 20px;
+
+  font: 30px "Montserrat", sans-serif;
+  color: $color-whisper;
+
+  .city-name {
+    margin: 15px;
+  }
+}
+
+
 
 .container {
   @extend %display-flex-center;
