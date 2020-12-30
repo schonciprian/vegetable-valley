@@ -1,4 +1,4 @@
-import {Cloud, CloudOff, CloudRain, CloudSnow, Sun} from "react-feather";
+import {Cloud, CloudDrizzle, CloudOff, CloudRain, CloudSnow, Sun} from "react-feather";
 
 export function getMonth(month) {
     switch(month) {
