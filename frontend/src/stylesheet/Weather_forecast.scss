@@ -167,7 +167,7 @@ $border-radius: 25px;
   height: auto;
   width: 250px;
   padding: 15px;
-  margin: 0 10px 0 10px;
+  margin: 0 40px;
   border-radius: 10px;
 }
 
@@ -228,10 +228,15 @@ $border-radius: 25px;
   border-radius: 10px;
 }
 
-.week-list>li .day-name {
+.week-list>li .day-name,
+.week-list>li .day-date {
   display: block;
   margin: 10px 0;
   text-align: center;
+}
+
+.week-list>li .day-name {
+  color: darkorange;
 }
 
 .week-list>li .day-icon {
