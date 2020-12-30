@@ -40,7 +40,7 @@ export function getHumidityDailyForecast(dailyForecast, indexOfDailyForecast) {
         "";
 }
 
-export function getDay(day) {
+export function getDayName(day) {
     switch(day) {
         case 0:
             return 'Sunday';

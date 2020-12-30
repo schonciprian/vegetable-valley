@@ -8,7 +8,7 @@ import {getDayTemperatureDailyForecast,
         getSnowDailyForecast,
         getWindDailyForecast,
         getHumidityDailyForecast,
-        getDay} from "./DailyForecastGetterFunctions";
+        getDayName} from "./DailyForecastGetterFunctions";
 import {getMonth,
         calculateSunriseSunset,
         getFeatherName} from "./TodaysWeatherFunctions";
@@ -110,7 +110,7 @@ export default function Weather() {
                             <span className="today-location">{cityName}, {country}</span>
                         </div>
 
-                        <h2 className="today-day-name">{getDay(today.getDay())}</h2>
+                        <h2 className="today-day-name">{getDayName(today.getDay())}</h2>
 
                         <span className="today-date">{date}</span>
                     </div>
@@ -199,7 +199,7 @@ export default function Weather() {
                                     className={(index === indexOfDailyForecast) ? "daily-weather-forecast active" : "daily-weather-forecast"}
                                     onClick={() => changeIndexOfDailyForecast(index)}>
                                     <span className="day-name">{oneDayForecast.month}. {oneDayForecast.date}.</span>
-                                    <span className="day-name">{getDay(oneDayForecast.day)}</span>
+                                    <span className="day-name">{getDayName(oneDayForecast.day)}</span>
                                     <div className="sunrise-container">
                                         <Sunrise className="sunrise-icon"/>
                                         <span className="day-name">{oneDayForecast.sunrise}</span>
