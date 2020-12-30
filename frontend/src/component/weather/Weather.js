@@ -41,18 +41,22 @@ export default function Weather() {
 
     if (weather.length === 0) {
         return <div>Loading...</div>;
-    }
+    };
 
-    let {temp, humidity} = weather.main;
-    temp = (temp-273.15).toFixed(1);
-    const todayWindSpeed = ((weather.wind.speed)*3.6).toFixed(0);
-    const rain = (weather.rain !== undefined ? weather.rain : {"1h":0, "3h":0});
-    const weatherType = weather.weather[0].main;
-    const cityName = weather.name;
-    const country = weather.sys.country;
+
+    // Creating a new object from weather API response with necessary information about the weather
     const today = new Date((weather.dt + weather.timezone - 3600) * 1000)
-    const date = today.getDate() + ' ' + getMonth(today.getMonth()) + ' ' + today.getFullYear();
-
+    const todayWeather = {
+        city: weather.name,
+        country: weather.sys.country,
+        dayName: getDayName(today.getDay()),
+        date: today.getDate() + ' ' + getMonth(today.getMonth()) + ' ' + today.getFullYear(),
+        rain: (weather.rain !== undefined ? weather.rain['1h'].toFixed(1) : 0),
+        humidity: weather.main.humidity,
+        windSpeed: ((weather.wind.speed)*3.6).toFixed(0),
+        temp: (weather.main.temp-273.15).toFixed(1),
+        weatherType: weather.weather[0].main,
+    };
 
 
     // Creating a new object from weatherForecast API response with necessary information about the weather
@@ -89,7 +93,7 @@ export default function Weather() {
         setIndexOfDailyForecast(index);
     }
 
-    const TodayFeatherTag = getFeatherName(weatherType);
+    const TodayFeatherTag = getFeatherName(todayWeather.weatherType);
     const ForecastFeatherTag = (dailyForecast.length !== 0) ?
         getFeatherName(dailyForecast[indexOfDailyForecast].weather) :
         "div";
@@ -107,35 +111,35 @@ export default function Weather() {
                     <div className="today-location-and-date-container">
                         <div className="today-location-container">
                             <MapPin/>
-                            <span className="today-location">{cityName}, {country}</span>
+                            <span className="today-location">{todayWeather.city}, {todayWeather.country}</span>
                         </div>
 
-                        <h2 className="today-day-name">{getDayName(today.getDay())}</h2>
+                        <h2 className="today-day-name">{todayWeather.dayName}</h2>
 
-                        <span className="today-date">{date}</span>
+                        <span className="today-date">{todayWeather.date}</span>
                     </div>
 
                     <div className="today-weather-extras-container">
                         <div className="today-extras">
                             <span>PRECIPITATION</span>
-                            <span>{rain["1h"].toFixed(1)} mm</span>
+                            <span>{todayWeather.rain} mm</span>
                         </div>
 
                         <div className="today-extras">
                             <span>HUMIDITY</span>
-                            <span>{humidity} %</span>
+                            <span>{todayWeather.humidity} %</span>
                         </div>
 
                         <div className="today-extras">
                             <span>WIND</span>
-                            <span>{todayWindSpeed} km/h</span>
+                            <span>{todayWeather.windSpeed} km/h</span>
                         </div>
                     </div>
 
                     <div className="today-weather-container">
                         <TodayFeatherTag />
-                        <h1 className="weather-temp">{temp}</h1>
-                        <h3 className="weather-desc">{weatherType}</h3>
+                        <h1 className="weather-temp">{todayWeather.temp}</h1>
+                        <h3 className="weather-desc">{todayWeather.weatherType}</h3>
                     </div>
                 </div>
 
