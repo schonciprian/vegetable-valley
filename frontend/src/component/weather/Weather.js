@@ -104,18 +104,18 @@ export default function Weather() {
                 <div className="today-weather-side">
                     <div className="today-weather-gradient"/>
 
-                    <div className="today-date-container">
+                    <div className="today-location-and-date-container">
                         <div className="today-location-container">
                             <MapPin/>
                             <span className="today-location">{cityName}, {country}</span>
                         </div>
 
-                        <h2 className="date-dayname">{getDay(today.getDay())}</h2>
+                        <h2 className="today-day-name">{getDay(today.getDay())}</h2>
 
-                        <span className="date-day">{date}</span>
+                        <span className="today-date">{date}</span>
                     </div>
 
-                    <div className="weather-extras-container">
+                    <div className="today-weather-extras-container">
                         <div className="today-extras">
                             <span>PRECIPITATION</span>
                             <span>{rain["1h"].toFixed(1)} mm</span>
@@ -133,7 +133,7 @@ export default function Weather() {
                     </div>
 
                     <div className="today-weather-container">
-                        <TodayFeatherTag className="weather-icon"/>
+                        <TodayFeatherTag />
                         <h1 className="weather-temp">{temp}</h1>
                         <h3 className="weather-desc">{weatherType}</h3>
                     </div>
