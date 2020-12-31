@@ -19,7 +19,7 @@ export default function WeatherForecastComponent(props) {
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${props.coordinate.lat}&lon=${props.coordinate.lon}&units=metric&exclude=minutely,hourly&appid=f6c317d5027246f70ca2f9fcbc4ea46c`)
                 .then(result => setWeatherForecast(result.data));
-    }, [props.coordinate])
+    }, [props.coordinate.lat, props.coordinate.lon])
 
     const {timezone_offset, daily} = weatherForecast;
     let dailyForecast = [];
