@@ -11,7 +11,7 @@ export default function Weather() {
     const [coordinate, setCoordinate] = useState({});
 
     useEffect(() => {
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f6c317d5027246f70ca2f9fcbc4ea46c`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f913779188ecd17807fa0473780a29fb`)
                 .then(response => {
                     setCoordinate(response.data.coord)
                     setWeather(response.data);
