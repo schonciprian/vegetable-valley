@@ -74,6 +74,10 @@ body {
   align-items: center;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .available-cities {
   flex-wrap: wrap;
   padding: 20px;
@@ -254,20 +258,32 @@ body {
   -o-transition: 200ms ease;
   transition: 200ms ease;
   border-radius: 10px;
+  -webkit-box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
+  box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
+}
+@media (max-width: 1002px) {
+  .week-list > li {
+    margin: 10px 50px;
+  }
+}
+@media (max-width: 778px) {
+  .week-list > li {
+    margin: 10px 10px;
+  }
 }
 
 .week-list > li:hover {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
-  background: #fff;
+  background: #eeeeee;
   color: #222831;
   -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
 }
 
 .week-list > li.active {
-  background: #fff;
+  background: #eeeeee;
   color: #222831;
   border-radius: 10px;
 }
