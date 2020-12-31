@@ -64,7 +64,6 @@ export default function WeatherForecastComponent(props) {
                 <ul className="week-list">
                     {dailyForecast.map((oneDayForecast, index) => (
                         <li key={index}
-                            data-index={index}
                             className={(index === indexOfDailyForecast) ? "daily-weather-forecast active" : "daily-weather-forecast"}
                             onClick={() => changeIndexOfDailyForecast(index)}>
                             <span className="day-name">{oneDayForecast.month}. {oneDayForecast.date}.</span>
