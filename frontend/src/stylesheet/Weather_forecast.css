@@ -68,7 +68,7 @@ body {
   align-items: center;
 }
 
-.today-weather-side .today-weather-extras-container .today-extras {
+.forecast-weather-side .active-day-info-container .active-day-info .forecast-data, .today-weather-side .today-weather-extras-container .today-extras {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -280,8 +280,8 @@ body {
   padding: 15px;
   margin: 0 10px;
 }
-.forecast-weather-side .active-day-info-container .active-day-info .forecast-icon {
-  text-align: center;
+.forecast-weather-side .active-day-info-container .active-day-info .forecast-data {
+  margin-bottom: 10px;
   color: darkorange;
 }
 .forecast-weather-side .active-day-info-container .active-day-info .forecast-property-container:not(:last-child) {

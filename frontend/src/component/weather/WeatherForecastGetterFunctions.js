@@ -40,6 +40,18 @@ export function getHumidityDailyForecast(dailyForecast, indexOfDailyForecast) {
         "";
 }
 
+export function getDateOfDailyForecast(dailyForecast, indexOfDailyForecast) {
+    return (dailyForecast.length !== 0) ?
+        dailyForecast[indexOfDailyForecast].month + ". " + dailyForecast[indexOfDailyForecast].date + ". ":
+        "";
+}
+
+export function getDayNameOfDailyForecast(dailyForecast, indexOfDailyForecast) {
+    return (dailyForecast.length !== 0) ?
+        getDayName(dailyForecast[indexOfDailyForecast].day):
+        "";
+}
+
 export function getDayName(day) {
     switch(day) {
         case 0:

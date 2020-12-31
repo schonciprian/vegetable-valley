@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {getDayName,
-        getDayTemperatureDailyForecast,
-        getHumidityDailyForecast,
-        getNightTemperatureDailyForecast,
-        getPrecipitationDailyForecast,
-        getRainDailyForecast,
-        getSnowDailyForecast,
-        getWindDailyForecast} from "./WeatherForecastGetterFunctions";
+import {
+    getDateOfDailyForecast, getDayName, getDayNameOfDailyForecast,
+    getDayTemperatureDailyForecast,
+    getHumidityDailyForecast,
+    getNightTemperatureDailyForecast,
+    getPrecipitationDailyForecast,
+    getRainDailyForecast,
+    getSnowDailyForecast,
+    getWindDailyForecast
+} from "./WeatherForecastGetterFunctions";
 import {calculateSunriseSunset, getFeatherName} from "./TodayWeatherFunctions";
 import {MapPin, Sunrise, Sunset} from "react-feather";
 import axios from "axios";
@@ -84,8 +86,10 @@ export default function WeatherForecastComponent(props) {
 
             <div className="active-day-info-container">
                 <div className="active-day-info">
-                    <div className="forecast-icon">
+                    <div className="forecast-data">
+                        <div>{getDateOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
                         <ForecastFeatherTag />
+                        <div>{getDayNameOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
                     </div>
                     <div className="forecast-property-container">
                         <span className="forecast-title">DAY</span>
