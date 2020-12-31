@@ -56,6 +56,29 @@ export default function WeatherForecastComponent(props) {
 
     return (
         <div className="info-side">
+            <div className="week-container">
+                <ul className="week-list">
+                    {dailyForecast.map((oneDayForecast, index) => (
+                        <li key={index}
+                            data-index={index}
+                            className={(index === indexOfDailyForecast) ? "daily-weather-forecast active" : "daily-weather-forecast"}
+                            onClick={() => changeIndexOfDailyForecast(index)}>
+                            <span className="day-name">{oneDayForecast.month}. {oneDayForecast.date}.</span>
+                            <span className="day-name">{getDayName(oneDayForecast.day)}</span>
+                            <div className="sunrise-container">
+                                <Sunrise className="sunrise-icon"/>
+                                <span className="day-name">{oneDayForecast.sunrise}</span>
+                            </div>
+                            <div className="sunset-container">
+                                <Sunset className="sunset-icon"/>
+                                <span className="day-name">{oneDayForecast.sunset}</span>
+                            </div>
+                            <span className="day-temp">{oneDayForecast.dailyTemp}°C</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
             <div className="today-info-container">
                 <div className="today-info">
                     <div className="forecast-icon">
@@ -94,28 +117,7 @@ export default function WeatherForecastComponent(props) {
                 </div>
             </div>
 
-            <div className="week-container">
-                <ul className="week-list">
-                    {dailyForecast.map((oneDayForecast, index) => (
-                        <li key={index}
-                            data-index={index}
-                            className={(index === indexOfDailyForecast) ? "daily-weather-forecast active" : "daily-weather-forecast"}
-                            onClick={() => changeIndexOfDailyForecast(index)}>
-                            <span className="day-name">{oneDayForecast.month}. {oneDayForecast.date}.</span>
-                            <span className="day-name">{getDayName(oneDayForecast.day)}</span>
-                            <div className="sunrise-container">
-                                <Sunrise className="sunrise-icon"/>
-                                <span className="day-name">{oneDayForecast.sunrise}</span>
-                            </div>
-                            <div className="sunset-container">
-                                <Sunset className="sunset-icon"/>
-                                <span className="day-name">{oneDayForecast.sunset}</span>
-                            </div>
-                            <span className="day-temp">{oneDayForecast.dailyTemp}°C</span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+
 
             <div className="location-container">
                 <button className="location-button">
