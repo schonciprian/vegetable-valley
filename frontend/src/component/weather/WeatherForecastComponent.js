@@ -59,68 +59,66 @@ export default function WeatherForecastComponent(props) {
         "div";
 
     return (
-        <div className="info-side">
-            <div className="week-container">
+        <div className="forecast-weather-side">
+            <div>
                 <ul className="week-list">
                     {dailyForecast.map((oneDayForecast, index) => (
                         <li key={index}
                             className={(index === indexOfDailyForecast) ? "daily-weather-forecast active" : "daily-weather-forecast"}
                             onClick={() => changeIndexOfDailyForecast(index)}>
-                            <span className="day-name">{oneDayForecast.month}. {oneDayForecast.date}.</span>
-                            <span className="day-name">{getDayName(oneDayForecast.day)}</span>
+                            <span className="forecast-date">{oneDayForecast.month}. {oneDayForecast.date}.</span>
+                            <span className="forecast-day">{getDayName(oneDayForecast.day)}</span>
                             <div className="sunrise-container">
                                 <Sunrise className="sunrise-icon"/>
-                                <span className="day-name">{oneDayForecast.sunrise}</span>
+                                <span>{oneDayForecast.sunrise}</span>
                             </div>
                             <div className="sunset-container">
                                 <Sunset className="sunset-icon"/>
-                                <span className="day-name">{oneDayForecast.sunset}</span>
+                                <span>{oneDayForecast.sunset}</span>
                             </div>
-                            <span className="day-temp">{oneDayForecast.dailyTemp}°C</span>
+                            <span className="forecast-day-temp">{oneDayForecast.dailyTemp}°C</span>
                         </li>
                     ))}
                 </ul>
             </div>
 
-            <div className="today-info-container">
-                <div className="today-info">
+            <div className="active-day-info-container">
+                <div className="active-day-info">
                     <div className="forecast-icon">
                         <ForecastFeatherTag />
                     </div>
-                    <div>
-                        <span className="title">DAY</span>
-                        <span className="value">{getDayTemperatureDailyForecast(dailyForecast, indexOfDailyForecast)} °C</span>
+                    <div className="forecast-property-container">
+                        <span className="forecast-title">DAY</span>
+                        <span className="forecast-value">{getDayTemperatureDailyForecast(dailyForecast, indexOfDailyForecast)} °C</span>
                     </div>
-                    <div>
-                        <span className="title">NIGHT</span>
-                        <span className="value">{getNightTemperatureDailyForecast(dailyForecast, indexOfDailyForecast)} °C</span>
+                    <div className="forecast-property-container">
+                        <span className="forecast-title">NIGHT</span>
+                        <span className="forecast-value">{getNightTemperatureDailyForecast(dailyForecast, indexOfDailyForecast)} °C</span>
                     </div>
-                    <div>
-                        <span className="title">WIND</span>
-                        <span className="value">{getWindDailyForecast(dailyForecast, indexOfDailyForecast)} km/h</span>
+                    <div className="forecast-property-container">
+                        <span className="forecast-title">WIND</span>
+                        <span className="forecast-value">{getWindDailyForecast(dailyForecast, indexOfDailyForecast)} km/h</span>
                     </div>
                 </div>
-                <div className="today-info">
-                    <div>
-                        <span className="title">PRECIPITATION</span>
-                        <span className="value">{getPrecipitationDailyForecast(dailyForecast, indexOfDailyForecast)} %</span>
+                <div className="active-day-info">
+                    <div className="forecast-property-container">
+                        <span className="forecast-title">PRECIPITATION</span>
+                        <span className="forecast-value">{getPrecipitationDailyForecast(dailyForecast, indexOfDailyForecast)} %</span>
                     </div>
-                    <div>
-                        <span className="title">RAIN</span>
-                        <span className="value">{getRainDailyForecast(dailyForecast, indexOfDailyForecast)} mm</span>
+                    <div className="forecast-property-container">
+                        <span className="forecast-title">RAIN</span>
+                        <span className="forecast-value">{getRainDailyForecast(dailyForecast, indexOfDailyForecast)} mm</span>
                     </div>
-                    <div>
-                        <span className="title">SNOW</span>
-                        <span className="value">{getSnowDailyForecast(dailyForecast, indexOfDailyForecast)} mm</span>
+                    <div className="forecast-property-container">
+                        <span className="forecast-title">SNOW</span>
+                        <span className="forecast-value">{getSnowDailyForecast(dailyForecast, indexOfDailyForecast)} mm</span>
                     </div>
-                    <div>
-                        <span className="title">HUMIDITY</span>
-                        <span className="value">{getHumidityDailyForecast(dailyForecast, indexOfDailyForecast)} %</span>
+                    <div className="forecast-property-container">
+                        <span className="forecast-title">HUMIDITY</span>
+                        <span className="forecast-value">{getHumidityDailyForecast(dailyForecast, indexOfDailyForecast)} %</span>
                     </div>
                 </div>
             </div>
-
-
 
             <div className="location-container">
                 <button className="location-button">

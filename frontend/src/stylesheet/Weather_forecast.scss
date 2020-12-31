@@ -24,6 +24,12 @@ $font-size-smaller: 20px;
   align-items: center;
 }
 
+%weekList-row-display {
+  display: block;
+  margin: 10px 0;
+  text-align: center;
+}
+
 
 ::-webkit-scrollbar {
   display: none;
@@ -77,7 +83,7 @@ $font-size-smaller: 20px;
 
   ///////////////////////////////////////////
   // Fix today's weather card to stay      //
-  // in the weather-container below 1352px. //
+  // in the weather-container below 1352px.//
   @media (max-width: 1352px) {
     padding-top: 40px;
   }
@@ -194,195 +200,166 @@ $font-size-smaller: 20px;
       margin: 0;
     }
   }
-
 }
 
-
-
-
-
-
-
-
-.location-icon {
-  display: inline-block;
-  height: 1em;
-  width: auto;
-  margin-right: 5px;
-}
-
-
-
-
-
-.info-side {
-  @extend %display-flex-center;
+.forecast-weather-side {
+  @extend %display-flex-space-around;
   flex-direction: column;
-  justify-content: space-around;
   padding-top: 25px;
-}
 
-.today-info-container {
-  @extend %display-flex-center;
-  flex-wrap: wrap;
-  //width: 91.5%;
-  margin: 10px 35px;
-  background-color: #151A30;
-  border-radius: 10px;
-}
+  .week-list {
+    @extend %display-flex-center;
+    flex-wrap: wrap;
 
-.today-info {
-  height: auto;
-  width: 250px;
-  padding: 15px;
-  margin: 0 10px;
-  border-radius: 10px;
-}
+    padding: 20px;
+    margin: 10px 35px;
 
-.forecast-icon {
-  text-align: center;
-  color: darkorange;
-}
+    border-radius: 10px;
+    background-color: #151A30;
 
-.today-info>div:not(:last-child) {
-  margin: 0 0 10px 0;
-}
+    -webkit-box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
+    box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
+    list-style-type: none;
 
-.today-info>div .title {
-  font-weight: 700;
-}
+    li {
+      width: 120px;
+      padding: 15px;
+      margin: 10px;
 
-.today-info>div .value {
-  float: right;
-}
+      border-radius: 10px;
 
-.week-list {
-  @extend %display-flex-center;
-  flex-wrap: wrap;
-  list-style-type: none;
-  padding: 20px;
-  margin: 10px 35px;
-  -webkit-box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
-  box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
-  border-radius: 10px;
-  background-color: #151A30;
-}
+      cursor: pointer;
 
-.week-list>li {
-  width: 120px;
-  float: left;
-  padding: 15px;
-  margin: 10px;
-  cursor: pointer;
-  -webkit-transition: 200ms ease;
-  -o-transition: 200ms ease;
-  transition: 200ms ease;
-  border-radius: 10px;
-  -webkit-box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
-  box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
+      -webkit-transition: 200ms ease;
+      -o-transition: 200ms ease;
+      transition: 200ms ease;
 
-  @media (max-width: 1002px) {
-    margin: 10px 50px;
+      -webkit-box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
+      box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
+
+      ////////////////////////////////////////
+      // Fix to keep cards evenly in a row. //
+      @media (max-width: 1002px) {
+        margin: 10px 50px;
+      }
+
+      @media (max-width: 778px) {
+        margin: 10px 10px;
+      }
+
+      &:hover {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+        background: #eeeeee;
+        color: #222831;
+        -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2)
+      }
+
+      &.active {
+        background: #eeeeee;
+        color: #222831;
+        border-radius: 10px;
+      }
+
+      .forecast-date, .forecast-day {
+        @extend %weekList-row-display;
+      }
+
+      .sunrise-container, .sunset-container {
+        margin: 0;
+        @extend %display-flex-space-around;
+
+        svg {
+            margin: 10px 0;
+            color: darkorange;
+        }
+      }
+
+      .forecast-day-temp {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+        font-weight: 700;
+        font-size: 20px;
+      }
+    }
   }
 
-  @media (max-width: 778px) {
-    margin: 10px 10px;
+  .active-day-info-container {
+    @extend %display-flex-center;
+    flex-wrap: wrap;
+    margin: 10px 35px;
+
+    background-color: #151A30;
+    border-radius: 10px;
+
+    .active-day-info {
+      height: auto;
+      width: 250px;
+      padding: 15px;
+      margin: 0 10px;
+
+      .forecast-icon {
+        text-align: center;
+        color: darkorange;
+      }
+
+      .forecast-property-container {
+        &:not(:last-child) {
+          margin: 0 0 10px 0;
+        }
+
+        .forecast-title {
+          font-weight: 700;
+        }
+
+        .forecast-value {
+          float: right;
+          color: darkorange;
+        }
+      }
+    }
+  }
+
+  .location-container {
+    width: 70%;
+    padding: 15px 35px;
+
+    .location-button {
+      outline: none;
+      width: 100%;
+
+      padding: 10px;
+
+      border: none;
+      border-radius: 25px;
+
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+
+      background-image: var(--gradient);
+      color: #ffffff;
+
+      -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+      transition: transform 200ms ease;
+
+      cursor: pointer;
+
+      &:hover {
+        -webkit-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+        transform: scale(0.95);
+      }
+
+      .location-icon {
+        display: inline-block;
+        height: 1em;
+        width: auto;
+        margin-right: 5px;
+      }
+    }
   }
 }
-
-.week-list>li:hover {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
-  background: #eeeeee;
-  color: #222831;
-  -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2)
-}
-
-.week-list>li.active {
-  background: #eeeeee;
-  color: #222831;
-  border-radius: 10px;
-}
-
-.week-list>li .day-name {
-  display: block;
-  margin: 10px 0;
-  text-align: center;
-}
-
-.week-list>li .day-icon {
-  display: block;
-  height: 30px;
-  width: auto;
-  margin: 0 auto;
-  color: darkorange;
-}
-
-.week-list>li .sunrise-container,
-.week-list>li .sunset-container {
-  //width: 100px;
-  margin: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  svg {
-    margin: 0;
-  }
-}
-
-.sunrise-icon,
-.sunset-icon {
-  margin: 10px 0;
-  color: darkorange;
-}
-
-.week-list>li .day-temp {
-  display: block;
-  text-align: center;
-  margin: 10px 0 0 0;
-  font-weight: 700;
-  font-size: 20px;
-}
-
-.location-container {
-  width: 70%;
-  padding: 15px 35px;
-}
-
-.location-button {
-  outline: none;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 25px;
-  padding: 10px;
-  font-family: 'Montserrat', sans-serif;
-  background-image: var(--gradient);
-  color: #ffffff;
-  font-weight: 700;
-  -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-  -webkit-transition: -webkit-transform 200ms ease;
-  transition: -webkit-transform 200ms ease;
-  -o-transition: transform 200ms ease;
-  transition: transform 200ms ease;
-  transition: transform 200ms ease, -webkit-transform 200ms ease;
-}
-
-.location-button:hover {
-  -webkit-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  transform: scale(0.95);
-}
-
-.location-button .feather {
-  height: 1em;
-  width: auto;
-  margin-right: 5px;
-}
-

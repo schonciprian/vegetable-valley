@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
-.today-info-container, .forecast-weather-side .week-list, .weather-container, .loading, .navbar, .header {
+.forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list, .weather-container, .loading, .navbar, .header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,7 +62,7 @@ body {
   color: #7F8EC0;
 }
 
-.available-cities {
+.forecast-weather-side .week-list li .sunrise-container, .forecast-weather-side .week-list li .sunset-container, .forecast-weather-side, .available-cities {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -72,6 +72,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.forecast-weather-side .week-list li .forecast-date, .forecast-weather-side .week-list li .forecast-day {
+  display: block;
+  margin: 10px 0;
+  text-align: center;
 }
 
 ::-webkit-scrollbar {
@@ -198,87 +204,43 @@ body {
   margin: 0;
 }
 
-.location-icon {
-  display: inline-block;
-  height: 1em;
-  width: auto;
-  margin-right: 5px;
-}
-
-.info-side {
+.forecast-weather-side {
   flex-direction: column;
-  justify-content: space-around;
   padding-top: 25px;
 }
-
-.today-info-container {
+.forecast-weather-side .week-list {
   flex-wrap: wrap;
-  margin: 10px 35px;
-  background-color: #151A30;
-  border-radius: 10px;
-}
-
-.today-info {
-  height: auto;
-  width: 250px;
-  padding: 15px;
-  margin: 0 10px;
-  border-radius: 10px;
-}
-
-.forecast-icon {
-  text-align: center;
-  color: darkorange;
-}
-
-.today-info > div:not(:last-child) {
-  margin: 0 0 10px 0;
-}
-
-.today-info > div .title {
-  font-weight: 700;
-}
-
-.today-info > div .value {
-  float: right;
-}
-
-.week-list {
-  flex-wrap: wrap;
-  list-style-type: none;
   padding: 20px;
   margin: 10px 35px;
-  -webkit-box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
-  box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
   border-radius: 10px;
   background-color: #151A30;
+  -webkit-box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
+  box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
+  list-style-type: none;
 }
-
-.week-list > li {
+.forecast-weather-side .week-list li {
   width: 120px;
-  float: left;
   padding: 15px;
   margin: 10px;
+  border-radius: 10px;
   cursor: pointer;
   -webkit-transition: 200ms ease;
   -o-transition: 200ms ease;
   transition: 200ms ease;
-  border-radius: 10px;
   -webkit-box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
   box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
 }
 @media (max-width: 1002px) {
-  .week-list > li {
+  .forecast-weather-side .week-list li {
     margin: 10px 50px;
   }
 }
 @media (max-width: 778px) {
-  .week-list > li {
+  .forecast-weather-side .week-list li {
     margin: 10px 10px;
   }
 }
-
-.week-list > li:hover {
+.forecast-weather-side .week-list li:hover {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
@@ -287,87 +249,77 @@ body {
   -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
 }
-
-.week-list > li.active {
+.forecast-weather-side .week-list li.active {
   background: #eeeeee;
   color: #222831;
   border-radius: 10px;
 }
-
-.week-list > li .day-name {
-  display: block;
-  margin: 10px 0;
-  text-align: center;
-}
-
-.week-list > li .day-icon {
-  display: block;
-  height: 30px;
-  width: auto;
-  margin: 0 auto;
-  color: darkorange;
-}
-
-.week-list > li .sunrise-container,
-.week-list > li .sunset-container {
-  margin: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.week-list > li .sunrise-container svg,
-.week-list > li .sunset-container svg {
+.forecast-weather-side .week-list li .sunrise-container, .forecast-weather-side .week-list li .sunset-container {
   margin: 0;
 }
-
-.sunrise-icon,
-.sunset-icon {
+.forecast-weather-side .week-list li .sunrise-container svg, .forecast-weather-side .week-list li .sunset-container svg {
   margin: 10px 0;
   color: darkorange;
 }
-
-.week-list > li .day-temp {
+.forecast-weather-side .week-list li .forecast-day-temp {
   display: block;
   text-align: center;
-  margin: 10px 0 0 0;
+  margin: 10px 0;
   font-weight: 700;
   font-size: 20px;
 }
-
-.location-container {
+.forecast-weather-side .active-day-info-container {
+  flex-wrap: wrap;
+  margin: 10px 35px;
+  background-color: #151A30;
+  border-radius: 10px;
+}
+.forecast-weather-side .active-day-info-container .active-day-info {
+  height: auto;
+  width: 250px;
+  padding: 15px;
+  margin: 0 10px;
+}
+.forecast-weather-side .active-day-info-container .active-day-info .forecast-icon {
+  text-align: center;
+  color: darkorange;
+}
+.forecast-weather-side .active-day-info-container .active-day-info .forecast-property-container:not(:last-child) {
+  margin: 0 0 10px 0;
+}
+.forecast-weather-side .active-day-info-container .active-day-info .forecast-property-container .forecast-title {
+  font-weight: 700;
+}
+.forecast-weather-side .active-day-info-container .active-day-info .forecast-property-container .forecast-value {
+  float: right;
+  color: darkorange;
+}
+.forecast-weather-side .location-container {
   width: 70%;
   padding: 15px 35px;
 }
-
-.location-button {
+.forecast-weather-side .location-container .location-button {
   outline: none;
   width: 100%;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  padding: 10px;
   border: none;
   border-radius: 25px;
-  padding: 10px;
   font-family: "Montserrat", sans-serif;
+  font-weight: 700;
   background-image: var(--gradient);
   color: #ffffff;
-  font-weight: 700;
   -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-  -webkit-transition: -webkit-transform 200ms ease;
-  transition: -webkit-transform 200ms ease;
-  -o-transition: transform 200ms ease;
   transition: transform 200ms ease;
-  transition: transform 200ms ease, -webkit-transform 200ms ease;
+  cursor: pointer;
 }
-
-.location-button:hover {
+.forecast-weather-side .location-container .location-button:hover {
   -webkit-transform: scale(0.95);
   -ms-transform: scale(0.95);
   transform: scale(0.95);
 }
-
-.location-button .feather {
+.forecast-weather-side .location-container .location-button .location-icon {
+  display: inline-block;
   height: 1em;
   width: auto;
   margin-right: 5px;
