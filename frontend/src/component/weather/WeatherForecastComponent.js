@@ -1,21 +1,25 @@
-import React from 'react';
-import {
-    getDayName,
-    getDayTemperatureDailyForecast,
-    getHumidityDailyForecast,
-    getNightTemperatureDailyForecast,
-    getPrecipitationDailyForecast,
-    getRainDailyForecast,
-    getSnowDailyForecast,
-    getWindDailyForecast
-} from "./WeatherForecastGetterFunctions";
+import React, {useEffect, useState} from 'react';
+import {getDayName,
+        getDayTemperatureDailyForecast,
+        getHumidityDailyForecast,
+        getNightTemperatureDailyForecast,
+        getPrecipitationDailyForecast,
+        getRainDailyForecast,
+        getSnowDailyForecast,
+        getWindDailyForecast} from "./WeatherForecastGetterFunctions";
 import {calculateSunriseSunset, getFeatherName} from "./TodayWeatherFunctions";
 import {MapPin, Sunrise, Sunset} from "react-feather";
+import axios from "axios";
 
 export default function WeatherForecastComponent(props) {
 
-    const weatherForecast = props.weatherForecast;
-    const indexOfDailyForecast = props.indexOfDailyForecast;
+    const [weatherForecast, setWeatherForecast] = useState([]);
+    const [indexOfDailyForecast, setIndexOfDailyForecast] = useState(0);
+
+    useEffect(() => {
+        axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${props.coordinate.lat}&lon=${props.coordinate.lon}&units=metric&exclude=minutely,hourly&appid=f6c317d5027246f70ca2f9fcbc4ea46c`)
+                .then(result => setWeatherForecast(result.data));
+    }, [props.coordinate])
 
     const {timezone_offset, daily} = weatherForecast;
     let dailyForecast = [];
@@ -47,7 +51,7 @@ export default function WeatherForecastComponent(props) {
     })}
 
     const changeIndexOfDailyForecast = (index) => {
-        props.setIndexOfDailyForecast(index);
+        setIndexOfDailyForecast(index);
     }
 
     const ForecastFeatherTag = (dailyForecast.length !== 0) ?
