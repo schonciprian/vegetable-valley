@@ -8,11 +8,11 @@ import {
     getRainDailyForecast,
     getSnowDailyForecast,
     getWindDailyForecast
-} from "./ForecastWeatherGetterFunctions";
+} from "./WeatherForecastGetterFunctions";
 import {calculateSunriseSunset, getFeatherName} from "./TodayWeatherFunctions";
 import {MapPin, Sunrise, Sunset} from "react-feather";
 
-export default function ForecastWeatherComponent(props) {
+export default function WeatherForecastComponent(props) {
 
     const weatherForecast = props.weatherForecast;
     const indexOfDailyForecast = props.indexOfDailyForecast;

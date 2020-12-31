@@ -3,7 +3,7 @@ import axios from "axios";
 import {MapPin} from 'react-feather';
 import CitySwitcherComponent from "./CitySwitcherComponent";
 import TodayWeatherComponent from "./TodayWeatherComponent";
-import ForecastWeatherComponent from "./ForecastWeatherComponent";
+import WeatherForecastComponent from "./WeatherForecastComponent";
 
 
 export default function Weather() {
@@ -41,7 +41,7 @@ export default function Weather() {
             <div className="weather-container">
                 <TodayWeatherComponent weather={weather}/>
 
-                <ForecastWeatherComponent weatherForecast={weatherForecast}
+                <WeatherForecastComponent weatherForecast={weatherForecast}
                                           indexOfDailyForecast={indexOfDailyForecast}
                                           setIndexOfDailyForecast={setIndexOfDailyForecast}/>
             </div>

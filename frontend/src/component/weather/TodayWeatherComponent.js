@@ -1,7 +1,7 @@
 import React from 'react';
 import {MapPin} from "react-feather";
 import {getFeatherName, getMonth} from "./TodayWeatherFunctions";
-import {getDayName} from "./ForecastWeatherGetterFunctions";
+import {getDayName} from "./WeatherForecastGetterFunctions";
 
 export default function TodayWeatherComponent(props) {
     const weather = props.weather;
