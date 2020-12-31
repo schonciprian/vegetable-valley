@@ -51,6 +51,14 @@ $font-size-smaller: 20px;
 // ** Weather container ** //
 //*************************//
 
+.loading {
+  @extend %display-flex-center;
+  height: 250px;
+
+  font: $font-size-larger "Montserrat", sans-serif;
+  color: $color-whisper;
+}
+
 .weather-container {
   @extend %display-flex-center;
   flex-wrap: wrap;

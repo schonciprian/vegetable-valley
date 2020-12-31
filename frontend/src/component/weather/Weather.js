@@ -19,7 +19,7 @@ export default function Weather() {
         }, [city]);
 
     if (weather.length === 0) {
-        return <div>Loading...</div>;
+        return <div className="loading">Loading data from server...</div>;
     } else {
         return (
             <div>

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
-.week-list, .today-info-container, .info-side, .weather-container, .navbar, .header {
+.today-info-container, .forecast-weather-side .week-list, .weather-container, .loading, .navbar, .header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,6 +86,12 @@ body {
 }
 .available-cities .city-name {
   margin: 15px;
+}
+
+.loading {
+  height: 250px;
+  font: 30px "Montserrat", sans-serif;
+  color: #eeeeee;
 }
 
 .weather-container {
