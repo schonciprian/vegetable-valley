@@ -244,15 +244,19 @@ body {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
-  background: #eeeeee;
-  color: #222831;
+  background-image: var(--gradient);
+  color: #eeeeee;
   -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
 }
 .forecast-weather-side .week-list li.active {
-  background: #eeeeee;
-  color: #222831;
+  background-image: var(--gradient);
+  color: #eeeeee;
   border-radius: 10px;
+}
+.forecast-weather-side .week-list li .forecast-date {
+  font-weight: 700;
+  color: darkorange;
 }
 .forecast-weather-side .week-list li .sunrise-container, .forecast-weather-side .week-list li .sunset-container {
   margin: 0;
@@ -282,7 +286,14 @@ body {
 }
 .forecast-weather-side .active-day-info-container .active-day-info .forecast-data {
   margin-bottom: 10px;
+  font-weight: 700;
   color: darkorange;
+}
+.forecast-weather-side .active-day-info-container .active-day-info .forecast-data .active-day-date {
+  width: 75px;
+}
+.forecast-weather-side .active-day-info-container .active-day-info .forecast-data .active-day-day {
+  width: 100px;
 }
 .forecast-weather-side .active-day-info-container .active-day-info .forecast-property-container:not(:last-child) {
   margin: 0 0 10px 0;
@@ -292,7 +303,6 @@ body {
 }
 .forecast-weather-side .active-day-info-container .active-day-info .forecast-property-container .forecast-value {
   float: right;
-  color: darkorange;
 }
 .forecast-weather-side .location-container {
   width: 70%;
