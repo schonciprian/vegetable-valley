@@ -131,7 +131,7 @@ export default function WeatherForecastComponent(props) {
                             document.getElementById("city-selector").style.display = "block";
                         }}>
                     <MapPin className="location-icon"/>
-                    <span>Change location not working</span>
+                    <span>Change location</span>
                 </button>
             </div>
         </div>
