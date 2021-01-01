@@ -386,22 +386,130 @@ $font-size-smaller: 20px;
   left: 0;
   min-width: 100%;
   min-height: 100%;
-  background-color: #000;
+  background-color: $darkest-color-blue;
   opacity: 0.9;
   z-index: 1;
 }
 
 .city-selector {
   position: fixed;
-  top: 150px;
+  top: 12.5%;
   left: 20%;
 
+  text-align: center;
+
   min-height: 400px;
-  height: fit-content;
+  height: 75%;
+  overflow: scroll;
   width: 60%;
-  --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
+  --gradient: linear-gradient( 135deg, #040617 10%, #151A30 60%, #040617 100%);
   background-image: var(--gradient);
+
+  box-shadow: 0 0 30px -5px rgba(200, 200, 200, 0.25);
+
   border-radius: 10px;
   z-index: 2;
   opacity: 1;
+
+  .city-input {
+    outline: none;
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    margin: 20px auto;
+  }
+
+  .city-list-container {
+    @extend %display-flex-center;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    font: 15px "Montserrat", sans-serif;
+
+    .city-list-hungary {
+      width: 550px;
+      margin: 20px 10px 20px 20px;
+      background-color: $darker-color-blue;
+      border-radius: 10px;
+
+      ul {
+        @extend %display-flex-space-around;
+        flex-wrap: wrap;
+        padding: 10px;
+        margin: 0;
+
+        li {
+          list-style: none;
+          width: 140px;
+          margin: 7px;
+          padding: 5px;
+
+          color: $color-whisper;
+
+          box-shadow: 2px 2px 1px 0 #4B5682;
+
+          background-color: $dark-color-blue;
+          border-radius: 7px;
+          cursor: pointer;
+        }
+
+        li:hover {
+          color: darkorange;
+        }
+      }
+    }
+
+    .city-list-abroad {
+      width: 230px;
+      margin: 10px;
+      background-color: $darker-color-blue;
+      border-radius: 10px;
+
+      ul {
+        @extend %display-flex-space-around;
+        flex-wrap: wrap;
+        padding: 10px;
+        margin: 0;
+
+        li {
+          list-style: none;
+          width: 160px;
+          margin: 7px 5px;
+          padding: 5px;
+
+          color: $color-whisper;
+
+          box-shadow: 2px 2px 1px 0 #4B5682;
+
+          background-color: $dark-color-blue;
+          border-radius: 7px;
+          cursor: pointer;
+        }
+
+        li:hover {
+          color: darkorange;
+        }
+      }
+    }
+  }
+}
+
+.city-list-title {
+  width: fit-content;
+  margin: 5px auto;
+  padding: 10px;
+  color: $color-whisper;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(130deg, #0F1329, darkorange 50%, #0F1329 100%);
+  }
 }

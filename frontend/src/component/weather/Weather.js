@@ -32,47 +32,47 @@ export default function Weather() {
                          document.getElementById("city-selector").style.display = "none";
                      }}/>
 
-                <div id="city-selector"
-                     className="city-selector"
-                     style={{display: "none"}}>
-                    <input value={city} onChange={(e) => setCity(e.target.value)}/>
-                    <div>
-                        <div>Chief towns of counties</div>
-                        <ul>
-                            <li onClick={() => setCity("Budapest")}>Budapest</li>
-                            <li onClick={() => setCity('Bekescsaba')}>Bekescsaba</li>
-                            <li onClick={() => setCity('Debrecen')}>Debrecen</li>
-                            <li onClick={() => setCity('Eger')}>Eger</li>
-                            <li onClick={() => setCity('Gyor')}>Gyor</li>
-                            <li onClick={() => setCity('Kaposvar')}>Kaposvar</li>
-                            <li onClick={() => setCity('Kecskemet')}>Kecskemet</li>
-                            <li onClick={() => setCity('Miskolc')}>Miskolc</li>
-                            <li onClick={() => setCity('Nyiregyhaza')}>Nyiregyhaza</li>
-                            <li onClick={() => setCity('Pecs')}>Pecs</li>
-                            <li onClick={() => setCity('Salgotarjan')}>Salgotarjan</li>
-                            <li onClick={() => setCity('Szeged')}>Szeged</li>
-                            <li onClick={() => setCity('Szekszard')}>Szekszard</li>
-                            <li onClick={() => setCity('Szekesfehervar')}>Szekesfehervar</li>
-                            <li onClick={() => setCity('Szolnok')}>Szolnok</li>
-                            <li onClick={() => setCity('Szombathely')}>Szombathely</li>
-                            <li onClick={() => setCity('Tatabanya')}>Tatabanya</li>
-                            <li onClick={() => setCity('Veszprem')}>Veszprem</li>
-                            <li onClick={() => setCity('Zalaegerszeg')}>Zalaegerszeg</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div>Abroad</div>
-                        <ul>
-                            <li onClick={() => setCity("London")}>London</li>
-                            <li onClick={() => setCity('Berlin')}>Berlin</li>
-                            <li onClick={() => setCity('Paris')}>Paris</li>
-                            <li onClick={() => setCity('Rome')}>Rome</li>
-                            <li onClick={() => setCity('Amsterdam')}>Amsterdam</li>
-                            <li onClick={() => setCity('Bratislava')}>Bratislava</li>
-                            <li onClick={() => setCity('Wien')}>Wien</li>
-                            <li onClick={() => setCity('Madrid')}>Madrid</li>
-                            <li onClick={() => setCity('Lisbon')}>Lisbon</li>
-                        </ul>
+                <div id="city-selector" className="city-selector" style={{display: "none"}}>
+                    <input className="city-input" value={city} onChange={(e) => setCity(e.target.value)}/>
+                    <div className="city-list-container">
+                        <div className="city-list-hungary">
+                            <div className="city-list-title">Chief towns of counties</div>
+                            <ul>
+                                <li onClick={() => setCity("Budapest")}>Budapest</li>
+                                <li onClick={() => setCity('Bekescsaba')}>Bekescsaba</li>
+                                <li onClick={() => setCity('Debrecen')}>Debrecen</li>
+                                <li onClick={() => setCity('Eger')}>Eger</li>
+                                <li onClick={() => setCity('Gyor')}>Gyor</li>
+                                <li onClick={() => setCity('Kaposvar')}>Kaposvar</li>
+                                <li onClick={() => setCity('Kecskemet')}>Kecskemet</li>
+                                <li onClick={() => setCity('Miskolc')}>Miskolc</li>
+                                <li onClick={() => setCity('Nyiregyhaza')}>Nyiregyhaza</li>
+                                <li onClick={() => setCity('Pecs')}>Pecs</li>
+                                <li onClick={() => setCity('Salgotarjan')}>Salgotarjan</li>
+                                <li onClick={() => setCity('Szeged')}>Szeged</li>
+                                <li onClick={() => setCity('Szekszard')}>Szekszard</li>
+                                <li onClick={() => setCity('Szekesfehervar')}>Szekesfehervar</li>
+                                <li onClick={() => setCity('Szolnok')}>Szolnok</li>
+                                <li onClick={() => setCity('Szombathely')}>Szombathely</li>
+                                <li onClick={() => setCity('Tatabanya')}>Tatabanya</li>
+                                <li onClick={() => setCity('Veszprem')}>Veszprem</li>
+                                <li onClick={() => setCity('Zalaegerszeg')}>Zalaegerszeg</li>
+                            </ul>
+                        </div>
+                        <div className="city-list-abroad">
+                            <div className="city-list-title">Abroad</div>
+                            <ul>
+                                <li onClick={() => setCity("London")}>London</li>
+                                <li onClick={() => setCity('Berlin')}>Berlin</li>
+                                <li onClick={() => setCity('Paris')}>Paris</li>
+                                <li onClick={() => setCity('Rome')}>Rome</li>
+                                <li onClick={() => setCity('Amsterdam')}>Amsterdam</li>
+                                <li onClick={() => setCity('Bratislava')}>Bratislava</li>
+                                <li onClick={() => setCity('Wien')}>Wien</li>
+                                <li onClick={() => setCity('Madrid')}>Madrid</li>
+                                <li onClick={() => setCity('Lisbon')}>Lisbon</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
