@@ -74,7 +74,7 @@ $font-size-smaller: 20px;
 
   margin: 50px auto 150px auto;
   font: $font-size-smaller "Montserrat", sans-serif;
-  color: #eeeeee;
+  color: $color-whisper;
 
   background-color: $darker-color-blue;
   border-radius: $border-radius;
@@ -251,20 +251,25 @@ $font-size-smaller: 20px;
         -webkit-transform: scale(1.1);
         -ms-transform: scale(1.1);
         transform: scale(1.1);
-        background: #eeeeee;
-        color: #222831;
+        background-image: var(--gradient);
+        color: $color-whisper;
         -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
         box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2)
       }
 
       &.active {
-        background: #eeeeee;
-        color: #222831;
+        background-image: var(--gradient);
+        color: $color-whisper;
         border-radius: 10px;
       }
 
       .forecast-date, .forecast-day {
         @extend %weekList-row-display;
+      }
+
+      .forecast-date {
+        font-weight: 700;
+        color: darkorange;
       }
 
       .sunrise-container, .sunset-container {
@@ -303,9 +308,19 @@ $font-size-smaller: 20px;
 
       .forecast-data {
         @extend %display-flex-space-between;
-        //text-align: center;
         margin-bottom: 10px;
+
+        font-weight: 700;
+
         color: darkorange;
+
+        .active-day-date {
+          width: 75px;
+        }
+
+        .active-day-day {
+          width: 100px;
+        }
       }
 
       .forecast-property-container {
@@ -319,7 +334,6 @@ $font-size-smaller: 20px;
 
         .forecast-value {
           float: right;
-          color: darkorange;
         }
       }
     }
