@@ -411,13 +411,29 @@ $font-size-smaller: 20px;
   z-index: 2;
   opacity: 1;
 
-  .city-input {
-    outline: none;
-    width: 200px;
-    height: 30px;
-    border: none;
-    border-radius: 10px;
-    margin: 20px auto;
+  .city-input-container {
+    @extend %display-flex-center;
+    font: 600 $font-size-smaller "Montserrat", sans-serif;
+    color: $color-whisper;
+
+    .city-input-text {
+      margin: 10px;
+    }
+
+    .city-input {
+      outline: none;
+      width: 200px;
+      height: 30px;
+      border: none;
+      border-radius: 10px;
+      margin: 20px;
+      padding: 0 5px;
+      color: $color-whisper;
+      font: 600 $font-size-smaller "Montserrat", sans-serif;
+      text-transform: capitalize;
+
+      --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
+      background-image: var(--gradient);    }
   }
 
   .city-list-container {

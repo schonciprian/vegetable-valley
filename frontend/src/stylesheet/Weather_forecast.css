@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
-.city-selector .city-list-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list, .weather-container, .loading, .navbar, .header {
+.city-selector .city-list-container, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list, .weather-container, .loading, .navbar, .header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -362,13 +362,26 @@ body {
   z-index: 2;
   opacity: 1;
 }
-.city-selector .city-input {
+.city-selector .city-input-container {
+  font: 600 20px "Montserrat", sans-serif;
+  color: #eeeeee;
+}
+.city-selector .city-input-container .city-input-text {
+  margin: 10px;
+}
+.city-selector .city-input-container .city-input {
   outline: none;
   width: 200px;
   height: 30px;
   border: none;
   border-radius: 10px;
-  margin: 20px auto;
+  margin: 20px;
+  padding: 0 5px;
+  color: #eeeeee;
+  font: 600 20px "Montserrat", sans-serif;
+  text-transform: capitalize;
+  --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
+  background-image: var(--gradient);
 }
 .city-selector .city-list-container {
   flex-direction: row;
