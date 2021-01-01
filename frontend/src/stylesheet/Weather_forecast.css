@@ -235,7 +235,7 @@ body {
     margin: 10px 50px;
   }
 }
-@media (max-width: 778px) {
+@media (max-width: 774px) {
   .forecast-weather-side .week-list li {
     margin: 10px 10px;
   }
@@ -347,11 +347,12 @@ body {
 }
 
 .city-selector {
-  position: absolute;
-  top: 500px;
-  left: 30%;
-  width: 600px;
-  height: 400px;
+  position: fixed;
+  top: 150px;
+  left: 20%;
+  min-height: 400px;
+  height: fit-content;
+  width: 60%;
   --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
   background-image: var(--gradient);
   border-radius: 10px;
