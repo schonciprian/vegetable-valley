@@ -393,15 +393,15 @@ $font-size-smaller: 20px;
 
 .city-selector {
   position: fixed;
-  top: 12.5%;
-  left: 20%;
+  top: 10%;
+  left: 10%;
 
   text-align: center;
 
   max-height: 1000px;
-  height: 75%;
+  height: 80%;
   overflow: scroll;
-  width: 60%;
+  width: 80%;
   --gradient: linear-gradient( 135deg, #040617 10%, #151A30 60%, #040617 100%);
   background-image: var(--gradient);
 
@@ -426,11 +426,11 @@ $font-size-smaller: 20px;
     align-items: flex-start;
     flex-wrap: wrap;
 
-    font: 15px "Montserrat", sans-serif;
+    font: 600 $font-size-smaller "Montserrat", sans-serif;
 
     .city-list-hungary {
-      width: 550px;
-      margin: 20px 10px 20px 20px;
+      width: 750px;
+      margin: 10px 10px 20px 20px;
       background-color: $darker-color-blue;
       border-radius: 10px;
 
@@ -442,7 +442,7 @@ $font-size-smaller: 20px;
 
         li {
           list-style: none;
-          width: 140px;
+          width: 200px;
           margin: 7px;
           padding: 5px;
 
@@ -462,8 +462,8 @@ $font-size-smaller: 20px;
     }
 
     .city-list-abroad {
-      width: 230px;
-      margin: 10px;
+      width: 260px;
+      margin: 10px 10px 20px 20px;
       background-color: $darker-color-blue;
       border-radius: 10px;
 
@@ -475,7 +475,7 @@ $font-size-smaller: 20px;
 
         li {
           list-style: none;
-          width: 160px;
+          width: 200px;
           margin: 7px 5px;
           padding: 5px;
 
