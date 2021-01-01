@@ -1,3 +1,5 @@
+import {getMonth} from "./TodayWeatherFunctions";
+
 export function getDayTemperatureDailyForecast(dailyForecast, indexOfDailyForecast) {
     return (dailyForecast.length !== 0) ?
         (dailyForecast[indexOfDailyForecast].dayTemp).toFixed(1) :
@@ -42,7 +44,7 @@ export function getHumidityDailyForecast(dailyForecast, indexOfDailyForecast) {
 
 export function getDateOfDailyForecast(dailyForecast, indexOfDailyForecast) {
     return (dailyForecast.length !== 0) ?
-        dailyForecast[indexOfDailyForecast].month + ". " + dailyForecast[indexOfDailyForecast].date + ". ":
+        getMonth(dailyForecast[indexOfDailyForecast].month-1) + ". " + dailyForecast[indexOfDailyForecast].date + ". ":
         "";
 }
 

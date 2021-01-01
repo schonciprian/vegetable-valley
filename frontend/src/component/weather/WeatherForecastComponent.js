@@ -9,7 +9,7 @@ import {
     getSnowDailyForecast,
     getWindDailyForecast
 } from "./WeatherForecastGetterFunctions";
-import {calculateSunriseSunset, getFeatherName} from "./TodayWeatherFunctions";
+import {calculateSunriseSunset, getFeatherName, getMonth} from "./TodayWeatherFunctions";
 import {MapPin, Sunrise, Sunset} from "react-feather";
 import axios from "axios";
 
@@ -68,7 +68,7 @@ export default function WeatherForecastComponent(props) {
                         <li key={index}
                             className={(index === indexOfDailyForecast) ? "daily-weather-forecast active" : "daily-weather-forecast"}
                             onClick={() => changeIndexOfDailyForecast(index)}>
-                            <span className="forecast-date">{oneDayForecast.month}. {oneDayForecast.date}.</span>
+                            <span className="forecast-date">{getMonth(oneDayForecast.month-1)}. {oneDayForecast.date}.</span>
                             <span className="forecast-day">{getDayName(oneDayForecast.day)}</span>
                             <div className="sunrise-container">
                                 <Sunrise className="sunrise-icon"/>
@@ -87,9 +87,9 @@ export default function WeatherForecastComponent(props) {
             <div className="active-day-info-container">
                 <div className="active-day-info">
                     <div className="forecast-data">
-                        <div>{getDateOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
+                        <div className="active-day-date">{getDateOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
                         <ForecastFeatherTag />
-                        <div>{getDayNameOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
+                        <div className="active-day-day">{getDayNameOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
                     </div>
                     <div className="forecast-property-container">
                         <span className="forecast-title">DAY</span>
