@@ -25,6 +25,7 @@ export default function Weather() {
             setCity(event.target.value)
             document.getElementById("city-selector-container").style.display = "none";
             document.getElementById("city-selector").style.display = "none";
+            document.getElementById("city-input").value = "";
         }
     }
 
@@ -45,7 +46,8 @@ export default function Weather() {
                 <div id="city-selector" className="city-selector" style={{display: "none"}}>
                     <div className="city-input-container">
                         <div className="city-input-text">Which city are you curious about?</div>
-                        <input className="city-input"
+                        <input id="city-input"
+                               className="city-input"
                                onKeyDown={handleKeyDown}
                                onClick={handleFocus}/>
                     </div>
