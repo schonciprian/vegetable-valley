@@ -56,6 +56,8 @@ export function getFeatherName(weatherType) {
             return 'div';   // No mist feather-icon
         case 'Fog':
             return 'div';   // No fog feather-icon
+        case 'Haze':
+            return 'div';   // No fog feather-icon
         default:
             return Sun;
     }
