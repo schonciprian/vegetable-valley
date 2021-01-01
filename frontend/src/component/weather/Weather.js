@@ -24,6 +24,17 @@ export default function Weather() {
         return (
             <div>
                 <CitySwitcherComponent setCity={setCity}/>
+                <div id="city-selector-container"
+                     className="city-selector-container"
+                     style={{display: "none"}}
+                     onClick={() => {
+                         document.getElementById("city-selector-container").style.display = "none";
+                         document.getElementById("city-selector").style.display = "none";
+                     }}/>
+
+                <div id="city-selector"
+                     className="city-selector"
+                     style={{display: "none"}}/>
 
                 <div className="weather-container">
                     <TodayWeatherComponent weather={weather}/>

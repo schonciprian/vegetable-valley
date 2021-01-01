@@ -379,3 +379,28 @@ $font-size-smaller: 20px;
     }
   }
 }
+
+.city-selector-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  background-color: #000;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.city-selector {
+  position: absolute;
+  top: 500px;
+  left: 30%;
+
+  width: 600px;
+  height: 400px;
+  --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
+  background-image: var(--gradient);
+  border-radius: 10px;
+  z-index: 2;
+  opacity: 1;
+}
