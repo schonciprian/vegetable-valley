@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {isChrome} from "react-device-detect";
+import {isSafari} from "react-device-detect";
 import TodayWeatherComponent from "./TodayWeatherComponent";
 import WeatherForecastComponent from "./WeatherForecastComponent";
 
@@ -39,7 +39,7 @@ export default function Weather() {
     const getLocation = () => {
         document.getElementById("city-selector-container").style.display = "none";
         document.getElementById("city-selector").style.display = "none";
-        if (isChrome) {
+        if (!isSafari) {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(getCoordinates, () => {
                     alert("Your location is not available. ");})
