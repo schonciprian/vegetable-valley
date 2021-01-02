@@ -9,6 +9,10 @@ export default function Weather() {
     const [weather, setWeather] = useState([]);
     const [city, setCity] = useState("Gyor");
     const [coordinate, setCoordinate] = useState({});
+    const hungarianCities = ['Budapest', 'Bekescsaba', 'Debrecen', 'Eger', 'Gyor', 'Kaposvar', 'Kecskemet',
+                            'Miskolc', 'Nyiregyhaza', 'Pecs', 'Salgotarjan', 'Szeged', 'Szekszard', 'Szekesfehervar',
+                            'Szolnok', 'Szombathely', 'Tatabanya', 'Veszprem', 'Zalaegerszeg'];
+    const foreignCities = ['Amsterdam', 'Berlin', 'Bratislava', 'Copenhagen', 'Lisbon', 'London', 'Madrid', 'Paris', 'Rome', 'Wien']
 
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f913779188ecd17807fa0473780a29fb`)
@@ -23,8 +27,7 @@ export default function Weather() {
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             setCity(event.target.value)
-            document.getElementById("city-selector-container").style.display = "none";
-            document.getElementById("city-selector").style.display = "none";
+            hideCitySelection()
             document.getElementById("city-input").value = "";
         }
     }
@@ -37,8 +40,7 @@ export default function Weather() {
     }
 
     const getLocation = () => {
-        document.getElementById("city-selector-container").style.display = "none";
-        document.getElementById("city-selector").style.display = "none";
+        hideCitySelection()
         if (!isSafari) {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(getCoordinates, () => {
@@ -51,6 +53,23 @@ export default function Weather() {
         }
     }
 
+    const handleCityOnClick = (hungarianCity) => {
+        setCity(hungarianCity);
+        hideCitySelection();
+    }
+
+    const hideCitySelection = () => {
+        document.getElementById("city-selector-container").style.display = "none";
+        document.getElementById("city-selector").style.display = "none";
+    }
+
+    const createListItemOfCities = (listOfCities) => {
+        return listOfCities.map((value, index) => (
+            <li key={index} onClick={() => {handleCityOnClick(value)}}>
+                {value}
+            </li>))
+    }
+
 
     if (weather.length === 0) {
         return <div className="loading">Loading data from server...</div>;
@@ -61,8 +80,7 @@ export default function Weather() {
                      className="city-selector-container"
                      style={{display: "none"}}
                      onClick={() => {
-                         document.getElementById("city-selector-container").style.display = "none";
-                         document.getElementById("city-selector").style.display = "none";
+                         hideCitySelection()
                      }}/>
 
                 <div id="city-selector" className="city-selector" style={{display: "none"}}>
@@ -80,63 +98,7 @@ export default function Weather() {
                             <div className="city-list-hungary">
                                 <div className="city-list-title">Chief towns of counties</div>
                                 <ul>
-                                    <li onClick={() => {setCity("Budapest");
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Budapest</li>
-                                    <li onClick={() => {setCity('Bekescsaba');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Bekescsaba</li>
-                                    <li onClick={() => {setCity('Debrecen');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Debrecen</li>
-                                    <li onClick={() => {setCity('Eger');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Eger</li>
-                                    <li onClick={() => {setCity('Gyor');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Gyor</li>
-                                    <li onClick={() => {setCity('Kaposvar');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Kaposvar</li>
-                                    <li onClick={() => {setCity('Kecskemet');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Kecskemet</li>
-                                    <li onClick={() => {setCity('Miskolc');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Miskolc</li>
-                                    <li onClick={() => {setCity('Nyiregyhaza');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Nyiregyhaza</li>
-                                    <li onClick={() => {setCity('Pecs');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Pecs</li>
-                                    <li onClick={() => {setCity('Salgotarjan');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Salgotarjan</li>
-                                    <li onClick={() => {setCity('Szeged');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Szeged</li>
-                                    <li onClick={() => {setCity('Szekszard');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Szekszard</li>
-                                    <li onClick={() => {setCity('Szekesfehervar');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Szekesfehervar</li>
-                                    <li onClick={() => {setCity('Szolnok');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Szolnok</li>
-                                    <li onClick={() => {setCity('Szombathely');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Szombathely</li>
-                                    <li onClick={() => {setCity('Tatabanya');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Tatabanya</li>
-                                    <li onClick={() => {setCity('Veszprem');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Veszprem</li>
-                                    <li onClick={() => {setCity('Zalaegerszeg');
-                                        document.getElementById("city-selector-container").style.display = "none";
-                                        document.getElementById("city-selector").style.display = "none"}}>Zalaegerszeg</li>
+                                    {createListItemOfCities(hungarianCities)}
                                 </ul>
                             </div>
                         </div>
@@ -144,33 +106,7 @@ export default function Weather() {
                         <div className="city-list-abroad">
                             <div className="city-list-title">Abroad</div>
                             <ul>
-                                <li onClick={() => {setCity("London");
-                                    document.getElementById("city-selector-container").style.display = "none";
-                                    document.getElementById("city-selector").style.display = "none"}}>London</li>
-                                <li onClick={() => {setCity('Berlin');
-                                    document.getElementById("city-selector-container").style.display = "none";
-                                    document.getElementById("city-selector").style.display = "none"}}>Berlin</li>
-                                <li onClick={() => {setCity('Paris');
-                                    document.getElementById("city-selector-container").style.display = "none";
-                                    document.getElementById("city-selector").style.display = "none"}}>Paris</li>
-                                <li onClick={() => {setCity('Rome');
-                                    document.getElementById("city-selector-container").style.display = "none";
-                                    document.getElementById("city-selector").style.display = "none"}}>Rome</li>
-                                <li onClick={() => {setCity('Amsterdam');
-                                    document.getElementById("city-selector-container").style.display = "none";
-                                    document.getElementById("city-selector").style.display = "none"}}>Amsterdam</li>
-                                <li onClick={() => {setCity('Bratislava');
-                                    document.getElementById("city-selector-container").style.display = "none";
-                                    document.getElementById("city-selector").style.display = "none"}}>Bratislava</li>
-                                <li onClick={() => {setCity('Wien');
-                                    document.getElementById("city-selector-container").style.display = "none";
-                                    document.getElementById("city-selector").style.display = "none"}}>Wien</li>
-                                <li onClick={() => {setCity('Madrid');
-                                    document.getElementById("city-selector-container").style.display = "none";
-                                    document.getElementById("city-selector").style.display = "none"}}>Madrid</li>
-                                <li onClick={() => {setCity('Lisbon');
-                                    document.getElementById("city-selector-container").style.display = "none";
-                                    document.getElementById("city-selector").style.display = "none"}}>Lisbon</li>
+                                {createListItemOfCities(foreignCities)}
                             </ul>
                         </div>
                     </div>
