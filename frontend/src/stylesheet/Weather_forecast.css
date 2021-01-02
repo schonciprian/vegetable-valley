@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
-.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list, .weather-container, .loading, .navbar, .header {
+.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list, .weather-container, .loading, .navbar, .header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -363,6 +363,7 @@ body {
   opacity: 1;
 }
 .city-selector .city-input-container {
+  flex-wrap: wrap;
   font: 600 20px "Montserrat", sans-serif;
   color: #eeeeee;
 }
@@ -370,11 +371,7 @@ body {
   margin: 10px;
   color: rgba(255, 140, 0, 0.8);
 }
-.city-selector .city-input-container .search-icon {
-  height: 24px;
-  color: rgba(255, 140, 0, 0.8);
-}
-.city-selector .city-input-container .city-input {
+.city-selector .city-input-container .search-box .city-input {
   outline: none;
   width: 200px;
   height: 30px;
@@ -388,6 +385,11 @@ body {
   --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
   background-image: var(--gradient);
 }
+.city-selector .city-input-container .search-box .search-icon {
+  height: 24px;
+  margin-right: 10px;
+  color: rgba(255, 140, 0, 0.8);
+}
 .city-selector .city-list-container {
   flex-direction: row;
   align-items: flex-start;
@@ -396,9 +398,9 @@ body {
 }
 .city-selector .city-list-container .city-list-container-left .get-location {
   width: fit-content;
-  height: 50px;
+  height: 40px;
   padding: 0 20px;
-  margin: 30px auto;
+  margin: 10px auto 30px;
   --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
   background-image: var(--gradient);
   color: #eeeeee;

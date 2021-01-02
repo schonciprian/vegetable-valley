@@ -66,12 +66,14 @@ export default function CitySelectorComponent(props) {
             <div id="city-selector" className="city-selector" style={{display: "none"}}>
                 <div className="city-input-container">
                     <div className="city-input-text">Which city are you curious about?</div>
-                    <input id="city-input"
-                           className="city-input"
-                           onKeyDown={handleKeyDown}
-                           onClick={handleFocus}/>
-                    <div className="search-icon" onClick={handleNewCity}>
-                        <Search/>
+                    <div className="search-box">
+                        <input id="city-input"
+                               className="city-input"
+                               onKeyDown={handleKeyDown}
+                               onClick={handleFocus}/>
+                        <div className="search-icon" onClick={handleNewCity}>
+                            <Search/>
+                        </div>
                     </div>
                 </div>
                 <div className="city-list-container">

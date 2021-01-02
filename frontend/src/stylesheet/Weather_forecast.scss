@@ -413,6 +413,7 @@ $font-size-smaller: 20px;
 
   .city-input-container {
     @extend %display-flex-center;
+    flex-wrap: wrap;
     font: 600 $font-size-smaller "Montserrat", sans-serif;
     color: $color-whisper;
 
@@ -421,25 +422,30 @@ $font-size-smaller: 20px;
       color: rgba(255, 140, 0, 0.8);
     }
 
-    .search-icon {
-      height: 24px;
-      color: rgba(255, 140, 0, 0.8);
-    }
+    .search-box {
+      @extend %display-flex-center;
 
-    .city-input {
-      outline: none;
-      width: 200px;
-      height: 30px;
-      border: none;
-      border-radius: 10px;
-      margin: 20px;
-      padding: 0 5px;
-      color: $color-whisper;
-      font: 600 $font-size-smaller "Montserrat", sans-serif;
-      text-transform: capitalize;
+      .city-input {
+        outline: none;
+        width: 200px;
+        height: 30px;
+        border: none;
+        border-radius: 10px;
+        margin: 20px;
+        padding: 0 5px;
+        color: $color-whisper;
+        font: 600 $font-size-smaller "Montserrat", sans-serif;
+        text-transform: capitalize;
 
-      --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
-      background-image: var(--gradient);
+        --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
+        background-image: var(--gradient);
+      }
+
+      .search-icon {
+         height: 24px;
+         margin-right: 10px;
+         color: rgba(255, 140, 0, 0.8);
+       }
     }
   }
 
@@ -456,9 +462,9 @@ $font-size-smaller: 20px;
       .get-location {
         @extend %display-flex-center;
         width: fit-content;
-        height: 50px;
+        height: 40px;
         padding: 0 20px;
-        margin: 30px auto;
+        margin: 10px auto 30px;
         --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
         background-image: var(--gradient);
         color: $color-whisper;
