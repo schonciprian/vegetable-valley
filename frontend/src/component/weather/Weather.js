@@ -75,6 +75,8 @@ export default function Weather() {
                     </div>
                     <div className="city-list-container">
                         <div className="city-list-container-left">
+                            <div className="get-location" onClick={getLocation}>Click here to get your location</div>
+
                             <div className="city-list-hungary">
                                 <div className="city-list-title">Chief towns of counties</div>
                                 <ul>
@@ -137,7 +139,6 @@ export default function Weather() {
                                         document.getElementById("city-selector").style.display = "none"}}>Zalaegerszeg</li>
                                 </ul>
                             </div>
-                            <div className="get-location" onClick={getLocation}>Click here to get your location</div>
                         </div>
 
                         <div className="city-list-abroad">
