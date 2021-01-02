@@ -433,7 +433,8 @@ $font-size-smaller: 20px;
       text-transform: capitalize;
 
       --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
-      background-image: var(--gradient);    }
+      background-image: var(--gradient);
+    }
   }
 
   .city-list-container {
@@ -444,36 +445,54 @@ $font-size-smaller: 20px;
 
     font: 600 $font-size-smaller "Montserrat", sans-serif;
 
-    .city-list-hungary {
-      width: 750px;
-      margin: 10px 10px 20px 20px;
-      background-color: $darker-color-blue;
-      border-radius: 10px;
+    .city-list-container-left {
+      //width: 750px;
+      //@extend %display-flex-center;
+      //flex-direction: column;
 
-      ul {
-        @extend %display-flex-space-around;
-        flex-wrap: wrap;
-        padding: 10px;
-        margin: 0;
+      .get-location {
+        @extend %display-flex-center;
+        width: fit-content;
+        height: 50px;
+        padding: 0 20px;
+        margin: 30px auto;
+        --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
+        background-image: var(--gradient);
+        color: $color-whisper;
+        border-radius: 10px;
+      }
 
-        li {
-          list-style: none;
-          width: 200px;
-          margin: 7px;
-          padding: 5px;
-          font-size: 18px;
+      .city-list-hungary {
+        max-width: 750px;
+        margin: 10px 10px 20px 20px;
+        background-color: $darker-color-blue;
+        border-radius: 10px;
 
-          color: $color-whisper;
+        ul {
+          @extend %display-flex-space-around;
+          flex-wrap: wrap;
+          padding: 10px;
+          margin: 0;
 
-          box-shadow: 2px 2px 1px 0 #4B5682;
+          li {
+            list-style: none;
+            width: 200px;
+            margin: 7px;
+            padding: 5px;
+            font-size: 18px;
 
-          background-color: $dark-color-blue;
-          border-radius: 7px;
-          cursor: pointer;
-        }
+            color: $color-whisper;
 
-        li:hover {
-          color: darkorange;
+            box-shadow: 2px 2px 1px 0 #4B5682;
+
+            background-color: $dark-color-blue;
+            border-radius: 7px;
+            cursor: pointer;
+          }
+
+          li:hover {
+            color: darkorange;
+          }
         }
       }
     }
