@@ -368,6 +368,11 @@ body {
 }
 .city-selector .city-input-container .city-input-text {
   margin: 10px;
+  color: rgba(255, 140, 0, 0.8);
+}
+.city-selector .city-input-container .search-icon {
+  height: 24px;
+  color: rgba(255, 140, 0, 0.8);
 }
 .city-selector .city-input-container .city-input {
   outline: none;

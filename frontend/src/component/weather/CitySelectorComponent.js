@@ -5,6 +5,7 @@ import {foreignCities,
         hungarianCities,
         handleFocus,
         hideCitySelection} from "./CitySelectorHelperVariables";
+import {Search} from "react-feather";
 
 export default function CitySelectorComponent(props) {
 
@@ -29,11 +30,15 @@ export default function CitySelectorComponent(props) {
         }
     }
 
+    const handleNewCity = () => {
+        props.setCity(document.getElementById("city-input").value)
+        hideCitySelection()
+        document.getElementById("city-input").value = "";
+    }
+
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            props.setCity(event.target.value)
-            hideCitySelection()
-            document.getElementById("city-input").value = "";
+            handleNewCity();
         }
     }
 
@@ -65,6 +70,9 @@ export default function CitySelectorComponent(props) {
                            className="city-input"
                            onKeyDown={handleKeyDown}
                            onClick={handleFocus}/>
+                    <div className="search-icon" onClick={handleNewCity}>
+                        <Search/>
+                    </div>
                 </div>
                 <div className="city-list-container">
                     <div className="city-list-container-left">
