@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import {isSafari} from "react-device-detect";
+import {handleFocus, hideCitySelection} from "./CitySelectorFunctions";
 
 export default function CitySelectorComponent(props) {
     const hungarianCities = ['Budapest', 'Bekescsaba', 'Debrecen', 'Eger', 'Gyor', 'Kaposvar', 'Kecskemet',
@@ -29,8 +30,6 @@ export default function CitySelectorComponent(props) {
         }
     }
 
-    const handleFocus = (event) => event.target.select();
-
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             props.setCity(event.target.value)
@@ -42,11 +41,6 @@ export default function CitySelectorComponent(props) {
     const handleCityOnClick = (hungarianCity) => {
         props.setCity(hungarianCity);
         hideCitySelection();
-    }
-
-    const hideCitySelection = () => {
-        document.getElementById("city-selector-container").style.display = "none";
-        document.getElementById("city-selector").style.display = "none";
     }
 
     const createListItemOfCities = (listOfCities) => {
