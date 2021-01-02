@@ -351,7 +351,7 @@ body {
   top: 10%;
   left: 10%;
   text-align: center;
-  max-height: 1050px;
+  max-height: 870px;
   height: 80%;
   overflow: scroll;
   width: 80%;
@@ -430,6 +430,12 @@ body {
   margin: 10px 10px 20px 20px;
   background-color: #0F1329;
   border-radius: 10px;
+}
+@media (max-width: 1337px) {
+  .city-selector .city-list-container .city-list-abroad {
+    width: fit-content;
+    max-width: 750px;
+  }
 }
 .city-selector .city-list-container .city-list-abroad ul {
   flex-wrap: wrap;

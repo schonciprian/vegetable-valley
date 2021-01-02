@@ -398,7 +398,7 @@ $font-size-smaller: 20px;
 
   text-align: center;
 
-  max-height: 1050px;
+  max-height: 870px;
   height: 80%;
   overflow: scroll;
   width: 80%;
@@ -446,9 +446,6 @@ $font-size-smaller: 20px;
     font: 600 $font-size-smaller "Montserrat", sans-serif;
 
     .city-list-container-left {
-      //width: 750px;
-      //@extend %display-flex-center;
-      //flex-direction: column;
 
       .get-location {
         @extend %display-flex-center;
@@ -502,6 +499,11 @@ $font-size-smaller: 20px;
       margin: 10px 10px 20px 20px;
       background-color: $darker-color-blue;
       border-radius: 10px;
+
+      @media (max-width: 1337px) {
+        width: fit-content;
+        max-width: 750px;
+      }
 
       ul {
         @extend %display-flex-space-around;
