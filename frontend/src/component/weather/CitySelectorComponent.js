@@ -1,13 +1,12 @@
 import React from 'react';
 import axios from "axios";
 import {isSafari} from "react-device-detect";
-import {handleFocus, hideCitySelection} from "./CitySelectorFunctions";
+import {foreignCities,
+        hungarianCities,
+        handleFocus,
+        hideCitySelection} from "./CitySelectorHelperVariables";
 
 export default function CitySelectorComponent(props) {
-    const hungarianCities = ['Budapest', 'Bekescsaba', 'Debrecen', 'Eger', 'Gyor', 'Kaposvar', 'Kecskemet',
-        'Miskolc', 'Nyiregyhaza', 'Pecs', 'Salgotarjan', 'Szeged', 'Szekszard', 'Szekesfehervar',
-        'Szolnok', 'Szombathely', 'Tatabanya', 'Veszprem', 'Zalaegerszeg'];
-    const foreignCities = ['Amsterdam', 'Berlin', 'Bratislava', 'Copenhagen', 'Lisbon', 'London', 'Madrid', 'Paris', 'Rome', 'Wien']
 
     const getCoordinates = (position) => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${(position.coords.latitude)}&lon=${(position.coords.longitude)}&appid=f913779188ecd17807fa0473780a29fb`)
