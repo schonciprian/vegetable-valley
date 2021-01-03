@@ -19,7 +19,7 @@ function App() {
             <div className="main-container">
                 <Route exact path="/">Home page</Route>
                 <Route exact path="/grow-guides">There are some infos about vegetable growing...</Route>
-                <Route exact path="/my-jobs">There are my jobs to do separated for every month</Route>
+                <Route exact path="/my-todos">There are my todos separated for every month</Route>
                 <Route exact path="/weather-forecast" component={Weather} />
             </div>
           </div>
