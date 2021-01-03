@@ -215,8 +215,13 @@ $font-size-smaller: 20px;
 
     .pagination {
       @extend %display-flex-center;
-      margin: 0 auto;
-      max-width: fit-content;
+      //margin: 0 auto;
+      margin: -30px 35px 10px;
+      padding: 10px;
+      max-width: 100%;
+      background-color: #151A30;
+      border-radius: 10px;
+
 
       .page-number {
         cursor: pointer;
@@ -225,7 +230,7 @@ $font-size-smaller: 20px;
         height: 24px;
         margin: 5px 10px;
         padding: 5px 10px;
-        background-color: $dark-color-blue;
+        background-color: $darkest-color-blue;
         border-radius: 7px;
 
         &:hover {

@@ -212,8 +212,11 @@ body {
   padding-top: 25px;
 }
 .forecast-weather-side .week-list-container .pagination {
-  margin: 0 auto;
-  max-width: fit-content;
+  margin: -30px 35px 10px;
+  padding: 10px;
+  max-width: 100%;
+  background-color: #151A30;
+  border-radius: 10px;
 }
 .forecast-weather-side .week-list-container .pagination .page-number {
   cursor: pointer;
@@ -222,7 +225,7 @@ body {
   height: 24px;
   margin: 5px 10px;
   padding: 5px 10px;
-  background-color: #151A30;
+  background-color: #040617;
   border-radius: 7px;
 }
 .forecast-weather-side .week-list-container .pagination .page-number:hover {
