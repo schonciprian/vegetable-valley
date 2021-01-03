@@ -12,8 +12,6 @@ import {
 import {calculateSunriseSunset, getMonth} from "./TodayWeatherFunctions";
 import {MapPin, Sunrise, Sunset} from "react-feather";
 import axios from "axios";
-import WeatherIcon from 'react-icons-weather';
-
 
 export default function WeatherForecastComponent(props) {
 
@@ -29,8 +27,11 @@ export default function WeatherForecastComponent(props) {
     let dailyForecast = [];
     let count = 0;
 
+    const [showDayFromIndex, setShowDayFromIndex] = useState(0);
+    const [showDayToIndex, setShowDayToIndex] = useState(4);
+
     if (weatherForecast.length !== 0 ) {daily.forEach( oneDay => {
-        if (count > 0 && count < 5) {
+        if (count > showDayFromIndex && count <= showDayToIndex) {
             let sunrise = new Date((oneDay.sunrise + timezone_offset - 3600) * 1000);
             let sunset = new Date((oneDay.sunset + timezone_offset - 3600) * 1000);
 
@@ -59,15 +60,18 @@ export default function WeatherForecastComponent(props) {
         setIndexOfDailyForecast(index);
     }
 
-    console.log((dailyForecast.length !== 0) ? dailyForecast[indexOfDailyForecast].weather: "");
-
     const getForecastIcon = (dailyForecast.length !== 0) ?
         dailyForecast[indexOfDailyForecast].weatherIcon :
         '01d';
 
+    const updateShowDayIndexes = (pageNumber) => {
+        setShowDayFromIndex((pageNumber * 4) - 4);
+        setShowDayToIndex(pageNumber * 4);
+    }
+
     return (
         <div className="forecast-weather-side">
-            <div>
+            <div className="week-list-container">
                 <ul className="week-list">
                     {dailyForecast.map((oneDayForecast, index) => (
                         <li key={index}
@@ -86,7 +90,18 @@ export default function WeatherForecastComponent(props) {
                             <span className="forecast-day-temp">{oneDayForecast.dailyTemp}°C</span>
                         </li>
                     ))}
+
                 </ul>
+                <div className="pagination">
+                    <div className={(showDayFromIndex === 0 ? 'page-number active ' : 'page-number ')}
+                         onClick={() => {updateShowDayIndexes(1)}}>
+                        1
+                    </div>
+                    <div className={(showDayFromIndex === 4 ? 'page-number active ' : 'page-number ')}
+                         onClick={() => {updateShowDayIndexes(2)}}>
+                        2
+                    </div>
+                </div>
             </div>
 
             <div className="active-day-info-container">
@@ -94,7 +109,6 @@ export default function WeatherForecastComponent(props) {
                     <div className="forecast-data">
                         <div className="active-day-date">{getDateOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
                         <img src={`http://openweathermap.org/img/w/${getForecastIcon}.png`} alt=""/>
-                        {/*<WeatherIcon name="owm" iconId={getForecastIcon} />*/}
                         <div className="active-day-day">{getDayNameOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
                     </div>
                     <div className="forecast-property-container">

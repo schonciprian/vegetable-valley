@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
-.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list, .weather-container, .loading, .navbar, .header {
+.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination, .weather-container, .loading, .navbar, .header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,7 +62,7 @@ body {
   color: #7F8EC0;
 }
 
-.city-selector .city-list-container .city-list-abroad ul, .city-selector .city-list-container .city-list-container-left .city-list-hungary ul, .forecast-weather-side .week-list li .sunrise-container, .forecast-weather-side .week-list li .sunset-container, .forecast-weather-side, .available-cities {
+.city-selector .city-list-container .city-list-abroad ul, .city-selector .city-list-container .city-list-container-left .city-list-hungary ul, .forecast-weather-side .week-list-container .week-list li .sunrise-container, .forecast-weather-side .week-list-container .week-list li .sunset-container, .forecast-weather-side, .available-cities {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -74,7 +74,7 @@ body {
   align-items: center;
 }
 
-.forecast-weather-side .week-list li .forecast-date, .forecast-weather-side .week-list li .forecast-day {
+.forecast-weather-side .week-list-container .week-list li .forecast-date, .forecast-weather-side .week-list-container .week-list li .forecast-day {
   display: block;
   margin: 10px 0;
   text-align: center;
@@ -211,7 +211,31 @@ body {
   flex-direction: column;
   padding-top: 25px;
 }
-.forecast-weather-side .week-list {
+.forecast-weather-side .week-list-container .pagination {
+  margin: 0 auto;
+  max-width: fit-content;
+}
+.forecast-weather-side .week-list-container .pagination .page-number {
+  cursor: pointer;
+  text-align: center;
+  width: 24px;
+  height: 24px;
+  margin: 5px 10px;
+  padding: 5px 10px;
+  background-color: #151A30;
+  border-radius: 7px;
+}
+.forecast-weather-side .week-list-container .pagination .page-number:hover {
+  background-image: var(--gradient);
+  color: #eeeeee;
+  -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+}
+.forecast-weather-side .week-list-container .pagination .page-number.active {
+  background-image: var(--gradient);
+  color: #eeeeee;
+}
+.forecast-weather-side .week-list-container .week-list {
   flex-wrap: wrap;
   padding: 20px;
   margin: 10px 35px;
@@ -221,7 +245,12 @@ body {
   box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
   list-style-type: none;
 }
-.forecast-weather-side .week-list li {
+@media (min-width: 1003px) {
+  .forecast-weather-side .week-list-container .week-list {
+    min-width: 680px;
+  }
+}
+.forecast-weather-side .week-list-container .week-list li {
   width: 120px;
   padding: 15px;
   margin: 10px;
@@ -234,16 +263,16 @@ body {
   box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
 }
 @media (max-width: 1002px) {
-  .forecast-weather-side .week-list li {
+  .forecast-weather-side .week-list-container .week-list li {
     margin: 10px 50px;
   }
 }
 @media (max-width: 774px) {
-  .forecast-weather-side .week-list li {
+  .forecast-weather-side .week-list-container .week-list li {
     margin: 10px 10px;
   }
 }
-.forecast-weather-side .week-list li:hover {
+.forecast-weather-side .week-list-container .week-list li:hover {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
@@ -252,23 +281,23 @@ body {
   -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
 }
-.forecast-weather-side .week-list li.active {
+.forecast-weather-side .week-list-container .week-list li.active {
   background-image: var(--gradient);
   color: #eeeeee;
   border-radius: 10px;
 }
-.forecast-weather-side .week-list li .forecast-date {
+.forecast-weather-side .week-list-container .week-list li .forecast-date {
   font-weight: 700;
   color: darkorange;
 }
-.forecast-weather-side .week-list li .sunrise-container, .forecast-weather-side .week-list li .sunset-container {
+.forecast-weather-side .week-list-container .week-list li .sunrise-container, .forecast-weather-side .week-list-container .week-list li .sunset-container {
   margin: 0;
 }
-.forecast-weather-side .week-list li .sunrise-container svg, .forecast-weather-side .week-list li .sunset-container svg {
+.forecast-weather-side .week-list-container .week-list li .sunrise-container svg, .forecast-weather-side .week-list-container .week-list li .sunset-container svg {
   margin: 10px 0;
   color: darkorange;
 }
-.forecast-weather-side .week-list li .forecast-day-temp {
+.forecast-weather-side .week-list-container .week-list li .forecast-day-temp {
   display: block;
   text-align: center;
   margin: 10px 0;
