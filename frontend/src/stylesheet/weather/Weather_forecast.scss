@@ -15,24 +15,6 @@ $border-radius: 25px;
   text-align: center;
 }
 
-//*********************//
-// ** City switcher ** //
-//*********************//
-
-.available-cities {
-  @extend %display-flex-space-around;
-  flex-wrap: wrap;
-
-  padding: 20px;
-
-  font: $font-size-larger "Montserrat", sans-serif;
-  color: $color-whisper;
-
-  .city-name {
-    margin: 15px;
-  }
-}
-
 //*************************//
 // ** Weather container ** //
 //*************************//

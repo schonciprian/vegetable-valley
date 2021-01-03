@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.city-selector .city-list-container .city-list-abroad ul, .city-selector .city-list-container .city-list-container-left .city-list-hungary ul, .forecast-weather-side .week-list-container .week-list li .sunrise-container, .forecast-weather-side .week-list-container .week-list li .sunset-container, .forecast-weather-side, .available-cities {
+.city-selector .city-list-container .city-list-abroad ul, .city-selector .city-list-container .city-list-container-left .city-list-hungary ul, .forecast-weather-side .week-list-container .week-list li .sunrise-container, .forecast-weather-side .week-list-container .week-list li .sunset-container, .forecast-weather-side {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -84,7 +84,7 @@ body {
   align-items: center;
 }
 
-.city-selector .city-list-container .city-list-abroad ul, .city-selector .city-list-container .city-list-container-left .city-list-hungary ul, .forecast-weather-side .week-list-container .week-list li .sunrise-container, .forecast-weather-side .week-list-container .week-list li .sunset-container, .forecast-weather-side, .available-cities {
+.city-selector .city-list-container .city-list-abroad ul, .city-selector .city-list-container .city-list-container-left .city-list-hungary ul, .forecast-weather-side .week-list-container .week-list li .sunrise-container, .forecast-weather-side .week-list-container .week-list li .sunset-container, .forecast-weather-side {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -100,16 +100,6 @@ body {
   display: block;
   margin: 10px 0;
   text-align: center;
-}
-
-.available-cities {
-  flex-wrap: wrap;
-  padding: 20px;
-  font: 30px "Montserrat", sans-serif;
-  color: #eeeeee;
-}
-.available-cities .city-name {
-  margin: 15px;
 }
 
 .loading {
