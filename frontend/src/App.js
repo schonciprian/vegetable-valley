@@ -7,7 +7,7 @@ import Weather from "./component/weather/Weather";
 
 
 import './stylesheet/App.css';
-import './stylesheet/Weather_forecast.css';
+import './stylesheet/weather/Weather_forecast.css';
 
 
 function App() {

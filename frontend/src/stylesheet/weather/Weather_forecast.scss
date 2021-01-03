@@ -1,4 +1,5 @@
-@import "App";
+@import "../App";
+@import "../Variables";
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
 
 //*****************//
@@ -7,32 +8,11 @@
 
 $background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80");
 $border-radius: 25px;
-$color-whisper: #eeeeee;
-$font-size-larger: 30px;
-$font-size-normal: 25px;
-$font-size-smaller: 20px;
-
-%display-flex-space-around {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-%display-flex-space-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 %weekList-row-display {
   display: block;
   margin: 10px 0;
   text-align: center;
-}
-
-
-::-webkit-scrollbar {
-  display: none;
 }
 
 //*********************//

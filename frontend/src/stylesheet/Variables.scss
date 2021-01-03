@@ -1,0 +1,33 @@
+$darkest-color-blue: #040617;
+$darker-color-blue: #0F1329;
+$dark-color-blue: #151A30;
+
+$text-color-yellow: #4B5682;
+$text-color-yellow-hover: #7F8EC0;
+
+$color-whisper: #eeeeee;
+
+$font-style-titles: "Montserrat", sans-serif;
+$font-style-text: "Montserrat", sans-serif;
+
+$font-size-larger: 30px;
+$font-size-normal: 25px;
+$font-size-smaller: 20px;
+
+%display-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%display-flex-space-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+%display-flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,26 +1,7 @@
-//$darkest-colo3r-blue: #172251;
-$darkest-color-blue: #040617;
-//$darker-color-blue: #364679;
-$darker-color-blue: #0F1329;
-//$dark-color-blue: #4b5c8d;
-$dark-color-blue: #151A30;
+@import "./Variables";
 
-//$text-color-yellow: #f7b900;
-//$text-color-yellow: #8f9bb3;
-$text-color-yellow: #4B5682;
-//$text-color-yellow-hover: #f7ce00;
-$text-color-yellow-hover: #7F8EC0;
-//$text-color-dark-yellow: #f6a774;
-
-//$font-style-titles: Mountains of Christmas;
-//$font-style-text: Chelsea Market;
-$font-style-titles: "Montserrat", sans-serif;
-$font-style-text: "Montserrat", sans-serif;
-
-%display-flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -28,7 +9,6 @@ body {
   padding: 0;
 
   background-color: $darkest-color-blue;
-
 }
 
 .header {
@@ -41,7 +21,6 @@ body {
   font-size: 75px;
   letter-spacing: 5px;
 
-  //background: linear-gradient($darkest-color-blue, $darkest-color-blue, $darkest-color-blue, $darker-color-blue);
   background: $darkest-color-blue;
 
   @media screen and (max-width: 775px) {
@@ -69,7 +48,6 @@ body {
   letter-spacing: 5px;
   text-align: center;
 
-  //background-color: $darker-color-blue;
   background: linear-gradient($darkest-color-blue, $dark-color-blue, $dark-color-blue, $darkest-color-blue);
 
   @media screen and (max-width: 775px) {

@@ -5,6 +5,22 @@
   align-items: center;
 }
 
+.city-selector .city-list-container .city-list-abroad ul, .city-selector .city-list-container .city-list-container-left .city-list-hungary ul, .forecast-weather-side .week-list-container .week-list li .sunrise-container, .forecast-weather-side .week-list-container .week-list li .sunset-container, .forecast-weather-side, .available-cities {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.forecast-weather-side .active-day-info-container .active-day-info .forecast-data, .today-weather-side .today-weather-extras-container .today-extras {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -62,6 +78,12 @@ body {
   color: #7F8EC0;
 }
 
+.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination, .weather-container, .loading, .header, .navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .city-selector .city-list-container .city-list-abroad ul, .city-selector .city-list-container .city-list-container-left .city-list-hungary ul, .forecast-weather-side .week-list-container .week-list li .sunrise-container, .forecast-weather-side .week-list-container .week-list li .sunset-container, .forecast-weather-side, .available-cities {
   display: flex;
   justify-content: space-around;
@@ -78,10 +100,6 @@ body {
   display: block;
   margin: 10px 0;
   text-align: center;
-}
-
-::-webkit-scrollbar {
-  display: none;
 }
 
 .available-cities {
