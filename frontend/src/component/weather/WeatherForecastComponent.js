@@ -65,6 +65,7 @@ export default function WeatherForecastComponent(props) {
         '01d';
 
     const updateShowDayIndexes = (pageNumber) => {
+        setIndexOfDailyForecast(0);
         setShowDayFromIndex((pageNumber * 4) - 4);
         setShowDayToIndex(pageNumber * 4);
     }
