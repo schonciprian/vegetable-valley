@@ -2,8 +2,6 @@ import React from 'react';
 import {MapPin} from "react-feather";
 import {getMonth} from "./TodayWeatherFunctions";
 import {getDayName} from "./WeatherForecastGetterFunctions";
-import WeatherIcon from 'react-icons-weather';
-
 
 export default function TodayWeatherComponent(props) {
     const weather = props.weather;
@@ -19,8 +17,12 @@ export default function TodayWeatherComponent(props) {
         windSpeed: ((weather.wind.speed)*3.6).toFixed(0),
         temp: (weather.main.temp-273.15).toFixed(1),
         weatherType: weather.weather[0].main,
-        weatherIcon: weather.weather[0].id,
+        weatherIcon: weather.weather[0].icon,
     };
+
+    const getForecastIcon = (todayWeather.length !== 0) ?
+        todayWeather.weatherIcon :
+        '01d';
 
     return (
         <div className="today-weather-side">
@@ -55,7 +57,7 @@ export default function TodayWeatherComponent(props) {
             </div>
 
             <div className="today-weather-container">
-                <WeatherIcon name="owm" iconId={todayWeather.weatherIcon} />
+                <img src={`http://openweathermap.org/img/w/${getForecastIcon}.png`} alt=""/>
                 <h1 className="weather-temp">{todayWeather.temp}</h1>
                 <h3 className="weather-desc">{todayWeather.weatherType}</h3>
             </div>

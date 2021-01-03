@@ -195,6 +195,9 @@ body {
   bottom: 25px;
   left: 20px;
 }
+.today-weather-side .today-weather-container img {
+  margin-bottom: -15px;
+}
 .today-weather-side .today-weather-container .weather-temp {
   margin: 0;
   font-weight: 700;

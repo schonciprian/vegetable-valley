@@ -9,9 +9,11 @@ import {
     getSnowDailyForecast,
     getWindDailyForecast
 } from "./WeatherForecastGetterFunctions";
-import {calculateSunriseSunset, getFeatherName, getMonth} from "./TodayWeatherFunctions";
+import {calculateSunriseSunset, getMonth} from "./TodayWeatherFunctions";
 import {MapPin, Sunrise, Sunset} from "react-feather";
 import axios from "axios";
+import WeatherIcon from 'react-icons-weather';
+
 
 export default function WeatherForecastComponent(props) {
 
@@ -47,6 +49,7 @@ export default function WeatherForecastComponent(props) {
                 rain: (oneDay.rain) ? (oneDay.rain).toFixed(1) : 0,
                 snow: (oneDay.snow) ? (oneDay.snow).toFixed(1) : 0,
                 weather: oneDay.weather[0].main,
+                weatherIcon: oneDay.weather[0].icon,
             })
         }
         count += 1;
@@ -56,9 +59,11 @@ export default function WeatherForecastComponent(props) {
         setIndexOfDailyForecast(index);
     }
 
-    const ForecastFeatherTag = (dailyForecast.length !== 0) ?
-        getFeatherName(dailyForecast[indexOfDailyForecast].weather) :
-        "div";
+    console.log((dailyForecast.length !== 0) ? dailyForecast[indexOfDailyForecast].weather: "");
+
+    const getForecastIcon = (dailyForecast.length !== 0) ?
+        dailyForecast[indexOfDailyForecast].weatherIcon :
+        '01d';
 
     return (
         <div className="forecast-weather-side">
@@ -88,7 +93,8 @@ export default function WeatherForecastComponent(props) {
                 <div className="active-day-info">
                     <div className="forecast-data">
                         <div className="active-day-date">{getDateOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
-                        <ForecastFeatherTag />
+                        <img src={`http://openweathermap.org/img/w/${getForecastIcon}.png`} alt=""/>
+                        {/*<WeatherIcon name="owm" iconId={getForecastIcon} />*/}
                         <div className="active-day-day">{getDayNameOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
                     </div>
                     <div className="forecast-property-container">
