@@ -191,7 +191,7 @@ $border-radius: 25px;
       ////////////////////////////////////////////////
       // Fix width if there is less than 4 elements //
       @media (max-width: 1003px) {
-        max-width: 80%;
+        max-width: 100%;
       }
       /////////////////////////////////////////////////
 
@@ -229,7 +229,7 @@ $border-radius: 25px;
       ////////////////////////////////////////////////
       // Fix width if there is less than 4 elements //
       @media (max-width: 1003px) {
-        max-width: 80%;
+        max-width: 100%;
       }
       /////////////////////////////////////////////////
 
@@ -262,7 +262,7 @@ $border-radius: 25px;
         ////////////////////////////////////////
         // Fix to keep cards evenly in a row. //
         @media (max-width: 1002px) {
-          margin: 10px 50px;
+          margin: 10px 10px;
         }
 
         @media (max-width: 774px) {
