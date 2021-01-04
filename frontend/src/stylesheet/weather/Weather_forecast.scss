@@ -31,7 +31,7 @@ $border-radius: 25px;
   flex-wrap: wrap;
 
   height: fit-content;
-  width: 90%;
+  width: fit-content;
 
   padding: 20px 10px;
   margin: 50px auto 150px auto;
@@ -48,6 +48,7 @@ $border-radius: 25px;
   // in the weather-container below 1352px.//
   @media (max-width: 1152px) {
     padding-top: 40px;
+    width: 75%;
   }
 
   @media (min-width: 1352px) {
@@ -58,7 +59,7 @@ $border-radius: 25px;
 .today-weather-side {
   height: 550px;
   width: 320px;
-  margin-left: 20px;
+  margin: 0 20px;
 
   position: relative;
   float: left;
@@ -177,12 +178,12 @@ $border-radius: 25px;
 
   .week-list-container {
     //width: 90%;
-    margin-left: 20px;
+    //margin-left: 20px;
 
     .pagination {
       @extend %display-flex-center;
       //margin: 0 auto;
-      margin: -25px auto 0;
+      margin: -25px 10px 0;
       padding: 20px 0 10px;
       max-width: 100%;
       background-color: #151A30;
@@ -234,7 +235,7 @@ $border-radius: 25px;
       /////////////////////////////////////////////////
 
       padding: 0;
-      margin: 10px auto;
+      margin: 10px 10px;
 
       border-radius: 10px;
       background-color: #151A30;

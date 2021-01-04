@@ -112,7 +112,7 @@ body {
 .weather-container {
   flex-wrap: wrap;
   height: fit-content;
-  width: 90%;
+  width: fit-content;
   padding: 20px 10px;
   margin: 50px auto 150px auto;
   font: 20px "Montserrat", sans-serif;
@@ -124,6 +124,7 @@ body {
 @media (max-width: 1152px) {
   .weather-container {
     padding-top: 40px;
+    width: 75%;
   }
 }
 @media (min-width: 1352px) {
@@ -135,7 +136,7 @@ body {
 .today-weather-side {
   height: 550px;
   width: 320px;
-  margin-left: 20px;
+  margin: 0 20px;
   position: relative;
   float: left;
   background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80");
@@ -222,11 +223,8 @@ body {
   flex-direction: column;
   padding-top: 25px;
 }
-.forecast-weather-side .week-list-container {
-  margin-left: 20px;
-}
 .forecast-weather-side .week-list-container .pagination {
-  margin: -25px auto 0;
+  margin: -25px 10px 0;
   padding: 20px 0 10px;
   max-width: 100%;
   background-color: #151A30;
@@ -261,7 +259,7 @@ body {
   flex-wrap: wrap;
   width: 680px;
   padding: 0;
-  margin: 10px auto;
+  margin: 10px 10px;
   border-radius: 10px;
   background-color: #151A30;
   -webkit-box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
