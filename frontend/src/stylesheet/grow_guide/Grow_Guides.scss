@@ -11,8 +11,8 @@
   font-family: $font-style-text;
 
   .grow-guide-card {
-    width: 280px;
-    height: 280px;
+    width: 180px;
+    height: 180px;
     background-color: $dark-color-blue;
     border-radius: 10px;
     padding: 15px;
@@ -28,7 +28,7 @@
     }
 
     .vegetable-name {
-      font-size: $font-size-larger;
+      font-size: $font-size-smaller;
       margin: auto;
       text-align: center;
       color: $color-whisper;

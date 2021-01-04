@@ -21,8 +21,8 @@
   font-family: "Montserrat", sans-serif;
 }
 .grow-guides-container .grow-guide-card {
-  width: 280px;
-  height: 280px;
+  width: 180px;
+  height: 180px;
   background-color: #151A30;
   border-radius: 10px;
   padding: 15px;
@@ -35,7 +35,7 @@
   object-fit: contain;
 }
 .grow-guides-container .grow-guide-card .vegetable-name {
-  font-size: 30px;
+  font-size: 20px;
   margin: auto;
   text-align: center;
   color: #eeeeee;
