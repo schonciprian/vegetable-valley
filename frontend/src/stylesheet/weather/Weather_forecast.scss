@@ -223,13 +223,13 @@ $border-radius: 25px;
     .week-list {
       @extend %display-flex-center;
       flex-wrap: wrap;
-      max-width: 680px;
+      width: 680px;
 
 
       ////////////////////////////////////////////////
       // Fix width if there is less than 4 elements //
       @media (max-width: 1003px) {
-        max-width: 100%;
+        width: 680px;
       }
       /////////////////////////////////////////////////
 

@@ -259,7 +259,7 @@ body {
 }
 .forecast-weather-side .week-list-container .week-list {
   flex-wrap: wrap;
-  max-width: 680px;
+  width: 680px;
   padding: 0;
   margin: 10px auto;
   border-radius: 10px;
@@ -270,7 +270,7 @@ body {
 }
 @media (max-width: 1003px) {
   .forecast-weather-side .week-list-container .week-list {
-    max-width: 100%;
+    width: 680px;
   }
 }
 .forecast-weather-side .week-list-container .week-list li {
