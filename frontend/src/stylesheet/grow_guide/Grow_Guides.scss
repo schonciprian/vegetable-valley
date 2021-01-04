@@ -1,0 +1,37 @@
+@import "../Variables";
+
+.grow-guides-container {
+  width: 80%;
+  height: fit-content;
+  margin: 50px auto;
+  background-color: $darker-color-blue;
+  border-radius: 25px;
+  @extend %display-flex-space-around;
+  flex-wrap: wrap;
+  font-family: $font-style-text;
+
+  .grow-guide-card {
+    width: 280px;
+    height: 280px;
+    background-color: $dark-color-blue;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px;
+    @extend %display-flex-space-between;
+    flex-direction: column;
+
+
+    img {
+      max-width: 85%;
+      height: 85%;
+      object-fit: contain;
+    }
+
+    .vegetable-name {
+      font-size: $font-size-larger;
+      margin: auto;
+      text-align: center;
+      color: $color-whisper;
+    }
+  }
+}

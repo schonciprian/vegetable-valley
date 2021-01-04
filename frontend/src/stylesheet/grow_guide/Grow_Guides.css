@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
+.grow-guides-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.grow-guides-container .grow-guide-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grow-guides-container {
+  width: 80%;
+  height: fit-content;
+  margin: 50px auto;
+  background-color: #0F1329;
+  border-radius: 25px;
+  flex-wrap: wrap;
+  font-family: "Montserrat", sans-serif;
+}
+.grow-guides-container .grow-guide-card {
+  width: 280px;
+  height: 280px;
+  background-color: #151A30;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px;
+  flex-direction: column;
+}
+.grow-guides-container .grow-guide-card img {
+  max-width: 85%;
+  height: 85%;
+  object-fit: contain;
+}
+.grow-guides-container .grow-guide-card .vegetable-name {
+  font-size: 30px;
+  margin: auto;
+  text-align: center;
+  color: #eeeeee;
+}
+
+/*# sourceMappingURL=Grow_Guides.css.map */
