@@ -20,7 +20,7 @@ $border-radius: 25px;
   background-color: $dark-color-blue;
 
   position: relative;
-  z-index: 100;
+  //z-index: 100;
   //border-radius: 10px;
 
   &:before {
@@ -32,7 +32,7 @@ $border-radius: 25px;
     top: 0; left: 0;
     opacity: 0;
     width: 100%;
-    z-index: -100;
+    z-index: -1;
     transition: opacity $transTime;
     border-radius: 10px;
 
