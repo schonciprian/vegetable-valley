@@ -385,9 +385,8 @@ body {
   width: 100%;
   padding: 10px;
   border: none;
-  border-radius: 25px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
+  border-radius: 10px;
+  font: 600 18px "Montserrat", sans-serif;
   background-image: var(--gradient);
   color: #ffffff;
   -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
@@ -477,6 +476,12 @@ body {
   color: #eeeeee;
   border-radius: 10px;
   cursor: pointer;
+  transition: transform 200ms ease;
+}
+.city-selector .city-list-container .city-list-container-left .get-location:hover {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 .city-selector .city-list-container .city-list-container-left .city-list-hungary {
   max-width: 750px;
