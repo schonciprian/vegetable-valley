@@ -277,9 +277,9 @@ body {
   margin: 10px;
   border-radius: 10px;
   cursor: pointer;
-  -webkit-transition: 200ms ease;
-  -o-transition: 200ms ease;
-  transition: 200ms ease;
+  -webkit-transition: 300ms ease;
+  -o-transition: 300ms ease;
+  transition: 300ms ease;
   -webkit-box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
   box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
   background-size: 100%;
