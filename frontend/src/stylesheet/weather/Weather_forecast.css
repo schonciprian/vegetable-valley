@@ -113,7 +113,7 @@ body {
   flex-wrap: wrap;
   height: fit-content;
   width: fit-content;
-  padding: 20px 10px;
+  padding: 0 10px;
   margin: 50px auto 150px auto;
   font: 20px "Montserrat", sans-serif;
   color: #eeeeee;
@@ -258,7 +258,7 @@ body {
 .forecast-weather-side .week-list-container .week-list {
   flex-wrap: wrap;
   width: 680px;
-  padding: 0;
+  padding: 20px 0 0;
   margin: 10px 10px;
   border-radius: 10px;
   background-color: #151A30;
