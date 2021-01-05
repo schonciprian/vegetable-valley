@@ -476,6 +476,7 @@ body {
   background-image: var(--gradient);
   color: #eeeeee;
   border-radius: 10px;
+  cursor: pointer;
 }
 .city-selector .city-list-container .city-list-container-left .city-list-hungary {
   max-width: 750px;
