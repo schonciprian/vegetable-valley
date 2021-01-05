@@ -499,9 +499,10 @@ $border-radius: 25px;
       }
 
       .search-icon {
-         height: 24px;
-         margin-right: 10px;
-         color: rgba(255, 140, 0, 0.8);
+        cursor: pointer;
+        height: 24px;
+        margin-right: 10px;
+        color: rgba(255, 140, 0, 0.8);
        }
     }
   }

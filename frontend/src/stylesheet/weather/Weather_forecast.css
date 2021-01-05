@@ -456,6 +456,7 @@ body {
   background-image: var(--gradient);
 }
 .city-selector .city-input-container .search-box .search-icon {
+  cursor: pointer;
   height: 24px;
   margin-right: 10px;
   color: rgba(255, 140, 0, 0.8);
