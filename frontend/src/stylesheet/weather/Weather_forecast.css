@@ -258,7 +258,7 @@ body {
 .forecast-weather-side .week-list-container .week-list {
   flex-wrap: wrap;
   width: 680px;
-  padding: 20px 0 0;
+  padding: 20px 10px 0;
   margin: 10px 10px;
   border-radius: 10px;
   background-color: #151A30;
