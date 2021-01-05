@@ -57,7 +57,7 @@ export default function TodayWeatherComponent(props) {
             </div>
 
             <div className="today-weather-container">
-                <img src={`http://openweathermap.org/img/w/${getForecastIcon}.png`} alt=""/>
+                <img src={`https://openweathermap.org/img/w/${getForecastIcon}.png`} alt=""/>
                 <h1 className="weather-temp">{todayWeather.temp}</h1>
                 <h3 className="weather-desc">{todayWeather.weatherType}</h3>
             </div>
