@@ -14,6 +14,36 @@ $border-radius: 25px;
   text-align: center;
 }
 
+@mixin gradientAnimation( $start, $end, $transTime ){
+  background-size: 100%;
+  //background-image: linear-gradient($start, $end);
+  background-color: $dark-color-blue;
+
+  position: relative;
+  z-index: 100;
+  //border-radius: 10px;
+
+  &:before {
+    background-image: linear-gradient(135deg, $end, $start);
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -100;
+    transition: opacity $transTime;
+    border-radius: 10px;
+
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+
 //*************************//
 // ** Weather container ** //
 //*************************//
@@ -259,6 +289,9 @@ $border-radius: 25px;
 
         -webkit-box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
         box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
+        //@include gradientAnimation(#4B5682, #7F8EC0, 1s);
+        @include gradientAnimation(#7F8EC0, #4B5682, 1s);
+
 
         ////////////////////////////////////////
         // Fix to keep cards evenly in a row. //
@@ -274,10 +307,9 @@ $border-radius: 25px;
           -webkit-transform: scale(1.1);
           -ms-transform: scale(1.1);
           transform: scale(1.1);
-          background-image: var(--gradient);
           color: $color-whisper;
           -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2)
+          box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
         }
 
         &.active {
