@@ -109,7 +109,7 @@ export default function WeatherForecastComponent(props) {
                 <div className="active-day-info">
                     <div className="forecast-data">
                         <div className="active-day-date">{getDateOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
-                        <img src={`http://openweathermap.org/img/w/${getForecastIcon}.png`} alt=""/>
+                        <img src={`https://openweathermap.org/img/w/${getForecastIcon}.png`} alt=""/>
                         <div className="active-day-day">{getDayNameOfDailyForecast(dailyForecast, indexOfDailyForecast)}</div>
                     </div>
                     <div className="forecast-property-container">
