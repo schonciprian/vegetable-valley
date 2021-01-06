@@ -204,11 +204,15 @@ $border-radius: 25px;
   @extend %display-flex-space-between;
   flex-direction: column;
   padding-top: 25px;
-  //width: 80%;
+  //width: 50%;
 
   .week-list-container {
-    //width: 90%;
+    width: 720px;
     //margin-left: 20px;
+
+    @media (max-width: 1002px) {
+      max-width: fit-content;
+    }
 
     .pagination {
       @extend %display-flex-center;
@@ -221,7 +225,7 @@ $border-radius: 25px;
 
       ////////////////////////////////////////////////
       // Fix width if there is less than 4 elements //
-      @media (max-width: 1003px) {
+      @media (max-width: 1002px) {
         max-width: 100%;
       }
       /////////////////////////////////////////////////
@@ -254,6 +258,7 @@ $border-radius: 25px;
     .week-list {
       @extend %display-flex-center;
       flex-wrap: wrap;
+      //width: border-box;
       //width: 680px;
 
 

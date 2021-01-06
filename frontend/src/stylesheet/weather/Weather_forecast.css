@@ -223,6 +223,14 @@ body {
   flex-direction: column;
   padding-top: 25px;
 }
+.forecast-weather-side .week-list-container {
+  width: 720px;
+}
+@media (max-width: 1002px) {
+  .forecast-weather-side .week-list-container {
+    max-width: fit-content;
+  }
+}
 .forecast-weather-side .week-list-container .pagination {
   margin: -25px 10px 0;
   padding: 20px 0 10px;
@@ -230,7 +238,7 @@ body {
   background-color: #151A30;
   border-radius: 10px;
 }
-@media (max-width: 1003px) {
+@media (max-width: 1002px) {
   .forecast-weather-side .week-list-container .pagination {
     max-width: 100%;
   }
