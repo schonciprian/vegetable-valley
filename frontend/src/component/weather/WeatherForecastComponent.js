@@ -29,6 +29,7 @@ export default function WeatherForecastComponent(props) {
 
     const [showDayFromIndex, setShowDayFromIndex] = useState(0);
     const [showDayToIndex, setShowDayToIndex] = useState(4);
+    const [actualPageNumber, setActualPageNumber] = useState(1);
 
     if (weatherForecast.length !== 0 ) {daily.forEach( oneDay => {
         if (count > showDayFromIndex && count <= showDayToIndex) {
@@ -65,9 +66,12 @@ export default function WeatherForecastComponent(props) {
         '01d';
 
     const updateShowDayIndexes = (pageNumber) => {
-        setIndexOfDailyForecast(0);
-        setShowDayFromIndex((pageNumber * 4) - 4);
-        setShowDayToIndex(pageNumber * 4);
+        if (pageNumber !== actualPageNumber) {
+            setIndexOfDailyForecast(0);
+            setActualPageNumber(pageNumber);
+            setShowDayFromIndex((pageNumber * 4) - 4);
+            setShowDayToIndex(pageNumber * 4);
+        }
     }
 
     return (
