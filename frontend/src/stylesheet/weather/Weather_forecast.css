@@ -257,7 +257,6 @@ body {
 }
 .forecast-weather-side .week-list-container .week-list {
   flex-wrap: wrap;
-  width: 680px;
   padding: 20px 10px 0;
   margin: 10px 10px;
   border-radius: 10px;
@@ -265,11 +264,6 @@ body {
   -webkit-box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
   box-shadow: 0 0 50px -5px rgba(10, 10, 10, 0.75);
   list-style-type: none;
-}
-@media (max-width: 1003px) {
-  .forecast-weather-side .week-list-container .week-list {
-    width: 680px;
-  }
 }
 .forecast-weather-side .week-list-container .week-list li {
   width: 120px;
@@ -305,12 +299,12 @@ body {
 }
 @media (max-width: 1002px) {
   .forecast-weather-side .week-list-container .week-list li {
-    margin: 10px 10px;
+    margin: 10px 45px;
   }
 }
 @media (max-width: 774px) {
   .forecast-weather-side .week-list-container .week-list li {
-    margin: 10px 10px;
+    margin: 10px 20px;
   }
 }
 .forecast-weather-side .week-list-container .week-list li:hover {
@@ -346,7 +340,7 @@ body {
 }
 .forecast-weather-side .active-day-info-container {
   flex-wrap: wrap;
-  margin: 10px auto;
+  margin: 10px;
   background-color: #151A30;
   border-radius: 10px;
 }

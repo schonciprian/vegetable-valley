@@ -254,13 +254,14 @@ $border-radius: 25px;
     .week-list {
       @extend %display-flex-center;
       flex-wrap: wrap;
-      width: 680px;
+      //width: 680px;
 
 
       ////////////////////////////////////////////////
       // Fix width if there is less than 4 elements //
       @media (max-width: 1003px) {
-        width: 680px;
+        //width: 680px;
+        //width: 90%;
       }
       /////////////////////////////////////////////////
 
@@ -296,11 +297,11 @@ $border-radius: 25px;
         ////////////////////////////////////////
         // Fix to keep cards evenly in a row. //
         @media (max-width: 1002px) {
-          margin: 10px 10px;
+          margin: 10px 45px;
         }
 
         @media (max-width: 774px) {
-          margin: 10px 10px;
+          margin: 10px 20px;
         }
 
         &:hover {
@@ -351,7 +352,7 @@ $border-radius: 25px;
   .active-day-info-container {
     @extend %display-flex-center;
     flex-wrap: wrap;
-    margin: 10px auto;
+    margin: 10px;
 
     background-color: #151A30;
     border-radius: 10px;
