@@ -31,9 +31,17 @@ export default function CitySelectorComponent(props) {
     }
 
     const handleNewCity = () => {
-        props.setCity(document.getElementById("city-input").value)
-        hideCitySelection()
-        document.getElementById("city-input").value = "";
+        if (document.getElementById("city-input").value) {
+            props.setCity(document.getElementById("city-input").value)
+            hideCitySelection()
+            document.getElementById("city-input").value = "";
+        } else {
+            document.getElementById("city-input").classList.add("no-input-error");
+        }
+        setTimeout(() => {
+            document.getElementById("city-input").classList.remove("no-input-error");
+        }, 1000);
+
     }
 
     const handleKeyDown = (event) => {
