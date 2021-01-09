@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
-.grow-guides-container .grow-guide-card {
+.card .card-inner .card-face-front, .grow-guides-container .grow-guide-card {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,8 +26,6 @@
   height: 200px;
   background-color: #151A30;
   border-radius: 10px;
-  padding: 15px;
-  margin: 20px;
   flex-direction: column;
   cursor: pointer;
   -webkit-transition: -webkit-transform 300ms ease;
@@ -36,11 +34,6 @@
   transition: transform 300ms ease, -webkit-transform 300ms ease, background-color 0.8s;
   -webkit-transform: translateZ(0) scale(1.02) perspective(1000px);
   transform: translateZ(0) scale(1.02) perspective(1000px);
-}
-.grow-guides-container .grow-guide-card:hover {
-  background-color: #2d3748;
-  -webkit-transform: scale(1.15) perspective(1250px) rotateY(10deg);
-  transform: scale(1.15) perspective(1250px) rotateY(10deg);
 }
 .grow-guides-container .grow-guide-card img {
   max-width: 85%;
@@ -52,6 +45,98 @@
   margin: 0 auto;
   text-align: center;
   color: #eeeeee;
+}
+
+.card {
+  margin: 20px;
+  width: 200px;
+  height: 250px;
+  perspective: 1000px;
+}
+.card .card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+  --gradient: linear-gradient( 135deg, #151A30, #4B5682);
+}
+.card .card-inner .card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+.card .card-inner .card-face-front {
+  flex-direction: column;
+  background-image: var(--gradient);
+}
+.card .card-inner .card-face-front h2 {
+  color: #fff;
+  font-size: 32px;
+}
+.card .card-inner .card-face-back {
+  background-color: #4B5682;
+  transform: rotateY(180deg);
+}
+.card .card-inner .card-face-back .card-content {
+  width: 100%;
+  height: 100%;
+}
+.card .card-inner .card-face-back .card-content .card-header {
+  position: relative;
+  padding: 10px;
+}
+.card .card-inner .card-face-back .card-content .card-header:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 0 0 50% 0;
+  background-image: linear-gradient(to bottom left, #4B5682 10%, #7F8EC0 115%);
+}
+.card .card-inner .card-face-back .card-content .card-header .pp {
+  display: block;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 5px solid #fff;
+  object-fit: cover;
+}
+.card .card-inner .card-face-back .card-content .card-header h2 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+}
+.card .card-inner .card-face-back .card-content .card-body {
+  padding: 10px;
+}
+.card .card-inner .card-face-back .card-content .card-body h3 {
+  color: #212121;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.card .card-inner .card-face-back .card-content .card-body p {
+  color: #212121;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.card .is-flipped {
+  transform: rotateY(180deg);
 }
 
 /*# sourceMappingURL=Grow_Guides.css.map */
