@@ -8,8 +8,10 @@ export default function GrowGuide() {
     // console.log(Vegetables);
 
 
-    const toggleCard = () => {
-        const card = document.querySelector('.card-inner');
+    const toggleCard = (cardIndex) => {
+        console.log(cardIndex);
+
+        const card = document.getElementById(`${cardIndex}`);
         console.log(card);
         card.classList.toggle('is-flipped');
     }
@@ -19,8 +21,8 @@ export default function GrowGuide() {
         <div className="grow-guides-container">
 
             {Object.keys(Vegetables).map((veggie, index) => (
-                <div className="card" onClick={toggleCard}>
-                    <div className="grow-guide-card card-inner" key={index}>
+                <div key={index} className="card" onClick={() => toggleCard(index)}>
+                    <div id={index} className="grow-guide-card card-inner" key={index}>
                         <div className="card-face card-face-front">
                             <img src={Vegetables[veggie].pictureURL} alt=""/>
                             <div className="vegetable-name">{Vegetables[veggie].name}</div>
@@ -28,8 +30,8 @@ export default function GrowGuide() {
                         <div className="card-face card-face-back">
                             <div className="card-content">
                                 <div className="card-header">
-                                    <img className="pp" src={garlic} alt=""/>
-                                    <h2>Garlic</h2>
+                                    <img className="pp" src={Vegetables[veggie].pictureURL} alt=""/>
+                                    <h2>{Vegetables[veggie].name}</h2>
                                 </div>
                                 <div className="card-body">
                                     <h3>Sowing depth: 3 cm</h3>
