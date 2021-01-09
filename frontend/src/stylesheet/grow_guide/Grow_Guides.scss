@@ -12,8 +12,8 @@
   font-family: $font-style-text;
 
   .grow-guide-card {
-    width: 180px;
-    height: 200px;
+    //width: 200px;
+    //height: 220px;
     background-color: $dark-color-blue;
     border-radius: 10px;
     //padding: 15px;
@@ -62,8 +62,8 @@ $light: #f3f3f3;
   //@extend %display-flex-center;
   //flex-direction: column;
   margin: 20px;
-  width: 200px;
-  height: 250px;
+  width: 225px;
+  height: 275px;
   perspective: 1000px;
 
   .card-inner {
@@ -124,12 +124,13 @@ $light: #f3f3f3;
 
           .pp {
             display: block;
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 30px;
+            width: 80px;
+            height: 80px;
+            padding: 5px;
+            margin: 0 auto 10px;
             border-radius: 50%;
             background-color: #fff;
-            border: 5px solid #fff;
+            border: 1px solid #fff;
             object-fit: cover;
           }
 
@@ -139,6 +140,7 @@ $light: #f3f3f3;
             font-weight: 900;
             text-transform: uppercase;
             text-align: center;
+            margin: 5px auto;
           }
         }
 
@@ -147,15 +149,16 @@ $light: #f3f3f3;
 
           h3 {
             color: $dark;
-            font-size: 20px;
+            font-size: 15px;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin: 5px 0;
           }
 
           p {
             color: $dark;
             font-size: 18px;
             line-height: 1.5;
+            margin: 5px auto;
           }
         }
       }

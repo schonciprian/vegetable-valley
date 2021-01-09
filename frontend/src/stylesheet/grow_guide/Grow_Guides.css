@@ -22,8 +22,6 @@
   font-family: "Montserrat", sans-serif;
 }
 .grow-guides-container .grow-guide-card {
-  width: 180px;
-  height: 200px;
   background-color: #151A30;
   border-radius: 10px;
   flex-direction: column;
@@ -49,8 +47,8 @@
 
 .card {
   margin: 20px;
-  width: 200px;
-  height: 250px;
+  width: 225px;
+  height: 275px;
   perspective: 1000px;
 }
 .card .card-inner {
@@ -106,12 +104,13 @@
 }
 .card .card-inner .card-face-back .card-content .card-header .pp {
   display: block;
-  width: 70px;
-  height: 70px;
-  margin: 0 auto 30px;
+  width: 80px;
+  height: 80px;
+  padding: 5px;
+  margin: 0 auto 10px;
   border-radius: 50%;
   background-color: #fff;
-  border: 5px solid #fff;
+  border: 1px solid #fff;
   object-fit: cover;
 }
 .card .card-inner .card-face-back .card-content .card-header h2 {
@@ -120,20 +119,22 @@
   font-weight: 900;
   text-transform: uppercase;
   text-align: center;
+  margin: 5px auto;
 }
 .card .card-inner .card-face-back .card-content .card-body {
   padding: 10px;
 }
 .card .card-inner .card-face-back .card-content .card-body h3 {
   color: #212121;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin: 5px 0;
 }
 .card .card-inner .card-face-back .card-content .card-body p {
   color: #212121;
   font-size: 18px;
   line-height: 1.5;
+  margin: 5px auto;
 }
 .card .is-flipped {
   transform: rotateY(180deg);
