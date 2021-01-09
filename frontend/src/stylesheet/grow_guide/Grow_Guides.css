@@ -1,19 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
+.grow-guides-container .grow-guide-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .grow-guides-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.grow-guides-container .grow-guide-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .grow-guides-container {
   width: 80%;
   height: fit-content;
+  padding: 20px;
   margin: 50px auto;
   background-color: #0F1329;
   border-radius: 25px;
@@ -22,12 +23,24 @@
 }
 .grow-guides-container .grow-guide-card {
   width: 180px;
-  height: 180px;
+  height: 200px;
   background-color: #151A30;
   border-radius: 10px;
   padding: 15px;
   margin: 20px;
   flex-direction: column;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 300ms ease;
+  -o-transition: transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease, background-color 0.8s;
+  -webkit-transform: translateZ(0) scale(1.02) perspective(1000px);
+  transform: translateZ(0) scale(1.02) perspective(1000px);
+}
+.grow-guides-container .grow-guide-card:hover {
+  background-color: #2d3748;
+  -webkit-transform: scale(1.15) perspective(1250px) rotateY(10deg);
+  transform: scale(1.15) perspective(1250px) rotateY(10deg);
 }
 .grow-guides-container .grow-guide-card img {
   max-width: 85%;
@@ -36,7 +49,7 @@
 }
 .grow-guides-container .grow-guide-card .vegetable-name {
   font-size: 20px;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
   color: #eeeeee;
 }
