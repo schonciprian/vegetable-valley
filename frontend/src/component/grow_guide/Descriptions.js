@@ -1,8 +1,27 @@
 import garlic from '../../image/garlic.png';
 import onion from '../../image/onion.png';
 import red_onion from '../../image/red_onion.png';
+import leek from '../../image/leek.png';
 import carrot from '../../image/carrot.png';
-import white_carrot from '../../image/white_carrot.png';
+import parsley from '../../image/parsley.png';
+import celeriac from '../../image/celeriac.png';
+import tomato from '../../image/tomato.png';
+import pear_tomato from '../../image/pear_tomato.png';
+import paprika from '../../image/paprika.png';
+import radish from '../../image/radish.png';
+import beetroot from '../../image/beetroot.png';
+import peas from '../../image/peas.png';
+import beans from '../../image/beans.png';
+import brussels_sprouts from '../../image/brussels_sprouts.png';
+import cabbage from '../../image/cabbage.png';
+import purple_cabbage from '../../image/purple_cabbage.png';
+import eggplant from '../../image/eggplant.png';
+import zucchini from '../../image/zucchini.png';
+import green_kohlrabi from '../../image/green_kohlrabi.jpg';
+import purple_kohlrabi from '../../image/purple_kohlrabi.png';
+import kale from '../../image/kale.png';
+import potato from '../../image/potato.png';
+import sweet_potato from '../../image/sweet_potato.png';
 
 
 
@@ -40,12 +59,90 @@ export const Vegetables = {
         name: 'Red onion',
         pictureURL: red_onion,
     },
+    leek: {
+        name: 'Leek',
+        pictureURL: leek,
+    },
     carrot: {
         name: 'Carrot',
         pictureURL: carrot,
     },
-    white_carrot: {
-        name: 'White carrot',
-        pictureURL: white_carrot,
+    parsley: {
+        name: 'Parsley',
+        pictureURL: parsley,
     },
+    celeriac: {
+        name: 'Celeriac',
+        pictureURL: celeriac,
+    },
+    tomato: {
+        name: 'Tomato',
+        pictureURL: tomato,
+    },
+    pear_tomato: {
+        name: 'Pear tomato',
+        pictureURL: pear_tomato,
+    },
+    paprika: {
+        name: 'Paprika',
+        pictureURL: paprika,
+    },
+    radish: {
+        name: 'Radish',
+        pictureURL: radish,
+    },
+    beetroot: {
+        name: 'Beetroot',
+        pictureURL: beetroot,
+    },
+    peas: {
+        name: 'Peas',
+        pictureURL: peas,
+    },
+    beans: {
+        name: 'Beans',
+        pictureURL: beans,
+    },
+    brussels_sprouts: {
+        name: 'Brussels sprouts',
+        pictureURL: brussels_sprouts,
+    },
+    cabbage: {
+        name: 'Cabbage',
+        pictureURL: cabbage,
+    },
+    purple_cabbage: {
+        name: 'Purple cabbage',
+        pictureURL: purple_cabbage,
+    },
+    eggplant: {
+        name: 'Eggplant',
+        pictureURL: eggplant,
+    },
+    zucchini: {
+        name: 'Zucchini',
+        pictureURL: zucchini,
+    },
+    green_kohlrabi: {
+        name: 'Green kohlrabi',
+        pictureURL: green_kohlrabi,
+    },
+    purple_kohlrabi: {
+        name: 'Purple kohlrabi',
+        pictureURL: purple_kohlrabi,
+    },
+    kale: {
+        name: 'Kale',
+        pictureURL: kale,
+    },
+    potato: {
+        name: 'Potato',
+        pictureURL: potato,
+    },
+    sweet_potato: {
+        name: 'Sweet potato',
+        pictureURL: sweet_potato,
+    },
+
+
 }
