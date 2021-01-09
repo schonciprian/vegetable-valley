@@ -1,24 +1,17 @@
 import React from 'react';
-import garlic from'../../image/garlic.png';
-import onion from'../../image/onion.png';
-import red_onion from'../../image/red_onion.png';
-
+import {Vegetables} from './Descriptions';
 
 export default function GrowGuide() {
+    console.log(Vegetables);
+
     return (
         <div className="grow-guides-container">
-            <div className="grow-guide-card">
-                <img src={garlic} alt=""/>
-                <div className="vegetable-name">Garlic</div>
-            </div>
-            <div className="grow-guide-card">
-                <img src={onion} alt=""/>
-                <div className="vegetable-name">Onion</div>
-            </div>
-            <div className="grow-guide-card">
-                <img src={red_onion} alt=""/>
-                <div className="vegetable-name">Red onion</div>
-            </div>
+            {Object.keys(Vegetables).map((veggie, index) => (
+                <div className="grow-guide-card" key={index}>
+                    <img src={Vegetables[veggie].pictureURL} alt=""/>
+                    <div className="vegetable-name">{Vegetables[veggie].name}</div>
+                </div>
+            ))}
         </div>
     );
 }
