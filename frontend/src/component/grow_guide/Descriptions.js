@@ -17,7 +17,7 @@ import cabbage from '../../image/cabbage.png';
 import purple_cabbage from '../../image/purple_cabbage.png';
 import eggplant from '../../image/eggplant.png';
 import zucchini from '../../image/zucchini.png';
-import green_kohlrabi from '../../image/green_kohlrabi.jpg';
+import green_kohlrabi from '../../image/green_kohlrabi.png';
 import purple_kohlrabi from '../../image/purple_kohlrabi.png';
 import kale from '../../image/kale.png';
 import potato from '../../image/potato.png';
