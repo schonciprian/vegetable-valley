@@ -4,13 +4,16 @@ import {Vegetables} from './Descriptions';
 export default function GrowGuide() {
 
     const toggleCard = (cardIndex) => {
-        const isFlippedCard = document.querySelector('.is-flipped');
-        if (isFlippedCard) {
-            isFlippedCard.classList.remove('is-flipped');
-        }
-
         const card = document.getElementById(`${cardIndex}`);
         card.classList.toggle('is-flipped');
+
+        const isFlippedCards = Array.prototype.slice.call(document.querySelectorAll('.is-flipped'));
+
+        isFlippedCards.map((isFlippedCard) => {
+            if (parseInt(isFlippedCard.id) !== cardIndex) {
+                isFlippedCard.classList.remove('is-flipped');
+            }
+        })
     }
 
     return (
