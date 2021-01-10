@@ -132,7 +132,8 @@
 }
 .card .card-inner .card-face-back .card-content .card-body p {
   color: #212121;
-  font-size: 18px;
+  font-size: 13px;
+  font-weight: 600;
   line-height: 1.5;
   margin: 5px auto;
 }
