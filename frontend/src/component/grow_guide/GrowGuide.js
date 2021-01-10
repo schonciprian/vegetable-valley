@@ -1,23 +1,19 @@
 import React from 'react';
 import {Vegetables} from './Descriptions';
 
-import garlic from '../../image/garlic.png';
-
-
 export default function GrowGuide() {
-    // console.log(Vegetables);
-
 
     const toggleCard = (cardIndex) => {
-        console.log(cardIndex);
+        const isFlippedCard = document.querySelector('.is-flipped');
+        if (isFlippedCard) {
+            isFlippedCard.classList.remove('is-flipped');
+        }
 
         const card = document.getElementById(`${cardIndex}`);
-        console.log(card);
         card.classList.toggle('is-flipped');
     }
 
     return (
-        <div>
         <div className="grow-guides-container">
 
             {Object.keys(Vegetables).map((veggie, index) => (
@@ -34,8 +30,9 @@ export default function GrowGuide() {
                                     <h2>{Vegetables[veggie].name}</h2>
                                 </div>
                                 <div className="card-body">
-                                    <h3>Sowing depth: 3 cm</h3>
-                                    <p>some other things</p>
+                                    <p>Sowing depth: {Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</p>
+                                    <p>Spacing between rows: {Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</p>
+                                    <p>Spacing along rows: {Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</p>
                                 </div>
                             </div>
                         </div>
@@ -43,26 +40,6 @@ export default function GrowGuide() {
                 </div>
             ))}
 
-        </div>
-        {/*<div className="card" onClick={toggleCard}>*/}
-        {/*    <div id="card-inner" className="card-inner">*/}
-        {/*        <div className="card-face card-face-front">*/}
-        {/*            <h2>Garlic</h2>*/}
-        {/*        </div>*/}
-        {/*        <div className="card-face card-face-back">*/}
-        {/*            <div className="card-content">*/}
-        {/*                <div className="card-header">*/}
-        {/*                    <img className="pp" src={garlic} alt=""/>*/}
-        {/*                    <h2>Garlic</h2>*/}
-        {/*                </div>*/}
-        {/*                <div className="card-body">*/}
-        {/*                    <h3>Sowing depth: 3 cm</h3>*/}
-        {/*                    <p>some other things</p>*/}
-        {/*                </div>*/}
-        {/*            </div>*/}
-        {/*        </div>*/}
-        {/*    </div>*/}
-        {/*</div>*/}
         </div>
     );
 }
