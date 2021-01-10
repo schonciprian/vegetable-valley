@@ -1,172 +1,155 @@
 @import "../Variables";
 
-.grow-guides-container {
-  width: 80%;
-  height: fit-content;
-  padding: 20px;
-  margin: 50px auto;
-  background-color: $darker-color-blue;
-  border-radius: 25px;
-  @extend %display-flex-space-around;
-  flex-wrap: wrap;
-  font-family: $font-style-text;
-
-  .grow-guide-card {
-    //width: 200px;
-    //height: 220px;
-    background-color: $dark-color-blue;
-    border-radius: 10px;
-    //padding: 15px;
-    //margin: 20px;
-    @extend %display-flex-center;
-    flex-direction: column;
-
-    cursor: pointer;
-
-    -webkit-transition: -webkit-transform 300ms ease;
-    -o-transition: transform 300ms ease;
-    transition: -webkit-transform 300ms ease;
-    transition: transform 300ms ease, -webkit-transform 300ms ease, background-color 0.8s;
-
-    -webkit-transform: translateZ(0) scale(1.02) perspective(1000px);
-    transform: translateZ(0) scale(1.02) perspective(1000px);
-
-    //&:hover {
-    //  background-color: $normal-color-blue;
-    //
-    //  -webkit-transform: scale(1.15) perspective(1250px) rotateY(10deg);
-    //  transform: scale(1.15) perspective(1250px) rotateY(10deg);
-    //}
-
-    img {
-      max-width: 85%;
-      height: 85%;
-      object-fit: contain;
-    }
-
-    .vegetable-name {
-      font-size: $font-size-smaller;
-      margin: 0 auto;
-      text-align: center;
-      color: $color-whisper;
-    }
-  }
-}
 
 $primary: #4B5682;
 $secondary: #7F8EC0;
 $dark: #212121;
 $light: #f3f3f3;
 
-.card {
-  //@extend %display-flex-center;
-  //flex-direction: column;
-  margin: 20px;
-  width: 225px;
-  height: 275px;
-  perspective: 1000px;
+.grow-guides-container {
+  @extend %display-flex-space-around;
+  flex-wrap: wrap;
 
-  .card-inner {
-    width: 100%;
-    height: 100%;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-    position: relative;
-    --gradient: linear-gradient( 135deg, #151A30, #4B5682);
+  width: 80%;
+  height: fit-content;
 
-    .card-face {
-      position: absolute;
+  padding: 20px;
+  margin: 50px auto;
+
+  font-family: $font-style-text;
+
+  background-color: $darker-color-blue;
+  border-radius: 25px;
+
+  .grow-guide-card-outer {
+    width: 225px;
+    height: 275px;
+
+    margin: 20px;
+
+    perspective: 1000px;
+
+    .grow-guide-card-inner {
+      position: relative;
+
       width: 100%;
       height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
-    }
 
-    .card-face-front {
-      flex-direction: column;
-      background-image: var(--gradient);
-      @extend %display-flex-center;
+      cursor: pointer;
+
+      transition: transform 1s;
+      transform-style: preserve-3d;
+      --gradient: linear-gradient( 135deg, #151A30, #4B5682);
+
+      img {
+        max-width: 85%;
+        height: 85%;
+        object-fit: contain;
+      }
+
+      .vegetable-name {
+        margin: 0 auto;
+
+        text-align: center;
+        font-size: $font-size-smaller;
+        color: $color-whisper;
+      }
+    }
+  }
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card-face-front {
+  flex-direction: column;
+  background-image: var(--gradient);
+  @extend %display-flex-center;
+
+  h2 {
+    color: #fff;
+    font-size: 32px;
+  }
+}
+
+.card-face-back {
+  background-color: $text-color-yellow;
+  transform: rotateY(180deg);
+
+  .card-content {
+    width: 100%;
+    height: 100%;
+
+    .card-header {
+      position: relative;
+      padding: 10px;
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        border-radius: 0 0 50% 0;
+        background-image: linear-gradient(to bottom left, #4B5682 10%, #7F8EC0 115%);
+      }
+
+      .pp {
+        display: block;
+        width: 80px;
+        height: 80px;
+        padding: 5px;
+        margin: 0 auto 10px;
+        border-radius: 50%;
+        background-color: #fff;
+        border: 1px solid #fff;
+        object-fit: cover;
+      }
 
       h2 {
         color: #fff;
-        font-size: 32px;
+        font-size: 20px;
+        font-weight: 900;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 5px auto;
       }
     }
 
-    .card-face-back {
-      background-color: $text-color-yellow;
-      transform: rotateY(180deg);
+    .card-body {
+      padding: 10px;
 
-      .card-content {
-        width: 100%;
-        height: 100%;
+      h3 {
+        color: $dark;
+        font-size: 15px;
+        font-weight: 600;
+        margin: 5px 0;
+      }
 
-        .card-header {
-          position: relative;
-          padding: 10px;
-
-          &:after {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            z-index: -1;
-            border-radius: 0 0 50% 0;
-            background-image: linear-gradient(to bottom left, #4B5682 10%, #7F8EC0 115%);
-          }
-
-          .pp {
-            display: block;
-            width: 80px;
-            height: 80px;
-            padding: 5px;
-            margin: 0 auto 10px;
-            border-radius: 50%;
-            background-color: #fff;
-            border: 1px solid #fff;
-            object-fit: cover;
-          }
-
-          h2 {
-            color: #fff;
-            font-size: 20px;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-align: center;
-            margin: 5px auto;
-          }
-        }
-
-        .card-body {
-          padding: 10px;
-
-          h3 {
-            color: $dark;
-            font-size: 15px;
-            font-weight: 600;
-            margin: 5px 0;
-          }
-
-          p {
-            color: $dark;
-            font-size: 13px;
-            font-weight: 600;
-            line-height: 1.5;
-            margin: 5px auto;
-          }
-        }
+      p {
+        color: $dark;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.5;
+        margin: 5px auto;
       }
     }
-  }
-
-  .is-flipped {
-    transform: rotateY(180deg);
   }
 }
+
+
+.is-flipped {
+  transform: rotateY(180deg);
+}
+

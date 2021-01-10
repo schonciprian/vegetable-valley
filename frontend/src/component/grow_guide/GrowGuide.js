@@ -17,8 +17,8 @@ export default function GrowGuide() {
         <div className="grow-guides-container">
 
             {Object.keys(Vegetables).map((veggie, index) => (
-                <div key={index} className="card" onClick={() => toggleCard(index)}>
-                    <div id={index} className="grow-guide-card card-inner" key={index}>
+                <div key={index} className="grow-guide-card-outer" onClick={() => toggleCard(index)}>
+                    <div id={index} className="grow-guide-card-inner" key={index}>
                         <div className="card-face card-face-front">
                             <img src={Vegetables[veggie].pictureURL} alt=""/>
                             <div className="vegetable-name">{Vegetables[veggie].name}</div>
