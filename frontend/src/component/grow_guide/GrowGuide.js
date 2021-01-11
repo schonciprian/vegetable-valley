@@ -23,14 +23,14 @@ export default function GrowGuide() {
                 <div key={index} className="grow-guide-card-outer" onClick={() => toggleCard(index)}>
                     <div id={index} className="grow-guide-card-inner" key={index}>
                         <div className="card-face card-face-front">
-                            <img src={Vegetables[veggie].pictureURL} alt=""/>
                             <div className="vegetable-name">{Vegetables[veggie].name}</div>
+                            <img src={Vegetables[veggie].pictureURL} alt=""/>
                         </div>
                         <div className="card-face card-face-back">
                             <div className="card-content">
                                 <div className="card-header">
-                                    <img className="pp" src={Vegetables[veggie].pictureURL} alt=""/>
                                     <h2>{Vegetables[veggie].name}</h2>
+                                    <img className="pp" src={Vegetables[veggie].pictureURL} alt=""/>
                                 </div>
                                 <div className="card-body">
                                     <p>Sowing depth: {Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</p>
