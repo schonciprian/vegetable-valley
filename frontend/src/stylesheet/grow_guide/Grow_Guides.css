@@ -42,9 +42,11 @@
   object-fit: contain;
 }
 .grow-guides-container .grow-guide-card-outer .grow-guide-card-inner .vegetable-name {
-  margin: 0 auto;
+  margin: 15px auto;
+  text-transform: uppercase;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 700;
   color: #eeeeee;
 }
 
@@ -105,7 +107,7 @@
 }
 .card-face-back .card-content .card-header h2 {
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
   text-transform: uppercase;
   text-align: center;
@@ -121,7 +123,7 @@
   margin: 5px 0;
 }
 .card-face-back .card-content .card-body p {
-  color: #212121;
+  color: #f3f3f3;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.5;
