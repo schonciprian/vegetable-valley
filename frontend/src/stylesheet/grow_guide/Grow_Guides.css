@@ -1,44 +1,137 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
+.card-face-front {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .grow-guides-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.grow-guides-container .grow-guide-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .grow-guides-container {
+  flex-wrap: wrap;
   width: 80%;
   height: fit-content;
+  padding: 20px;
   margin: 50px auto;
+  font-family: "Montserrat", sans-serif;
   background-color: #0F1329;
   border-radius: 25px;
-  flex-wrap: wrap;
-  font-family: "Montserrat", sans-serif;
 }
-.grow-guides-container .grow-guide-card {
-  width: 180px;
-  height: 180px;
-  background-color: #151A30;
-  border-radius: 10px;
-  padding: 15px;
+.grow-guides-container .grow-guide-card-outer {
+  width: 225px;
+  height: 275px;
   margin: 20px;
-  flex-direction: column;
+  perspective: 1000px;
 }
-.grow-guides-container .grow-guide-card img {
+.grow-guides-container .grow-guide-card-outer .grow-guide-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  --gradient: linear-gradient( 135deg, #151A30, #4B5682);
+}
+.grow-guides-container .grow-guide-card-outer .grow-guide-card-inner img {
   max-width: 85%;
   height: 85%;
   object-fit: contain;
 }
-.grow-guides-container .grow-guide-card .vegetable-name {
-  font-size: 20px;
-  margin: auto;
+.grow-guides-container .grow-guide-card-outer .grow-guide-card-inner .vegetable-name {
+  margin: 15px auto;
+  text-transform: uppercase;
   text-align: center;
+  font-size: 18px;
+  font-weight: 700;
   color: #eeeeee;
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card-face-front {
+  flex-direction: column;
+  background-image: var(--gradient);
+}
+.card-face-front h2 {
+  color: #fff;
+  font-size: 32px;
+}
+
+.card-face-back {
+  background-color: #4B5682;
+  transform: rotateY(180deg);
+}
+.card-face-back .card-content {
+  width: 100%;
+  height: 100%;
+}
+.card-face-back .card-content .card-header {
+  position: relative;
+  padding: 10px;
+}
+.card-face-back .card-content .card-header:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 0 0 50% 0;
+  background-image: linear-gradient(to bottom left, #4B5682 10%, #7F8EC0 115%);
+}
+.card-face-back .card-content .card-header .pp {
+  display: block;
+  width: 80px;
+  height: 80px;
+  padding: 5px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #fff;
+  object-fit: cover;
+}
+.card-face-back .card-content .card-header h2 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 5px auto;
+}
+.card-face-back .card-content .card-body {
+  padding: 10px;
+}
+.card-face-back .card-content .card-body h3 {
+  color: #212121;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+.card-face-back .card-content .card-body p {
+  color: #f3f3f3;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 5px auto;
+}
+
+.is-flipped {
+  transform: rotateY(180deg);
 }
 
 /*# sourceMappingURL=Grow_Guides.css.map */

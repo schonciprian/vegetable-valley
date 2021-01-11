@@ -3,6 +3,8 @@
 $darkest-color-blue: #040617;
 $darker-color-blue: #0F1329;
 $dark-color-blue: #151A30;
+$normal-color-blue: #2d3748;
+
 
 $text-color-yellow: #4B5682;
 $text-color-yellow-hover: #7F8EC0;
@@ -15,6 +17,13 @@ $font-style-text: "Montserrat", sans-serif;
 $font-size-larger: 30px;
 $font-size-normal: 25px;
 $font-size-smaller: 20px;
+
+$font-size-large-vw: 3vw;
+$font-size-larger-vw: 2vw;
+$font-size-larger-hover-vw: 1.9vw;
+$font-size-normal-vw: 1.5vw;
+$font-size-normal-hover-vw: 1.4vw;
+$font-size-smaller-vw: 1vw;
 
 %display-flex-center {
   display: flex;
