@@ -9,7 +9,7 @@ export default function GrowGuide() {
 
         const isFlippedCards = Array.prototype.slice.call(document.querySelectorAll('.is-flipped'));
 
-        isFlippedCards.map((isFlippedCard) => {
+        isFlippedCards.forEach((isFlippedCard) => {
             if (parseInt(isFlippedCard.id) !== cardIndex) {
                 isFlippedCard.classList.remove('is-flipped');
             }
