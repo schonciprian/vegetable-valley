@@ -1,5 +1,3 @@
-import {Cloud, CloudDrizzle, CloudOff, CloudRain, CloudSnow, Sun} from "react-feather";
-
 export function getMonth(month) {
     switch(month) {
         case 0:
@@ -56,30 +54,4 @@ export function calculateSunriseSunset(dateTime) {
         (dateTime.getMinutes() < 10 ? '0' + dateTime.getMinutes() : dateTime.getMinutes())  +
         ':' +
         (dateTime.getSeconds() < 10 ? '0' + dateTime.getSeconds() : dateTime.getSeconds())
-}
-
-// Change weatherType to React-feather's equivalent
-export function getFeatherName(weatherType) {
-    switch(weatherType) {
-        case 'Sun':
-            return Sun;
-        case 'Rain':
-            return CloudRain;
-        case 'Clear':
-            return CloudOff;
-        case 'Snow':
-            return CloudSnow;
-        case 'Clouds':
-            return Cloud;
-        case 'Drizzle':
-            return CloudDrizzle;
-        case 'Mist':
-            return 'div';   // No mist feather-icon
-        case 'Fog':
-            return 'div';   // No fog feather-icon
-        case 'Haze':
-            return 'div';   // No fog feather-icon
-        default:
-            return Sun;
-    }
 }
