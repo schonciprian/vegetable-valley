@@ -3,11 +3,6 @@ export const hungarianCities = ['Budapest', 'Bekescsaba', 'Debrecen', 'Eger', 'G
     'Szolnok', 'Szombathely', 'Tatabanya', 'Veszprem', 'Zalaegerszeg'];
 export const foreignCities = ['Amsterdam', 'Berlin', 'Bratislava', 'Copenhagen', 'Lisbon', 'London', 'Madrid', 'Paris', 'Rome', 'Wien']
 
-
-export function handleFocus(event) {
-    event.target.select()
-}
-
 export function hideCitySelection() {
     document.getElementById("city-selector-container").style.display = "none";
     document.getElementById("city-selector").style.display = "none";

@@ -3,7 +3,6 @@ import axios from "axios";
 import {isSafari} from "react-device-detect";
 import {foreignCities,
         hungarianCities,
-        handleFocus,
         hideCitySelection} from "./CitySelectorHelperVariables";
 import {Search} from "react-feather";
 
@@ -77,8 +76,7 @@ export default function CitySelectorComponent(props) {
                     <div className="search-box">
                         <input id="city-input"
                                className="city-input"
-                               onKeyDown={handleKeyDown}
-                               onClick={handleFocus}/>
+                               onKeyDown={handleKeyDown}/>
                         <div className="search-icon" onClick={handleNewCity}>
                             <Search/>
                         </div>
