@@ -8,3 +8,8 @@ export function hideCitySelection() {
     document.getElementById("city-selector").style.display = "none";
 }
 
+export function showCitySelection() {
+    document.getElementById("city-selector-container").style.display = "block";
+    document.getElementById("city-selector").style.display = "block";
+}
+

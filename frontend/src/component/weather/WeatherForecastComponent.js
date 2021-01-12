@@ -151,10 +151,7 @@ export default function WeatherForecastComponent(props) {
 
             <div className="location-container">
                 <button className="location-button"
-                        onClick={() => {
-                            document.getElementById("city-selector-container").style.display = "block";
-                            document.getElementById("city-selector").style.display = "block";
-                        }}>
+                        onClick={showCitySelection}>
                     <MapPin className="location-icon"/>
                     <span>Change location</span>
                 </button>
