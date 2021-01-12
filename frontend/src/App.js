@@ -17,7 +17,7 @@ function App() {
       <Router>
           <div>
             <Header />
-            <Navbar />
+            {/*<Navbar />*/}
             <div className="main-container">
                 <Route exact path="/">Home page</Route>
                 <Route exact path="/grow-guides" component={GrowGuide}></Route>

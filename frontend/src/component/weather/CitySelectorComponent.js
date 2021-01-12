@@ -3,7 +3,6 @@ import axios from "axios";
 import {isSafari} from "react-device-detect";
 import {foreignCities,
         hungarianCities,
-        handleFocus,
         hideCitySelection} from "./CitySelectorHelperVariables";
 import {Search} from "react-feather";
 
@@ -31,17 +30,17 @@ export default function CitySelectorComponent(props) {
     }
 
     const handleNewCity = () => {
-        if (document.getElementById("city-input").value) {
-            props.setCity(document.getElementById("city-input").value)
+        const cityInputField =  document.getElementById("city-input");
+        if (cityInputField.value) {
+            props.setCity(cityInputField.value)
             hideCitySelection()
-            document.getElementById("city-input").value = "";
+            cityInputField.value = "";
         } else {
-            document.getElementById("city-input").classList.add("no-input-error");
+            cityInputField.classList.add("no-input-error");
         }
         setTimeout(() => {
-            document.getElementById("city-input").classList.remove("no-input-error");
+            cityInputField.classList.remove("no-input-error");
         }, 1000);
-
     }
 
     const handleKeyDown = (event) => {
@@ -50,15 +49,15 @@ export default function CitySelectorComponent(props) {
         }
     }
 
-    const handleCityOnClick = (hungarianCity) => {
-        props.setCity(hungarianCity);
+    const handleCityOnClick = (city) => {
+        props.setCity(city);
         hideCitySelection();
     }
 
     const createListItemOfCities = (listOfCities) => {
-        return listOfCities.map((value, index) => (
-            <li key={index} onClick={() => {handleCityOnClick(value)}}>
-                {value}
+        return listOfCities.map((city, index) => (
+            <li key={index} onClick={() => {handleCityOnClick(city)}}>
+                {city}
             </li>))
     }
 
@@ -67,9 +66,7 @@ export default function CitySelectorComponent(props) {
             <div id="city-selector-container"
                  className="city-selector-container"
                  style={{display: "none"}}
-                 onClick={() => {
-                     hideCitySelection()
-                 }}/>
+                 onClick={hideCitySelection}/>
 
             <div id="city-selector" className="city-selector" style={{display: "none"}}>
                 <div className="city-input-container">
@@ -77,8 +74,7 @@ export default function CitySelectorComponent(props) {
                     <div className="search-box">
                         <input id="city-input"
                                className="city-input"
-                               onKeyDown={handleKeyDown}
-                               onClick={handleFocus}/>
+                               onKeyDown={handleKeyDown}/>
                         <div className="search-icon" onClick={handleNewCity}>
                             <Search/>
                         </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import {MapPin} from "react-feather";
-import {getMonth} from "./TodayWeatherFunctions";
-import {getDayName} from "./WeatherForecastGetterFunctions";
+import {getDayName, getMonth} from "./TodayWeatherFunctions";
 
 export default function TodayWeatherComponent(props) {
     const weather = props.weather;
@@ -20,6 +19,8 @@ export default function TodayWeatherComponent(props) {
         weatherIcon: weather.weather[0].icon,
     };
 
+    // This variable also occurs in WeatherForecastComponent.js. How can i put this to TodayWeatherFunctions.js
+    // to not duplicate it. It will also need todayWeather object in the other file.
     const getForecastIcon = (todayWeather.length !== 0) ?
         todayWeather.weatherIcon :
         '01d';

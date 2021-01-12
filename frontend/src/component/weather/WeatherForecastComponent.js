@@ -1,17 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import {
-    getDateOfDailyForecast, getDayName, getDayNameOfDailyForecast,
-    getDayTemperatureDailyForecast,
-    getHumidityDailyForecast,
-    getNightTemperatureDailyForecast,
-    getPrecipitationDailyForecast,
-    getRainDailyForecast,
-    getSnowDailyForecast,
-    getWindDailyForecast
-} from "./WeatherForecastGetterFunctions";
-import {calculateSunriseSunset, getMonth} from "./TodayWeatherFunctions";
-import {MapPin, Sunrise, Sunset} from "react-feather";
 import axios from "axios";
+import {MapPin, Sunrise, Sunset} from "react-feather";
+import {calculateSunriseSunset, getDayName, getMonth} from "./TodayWeatherFunctions";
+// Is it cleaner if I create an object of these and I import the object only
+// and I refer to methods as object.method?
+import {getDateOfDailyForecast,
+        getDayNameOfDailyForecast,
+        getDayTemperatureDailyForecast,
+        getHumidityDailyForecast,
+        getNightTemperatureDailyForecast,
+        getPrecipitationDailyForecast,
+        getRainDailyForecast,
+        getSnowDailyForecast,
+        getWindDailyForecast} from "./WeatherForecastGetterFunctions";
+import {showCitySelection} from "./CitySelectorHelperVariables";
 
 export default function WeatherForecastComponent(props) {
 
@@ -21,18 +23,17 @@ export default function WeatherForecastComponent(props) {
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${props.coordinate.lat}&lon=${props.coordinate.lon}&units=metric&exclude=minutely,hourly&appid=f913779188ecd17807fa0473780a29fb`)
                 .then(result => setWeatherForecast(result.data));
-    }, [props.coordinate.lat, props.coordinate.lon])
+    }, [props.coordinate])
 
     const {timezone_offset, daily} = weatherForecast;
     let dailyForecast = [];
-    let count = 0;
 
     const [showDayFromIndex, setShowDayFromIndex] = useState(0);
     const [showDayToIndex, setShowDayToIndex] = useState(4);
     const [actualPageNumber, setActualPageNumber] = useState(1);
 
-    if (weatherForecast.length !== 0 ) {daily.forEach( oneDay => {
-        if (count > showDayFromIndex && count <= showDayToIndex) {
+    if (weatherForecast.length !== 0 ) {daily.forEach( (oneDay, index) => {
+        if (index > showDayFromIndex && index <= showDayToIndex) {
             let sunrise = new Date((oneDay.sunrise + timezone_offset - 3600) * 1000);
             let sunset = new Date((oneDay.sunset + timezone_offset - 3600) * 1000);
 
@@ -54,12 +55,7 @@ export default function WeatherForecastComponent(props) {
                 weatherIcon: oneDay.weather[0].icon,
             })
         }
-        count += 1;
     })}
-
-    const changeIndexOfDailyForecast = (index) => {
-        setIndexOfDailyForecast(index);
-    }
 
     const getForecastIcon = (dailyForecast.length !== 0) ?
         dailyForecast[indexOfDailyForecast].weatherIcon :
@@ -74,6 +70,7 @@ export default function WeatherForecastComponent(props) {
         }
     }
 
+    // Do I need to break it down into components or it is acceptable to create all these here?
     return (
         <div className="forecast-weather-side">
             <div className="active-day-info-container">
@@ -121,7 +118,7 @@ export default function WeatherForecastComponent(props) {
                     {dailyForecast.map((oneDayForecast, index) => (
                         <li key={index}
                             className={(index === indexOfDailyForecast) ? "daily-weather-forecast active" : "daily-weather-forecast"}
-                            onClick={() => changeIndexOfDailyForecast(index)}>
+                            onClick={() => setIndexOfDailyForecast(index)}>
                             <span className="forecast-date">{getMonth(oneDayForecast.month-1)}. {oneDayForecast.date}.</span>
                             <span className="forecast-day">{getDayName(oneDayForecast.day)}</span>
                             <div className="sunrise-container">
@@ -151,10 +148,7 @@ export default function WeatherForecastComponent(props) {
 
             <div className="location-container">
                 <button className="location-button"
-                        onClick={() => {
-                            document.getElementById("city-selector-container").style.display = "block";
-                            document.getElementById("city-selector").style.display = "block";
-                        }}>
+                        onClick={showCitySelection}>
                     <MapPin className="location-icon"/>
                     <span>Change location</span>
                 </button>
