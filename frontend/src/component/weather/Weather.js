@@ -7,7 +7,7 @@ import CitySelectorComponent from "./CitySelectorComponent";
 
 export default function Weather() {
     const [weather, setWeather] = useState([]);
-    const [city, setCity] = useState("Gyor");
+    const [city, setCity] = useState("Budapest");
     const [coordinate, setCoordinate] = useState({});
 
     useEffect(() => {
