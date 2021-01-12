@@ -1,17 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import {
-    getDateOfDailyForecast, getDayName, getDayNameOfDailyForecast,
-    getDayTemperatureDailyForecast,
-    getHumidityDailyForecast,
-    getNightTemperatureDailyForecast,
-    getPrecipitationDailyForecast,
-    getRainDailyForecast,
-    getSnowDailyForecast,
-    getWindDailyForecast
-} from "./WeatherForecastGetterFunctions";
-import {calculateSunriseSunset, getMonth} from "./TodayWeatherFunctions";
-import {MapPin, Sunrise, Sunset} from "react-feather";
 import axios from "axios";
+import {MapPin, Sunrise, Sunset} from "react-feather";
+import {calculateSunriseSunset, getDayName, getMonth} from "./TodayWeatherFunctions";
+// Is it cleaner if I create an object of these and I import the object only
+// and I refer to methods as object.method?
+import {getDateOfDailyForecast,
+        getDayNameOfDailyForecast,
+        getDayTemperatureDailyForecast,
+        getHumidityDailyForecast,
+        getNightTemperatureDailyForecast,
+        getPrecipitationDailyForecast,
+        getRainDailyForecast,
+        getSnowDailyForecast,
+        getWindDailyForecast} from "./WeatherForecastGetterFunctions";
+import {showCitySelection} from "./CitySelectorHelperVariables";
 
 export default function WeatherForecastComponent(props) {
 
