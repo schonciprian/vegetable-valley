@@ -66,9 +66,7 @@ export default function CitySelectorComponent(props) {
             <div id="city-selector-container"
                  className="city-selector-container"
                  style={{display: "none"}}
-                 onClick={() => {
-                     hideCitySelection()
-                 }}/>
+                 onClick={hideCitySelection}/>
 
             <div id="city-selector" className="city-selector" style={{display: "none"}}>
                 <div className="city-input-container">
