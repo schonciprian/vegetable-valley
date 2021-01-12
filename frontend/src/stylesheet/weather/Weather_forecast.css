@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
-.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination, .loading, .navbar, .header {
+.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination, .loading, .header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,35 +30,47 @@ body {
 
 .header {
   width: 100%;
-  height: 150px;
+  height: fit-content;
+  padding: 10px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  height: 100%;
   font-family: "Montserrat", sans-serif;
-  font-size: 75px;
+  font-size: 3vw;
   letter-spacing: 5px;
-  background: #040617;
 }
 @media screen and (max-width: 775px) {
-  .header {
+  .title {
     font-size: 65px;
   }
 }
 @media screen and (max-width: 625px) {
-  .header {
+  .title {
     font-size: 50px;
   }
 }
-.header a {
+.title a {
+  text-align: left;
+  margin: 0 0 0 20px;
   text-decoration: none;
   color: #eeeeee;
 }
 
 .navbar {
-  width: 100%;
-  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 60%;
+  height: 75px;
   font-family: "Montserrat", sans-serif;
-  font-size: 35px;
+  font-size: 2vw;
   letter-spacing: 2px;
   text-align: center;
-  background: linear-gradient(#040617, #151A30, #151A30, #040617);
+  background-color: transparent;
 }
 @media screen and (max-width: 775px) {
   .navbar {
@@ -79,7 +91,7 @@ body {
   color: #7F8EC0;
 }
 
-.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination, .loading, .header, .navbar {
+.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination, .loading, .header {
   display: flex;
   justify-content: center;
   align-items: center;
