@@ -49,15 +49,15 @@ export default function CitySelectorComponent(props) {
         }
     }
 
-    const handleCityOnClick = (hungarianCity) => {
-        props.setCity(hungarianCity);
+    const handleCityOnClick = (city) => {
+        props.setCity(city);
         hideCitySelection();
     }
 
     const createListItemOfCities = (listOfCities) => {
-        return listOfCities.map((value, index) => (
-            <li key={index} onClick={() => {handleCityOnClick(value)}}>
-                {value}
+        return listOfCities.map((city, index) => (
+            <li key={index} onClick={() => {handleCityOnClick(city)}}>
+                {city}
             </li>))
     }
 
