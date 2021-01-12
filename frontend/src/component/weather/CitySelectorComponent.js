@@ -30,17 +30,17 @@ export default function CitySelectorComponent(props) {
     }
 
     const handleNewCity = () => {
-        if (document.getElementById("city-input").value) {
-            props.setCity(document.getElementById("city-input").value)
+        const cityInputField =  document.getElementById("city-input");
+        if (cityInputField.value) {
+            props.setCity(cityInputField.value)
             hideCitySelection()
-            document.getElementById("city-input").value = "";
+            cityInputField.value = "";
         } else {
-            document.getElementById("city-input").classList.add("no-input-error");
+            cityInputField.classList.add("no-input-error");
         }
         setTimeout(() => {
-            document.getElementById("city-input").classList.remove("no-input-error");
+            cityInputField.classList.remove("no-input-error");
         }, 1000);
-
     }
 
     const handleKeyDown = (event) => {
