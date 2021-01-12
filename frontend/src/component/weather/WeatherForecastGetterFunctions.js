@@ -1,4 +1,4 @@
-import {getMonth} from "./TodayWeatherFunctions";
+import {getDayName, getMonth} from "./TodayWeatherFunctions";
 
 export function getDayTemperatureDailyForecast(dailyForecast, indexOfDailyForecast) {
     return (dailyForecast.length !== 0) ?
