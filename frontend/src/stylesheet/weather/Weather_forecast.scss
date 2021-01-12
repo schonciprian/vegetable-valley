@@ -1,6 +1,5 @@
 @import "../App";
 @import "../Variables";
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
 
 //*****************//
 // ** Variables ** //
@@ -13,6 +12,36 @@ $border-radius: 25px;
   display: block;
   margin: 10px 0;
   text-align: center;
+}
+
+@mixin gradientAnimation( $start, $end, $transTime ){
+  background-size: 100%;
+  //background-image: linear-gradient($start, $end);
+  background-color: $dark-color-blue;
+
+  position: relative;
+  //z-index: 100;
+  //border-radius: 10px;
+
+  &:before {
+    background-image: linear-gradient(135deg, $end, $start);
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -1;
+    transition: opacity $transTime;
+    border-radius: 10px;
+
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
 }
 
 //*************************//
@@ -28,12 +57,13 @@ $border-radius: 25px;
 }
 
 .weather-container {
-  @extend %display-flex-center;
+  @extend %display-flex-space-around;
   flex-wrap: wrap;
 
   height: fit-content;
-  width: 80%;
+  width: fit-content;
 
+  padding: 0 10px;
   margin: 50px auto 150px auto;
   font: $font-size-smaller "Montserrat", sans-serif;
   color: $color-whisper;
@@ -46,8 +76,9 @@ $border-radius: 25px;
   ///////////////////////////////////////////
   // Fix today's weather card to stay      //
   // in the weather-container below 1352px.//
-  @media (max-width: 1352px) {
+  @media (max-width: 1152px) {
     padding-top: 40px;
+    width: 75%;
   }
 
   @media (min-width: 1352px) {
@@ -58,6 +89,7 @@ $border-radius: 25px;
 .today-weather-side {
   height: 550px;
   width: 320px;
+  margin: 0 20px;
 
   position: relative;
   float: left;
@@ -169,20 +201,34 @@ $border-radius: 25px;
 }
 
 .forecast-weather-side {
-  @extend %display-flex-space-around;
+  @extend %display-flex-space-between;
   flex-direction: column;
   padding-top: 25px;
+  //width: 50%;
 
   .week-list-container {
+    width: 720px;
+    //margin-left: 20px;
+
+    @media (max-width: 1002px) {
+      max-width: fit-content;
+    }
 
     .pagination {
       @extend %display-flex-center;
       //margin: 0 auto;
-      margin: -30px 35px 10px;
-      padding: 10px;
+      margin: -25px 10px 0;
+      padding: 20px 0 10px;
       max-width: 100%;
       background-color: #151A30;
       border-radius: 10px;
+
+      ////////////////////////////////////////////////
+      // Fix width if there is less than 4 elements //
+      @media (max-width: 1002px) {
+        max-width: 100%;
+      }
+      /////////////////////////////////////////////////
 
 
       .page-number {
@@ -212,16 +258,20 @@ $border-radius: 25px;
     .week-list {
       @extend %display-flex-center;
       flex-wrap: wrap;
+      //width: border-box;
+      //width: 680px;
+
 
       ////////////////////////////////////////////////
       // Fix width if there is less than 4 elements //
-      @media (min-width: 1003px) {
-        min-width: 680px;
+      @media (max-width: 1003px) {
+        //width: 680px;
+        //width: 90%;
       }
       /////////////////////////////////////////////////
 
-      padding: 20px;
-      margin: 10px 35px;
+      padding: 20px 10px 0;
+      margin: 10px 10px;
 
       border-radius: 10px;
       background-color: #151A30;
@@ -239,31 +289,33 @@ $border-radius: 25px;
 
         cursor: pointer;
 
-        -webkit-transition: 200ms ease;
-        -o-transition: 200ms ease;
-        transition: 200ms ease;
+        -webkit-transition: 300ms ease;
+        -o-transition: 300ms ease;
+        transition: 300ms ease;
 
         -webkit-box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
         box-shadow: 0 0 50px -5px rgb(10, 10, 10, 0.75);
+        //@include gradientAnimation(#4B5682, #7F8EC0, 1s);
+        @include gradientAnimation(#7F8EC0, #4B5682, 1s);
+
 
         ////////////////////////////////////////
         // Fix to keep cards evenly in a row. //
         @media (max-width: 1002px) {
-          margin: 10px 50px;
+          margin: 10px 45px;
         }
 
         @media (max-width: 774px) {
-          margin: 10px 10px;
+          margin: 10px 20px;
         }
 
         &:hover {
           -webkit-transform: scale(1.1);
           -ms-transform: scale(1.1);
           transform: scale(1.1);
-          background-image: var(--gradient);
           color: $color-whisper;
           -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2)
+          box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
         }
 
         &.active {
@@ -305,7 +357,7 @@ $border-radius: 25px;
   .active-day-info-container {
     @extend %display-flex-center;
     flex-wrap: wrap;
-    margin: 10px 35px;
+    margin: 10px;
 
     background-color: #151A30;
     border-radius: 10px;
@@ -360,10 +412,12 @@ $border-radius: 25px;
       padding: 10px;
 
       border: none;
-      border-radius: 25px;
+      border-radius: 10px;
 
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
+      //font-family: 'Montserrat', sans-serif;
+      //font-weight: 700;
+      font: 600 18px "Montserrat", sans-serif;
+
 
       background-image: var(--gradient);
       color: #ffffff;
@@ -451,9 +505,10 @@ $border-radius: 25px;
       }
 
       .search-icon {
-         height: 24px;
-         margin-right: 10px;
-         color: rgba(255, 140, 0, 0.8);
+        cursor: pointer;
+        height: 24px;
+        margin-right: 10px;
+        color: rgba(255, 140, 0, 0.8);
        }
     }
   }
@@ -478,6 +533,15 @@ $border-radius: 25px;
         background-image: var(--gradient);
         color: $color-whisper;
         border-radius: 10px;
+        cursor: pointer;
+        transition: transform 200ms ease;
+
+
+        &:hover {
+          -webkit-transform: scale(0.95);
+          -ms-transform: scale(0.95);
+          transform: scale(0.95);
+        }
       }
 
       .city-list-hungary {
@@ -570,5 +634,31 @@ $border-radius: 25px;
     left: 0;
     height: 3px;
     background: linear-gradient(130deg, #0F1329, darkorange 50%, #0F1329 100%);
+  }
+}
+
+.no-input-error {
+  background: linear-gradient(130deg, #f36565 50%, #a70606 100%) !important;
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
   }
 }

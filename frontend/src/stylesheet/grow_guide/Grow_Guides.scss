@@ -1,0 +1,54 @@
+@import "../Variables";
+
+.grow-guides-container {
+  width: 80%;
+  height: fit-content;
+  padding: 20px;
+  margin: 50px auto;
+  background-color: $darker-color-blue;
+  border-radius: 25px;
+  @extend %display-flex-space-around;
+  flex-wrap: wrap;
+  font-family: $font-style-text;
+
+  .grow-guide-card {
+    width: 180px;
+    height: 200px;
+    background-color: $dark-color-blue;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px;
+    @extend %display-flex-center;
+    flex-direction: column;
+
+    cursor: pointer;
+
+    -webkit-transition: -webkit-transform 300ms ease;
+    -o-transition: transform 300ms ease;
+    transition: -webkit-transform 300ms ease;
+    transition: transform 300ms ease, -webkit-transform 300ms ease, background-color 0.8s;
+
+    -webkit-transform: translateZ(0) scale(1.02) perspective(1000px);
+    transform: translateZ(0) scale(1.02) perspective(1000px);
+
+    &:hover {
+      background-color: $normal-color-blue;
+
+      -webkit-transform: scale(1.15) perspective(1250px) rotateY(10deg);
+      transform: scale(1.15) perspective(1250px) rotateY(10deg);
+    }
+
+    img {
+      max-width: 85%;
+      height: 85%;
+      object-fit: contain;
+    }
+
+    .vegetable-name {
+      font-size: $font-size-smaller;
+      margin: 0 auto;
+      text-align: center;
+      color: $color-whisper;
+    }
+  }
+}
