@@ -37,9 +37,15 @@ export default function GrowGuide() {
                                     <p>Sowing depth: {Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</p>
                                     <p>Spacing between rows: {Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</p>
                                     <p>Spacing along rows: {Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</p>
-                                    <div className="buttons">
-                                        <div className="more-info">More info</div>
-                                        <FaEyeDropper className="pin-icon"></FaEyeDropper>
+                                    <div className="buttons" onClick={(event) => event.stopPropagation()}>
+                                        <div className="more-info" onClick={(event) => {
+                                            event.stopPropagation();
+                                            console.log("More info")
+                                        }}>More info</div>
+                                        <FaEyeDropper className="pin-icon" onClick={(event) => {
+                                            event.stopPropagation();
+                                            console.log("Pin")
+                                        }}/>
                                     </div>
                                 </div>
                             </div>
