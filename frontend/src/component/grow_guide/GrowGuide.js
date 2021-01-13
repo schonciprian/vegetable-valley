@@ -1,5 +1,6 @@
 import React from 'react';
 import {Vegetables} from './Descriptions';
+import { FaEyeDropper } from "react-icons/fa";
 
 export default function GrowGuide() {
 
@@ -36,7 +37,10 @@ export default function GrowGuide() {
                                     <p>Sowing depth: {Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</p>
                                     <p>Spacing between rows: {Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</p>
                                     <p>Spacing along rows: {Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</p>
-                                    <div className="more-info">More info</div>
+                                    <div className="buttons">
+                                        <div className="more-info">More info</div>
+                                        <FaEyeDropper className="pin-icon"></FaEyeDropper>
+                                    </div>
                                 </div>
                             </div>
                         </div>
