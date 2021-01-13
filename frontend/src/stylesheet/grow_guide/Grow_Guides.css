@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
-.card-face-front {
+.card-face-back .card-content .card-body .buttons, .card-face-front {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,7 +129,7 @@
   line-height: 1.5;
   margin: 5px auto;
 }
-.card-face-back .card-content .card-body .more-info {
+.card-face-back .card-content .card-body .buttons .more-info {
   position: relative;
   width: fit-content;
   height: fit-content;
@@ -141,7 +141,7 @@
   border-radius: 10px;
   overflow: hidden;
 }
-.card-face-back .card-content .card-body .more-info::before {
+.card-face-back .card-content .card-body .buttons .more-info::before {
   content: "";
   position: absolute;
   top: 0;
@@ -151,8 +151,11 @@
   background: linear-gradient(135deg, transparent, #b3c3db, transparent);
   transition: 0.7s;
 }
-.card-face-back .card-content .card-body .more-info:hover::before {
+.card-face-back .card-content .card-body .buttons .more-info:hover::before {
   left: 100%;
+}
+.card-face-back .card-content .card-body .buttons svg {
+  color: red;
 }
 
 .is-flipped {
