@@ -11,7 +11,7 @@ export default function GrowGuide() {
         const isFlippedCards = Array.prototype.slice.call(document.querySelectorAll('.is-flipped'));
 
         isFlippedCards.forEach((isFlippedCard) => {
-            if (parseInt(isFlippedCard.id) !== cardIndex) {
+            if (parseInt(isFlippedCard.id) !== cardIndex && !isFlippedCard.classList.contains('pin')) {
                 isFlippedCard.classList.remove('is-flipped');
             }
         })
@@ -44,7 +44,7 @@ export default function GrowGuide() {
                                         }}>More info</div>
                                         <FaEyeDropper className="pin-icon" onClick={(event) => {
                                             event.stopPropagation();
-                                            console.log("Pin")
+                                            document.getElementById(`${index}`).classList.toggle('pin')
                                         }}/>
                                     </div>
                                 </div>
