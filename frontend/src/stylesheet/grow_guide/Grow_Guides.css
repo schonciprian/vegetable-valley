@@ -24,7 +24,7 @@
 .grow-guides-container .grow-guide-card-outer {
   width: 225px;
   height: 275px;
-  margin: 20px;
+  margin: 20px 0;
   perspective: 1000px;
 }
 .grow-guides-container .grow-guide-card-outer .grow-guide-card-inner {
@@ -111,7 +111,7 @@
   font-weight: 900;
   text-transform: uppercase;
   text-align: center;
-  margin: 5px auto;
+  margin: 5px auto 10px;
 }
 .card-face-back .card-content .card-body {
   padding: 10px;
