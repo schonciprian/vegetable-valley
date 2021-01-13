@@ -1,6 +1,6 @@
 import React from 'react';
 import {Vegetables} from './Descriptions';
-import { FaEyeDropper } from "react-icons/fa";
+import {FaEyeDropper} from "react-icons/fa";
 
 export default function GrowGuide() {
 
@@ -41,11 +41,15 @@ export default function GrowGuide() {
                                         <div className="more-info" onClick={(event) => {
                                             event.stopPropagation();
                                             console.log("More info")
-                                        }}>More info</div>
-                                        <FaEyeDropper className="pin-icon" onClick={(event) => {
+                                        }}>More info
+                                        </div>
+                                        <div id={`pin-icon-${index}`} className="pin-icon" onClick={(event) => {
                                             event.stopPropagation();
+                                            document.getElementById(`pin-icon-${index}`).classList.toggle('active')
                                             document.getElementById(`${index}`).classList.toggle('pin')
-                                        }}/>
+                                            }}>
+                                            <FaEyeDropper/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
