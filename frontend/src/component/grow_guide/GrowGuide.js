@@ -10,7 +10,7 @@ export default function GrowGuide() {
     const [isFetching, setIsFetching] = useState(false);
 
     function isScrolling() {
-        if (window.innerHeight + document.documentElement.scrollTop + 20 <= document.documentElement.offsetHeight) {
+        if (window.innerHeight + document.documentElement.scrollTop + 10 <= document.documentElement.offsetHeight) {
             return;
         }
         setIsFetching(true)
