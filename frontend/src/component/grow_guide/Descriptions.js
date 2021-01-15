@@ -191,4 +191,78 @@ export const Vegetables = {
     },
 
 
+
+
+    a: {
+        name: 'Zucchini',
+        pictureURL: zucchini,
+    },
+    b: {
+        name: 'Green kohlrabi',
+        pictureURL: green_kohlrabi,
+    },
+    c: {
+        name: 'Purple kohlrabi',
+        pictureURL: purple_kohlrabi,
+    },
+    d: {
+        name: 'Kale',
+        pictureURL: kale,
+    },
+    e: {
+        name: 'Potato',
+        pictureURL: potato,
+    },
+    f: {
+        name: 'Sweet potato',
+        pictureURL: sweet_potato,
+    },
+    aa: {
+        name: 'Zucchini',
+        pictureURL: zucchini,
+    },
+    bb: {
+        name: 'Green kohlrabi',
+        pictureURL: green_kohlrabi,
+    },
+    cc: {
+        name: 'Purple kohlrabi',
+        pictureURL: purple_kohlrabi,
+    },
+    dd: {
+        name: 'Kale',
+        pictureURL: kale,
+    },
+    ee: {
+        name: 'Potato',
+        pictureURL: potato,
+    },
+    ff: {
+        name: 'Sweet potato',
+        pictureURL: sweet_potato,
+    },
+    aaa: {
+        name: 'Zucchini',
+        pictureURL: zucchini,
+    },
+    bbb: {
+        name: 'Green kohlrabi',
+        pictureURL: green_kohlrabi,
+    },
+    ccc: {
+        name: 'Purple kohlrabi',
+        pictureURL: purple_kohlrabi,
+    },
+    ddd: {
+        name: 'Kale',
+        pictureURL: kale,
+    },
+    eee: {
+        name: 'Potato',
+        pictureURL: potato,
+    },
+    fff: {
+        name: 'Sweet potato',
+        pictureURL: sweet_potato,
+    },
 }
