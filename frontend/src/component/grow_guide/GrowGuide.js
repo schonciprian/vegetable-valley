@@ -17,6 +17,12 @@ export default function GrowGuide() {
         })
     }
 
+    const pinCard = (event, index) => {
+        event.stopPropagation();
+        document.getElementById(`pin-icon-${index}`).classList.toggle('active')
+        document.getElementById(`${index}`).classList.toggle('pin')
+    }
+
     return (
         <div className="grow-guides-container">
 
@@ -38,16 +44,15 @@ export default function GrowGuide() {
                                     <p>Spacing between rows: {Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</p>
                                     <p>Spacing along rows: {Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</p>
                                     <div className="buttons" onClick={(event) => event.stopPropagation()}>
+
                                         <div className="more-info" onClick={(event) => {
-                                            event.stopPropagation();
-                                            console.log("More info")
-                                        }}>More info
+                                            console.log("More info")}}>
+                                            More info
                                         </div>
-                                        <div id={`pin-icon-${index}`} className="pin-icon" onClick={(event) => {
-                                            event.stopPropagation();
-                                            document.getElementById(`pin-icon-${index}`).classList.toggle('active')
-                                            document.getElementById(`${index}`).classList.toggle('pin')
-                                            }}>
+
+                                        <div id={`pin-icon-${index}`}
+                                             className="pin-icon"
+                                             onClick={(event) => pinCard(event, index)}>
                                             <FaEyeDropper/>
                                         </div>
                                     </div>
