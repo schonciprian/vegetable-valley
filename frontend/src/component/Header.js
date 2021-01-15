@@ -9,7 +9,7 @@ function Header() {
             </div>
             <div className="navbar">
                 <Link to="/grow-guides">Grow Guides</Link>
-                <Link to="/my-todos">My ToDos</Link>
+                {/*<Link to="/my-todos">My ToDos</Link>*/}
                 <Link to="/weather-forecast">Weather forecast</Link>
             </div>
         </div>
