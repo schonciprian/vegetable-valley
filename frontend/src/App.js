@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Header from "./component/Header";
-import Navbar from "./component/Navbar";
+// import Navbar from "./component/Navbar";
 import GrowGuide from "./component/grow_guide/GrowGuide";
 import Weather from "./component/weather/Weather";
 
