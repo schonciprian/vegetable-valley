@@ -7,7 +7,7 @@ export default function GrowGuide() {
 
     const [data, setData] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
-    const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight-155)/340)*Math.floor(window.innerWidth*0.8/255));
+    const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight-155)/360)*Math.floor(window.innerWidth*0.8/255));
 
     const isScrolling = () => {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
