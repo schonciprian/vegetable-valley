@@ -8,6 +8,8 @@ export default function GrowGuide() {
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
     const [isFetching, setIsFetching] = useState(false);
+    const [dataStartIndex, setDataStartIndex] = useState(0);
+    const [dataEndIndex, setDataEndIndex] = useState(15);
 
     function isScrolling() {
         if (window.innerHeight + document.documentElement.scrollTop + 10 <= document.documentElement.offsetHeight) {
@@ -29,7 +31,7 @@ export default function GrowGuide() {
         }
     }, [isFetching]);
 
-    const getData = Object.keys(Vegetables).slice(0, page * 8).reduce((result, key) => {
+    const getData = Object.keys(Vegetables).slice(dataStartIndex, dataEndIndex).reduce((result, key) => {
         result[key] = Vegetables[key];
         return result;
     }, {});
@@ -42,6 +44,7 @@ export default function GrowGuide() {
         loadData();
         setIsFetching(false);
         setPage(page + 1);
+        setDataEndIndex(dataEndIndex + 8)
     };
 
 
