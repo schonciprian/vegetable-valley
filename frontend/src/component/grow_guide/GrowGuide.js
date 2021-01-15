@@ -1,8 +1,45 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Vegetables} from './Descriptions';
 import {FaEyeDropper} from "react-icons/fa";
 
 export default function GrowGuide() {
+
+    const [data, setData] = useState([]);
+    const [page, setPage] = useState(1);
+    const [isFetching, setIsFetching] = useState(false);
+
+    function isScrolling() {
+        if (window.innerHeight + document.documentElement.scrollTop + 20 <= document.documentElement.offsetHeight) {
+            return;
+        }
+        setIsFetching(true)
+    }
+
+    useEffect(() => {
+        setData(getData);
+
+        window.addEventListener("scroll", isScrolling);
+        return () => window.removeEventListener("scroll", isScrolling);
+    }, [])
+
+    useEffect(() => {
+        if (isFetching) {
+            moreData()
+        }
+    }, [isFetching]);
+
+    const getData = Object.keys(Vegetables).slice(0, page*6).reduce((result, key) => {
+        result[key] = Vegetables[key];
+        return result;
+    }, {});
+
+    const moreData = () => {
+        setData(getData);
+        setIsFetching(false)
+        setPage(page+1)
+    }
+
+
 
     const toggleCard = (cardIndex) => {
         const card = document.getElementById(`${cardIndex}`);
@@ -26,7 +63,7 @@ export default function GrowGuide() {
     return (
         <div className="grow-guides-container">
 
-            {Object.keys(Vegetables).map((veggie, index) => (
+            {Object.keys(data).map((veggie, index) => (
                 <div key={index} className="grow-guide-card-outer" onClick={() => toggleCard(index)}>
                     <div id={index} className="grow-guide-card-inner" key={index}>
                         <div className="card-face card-face-front">
