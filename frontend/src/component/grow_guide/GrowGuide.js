@@ -17,7 +17,7 @@ export default function GrowGuide() {
     }
 
     useEffect(() => {
-        setData(getData);
+        loadData();
 
         window.addEventListener("scroll", isScrolling);
         return () => window.removeEventListener("scroll", isScrolling);
@@ -29,16 +29,20 @@ export default function GrowGuide() {
         }
     }, [isFetching]);
 
-    const getData = Object.keys(Vegetables).slice(0, page*6).reduce((result, key) => {
+    const getData = Object.keys(Vegetables).slice(0, page * 8).reduce((result, key) => {
         result[key] = Vegetables[key];
         return result;
     }, {});
 
-    const moreData = () => {
+    const loadData = () => {
         setData(getData);
-        setIsFetching(false)
-        setPage(page+1)
     }
+
+    const moreData = () => {
+        loadData();
+        setIsFetching(false);
+        setPage(page + 1);
+    };
 
 
     return (
