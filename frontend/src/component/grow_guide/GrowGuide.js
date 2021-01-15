@@ -6,9 +6,7 @@ import {pinCard, toggleCard} from "./GrowGuideCardActions";
 export default function GrowGuide() {
 
     const [data, setData] = useState([]);
-    const [page, setPage] = useState(1);
     const [isFetching, setIsFetching] = useState(false);
-    const [dataStartIndex] = useState(0);
     const [dataEndIndex, setDataEndIndex] = useState(15);
 
     function isScrolling() {
@@ -19,34 +17,18 @@ export default function GrowGuide() {
     }
 
     useEffect(() => {
-        loadData();
-
-        window.addEventListener("scroll", isScrolling);
-        return () => window.removeEventListener("scroll", isScrolling);
-    }, [])
-
-    useEffect(() => {
-        if (isFetching) {
-            moreData()
-        }
-    }, [isFetching]);
-
-    const getData = Object.keys(Vegetables).slice(dataStartIndex, dataEndIndex).reduce((result, key) => {
-        result[key] = Vegetables[key];
-        return result;
-    }, {});
-
-    function loadData() {
+        const getData = Object.keys(Vegetables).slice(0, dataEndIndex).reduce((result, key) => {
+            result[key] = Vegetables[key];
+            return result;
+        }, {});
         setData(getData);
-    }
-
-    const moreData = () => {
-        loadData();
-        setIsFetching(false);
-        setPage(page + 1);
-        setDataEndIndex(dataEndIndex + 8)
-    };
-
+        window.addEventListener("scroll", isScrolling);
+        if (isFetching) {
+            setData(getData);
+            setIsFetching(false);
+            setDataEndIndex(dataEndIndex => dataEndIndex + 8)
+        }
+    }, [isFetching, dataEndIndex])
 
     return (
         <div className="grow-guides-container">
