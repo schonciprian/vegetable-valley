@@ -54,22 +54,68 @@ export const Vegetables = {
     onion: {
         name: 'Onion',
         pictureURL: onion,
+        sow_depth: '1 cm',
+        spacing_between_rows: '30 cm',
+        spacing_along_row: '15 cm',
+        basic_information: 'Onions are one of the most useful vegetables a gardener can grow. ' +
+            'Brown & white onions tend to be stronger in flavour than red onions.',
+        how_to_grow: 'Can be grown from seeds or onion sets. ' +
+            'If growing from seed sow from February through to April in drills 1cm deep and 20cm between rows, sow the seed very thinly. ' +
+            'Thin the plants to 5cm apart and later increase to 10cm apart (make sure your hoe can go between rows ' +
+            'with plenty of room for the bulbs to grow), you can use the thinning to fill additional rows, water well after transplanting. ' +
+            'If growing from sets plant out in March 10cm apart in rows 20cm apart. ' +
+            'Push the sets into the soil so that the tip of the set is visible. Weed regularly between rows to control weeds.',
+        how_to_harvest: 'When the onion leaves start to turn yellow and fall over, leave for a couple of weeks. ' +
+            'Now lift with a fork cleaning off soil from the roots and leave them to dry. ' +
+            'The remaining foliage and roots will will die back, if the weather is wet the drying process can be done in a greenhouse or shed.',
     },
     red_onion: {
         name: 'Red onion',
         pictureURL: red_onion,
+        sow_depth: '1 cm',
+        spacing_between_rows: '30 cm',
+        spacing_along_row: '15 cm',
+        basic_information: 'Onions are one of the most useful vegetables a gardener can grow. ' +
+            'Red onions tend to be milder in flavour than white onions.',
+        how_to_grow: 'Can be grown from seeds or onion sets. ' +
+            'If growing from seed sow from February through to April in drills 1cm deep and 20cm between rows, sow the seed very thinly. ' +
+            'Thin the plants to 5cm apart and later increase to 10cm apart (make sure your hoe can go between rows ' +
+            'with plenty of room for the bulbs to grow), you can use the thinning to fill additional rows, water well after transplanting. ' +
+            'If growing from sets plant out in March 10cm apart in rows 20cm apart. ' +
+            'Push the sets into the soil so that the tip of the set is visible. Weed regularly between rows to control weeds.',
+        how_to_harvest: 'When the onion leaves start to turn yellow and fall over, leave for a couple of weeks. ' +
+            'Now lift with a fork cleaning off soil from the roots and leave them to dry. ' +
+            'The remaining foliage and roots will will die back, if the weather is wet the drying process can be done in a greenhouse or shed.',
     },
     leek: {
         name: 'Leek',
         pictureURL: leek,
+        sow_depth: '',
+        spacing_between_rows: '',
+        spacing_along_row: '',
+        basic_information: '',
+        how_to_grow: '',
+        how_to_harvest: '',
     },
     carrot: {
         name: 'Carrot',
         pictureURL: carrot,
+        sow_depth: '',
+        spacing_between_rows: '',
+        spacing_along_row: '',
+        basic_information: '',
+        how_to_grow: '',
+        how_to_harvest: '',
     },
     parsley: {
         name: 'Parsley',
         pictureURL: parsley,
+        sow_depth: '',
+        spacing_between_rows: '',
+        spacing_along_row: '',
+        basic_information: '',
+        how_to_grow: '',
+        how_to_harvest: '',
     },
     celeriac: {
         name: 'Celeriac',
