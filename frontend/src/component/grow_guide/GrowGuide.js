@@ -8,7 +8,7 @@ export default function GrowGuide() {
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
     const [isFetching, setIsFetching] = useState(false);
-    const [dataStartIndex, setDataStartIndex] = useState(0);
+    const [dataStartIndex] = useState(0);
     const [dataEndIndex, setDataEndIndex] = useState(15);
 
     function isScrolling() {
@@ -36,7 +36,7 @@ export default function GrowGuide() {
         return result;
     }, {});
 
-    const loadData = () => {
+    function loadData() {
         setData(getData);
     }
 
