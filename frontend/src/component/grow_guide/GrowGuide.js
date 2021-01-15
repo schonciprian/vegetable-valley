@@ -6,10 +6,10 @@ import {pinCard, toggleCard} from "./GrowGuideCardActions";
 export default function GrowGuide() {
 
     const [data, setData] = useState([]);
-    const [isFetching, setIsFetching] = useState(false);
+    const [isFetching, setIsFetching] = useState(true);
     const [dataEndIndex, setDataEndIndex] = useState(15);
 
-    function isScrolling() {
+    const isScrolling = () => {
         if (window.innerHeight + document.documentElement.scrollTop + 50 <= document.documentElement.offsetHeight) {
             return;
         }
@@ -17,14 +17,14 @@ export default function GrowGuide() {
     }
 
     useEffect(() => {
-        const getData = Object.keys(Vegetables).slice(0, dataEndIndex).reduce((result, key) => {
+        window.addEventListener("scroll", isScrolling);
+        const fetchData = Object.keys(Vegetables).slice(0, dataEndIndex).reduce((result, key) => {
             result[key] = Vegetables[key];
             return result;
         }, {});
-        setData(getData);
-        window.addEventListener("scroll", isScrolling);
+
         if (isFetching) {
-            setData(getData);
+            setData(fetchData);
             setIsFetching(false);
             setDataEndIndex(dataEndIndex => dataEndIndex + 8)
         }
@@ -47,13 +47,17 @@ export default function GrowGuide() {
                                     <img className="pp" src={Vegetables[veggie].pictureURL} alt=""/>
                                 </div>
                                 <div className="card-body">
-                                    <p>Sowing depth: {Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</p>
-                                    <p>Spacing between rows: {Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</p>
-                                    <p>Spacing along rows: {Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</p>
+                                    <p>Sowing
+                                        depth: {Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</p>
+                                    <p>Spacing between
+                                        rows: {Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</p>
+                                    <p>Spacing along
+                                        rows: {Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</p>
                                     <div className="buttons" onClick={(event) => event.stopPropagation()}>
 
                                         <div className="more-info" onClick={(event) => {
-                                            console.log("More info")}}>
+                                            console.log("More info")
+                                        }}>
                                             More info
                                         </div>
 
