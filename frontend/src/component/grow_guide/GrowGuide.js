@@ -52,12 +52,18 @@ export default function GrowGuide() {
                                     <img className="pp" src={Vegetables[veggie].pictureURL} alt=""/>
                                 </div>
                                 <div className="card-body">
-                                    <p>Sowing
-                                        depth: {Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</p>
-                                    <p>Spacing between
-                                        rows: {Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</p>
-                                    <p>Spacing along
-                                        rows: {Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</p>
+                                    <p>
+                                        <span>Sowing depth: </span>
+                                        <span>{Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</span>
+                                    </p>
+                                    <p>
+                                        <span>Line spacing:</span>
+                                        <span>{Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</span>
+                                    </p>
+                                    <p>
+                                        <span>Inline spacing: </span>
+                                        <span>{Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</span>
+                                    </p>
                                     <div className="buttons" onClick={(event) => event.stopPropagation()}>
 
                                         <div className="more-info" onClick={(event) => {

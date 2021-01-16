@@ -11,6 +11,12 @@
   align-items: center;
 }
 
+.card-face-back .card-content .card-body p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .grow-guides-container {
   flex-wrap: wrap;
   width: 80%;
@@ -142,7 +148,7 @@
   color: #f3f3f3;
   font-size: 13px;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 2.2;
   margin: 5px auto;
 }
 .card-face-back .card-content .card-body .buttons {
