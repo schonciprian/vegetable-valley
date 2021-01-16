@@ -42,6 +42,11 @@ export default function GrowGuide() {
                         </div>
                         <div className="card-face card-face-back">
                             <div className="card-content">
+                                <div id={`pin-icon-${index}`}
+                                     className="pin-icon"
+                                     onClick={(event) => pinCard(event, index)}>
+                                    <FaEyeDropper/>
+                                </div>
                                 <div className="card-header">
                                     <h2>{Vegetables[veggie].name}</h2>
                                     <img className="pp" src={Vegetables[veggie].pictureURL} alt=""/>
@@ -59,12 +64,6 @@ export default function GrowGuide() {
                                             console.log("More info")
                                         }}>
                                             More info
-                                        </div>
-
-                                        <div id={`pin-icon-${index}`}
-                                             className="pin-icon"
-                                             onClick={(event) => pinCard(event, index)}>
-                                            <FaEyeDropper/>
                                         </div>
                                     </div>
                                 </div>
