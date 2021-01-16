@@ -4,6 +4,11 @@
   display: none;
 }
 
+::selection {
+  color: #eeeeee;
+  background-color: darkorange;
+}
+
 body {
   margin: 0;
   padding: 0;
