@@ -27,6 +27,8 @@ import sweet_potato from '../../image/sweet_potato.png';
 
 export const Vegetables = {
     garlic: {
+        id: 0,
+        urlName: 'garlic',
         name: 'Garlic',
         pictureURL: garlic,
         sow_depth: '1 cm',
@@ -52,6 +54,8 @@ export const Vegetables = {
         how_to_harvest: 'Once the leaves turn yellow in the summer, lift the bulbs and allow to dry under cover.',
     },
     onion: {
+        id: 1,
+        urlName: 'onion',
         name: 'Onion',
         pictureURL: onion,
         sow_depth: '1 cm',
@@ -70,6 +74,8 @@ export const Vegetables = {
             'The remaining foliage and roots will will die back, if the weather is wet the drying process can be done in a greenhouse or shed.',
     },
     red_onion: {
+        id: 2,
+        urlName: 'red_onion',
         name: 'Red onion',
         pictureURL: red_onion,
         sow_depth: '1 cm',
@@ -88,6 +94,8 @@ export const Vegetables = {
             'The remaining foliage and roots will will die back, if the weather is wet the drying process can be done in a greenhouse or shed.',
     },
     leek: {
+        id: 3,
+        urlName: 'leek',
         name: 'Leek',
         pictureURL: leek,
         sow_depth: '',

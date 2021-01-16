@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {Vegetables} from './Descriptions';
 import {FaEyeDropper} from "react-icons/fa";
 import {pinCard, toggleCard} from "./GrowGuideCardActions";
+import {Link} from "react-router-dom";
 
 export default function GrowGuide() {
 
     const [data, setData] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
-    const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight-155)/340)*Math.floor(window.innerWidth*0.8/255));
+    const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 155) / 340) * Math.floor(window.innerWidth * 0.8 / 255));
 
     const isScrolling = () => {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
@@ -65,12 +66,7 @@ export default function GrowGuide() {
                                         <span>{Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</span>
                                     </p>
                                     <div className="buttons" onClick={(event) => event.stopPropagation()}>
-
-                                        <div className="more-info" onClick={(event) => {
-                                            console.log("More info")
-                                        }}>
-                                            More info
-                                        </div>
+                                        <Link className="more-info" to={`/grow-guides/${Vegetables[veggie].urlName}`}>More info</Link>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +74,6 @@ export default function GrowGuide() {
                     </div>
                 </div>
             ))}
-
         </div>
     );
 }
