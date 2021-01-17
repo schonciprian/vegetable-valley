@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+.vegetable-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vegetable-info-container .vegetable-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vegetable-info-container {
+  flex-direction: column;
+  position: relative;
+  margin: 50px auto;
+  width: 80%;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  background-color: #0F1329;
+  border-radius: 25px;
+  padding: 20px;
+  color: #eeeeee;
+}
+.vegetable-info-container .vegetable-info {
+  margin: 30px auto 20px;
+}
+.vegetable-info-container .vegetable-info .longer-information {
+  width: 60%;
+  margin-right: 20px;
+  text-align: justify;
+}
+.vegetable-info-container .vegetable-info .smaller-information {
+  width: 40%;
+}
+.vegetable-info-container .vegetable-info .smaller-information img {
+  width: 300px;
+}
+.vegetable-info-container .back-button {
+  text-decoration: none;
+  color: #eeeeee;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #4B5682;
+  padding: 10px;
+  border-radius: 10px;
+}
+.vegetable-info-container .back-button:hover {
+  color: darkorange;
+}
+
+/*# sourceMappingURL=VegetableInfo.css.map */

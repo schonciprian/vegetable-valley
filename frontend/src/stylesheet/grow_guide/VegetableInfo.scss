@@ -1,0 +1,53 @@
+@import "../Variables";
+
+.vegetable-info-container {
+  @extend %display-flex-center;
+  flex-direction: column;
+  position: relative;
+  margin: 50px auto;
+  width: 80%;
+  font-family: $font-style-text;
+  font-weight: 600;
+
+
+  background-color: $darker-color-blue;
+  border-radius: 25px;
+
+  padding: 20px;
+  color: #eeeeee;
+
+  .vegetable-info {
+    @extend %display-flex-space-between;
+    margin: 30px auto 20px;
+
+    .longer-information {
+      width: 60%;
+      margin-right: 20px;
+      text-align: justify;
+    }
+
+    .smaller-information {
+      width: 40%;
+
+      img {
+        width: 300px;
+      }
+    }
+  }
+
+  .back-button {
+    text-decoration: none;
+    color: #eeeeee;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4B5682;
+    padding: 10px;
+    border-radius: 10px;
+
+
+    &:hover {
+      color: darkorange;
+    }
+  }
+}
