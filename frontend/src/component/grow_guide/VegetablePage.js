@@ -14,9 +14,9 @@ function VegetablePage(props) {
                     <div>{vegetableInfo.name}</div><br/>
 
                     <img src={vegetableInfo.pictureURL} alt=""/>
-                    <div>{vegetableInfo.sow_depth}</div><br/>
-                    <div>{vegetableInfo.spacing_between_rows}</div><br/>
-                    <div>{vegetableInfo.spacing_along_row}</div><br/>
+                    <div>Sowing depth: {vegetableInfo.sow_depth}</div><br/>
+                    <div>Line spacing: {vegetableInfo.spacing_between_rows}</div><br/>
+                    <div>Inline spacing: {vegetableInfo.spacing_along_row}</div><br/>
                 </div>
                 <div className="longer-information">
                     <div>Basic information: <br/><br/>{vegetableInfo.basic_information}</div><br/>
