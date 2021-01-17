@@ -66,7 +66,7 @@ export default function GrowGuide() {
                                         <span>{Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</span>
                                     </p>
                                     <div className="buttons" onClick={(event) => event.stopPropagation()}>
-                                        <Link className="more-info" to={`/grow-guides/${Vegetables[veggie].urlName}`}>More info</Link>
+                                        <Link className="more-info" to={`/grow-guides/${Vegetables[veggie].id}`}>More info</Link>
                                     </div>
                                 </div>
                             </div>

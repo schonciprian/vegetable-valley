@@ -27,8 +27,7 @@ import sweet_potato from '../../image/sweet_potato.png';
 
 export const Vegetables = {
     garlic: {
-        id: 0,
-        urlName: 'garlic',
+        id: 'garlic',
         name: 'Garlic',
         pictureURL: garlic,
         sow_depth: '1 cm',
@@ -54,8 +53,7 @@ export const Vegetables = {
         how_to_harvest: 'Once the leaves turn yellow in the summer, lift the bulbs and allow to dry under cover.',
     },
     onion: {
-        id: 1,
-        urlName: 'onion',
+        id: 'onion',
         name: 'Onion',
         pictureURL: onion,
         sow_depth: '1 cm',
@@ -74,8 +72,7 @@ export const Vegetables = {
             'The remaining foliage and roots will will die back, if the weather is wet the drying process can be done in a greenhouse or shed.',
     },
     red_onion: {
-        id: 2,
-        urlName: 'red_onion',
+        id: 'red_onion',
         name: 'Red onion',
         pictureURL: red_onion,
         sow_depth: '1 cm',
@@ -94,8 +91,7 @@ export const Vegetables = {
             'The remaining foliage and roots will will die back, if the weather is wet the drying process can be done in a greenhouse or shed.',
     },
     leek: {
-        id: 3,
-        urlName: 'leek',
+        id: 'leek',
         name: 'Leek',
         pictureURL: leek,
         sow_depth: '',
@@ -106,6 +102,7 @@ export const Vegetables = {
         how_to_harvest: '',
     },
     carrot: {
+        id : 'carrot',
         name: 'Carrot',
         pictureURL: carrot,
         sow_depth: '',
@@ -116,6 +113,7 @@ export const Vegetables = {
         how_to_harvest: '',
     },
     parsley: {
+        id : 'parsley',
         name: 'Parsley',
         pictureURL: parsley,
         sow_depth: '',
@@ -126,150 +124,92 @@ export const Vegetables = {
         how_to_harvest: '',
     },
     celeriac: {
+        id : 'celeriac',
         name: 'Celeriac',
         pictureURL: celeriac,
     },
     tomato: {
+        id : 'tomato',
         name: 'Tomato',
         pictureURL: tomato,
     },
     pear_tomato: {
+        id : 'pear_tomato',
         name: 'Pear tomato',
         pictureURL: pear_tomato,
     },
     paprika: {
+        id : 'paprika',
         name: 'Paprika',
         pictureURL: paprika,
     },
     radish: {
+        id : 'radish',
         name: 'Radish',
         pictureURL: radish,
     },
     beetroot: {
+        id : 'beetroot',
         name: 'Beetroot',
         pictureURL: beetroot,
     },
     peas: {
+        id : 'peas',
         name: 'Peas',
         pictureURL: peas,
     },
     beans: {
+        id : 'beans',
         name: 'Beans',
         pictureURL: beans,
     },
     brussels_sprouts: {
+        id : 'brussels_sprouts',
         name: 'Brussels sprouts',
         pictureURL: brussels_sprouts,
     },
     cabbage: {
+        id : 'cabbage',
         name: 'Cabbage',
         pictureURL: cabbage,
     },
     purple_cabbage: {
+        id : 'purple_cabbage',
         name: 'Purple cabbage',
         pictureURL: purple_cabbage,
     },
     eggplant: {
+        id : 'eggplant',
         name: 'Eggplant',
         pictureURL: eggplant,
     },
     zucchini: {
+        id : 'zucchini',
         name: 'Zucchini',
         pictureURL: zucchini,
     },
     green_kohlrabi: {
+        id : 'green_kohlrabi',
         name: 'Green kohlrabi',
         pictureURL: green_kohlrabi,
     },
     purple_kohlrabi: {
+        id : 'purple_kohlrabi',
         name: 'Purple kohlrabi',
         pictureURL: purple_kohlrabi,
     },
     kale: {
+        id : 'kale',
         name: 'Kale',
         pictureURL: kale,
     },
     potato: {
+        id : 'potato',
         name: 'Potato',
         pictureURL: potato,
     },
     sweet_potato: {
-        name: 'Sweet potato',
-        pictureURL: sweet_potato,
-    },
-
-
-
-
-    a: {
-        name: 'Zucchini',
-        pictureURL: zucchini,
-    },
-    b: {
-        name: 'Green kohlrabi',
-        pictureURL: green_kohlrabi,
-    },
-    c: {
-        name: 'Purple kohlrabi',
-        pictureURL: purple_kohlrabi,
-    },
-    d: {
-        name: 'Kale',
-        pictureURL: kale,
-    },
-    e: {
-        name: 'Potato',
-        pictureURL: potato,
-    },
-    f: {
-        name: 'Sweet potato',
-        pictureURL: sweet_potato,
-    },
-    aa: {
-        name: 'Zucchini',
-        pictureURL: zucchini,
-    },
-    bb: {
-        name: 'Green kohlrabi',
-        pictureURL: green_kohlrabi,
-    },
-    cc: {
-        name: 'Purple kohlrabi',
-        pictureURL: purple_kohlrabi,
-    },
-    dd: {
-        name: 'Kale',
-        pictureURL: kale,
-    },
-    ee: {
-        name: 'Potato',
-        pictureURL: potato,
-    },
-    ff: {
-        name: 'Sweet potato',
-        pictureURL: sweet_potato,
-    },
-    aaa: {
-        name: 'Zucchini',
-        pictureURL: zucchini,
-    },
-    bbb: {
-        name: 'Green kohlrabi',
-        pictureURL: green_kohlrabi,
-    },
-    ccc: {
-        name: 'Purple kohlrabi',
-        pictureURL: purple_kohlrabi,
-    },
-    ddd: {
-        name: 'Kale',
-        pictureURL: kale,
-    },
-    eee: {
-        name: 'Potato',
-        pictureURL: potato,
-    },
-    fff: {
+        id : 'sweet_potato',
         name: 'Sweet potato',
         pictureURL: sweet_potato,
     },
