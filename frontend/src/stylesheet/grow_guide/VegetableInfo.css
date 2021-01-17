@@ -1,10 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.vegetable-info-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .vegetable-info-container .vegetable-info {
   display: flex;
   justify-content: space-between;
@@ -12,7 +6,6 @@
 }
 
 .vegetable-info-container {
-  flex-direction: column;
   position: relative;
   margin: 50px auto;
   width: 80%;

@@ -1,8 +1,8 @@
 @import "../Variables";
 
 .vegetable-info-container {
-  @extend %display-flex-center;
-  flex-direction: column;
+  //@extend %display-flex-center;
+  //flex-direction: column;
   position: relative;
   margin: 50px auto;
   width: 80%;
