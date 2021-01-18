@@ -14,25 +14,31 @@ function VegetablePage(props) {
             <Link className="back-button" to="/grow-guides">Back to grow guides</Link><br/>
             <div className="vegetable-info">
                 <div className="smaller-information">
-                    <div>
-                    <div>{vegetableInfo.name}</div>
-                    <br/>
-
-                    <img src={vegetableInfo.pictureURL} alt=""/>
-                    <div>Sowing depth: {vegetableInfo.sow_depth}</div>
-                    <br/>
-                    <div>Line spacing: {vegetableInfo.spacing_between_rows}</div>
-                    <br/>
-                    <div>Inline spacing: {vegetableInfo.spacing_along_row}</div>
-                    <br/>
+                    <div className="basic-information">
+                        <div>{vegetableInfo.name}</div>
+                        <img src={vegetableInfo.pictureURL} alt=""/>
+                        <div>
+                            <span>Sowing depth: </span>
+                            <span>{vegetableInfo.sow_depth}</span>
+                        </div>
+                        <div>
+                            <span>Line spacing: </span>
+                            <span>{vegetableInfo.spacing_between_rows}</span>
+                        </div>
+                        <div>
+                            <span>Inline spacing: </span>
+                            <span>{vegetableInfo.spacing_along_row}</span>
+                        </div>
                     </div>
 
-                    <div>
-                        {vegetableInfo.sow_direct ? <SowingTableDirect vegetableInfo={vegetableInfo}/>  : <React.Fragment/>}
-                        {vegetableInfo.sow_indoors ? <SowingTableInside vegetableInfo={vegetableInfo}/> : <React.Fragment/>}
-                    </div>
-
-
+                    {vegetableInfo.sow_direct || vegetableInfo.sow_indoors ?
+                        <div className="sowing-table-container">
+                            {vegetableInfo.sow_direct ? <SowingTableDirect vegetableInfo={vegetableInfo}/> :
+                                <React.Fragment/>}
+                            {vegetableInfo.sow_indoors ? <SowingTableInside vegetableInfo={vegetableInfo}/> :
+                                <React.Fragment/>}
+                        </div> :
+                    <React.Fragment/>}
                 </div>
                 <div className="longer-information">
                     <div>Basic information: <br/><br/>{vegetableInfo.basic_information}</div>

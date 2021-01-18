@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.vegetable-info-container .vegetable-info .smaller-information .sowing-table table tr th img {
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table table tr th img, .vegetable-info-container .vegetable-info .smaller-information .basic-information {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.vegetable-info-container .vegetable-info {
+.vegetable-info-container .vegetable-info .smaller-information .basic-information div, .vegetable-info-container .vegetable-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,31 +19,51 @@
 
 .vegetable-info-container {
   position: relative;
-  margin: 50px auto;
   width: 80%;
+  margin: 50px auto;
+  padding: 20px;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
+  color: #eeeeee;
   background-color: #0F1329;
   border-radius: 25px;
-  padding: 20px;
-  color: #eeeeee;
 }
 .vegetable-info-container .vegetable-info {
   flex-direction: column;
-  margin: 30px auto 20px;
-}
-.vegetable-info-container .vegetable-info .longer-information {
-  width: 100%;
-  margin-top: 25px;
-  padding-top: 25px;
-  border-top: 1px dotted #eee;
-  text-align: justify;
+  margin: 40px auto 20px;
 }
 .vegetable-info-container .vegetable-info .smaller-information {
   width: 100%;
 }
-.vegetable-info-container .vegetable-info .smaller-information img {
-  width: 300px;
+.vegetable-info-container .vegetable-info .smaller-information .basic-information {
+  text-align: center;
+  flex-direction: column;
+  max-width: 20vw;
+  min-height: 280px;
+  background-image: linear-gradient(135deg, #151A30, #4B5682);
+  border-radius: 10px;
+}
+.vegetable-info-container .vegetable-info .smaller-information .basic-information img {
+  margin: 10px 0;
+  max-width: 65%;
+  object-fit: contain;
+}
+.vegetable-info-container .vegetable-info .smaller-information .basic-information div:first-child {
+  font-size: 2vw;
+}
+.vegetable-info-container .vegetable-info .smaller-information .basic-information div {
+  width: 90%;
+  margin: 10px 0;
+  font-size: 1.5vw;
+}
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table-container {
+  background-image: linear-gradient(-135deg, #1b213e, #2b3562);
+  border-radius: 10px;
+  max-height: 500px;
+}
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table {
+  margin: 20px;
+  font-size: 1vw;
 }
 .vegetable-info-container .vegetable-info .smaller-information .sowing-table table {
   border: 2px solid #7F8EC0;
@@ -57,7 +77,9 @@
 }
 .vegetable-info-container .vegetable-info .smaller-information .sowing-table table tr th:first-child {
   color: darkorange;
-  width: 130px;
+  width: fit-content;
+  min-width: 80px;
+  padding: 0 10px;
 }
 .vegetable-info-container .vegetable-info .smaller-information .sowing-table table tr th {
   border: 1px dotted #7F8EC0;
@@ -65,6 +87,13 @@
 .vegetable-info-container .vegetable-info .smaller-information .sowing-table table tr th img {
   width: 20px;
   height: 20px;
+}
+.vegetable-info-container .vegetable-info .longer-information {
+  width: 100%;
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px dotted #eee;
+  text-align: justify;
 }
 .vegetable-info-container .back-button {
   text-decoration: none;

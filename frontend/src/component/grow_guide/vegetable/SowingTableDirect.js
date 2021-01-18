@@ -19,7 +19,7 @@ function SowingTableDirect(props) {
                     )))}
                 </tr>
                 <tr>
-                    <th>Sow direct</th>
+                    <th>Sow directly</th>
                     {vegetableInfo.sow_direct.sow_direct.map((value => (
                         <th>{value === 1 ? <img src={sowicon_selected} alt=""/> :
                             <img src={sowicon_greyout} alt=""/>}</th>
