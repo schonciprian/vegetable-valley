@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table table tr th img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .vegetable-info-container .vegetable-info {
   display: flex;
   justify-content: space-between;
@@ -20,15 +26,36 @@
   margin: 30px auto 20px;
 }
 .vegetable-info-container .vegetable-info .longer-information {
-  width: 60%;
+  width: 50%;
   margin-right: 20px;
   text-align: justify;
 }
 .vegetable-info-container .vegetable-info .smaller-information {
-  width: 40%;
+  width: 50%;
 }
 .vegetable-info-container .vegetable-info .smaller-information img {
   width: 300px;
+}
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table table {
+  border: 2px solid #7F8EC0;
+  border-spacing: 5px;
+}
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table table tr:first-child {
+  color: darkorange;
+}
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table table tr:first-child th:first-child {
+  border: none;
+}
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table table tr th:first-child {
+  color: darkorange;
+  width: 130px;
+}
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table table tr th {
+  border: 1px dotted #7F8EC0;
+}
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table table tr th img {
+  width: 20px;
+  height: 20px;
 }
 .vegetable-info-container .back-button {
   text-decoration: none;

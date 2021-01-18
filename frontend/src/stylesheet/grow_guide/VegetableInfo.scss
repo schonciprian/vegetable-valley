@@ -21,16 +21,48 @@
     margin: 30px auto 20px;
 
     .longer-information {
-      width: 60%;
+      width: 50%;
       margin-right: 20px;
       text-align: justify;
     }
 
     .smaller-information {
-      width: 40%;
+      width: 50%;
 
       img {
         width: 300px;
+      }
+
+      .sowing-table {
+        table {
+          border: 2px solid #7F8EC0;
+          border-spacing: 5px;
+          //color: #7F8EC0;
+          tr:first-child {
+            color: darkorange;
+
+            th:first-child {
+              border: none;
+              //background-color: #7F8EC0;
+            }
+          }
+
+          tr {
+            th:first-child {
+              color: darkorange;
+              width: 130px;
+            }
+
+            th {
+              border: 1px dotted #7F8EC0;
+              img {
+                @extend %display-flex-center;
+                width: 20px;
+                height: 20px;
+              }
+            }
+          }
+        }
       }
     }
   }
