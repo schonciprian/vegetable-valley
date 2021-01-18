@@ -31,8 +31,8 @@ function VegetablePage(props) {
                     <div>Inline spacing: {vegetableInfo.spacing_along_row}</div>
                     <br/>
 
-                    <SowingTableDirect vegetableInfo={vegetableInfo}/>
-                    <SowingTableInside vegetableInfo={vegetableInfo}/>
+                    {vegetableInfo.sow_direct ? <SowingTableDirect vegetableInfo={vegetableInfo}/>  : <React.Fragment/>}
+                    {vegetableInfo.sow_indoors ? <SowingTableInside vegetableInfo={vegetableInfo}/> : <React.Fragment/>}
 
                 </div>
                 <div className="longer-information">
