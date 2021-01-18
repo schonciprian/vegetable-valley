@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./component/Home";
 import Header from "./component/Header";
 import GrowGuide from "./component/grow_guide/GrowGuide";
-import VegetablePage from "./component/grow_guide/VegetablePage";
+import VegetablePage from "./component/grow_guide/vegetable/VegetablePage";
 import Weather from "./component/weather/Weather";
 
 
