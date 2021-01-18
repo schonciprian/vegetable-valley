@@ -1,12 +1,6 @@
 import React from 'react';
 import {Vegetables} from "../Descriptions";
 import {Link} from "react-router-dom";
-import harvesticon_greyout from '../../../image/harvesticon-greyout.png';
-import harvesticon_selected from '../../../image/harvesticon-selected.png';
-import sowicon_greyout from '../../../image/sowicon-greyout.png';
-import sowicon_selected from '../../../image/sowicon-selected.png';
-import planticon_greyout from '../../../image/planticon-greyout.png';
-import planticon_selected from '../../../image/planticon-selected.png';
 import SowingTableDirect from "./SowingTableDirect";
 import SowingTableInside from "./SowingTableInside";
 
