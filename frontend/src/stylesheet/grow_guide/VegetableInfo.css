@@ -5,6 +5,12 @@
   align-items: center;
 }
 
+.vegetable-info-container .vegetable-info .smaller-information {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .vegetable-info-container .vegetable-info {
   display: flex;
   justify-content: space-between;
@@ -23,15 +29,18 @@
   color: #eeeeee;
 }
 .vegetable-info-container .vegetable-info {
+  flex-direction: column;
   margin: 30px auto 20px;
 }
 .vegetable-info-container .vegetable-info .longer-information {
-  width: 50%;
-  margin-right: 20px;
+  width: 100%;
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px dotted #eee;
   text-align: justify;
 }
 .vegetable-info-container .vegetable-info .smaller-information {
-  width: 50%;
+  width: 100%;
 }
 .vegetable-info-container .vegetable-info .smaller-information img {
   width: 300px;

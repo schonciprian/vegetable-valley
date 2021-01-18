@@ -18,16 +18,20 @@
 
   .vegetable-info {
     @extend %display-flex-space-between;
+    flex-direction: column;
     margin: 30px auto 20px;
 
     .longer-information {
-      width: 50%;
-      margin-right: 20px;
+      width: 100%;
+      margin-top: 25px;
+      padding-top: 25px;
+      border-top: 1px dotted #eee;
       text-align: justify;
     }
 
     .smaller-information {
-      width: 50%;
+      @extend %display-flex-space-around;
+      width: 100%;
 
       img {
         width: 300px;

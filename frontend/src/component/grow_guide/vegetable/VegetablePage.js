@@ -20,6 +20,7 @@ function VegetablePage(props) {
             <Link className="back-button" to="/grow-guides">Back to grow guides</Link><br/>
             <div className="vegetable-info">
                 <div className="smaller-information">
+                    <div>
                     <div>{vegetableInfo.name}</div>
                     <br/>
 
@@ -30,9 +31,13 @@ function VegetablePage(props) {
                     <br/>
                     <div>Inline spacing: {vegetableInfo.spacing_along_row}</div>
                     <br/>
+                    </div>
 
-                    {vegetableInfo.sow_direct ? <SowingTableDirect vegetableInfo={vegetableInfo}/>  : <React.Fragment/>}
-                    {vegetableInfo.sow_indoors ? <SowingTableInside vegetableInfo={vegetableInfo}/> : <React.Fragment/>}
+                    <div>
+                        {vegetableInfo.sow_direct ? <SowingTableDirect vegetableInfo={vegetableInfo}/>  : <React.Fragment/>}
+                        {vegetableInfo.sow_indoors ? <SowingTableInside vegetableInfo={vegetableInfo}/> : <React.Fragment/>}
+                    </div>
+
 
                 </div>
                 <div className="longer-information">
