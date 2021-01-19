@@ -29,7 +29,7 @@ function SowingTableInside(props) {
                 </tr>
                 <tr>
                     <th>Plant out</th>
-                    {vegetableInfo.sow_indoors.harvest.map((value => (
+                    {vegetableInfo.sow_indoors.plant_out.map((value => (
                         <th>{value === 1 ? <img src={planticon_selected} alt=""/> :
                             <img src={planticon_greyout} alt=""/>}</th>
                     )))}
