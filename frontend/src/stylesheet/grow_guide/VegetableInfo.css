@@ -48,6 +48,7 @@
   color: darkorange;
   text-decoration: underline;
   font-size: 3vw;
+  margin: 10px;
 }
 .vegetable-info-container .vegetable-info .smaller-information .basic-information img {
   max-width: 65%;
@@ -56,7 +57,7 @@
 }
 .vegetable-info-container .vegetable-info .smaller-information .basic-information .vegetable-small-info {
   width: 90%;
-  margin: 5px 0;
+  margin: 5px 0 10px;
   font-size: 1.8vw;
 }
 .vegetable-info-container .vegetable-info .smaller-information .sowing-table-container {

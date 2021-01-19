@@ -41,6 +41,7 @@
           color: darkorange;
           text-decoration: underline;
           font-size: $font-size-large-vw;
+          margin: 10px;
         }
 
         img {
@@ -53,7 +54,7 @@
         .vegetable-small-info {
           @extend %display-flex-space-between;
           width: 90%;
-          margin: 5px 0;
+          margin: 5px 0 10px;
           font-size: 1.8vw;
         }
       }
