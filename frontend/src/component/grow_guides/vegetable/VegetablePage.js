@@ -33,6 +33,9 @@ function VegetablePage(props) {
 
                     {vegetableInfo.sow_direct || vegetableInfo.sow_indoors ?
                         <div className="sowing-table-container">
+                            <div className="sowing-table-title">
+                                Planting guidelines for <span>{vegetableInfo.name}</span> by month to month.
+                            </div>
                             {vegetableInfo.sow_direct ? <SowingTableDirect vegetableInfo={vegetableInfo}/> :
                                 <React.Fragment/>}
                             {vegetableInfo.sow_indoors ? <SowingTableInside vegetableInfo={vegetableInfo}/> :

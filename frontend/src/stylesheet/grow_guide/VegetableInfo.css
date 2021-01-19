@@ -65,6 +65,15 @@
   border-radius: 10px;
   max-height: 500px;
 }
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table-container .sowing-table-title {
+  margin-top: 20px;
+  font-size: 1.5vw;
+  text-align: center;
+}
+.vegetable-info-container .vegetable-info .smaller-information .sowing-table-container .sowing-table-title span {
+  color: darkorange;
+  text-decoration: underline;
+}
 .vegetable-info-container .vegetable-info .smaller-information .sowing-table-container .sowing-table {
   margin: 20px;
   font-size: 1.5vw;
