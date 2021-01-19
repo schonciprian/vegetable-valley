@@ -4,7 +4,7 @@ import {FaEyeDropper} from "react-icons/fa";
 import {pinCard, toggleCard} from "./GrowGuideCardActions";
 import {Link} from "react-router-dom";
 
-export default function GrowGuide() {
+export default function GrowGuideCard() {
 
     const [data, setData] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
