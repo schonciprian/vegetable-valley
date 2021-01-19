@@ -45,14 +45,10 @@ export const Vegetables = {
             'if the plants are to be grown outside then leave 60cm between plants. When the plants reach 30cm tall ' +
             'pinch out the centre tip to make the plant bush out.',
         how_to_harvest: '',
-        sow_direct: {
-            sow_direct: [0,0,1,1,1,1,1,1,1,0,0,0],
-            harvest: [0,0,0,0,1,1,1,1,1,1,1,0],
-        },
         sow_indoors: {
-            sow_indoors: [1,1,1,1,1,1,0,0,0,0,0,0],
-            plant_out: [0,0,1,1,1,1,1,1,0,0,0,0],
-            harvest: [0,0,0,0,0,1,1,1,1,1,1,0],
+            sow_indoors: [0,1,1,1,0,0,0,0,0,0,0,0],
+            plant_out: [0,0,0,0,1,1,1,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,1,1,1,0,0,0],
         }
     },
     beetroot: {
@@ -74,13 +70,13 @@ export const Vegetables = {
             'damage to the swollen tap-root will severely limit the time they can be stored. Beetroot are best stored ' +
             'in clamps, or in jars as picked beetroot but will keep for a couple of weeks in the fridge if undamaged.',
         sow_direct: {
-            sow_direct: [0,0,1,1,1,1,1,1,1,0,0,0],
-            harvest: [0,0,0,0,1,1,1,1,1,1,1,0],
+            sow_direct: [0,0,1,1,1,1,1,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,1,1,1,1,1,0],
         },
         sow_indoors: {
-            sow_indoors: [1,1,1,1,1,1,0,0,0,0,0,0],
-            plant_out: [0,0,1,1,1,1,1,1,0,0,0,0],
-            harvest: [0,0,0,0,0,1,1,1,1,1,1,0],
+            sow_indoors: [1,1,1,1,1,1,1,0,0,0,0,0],
+            plant_out: [0,0,1,1,1,1,1,1,1,0,0,0],
+            harvest: [0,0,0,0,1,1,1,1,1,1,1,0],
         }
     },
     brussels_sprouts: {
@@ -104,14 +100,10 @@ export const Vegetables = {
         how_to_harvest: 'Pick the sprouts off the stem starting from the bottom, when they reach 2cm wide by firmly ' +
             'snapping the bud downwards. Remove any yellowing leaves as they appear, as they may act as a source of ' +
             'infection.',
-        sow_direct: {
-            sow_direct: [0,0,1,1,1,1,1,1,1,0,0,0],
-            harvest: [0,0,0,0,1,1,1,1,1,1,1,0],
-        },
         sow_indoors: {
-            sow_indoors: [1,1,1,1,1,1,0,0,0,0,0,0],
-            plant_out: [0,0,1,1,1,1,1,1,0,0,0,0],
-            harvest: [0,0,0,0,0,1,1,1,1,1,1,0],
+            sow_indoors: [1,0,0,0,0,0,0,0,0,0,0,0],
+            plant_out: [0,0,1,0,0,0,0,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,0,0,0,0,1,1],
         }
     },
     cabbage: {
@@ -132,13 +124,13 @@ export const Vegetables = {
             'or over watering, making them inedible. Harvesting cabbage should happen before the rainfall has a chance ' +
             'to damage the cabbage heads.',
         sow_direct: {
-            sow_direct: [0,0,1,1,1,1,1,1,1,0,0,0],
-            harvest: [0,0,0,0,1,1,1,1,1,1,1,0],
+            sow_direct: [0,0,1,1,0,0,0,0,0,0,0,0],
+            harvest: [1,1,1,1,0,0,0,0,0,0,1,1],
         },
         sow_indoors: {
-            sow_indoors: [1,1,1,1,1,1,0,0,0,0,0,0],
-            plant_out: [0,0,1,1,1,1,1,1,0,0,0,0],
-            harvest: [0,0,0,0,0,1,1,1,1,1,1,0],
+            sow_indoors: [0,1,1,1,0,0,0,0,0,0,0,0],
+            plant_out: [0,0,1,1,1,0,0,0,0,0,0,0],
+            harvest: [1,1,1,1,0,0,0,0,0,1,1,1],
         }
     },
     purple_cabbage: {
