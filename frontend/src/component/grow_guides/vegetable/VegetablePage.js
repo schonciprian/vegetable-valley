@@ -40,13 +40,19 @@ function VegetablePage(props) {
                         </div> :
                     <React.Fragment/>}
                 </div>
-                <div className="longer-information">
-                    <div>Basic information: <br/><br/>{vegetableInfo.basic_information}</div>
-                    <br/>
-                    <div>How to grow: <br/><br/>{vegetableInfo.how_to_grow}</div>
-                    <br/>
-                    <div>How to harvest: <br/><br/>{vegetableInfo.how_to_harvest}</div>
-                    <br/>
+                <div className="longer-information-container">
+                    <div className="longer-information">
+                        <span className="longer-information-title">Basic information: </span>
+                        <span className="longer-information-text">{vegetableInfo.basic_information}</span>
+                    </div>
+                    <div className="longer-information">
+                        <span className="longer-information-title">How to grow: </span>
+                        <span className="longer-information-text">{vegetableInfo.how_to_grow}</span>
+                    </div>
+                    <div className="longer-information">
+                        <span className="longer-information-title">How to harvest: </span>
+                        <span className="longer-information-text">{vegetableInfo.how_to_harvest}</span>
+                    </div>
                 </div>
 
             </div>
