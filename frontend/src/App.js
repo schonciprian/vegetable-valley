@@ -23,7 +23,6 @@ function App() {
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/grow-guides" component={GrowGuideCard}/>
                 <Route path="/grow-guides/:vegetableName" component={VegetablePage}/>
-                <Route exact path="/my-todos">There are my todos separated for every month</Route>
                 <Route exact path="/weather-forecast" component={Weather} />
             </div>
           </div>
