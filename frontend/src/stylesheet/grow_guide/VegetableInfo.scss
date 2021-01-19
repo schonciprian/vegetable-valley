@@ -36,20 +36,27 @@
         background-image: linear-gradient( 135deg, #151A30, #4B5682);
         border-radius: 10px;
 
+        .vegetable-name {
+          width: fit-content;
+          color: darkorange;
+          text-decoration: underline;
+          font-size: $font-size-large-vw;
+        }
+
         img {
-          margin: 10px 0;
           max-width: 65%;
+
+          margin: 10px 0;
           object-fit: contain;
         }
 
-        div:first-child {
-          font-size: $font-size-larger-vw;
-        }
-
-        div {
-          width: 90%;
+        .vegetable-small-info {
           @extend %display-flex-space-between;
-          margin: 10px 0;
+
+          width: 90%;
+
+          margin: 5px;
+
           font-size: $font-size-normal-vw;
         }
       }

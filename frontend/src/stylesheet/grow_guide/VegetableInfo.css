@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.vegetable-info-container .vegetable-info .smaller-information .basic-information div, .vegetable-info-container .vegetable-info {
+.vegetable-info-container .vegetable-info .smaller-information .basic-information .vegetable-small-info, .vegetable-info-container .vegetable-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,17 +43,20 @@
   background-image: linear-gradient(135deg, #151A30, #4B5682);
   border-radius: 10px;
 }
+.vegetable-info-container .vegetable-info .smaller-information .basic-information .vegetable-name {
+  width: fit-content;
+  color: darkorange;
+  text-decoration: underline;
+  font-size: 3vw;
+}
 .vegetable-info-container .vegetable-info .smaller-information .basic-information img {
-  margin: 10px 0;
   max-width: 65%;
+  margin: 10px 0;
   object-fit: contain;
 }
-.vegetable-info-container .vegetable-info .smaller-information .basic-information div:first-child {
-  font-size: 2vw;
-}
-.vegetable-info-container .vegetable-info .smaller-information .basic-information div {
+.vegetable-info-container .vegetable-info .smaller-information .basic-information .vegetable-small-info {
   width: 90%;
-  margin: 10px 0;
+  margin: 5px;
   font-size: 1.5vw;
 }
 .vegetable-info-container .vegetable-info .smaller-information .sowing-table-container {
