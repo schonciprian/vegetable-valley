@@ -16,12 +16,9 @@ $border-radius: 25px;
 
 @mixin gradientAnimation( $start, $end, $transTime ){
   background-size: 100%;
-  //background-image: linear-gradient($start, $end);
   background-color: $dark-color-blue;
 
   position: relative;
-  //z-index: 100;
-  //border-radius: 10px;
 
   &:before {
     background-image: linear-gradient(135deg, $end, $start);
@@ -204,11 +201,9 @@ $border-radius: 25px;
   @extend %display-flex-space-between;
   flex-direction: column;
   padding-top: 25px;
-  //width: 50%;
 
   .week-list-container {
     width: 720px;
-    //margin-left: 20px;
 
     @media (max-width: 1002px) {
       max-width: fit-content;
@@ -216,7 +211,6 @@ $border-radius: 25px;
 
     .pagination {
       @extend %display-flex-center;
-      //margin: 0 auto;
       margin: -25px 10px 0;
       padding: 20px 0 10px;
       max-width: 100%;
@@ -258,17 +252,6 @@ $border-radius: 25px;
     .week-list {
       @extend %display-flex-center;
       flex-wrap: wrap;
-      //width: border-box;
-      //width: 680px;
-
-
-      ////////////////////////////////////////////////
-      // Fix width if there is less than 4 elements //
-      @media (max-width: 1003px) {
-        //width: 680px;
-        //width: 90%;
-      }
-      /////////////////////////////////////////////////
 
       padding: 20px 10px 0;
       margin: 10px 10px;
@@ -414,10 +397,7 @@ $border-radius: 25px;
       border: none;
       border-radius: 10px;
 
-      //font-family: 'Montserrat', sans-serif;
-      //font-weight: 700;
       font: 600 18px "Montserrat", sans-serif;
-
 
       background-image: var(--gradient);
       color: #ffffff;
