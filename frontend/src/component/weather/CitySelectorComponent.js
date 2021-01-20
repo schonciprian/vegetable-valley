@@ -40,7 +40,6 @@ export default function CitySelectorComponent(props) {
             if (response.status === 200) {
                 props.setCity(cityInputField.value)
                 hideCitySelection()
-                cityInputField.value = "";
             }
         } catch (error) {
             cityInputField.classList.add("no-input-error");

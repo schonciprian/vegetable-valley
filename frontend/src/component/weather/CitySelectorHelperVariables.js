@@ -6,6 +6,7 @@ export const foreignCities = ['Amsterdam', 'Berlin', 'Bratislava', 'Copenhagen',
 export function hideCitySelection() {
     document.getElementById("city-selector-container").style.display = "none";
     document.getElementById("city-selector").style.display = "none";
+    document.getElementById("city-input").value = "";
 }
 
 export function showCitySelection() {
