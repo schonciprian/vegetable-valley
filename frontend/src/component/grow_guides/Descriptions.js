@@ -661,7 +661,8 @@ export const Vegetables = {
         how_to_grow: 'Sweet potatoes are usually grown from slips; small rooted pieces of tuber. Pot immediately into ' +
             'small pots of multi-purpose compost. Keep the compost moist, using tepid water. Cover the pots with a ' +
             'clear plastic bag or place them in an unheated propagator, until they root.',
-        how_to_harvest: '\Insert a fork into the ridge, well away from the haul and lift the roots forward into the trench.',
+        how_to_harvest: 'The best way is to insert a fork into the ridge, well away from the haul and lift the roots ' +
+            'forward into the trench.',
         sow_direct: {
             sow_direct: [0,0,0,1,1,1,0,0,0,0,0,0],
             harvest: [0,0,0,0,0,0,0,1,1,1,0,0],
