@@ -1,24 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 import {isSafari} from "react-device-detect";
 import {foreignCities,
         hungarianCities,
         hideCitySelection} from "./CitySelectorHelperVariables";
 import {Search} from "react-feather";
+import {FaSpinner} from "react-icons/fa";
 
 export default function CitySelectorComponent(props) {
+
+    const [loading, setLoading] = useState(false);
 
     const getCoordinates = (position) => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${(position.coords.latitude)}&lon=${(position.coords.longitude)}&appid=f913779188ecd17807fa0473780a29fb`)
             .then(response => {
-                props.setCity(response.data.name)
+                props.setCity(response.data.name);
+                setLoading(false);
+                hideCitySelection()
             })
     }
 
     const getLocation = () => {
-        hideCitySelection()
         if (!isSafari) {
             if (navigator.geolocation) {
+                setLoading(true);
                 navigator.geolocation.getCurrentPosition(getCoordinates, () => {
                     alert("Your location is not available. ");})
             } else {
@@ -83,7 +88,7 @@ export default function CitySelectorComponent(props) {
                 <div className="city-list-container">
                     <div className="city-list-container-left">
                         <div className="get-location" onClick={getLocation}>Click here to get your location</div>
-
+                        {loading ? <FaSpinner className="loading-spinner"/> : <React.Fragment/>}
                         <div className="city-list-hungary">
                             <div className="city-list-title">Chief towns of counties</div>
                             <ul>

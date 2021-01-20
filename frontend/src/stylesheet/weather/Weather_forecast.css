@@ -600,5 +600,18 @@ body {
     transform: translate3d(4px, 0, 0);
   }
 }
+.loading-spinner {
+  color: darkorange;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 
 /*# sourceMappingURL=Weather_forecast.css.map */
