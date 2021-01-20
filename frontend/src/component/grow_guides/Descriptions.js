@@ -1,4 +1,5 @@
 import aubergine from '../../image/eggplant.png';
+import beans from '../../image/beans.png';
 import beetroot from '../../image/beetroot.png';
 import brussels_sprouts from '../../image/brussels_sprouts.png';
 import cabbage from '../../image/cabbage.png';
@@ -16,19 +17,15 @@ import leek from '../../image/leek.png';
 import lettuce from '../../image/lettuce.png';
 import onion from '../../image/onion.png';
 import red_onion from '../../image/red_onion.png';
+import paprika from '../../image/paprika.png';
 import parsley from '../../image/parsley.png';
 import peas from '../../image/peas.png';
-
+import potato from '../../image/potato.png';
+import radish from '../../image/radish.png';
+import squash from '../../image/squash.png';
+import sweet_potato from '../../image/sweet_potato.png';
 import tomato from '../../image/tomato.png';
 import pear_tomato from '../../image/pear_tomato.png';
-import paprika from '../../image/paprika.png';
-import radish from '../../image/radish.png';
-import beans from '../../image/beans.png';
-import potato from '../../image/potato.png';
-import sweet_potato from '../../image/sweet_potato.png';
-import squash from '../../image/squash.png';
-
-
 
 export const Vegetables = {
     aubergine: {
@@ -49,7 +46,30 @@ export const Vegetables = {
             sow_indoors: [0,1,1,1,0,0,0,0,0,0,0,0],
             plant_out: [0,0,0,0,1,1,1,0,0,0,0,0],
             harvest: [0,0,0,0,0,0,1,1,1,0,0,0],
-        }
+        },
+    },
+    beans: {
+        id : 'beans',
+        name: 'Beans',
+        pictureURL: beans,
+        sow_depth: '5 cm',
+        spacing_between_rows: '60 cm',
+        spacing_along_row: '10 cm',
+        basic_information: 'Broad beans are a good stop gap crop, which harvests as early as May.',
+        how_to_grow: 'In southern counties broad beans can be sown in November and will germinate in 2 to 4 weeks, ' +
+            'they will overwinter well, but if it gets very cold a fleece cover will protect the plants. For spring ' +
+            'planting, sow seed under cover in February to plant out in the spring or direct in March. As the plants ' +
+            'grow support with a cane frame and twine.',
+        how_to_harvest: 'You can start picking when the pods are about 10 cms long. They should snap easily when bent.',
+        sow_direct: {
+            sow_direct: [0,0,1,0,0,0,0,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,0,1,1,0,0,0],
+        },
+        sow_indoors: {
+            sow_indoors: [1,1,1,1,1,1,1,0,0,0,0,0],
+            plant_out: [0,0,1,1,1,1,1,1,1,0,0,0],
+            harvest: [0,0,0,0,1,1,1,1,1,1,1,0],
+        },
     },
     beetroot: {
         id : 'beetroot',
@@ -77,7 +97,7 @@ export const Vegetables = {
             sow_indoors: [1,1,1,1,1,1,1,0,0,0,0,0],
             plant_out: [0,0,1,1,1,1,1,1,1,0,0,0],
             harvest: [0,0,0,0,1,1,1,1,1,1,1,0],
-        }
+        },
     },
     brussels_sprouts: {
         id : 'brussels_sprouts',
@@ -104,7 +124,7 @@ export const Vegetables = {
             sow_indoors: [1,0,0,0,0,0,0,0,0,0,0,0],
             plant_out: [0,0,1,0,0,0,0,0,0,0,0,0],
             harvest: [0,0,0,0,0,0,0,0,0,0,1,1],
-        }
+        },
     },
     cabbage: {
         id : 'cabbage',
@@ -131,7 +151,7 @@ export const Vegetables = {
             sow_indoors: [0,1,1,1,0,0,0,0,0,0,0,0],
             plant_out: [0,0,1,1,1,0,0,0,0,0,0,0],
             harvest: [1,1,1,1,0,0,0,0,0,1,1,1],
-        }
+        },
     },
     purple_cabbage: {
         id : 'purple_cabbage',
@@ -150,6 +170,15 @@ export const Vegetables = {
             'cabbage is particularly important if rain is expected. Mature heads may be split by excessive rainfall ' +
             'or over watering, making them inedible. Harvesting cabbage should happen before the rainfall has a chance ' +
             'to damage the cabbage heads.',
+        sow_direct: {
+            sow_direct: [0,0,1,1,0,0,0,0,0,0,0,0],
+            harvest: [1,1,1,1,0,0,0,0,0,0,1,1],
+        },
+        sow_indoors: {
+            sow_indoors: [0,1,1,1,0,0,0,0,0,0,0,0],
+            plant_out: [0,0,1,1,1,0,0,0,0,0,0,0],
+            harvest: [1,1,1,1,0,0,0,0,0,1,1,1],
+        },
     },
     carrot: {
         id : 'carrot',
@@ -166,6 +195,10 @@ export const Vegetables = {
             'tall to surround the carrot bed.',
         how_to_harvest: 'Pull up the carrots as soon as they\'re big enough to eat. It\'s best to harvest them in ' +
             'the evening to avoid attracting carrot fly.',
+        sow_direct: {
+            sow_direct: [0,0,0,1,1,1,1,1,0,0,0,0],
+            harvest: [1,1,1,1,1,1,1,1,1,1,1,1],
+        },
     },
     celeriac: {
         id : 'celeriac',
@@ -186,6 +219,15 @@ export const Vegetables = {
         how_to_harvest: 'Celeriac root can be harvested at most any time, but as mentioned is easier to manage when ' +
             'the root is on the smaller side. Celeriac has maximum flavor after the first frost in the fall and can ' +
             'be allowed to languish in the garden to harvest as needed.',
+        sow_direct: {
+            sow_direct: [0,0,0,0,1,0,0,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,0,0,0,1,0,0],
+        },
+        sow_indoors: {
+            sow_indoors: [0,1,1,1,1,0,0,0,0,0,0,0],
+            plant_out: [0,0,0,1,1,1,1,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,1,1,1,1,0,0],
+        },
     },
     courgette: {
         id : 'courgette',
@@ -200,6 +242,15 @@ export const Vegetables = {
             'well and protect against slugs.',
         how_to_harvest: 'Continual cropping is essential to prolong fruiting. Cut the stalk of the fruit you want to ' +
             'harvest.',
+        sow_direct: {
+            sow_direct: [0,0,0,1,0,0,0,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,0,0,1,1,0,0],
+        },
+        sow_indoors: {
+            sow_indoors: [0,1,1,1,1,0,0,0,0,0,0,0],
+            plant_out: [0,0,0,1,1,1,1,0,0,0,0,0],
+            harvest: [0,0,0,0,0,1,1,1,1,0,0,0],
+        },
     },
     cucumber: {
         id : 'cucumber',
@@ -214,6 +265,11 @@ export const Vegetables = {
             'seedling.',
         how_to_harvest: 'The fruits should be cut before they reach maximum size, as this will encourage further ' +
             'fruiting. Most types will be 15-20 cm long. Use a sharp knife - don\'t tug the fruits from the stem.',
+        sow_indoors: {
+            sow_indoors: [0,1,1,1,0,0,0,0,0,0,0,0],
+            plant_out: [0,0,0,0,1,1,1,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,1,1,1,0,0,0],
+        },
     },
     dill: {
         id : 'dill',
@@ -233,6 +289,10 @@ export const Vegetables = {
             'decline soon after they start to flower (bolt).',
         how_to_harvest: 'To harvest the seeds, cut the stems when the flower-heads have turned brown. Tie a paper bag ' +
             'over each flower-head and hang the stems upside-down in bunches.',
+        sow_direct: {
+            sow_direct: [0,0,0,1,1,0,0,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,0,1,1,0,0,0],
+        },
     },
     garlic: {
         id: 'garlic',
@@ -259,6 +319,10 @@ export const Vegetables = {
             'Garlic needs little watering, but yields will improve if watered during very dry periods. ' +
             'Don\'t water formed bulbs as that can encourage rot.',
         how_to_harvest: 'Once the leaves turn yellow in the summer, lift the bulbs and allow to dry under cover.',
+        sow_direct: {
+            sow_direct: [0,0,1,1,1,1,1,0,0,0,0,0],
+            harvest: [1,1,1,0,0,0,0,1,1,1,1,1],
+        },
     },
     kale: {
         id : 'kale',
@@ -272,6 +336,15 @@ export const Vegetables = {
             'rows 15 cm apart, sow thinly, when plants have 6 leaves plant out 45 cm apart and in rows 45 cm apart. ' +
             'Firm the soil around each plant and water well.',
         how_to_harvest: 'Pick leaves that are 10 to 15 cm long and still young.',
+        sow_direct: {
+            sow_direct: [0,0,1,1,0,0,0,0,0,0,0,0],
+            harvest: [1,1,1,1,0,0,0,0,0,0,1,1],
+        },
+        sow_indoors: {
+            sow_indoors: [1,1,1,1,0,0,0,0,0,0,0,1],
+            plant_out: [0,0,1,1,1,1,1,0,0,0,0,0],
+            harvest: [1,1,1,1,0,0,0,1,1,1,1,1],
+        },
     },
     green_kohlrabi: {
         id : 'green_kohlrabi',
@@ -292,6 +365,15 @@ export const Vegetables = {
             'the bulb. Pull the leaves off of the upper stems and wash the leaves before cooking. You can use the ' +
             'leaves as you would cabbage leaves. Peel off the outer skin from the bulb using a paring knife and eat ' +
             'the bulb raw or cook as you do a turnip.',
+        sow_direct: {
+            sow_direct: [0,0,1,1,1,1,1,1,0,0,0,0],
+            harvest: [0,0,0,0,0,1,1,1,1,1,1,0],
+        },
+        sow_indoors: {
+            sow_indoors: [1,1,1,1,1,1,1,1,0,0,0,0],
+            plant_out: [0,0,1,1,1,1,1,1,1,1,0,0],
+            harvest: [0,0,0,1,1,1,1,1,1,1,1,0],
+        },
     },
     purple_kohlrabi: {
         id : 'purple_kohlrabi',
@@ -312,6 +394,15 @@ export const Vegetables = {
             'the bulb. Pull the leaves off of the upper stems and wash the leaves before cooking. You can use the ' +
             'leaves as you would cabbage leaves. Peel off the outer skin from the bulb using a paring knife and eat ' +
             'the bulb raw or cook as you do a turnip.',
+        sow_direct: {
+            sow_direct: [0,0,1,1,1,1,1,1,0,0,0,0],
+            harvest: [0,0,0,0,0,1,1,1,1,1,1,0],
+        },
+        sow_indoors: {
+            sow_indoors: [1,1,1,1,1,1,1,1,0,0,0,0],
+            plant_out: [0,0,1,1,1,1,1,1,1,1,0,0],
+            harvest: [0,0,0,1,1,1,1,1,1,1,1,0],
+        },
     },
     leek: {
         id: 'leek',
@@ -330,6 +421,15 @@ export const Vegetables = {
         how_to_harvest: 'Start harvesting the leeks when the body of the plant is about 25 cm thick. Use a fork to ' +
             'gently loosen the roots and pull the leek out of the soil. Cut off the top of the foliage and trim the ' +
             'roots off, strip the external leaves from the stem to sound leaves.',
+        sow_direct: {
+            sow_direct: [0,0,0,1,1,1,1,1,1,1,0,0],
+            harvest: [1,1,1,1,1,1,1,1,1,1,1,1],
+        },
+        sow_indoors: {
+            sow_indoors: [1,1,1,1,1,1,1,1,1,0,0,0],
+            plant_out: [0,0,1,1,1,1,1,1,1,1,1,0],
+            harvest: [1,1,1,1,1,1,1,1,1,1,1,1],
+        },
     },
     lettuce: {
         id : 'lettuce',
@@ -347,6 +447,15 @@ export const Vegetables = {
         how_to_harvest: 'Harvesting heads of lettuce is done by cutting them away from the stalk when the head is ' +
             'still firm. Use a sharp knife and simply make a clean cut below the head through the stem. The outer leaves ' +
             'may be removed if needed. Morning is the best time for the harvest as heads will be at their freshest',
+        sow_direct: {
+            sow_direct: [0,0,1,1,1,1,1,0,0,0,0,0],
+            harvest: [1,1,1,1,0,0,0,1,1,1,1,0],
+        },
+        sow_indoors: {
+            sow_indoors: [1,1,1,1,1,1,0,0,0,0,0,0],
+            plant_out: [0,0,1,1,1,1,1,1,0,0,0,0],
+            harvest: [1,1,0,0,0,1,1,1,1,1,1,1],
+        },
     },
     onion: {
         id: 'onion',
@@ -358,14 +467,27 @@ export const Vegetables = {
         basic_information: 'Onions are one of the most useful vegetables a gardener can grow. ' +
             'Brown & white onions tend to be stronger in flavour than red onions.',
         how_to_grow: 'Can be grown from seeds or onion sets. ' +
-            'If growing from seed sow from February through to April in drills 1cm deep and 20cm between rows, sow the seed very thinly. ' +
+            'If growing from seed sow from February through to April in drills 1cm deep and 20cm between rows, sow the ' +
+            'seed very thinly. ' +
             'Thin the plants to 5cm apart and later increase to 10cm apart (make sure your hoe can go between rows ' +
-            'with plenty of room for the bulbs to grow), you can use the thinning to fill additional rows, water well after transplanting. ' +
+            'with plenty of room for the bulbs to grow), you can use the thinning to fill additional rows, water well ' +
+            'after transplanting. ' +
             'If growing from sets plant out in March 10cm apart in rows 20cm apart. ' +
-            'Push the sets into the soil so that the tip of the set is visible. Weed regularly between rows to control weeds.',
+            'Push the sets into the soil so that the tip of the set is visible. Weed regularly between rows to control ' +
+            'weeds.',
         how_to_harvest: 'When the onion leaves start to turn yellow and fall over, leave for a couple of weeks. ' +
             'Now lift with a fork cleaning off soil from the roots and leave them to dry. ' +
-            'The remaining foliage and roots will will die back, if the weather is wet the drying process can be done in a greenhouse or shed.',
+            'The remaining foliage and roots will will die back, if the weather is wet the drying process can be done ' +
+            'in a greenhouse or shed.',
+        sow_direct: {
+            sow_direct: [0,0,1,1,1,0,0,0,0,0,0,0],
+            harvest: [1,1,1,1,0,0,0,0,0,1,1,1],
+        },
+        sow_indoors: {
+            sow_indoors: [1,1,1,1,1,0,0,0,0,0,1,1],
+            plant_out: [0,0,1,1,1,1,1,1,1,0,0,0],
+            harvest: [1,1,1,1,0,1,1,1,1,1,1,1],
+        },
     },
     red_onion: {
         id: 'red_onion',
@@ -377,14 +499,46 @@ export const Vegetables = {
         basic_information: 'Onions are one of the most useful vegetables a gardener can grow. ' +
             'Red onions tend to be milder in flavour than white onions.',
         how_to_grow: 'Can be grown from seeds or onion sets. ' +
-            'If growing from seed sow from February through to April in drills 1cm deep and 20cm between rows, sow the seed very thinly. ' +
+            'If growing from seed sow from February through to April in drills 1cm deep and 20cm between rows, sow the ' +
+            'seed very thinly. ' +
             'Thin the plants to 5cm apart and later increase to 10cm apart (make sure your hoe can go between rows ' +
-            'with plenty of room for the bulbs to grow), you can use the thinning to fill additional rows, water well after transplanting. ' +
+            'with plenty of room for the bulbs to grow), you can use the thinning to fill additional rows, water well ' +
+            'after transplanting. ' +
             'If growing from sets plant out in March 10cm apart in rows 20cm apart. ' +
-            'Push the sets into the soil so that the tip of the set is visible. Weed regularly between rows to control weeds.',
+            'Push the sets into the soil so that the tip of the set is visible. Weed regularly between rows to control ' +
+            'weeds.',
         how_to_harvest: 'When the onion leaves start to turn yellow and fall over, leave for a couple of weeks. ' +
             'Now lift with a fork cleaning off soil from the roots and leave them to dry. ' +
-            'The remaining foliage and roots will will die back, if the weather is wet the drying process can be done in a greenhouse or shed.',
+            'The remaining foliage and roots will will die back, if the weather is wet the drying process can be done ' +
+            'in a greenhouse or shed.',
+        sow_direct: {
+            sow_direct: [0,0,1,1,1,0,0,0,0,0,0,0],
+            harvest: [1,1,1,1,0,0,0,0,0,1,1,1],
+        },
+        sow_indoors: {
+            sow_indoors: [1,1,1,1,1,0,0,0,0,0,1,1],
+            plant_out: [0,0,1,1,1,1,1,1,1,0,0,0],
+            harvest: [1,1,1,1,0,1,1,1,1,1,1,1],
+        },
+    },
+    paprika: {
+        id : 'paprika',
+        name: 'Paprika',
+        pictureURL: paprika,
+        sow_depth: '1 cm',
+        spacing_between_rows: '45 cm',
+        spacing_along_row: '45 cm',
+        basic_information: 'Peppers are part of the Capsicum family, is a relative of the tomato and ideally requires ' +
+            'warm weather to grow.',
+        how_to_grow: 'Sow seedlings under glass at 15 Celsius degrees. Sow 2 seeds in a peat pot filled with compost - ' +
+            'remove weaker seedling. Once hardened off, plant outdoors about 45 cm apart in a well-drained fertile ' +
+            'soil in a sunny, sheltered location.',
+        how_to_harvest: 'Pick the fruits when they are colored, swollen and glossy.',
+        sow_indoors: {
+            sow_indoors: [1,1,1,0,0,0,0,0,0,0,0,0],
+            plant_out: [0,0,0,1,1,1,0,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,0,1,1,1,0,0],
+        },
     },
     parsley: {
         id : 'parsley',
@@ -399,6 +553,15 @@ export const Vegetables = {
         how_to_grow: 'Sow seeds in 1.2 cm in April for a summer and autumn crop. Thin out to 22 cm apart - germination ' +
             'is slow (about a couple of months).',
         how_to_harvest: 'Pick leaves as you need them.',
+        sow_direct: {
+            sow_direct: [0,0,0,0,1,0,0,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,0,0,0,1,0,0],
+        },
+        sow_indoors: {
+            sow_indoors: [0,1,1,1,1,0,0,0,0,0,0,0],
+            plant_out: [0,0,0,1,1,1,1,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,1,1,1,1,0,0],
+        },
     },
     peas: {
         id : 'peas',
@@ -413,98 +576,145 @@ export const Vegetables = {
             'spring frost and plant 2.5 cm deep and 5 cm apart.',
         how_to_harvest: 'A pod is ready for harvest when it\'s well filled, although pick mangetout when they are ' +
             'about 7 cm long and the peas inside are just starting to develop.',
+        sow_direct: {
+            sow_direct: [0,0,1,1,0,0,0,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,0,1,1,1,0,0],
+        },
+        sow_indoors: {
+            sow_indoors: [1,1,1,1,1,1,0,0,0,0,0,0],
+            plant_out: [0,0,1,1,1,1,1,1,0,0,0,0],
+            harvest: [0,0,0,0,0,1,1,1,1,1,1,0],
+        },
     },
     potato: {
         id : 'potato',
         name: 'Potato',
         pictureURL: potato,
-        sow_depth: '',
-        spacing_between_rows: '',
-        spacing_along_row: '',
-        basic_information: '',
-        how_to_grow: '',
-        how_to_harvest: '',
-    },
-    tomato: {
-        id : 'tomato',
-        name: 'Tomato',
-        pictureURL: tomato,
-        sow_depth: '',
-        spacing_between_rows: '',
-        spacing_along_row: '',
-        basic_information: '',
-        how_to_grow: '',
-        how_to_harvest: '',
-    },
-    pear_tomato: {
-        id : 'pear_tomato',
-        name: 'Pear tomato',
-        pictureURL: pear_tomato,
-        sow_depth: '',
-        spacing_between_rows: '',
-        spacing_along_row: '',
-        basic_information: '',
-        how_to_grow: '',
-        how_to_harvest: '',
-    },
-    paprika: {
-        id : 'paprika',
-        name: 'Paprika',
-        pictureURL: paprika,
-        sow_depth: '',
-        spacing_between_rows: '',
-        spacing_along_row: '',
-        basic_information: '',
-        how_to_grow: '',
-        how_to_harvest: '',
+        sow_depth: '15 cm',
+        spacing_between_rows: '20 cm',
+        spacing_along_row: '30 cm',
+        basic_information: 'EAT THE CHIPS!!!! Chips, mash, boiled, wedges, crips, hot or cold - this tuber needs no ' +
+            'introduction! The two main types are the Earlies and the Maincrops.',
+        how_to_grow: 'Whether you chit (sprout) your potatoes is up to you. Make a trench. ' +
+            'Earlies: plant 30 cm apart, Maincrops: plant 38 cm apart. ' +
+            'Cover with fine soil then replace earth carefully. Make a low ridge.',
+        how_to_harvest: 'With Earlies, wait until the flowers open or the buds drop. Insert a fork into the ridge, ' +
+            'well away from the haul and lift the roots forward into the trench. With Maincrops, lift the roots and ' +
+            'let the potatoes dry for a few hours. Place them in a wooden box and store in a dark, frost-free place. ' +
+            'Make sure to remove all potatoes from the soil to avoid problems next year.',
+        sow_direct: {
+            sow_direct: [0,0,1,1,1,1,1,1,0,0,0,0],
+            harvest: [0,0,0,0,0,1,1,1,1,1,1,0],
+        },
     },
     radish: {
         id : 'radish',
         name: 'Radish',
         pictureURL: radish,
-        sow_depth: '',
-        spacing_between_rows: '',
-        spacing_along_row: '',
-        basic_information: '',
-        how_to_grow: '',
-        how_to_harvest: '',
-    },
-
-
-    beans: {
-        id : 'beans',
-        name: 'Beans',
-        pictureURL: beans,
-        sow_depth: '',
-        spacing_between_rows: '',
-        spacing_along_row: '',
-        basic_information: '',
-        how_to_grow: '',
-        how_to_harvest: '',
+        sow_depth: '1 cm',
+        spacing_between_rows: '15 cm',
+        spacing_along_row: '5 cm',
+        basic_information: 'Radishes are a root crop and can be white, red, purple or black, and in terms of shape, ' +
+            'it can be long and cylindrical or round. They are eaten raw, cooked or pickled. They are relatively easy ' +
+            'to grow and trouble free.',
+        how_to_grow: 'Sow very thinly, about 1 seed per 2.5 cms, 1cm deep and cover with soil.',
+        how_to_harvest: 'Pull it as and when you\'re ready to eat them.',
+        sow_direct: {
+            sow_direct: [0,0,1,1,1,1,1,1,1,0,0,0],
+            harvest: [0,0,0,0,1,1,1,1,1,1,1,0],
+        },
     },
     squash: {
         id : 'squash',
         name: 'Squash',
         pictureURL: squash,
-        sow_depth: '',
-        spacing_between_rows: '',
-        spacing_along_row: '',
-        basic_information: '',
-        how_to_grow: '',
-        how_to_harvest: '',
+        sow_depth: '3 cm',
+        spacing_between_rows: '90 cm',
+        spacing_along_row: '90 cm',
+        basic_information: 'Squashes, like marrows, courgettes and pumpkins all belong to the gourd family.',
+        how_to_grow: 'Can be grown indoors. Place 2 seeds in a 5 cm pot, cover with 2 cm of compost, water and when ' +
+            'the first pair of true leaves have formed and there is no chance of frosts they can be planted out as for ' +
+            'outdoor sowing. For outdoor sowing dig a hole 3 cm deep, sow three seeds at about 2.5 cm apart at the ' +
+            'centre of each hole. When the first true leaves have appeared, thin out to leave the strongest seedling. ' +
+            'Make sure to water well and protect against slugs.',
+        how_to_harvest: 'Harvest in September or October when the squashes have turned light brown or orange in color. ' +
+            'They can be stored for months in a cool dry place.',
+        sow_direct: {
+            sow_direct: [0,0,0,1,1,1,0,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,0,1,1,1,0,0],
+        },
+        sow_indoors: {
+            sow_indoors: [0,0,1,1,1,1,0,0,0,0,0,0],
+            plant_out: [0,0,0,1,1,1,1,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,1,1,1,1,0,0],
+        },
     },
-
-
-
     sweet_potato: {
         id : 'sweet_potato',
         name: 'Sweet potato',
         pictureURL: sweet_potato,
-        sow_depth: '',
-        spacing_between_rows: '',
-        spacing_along_row: '',
-        basic_information: '',
-        how_to_grow: '',
-        how_to_harvest: '',
+        sow_depth: '10 cm',
+        spacing_between_rows: '45 cm',
+        spacing_along_row: '30 cm',
+        basic_information: 'Sweet potatoes are the tuberous roots of vining plants. The orange fleshed sweet potatoes ' +
+            'are the most familiar, but sweet potatoes can be white, yellow and even purple.',
+        how_to_grow: 'Sweet potatoes are usually grown from slips; small rooted pieces of tuber. Pot immediately into ' +
+            'small pots of multi-purpose compost. Keep the compost moist, using tepid water. Cover the pots with a ' +
+            'clear plastic bag or place them in an unheated propagator, until they root.',
+        how_to_harvest: '\Insert a fork into the ridge, well away from the haul and lift the roots forward into the trench.',
+        sow_direct: {
+            sow_direct: [0,0,0,1,1,1,0,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,0,1,1,1,0,0],
+        },
+    },
+    tomato: {
+        id : 'tomato',
+        name: 'Tomato',
+        pictureURL: tomato,
+        sow_depth: '4 cm',
+        spacing_between_rows: '60 cm',
+        spacing_along_row: '45 cm',
+        basic_information: 'A member of the nightshade family it is classed as a fruit but usually used as a vegetable. ' +
+            'The plants produce an abundance of fruit in all shapes and sizes.',
+        how_to_grow: 'Easy to grow from seed in a warm, sheltered spot. Greenhouses and polytunnels offer the best ' +
+            'conditions for producing tomatoes but they can also be grown indoors or outdoors. There are some varieties ' +
+            'bred especially for containers and hanging baskets. Sow seeds in early spring if growing outdoors or ' +
+            'late winter if using a greenhouse. Tie the main stem to a vertical bamboo cane or wind it up a ' +
+            'well-anchored but slack sturdy string. Those grown as bush or hanging basket types do not need support. ' +
+            'Remove the sideshoots regularly when they are about 2.5cm long. Those grown as bush or hanging basket ' +
+            'types do not need to have sideshoots removed. Water regularly to keep the soil/compost evenly moist. ' +
+            'Feed every 10-14 days with a balanced liquid fertiliser. Remove yellowing leaves below developing fruit ' +
+            'trusses.',
+        how_to_harvest: 'Start picking when the fruit is ripe and fully coloured.',
+        sow_indoors: {
+            sow_indoors: [0,1,1,1,1,0,0,0,0,0,0,0],
+            plant_out: [0,0,0,1,1,1,1,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,1,1,1,1,0,0],
+        },
+    },
+    pear_tomato: {
+        id : 'pear_tomato',
+        name: 'Tomato - Pear',
+        pictureURL: pear_tomato,
+        sow_depth: '4 cm',
+        spacing_between_rows: '60 cm',
+        spacing_along_row: '45 cm',
+        basic_information: 'A member of the nightshade family it is classed as a fruit but usually used as a vegetable. ' +
+            'The plants produce an abundance of fruit in all shapes and sizes.',
+        how_to_grow: 'Easy to grow from seed in a warm, sheltered spot. Greenhouses and polytunnels offer the best ' +
+            'conditions for producing tomatoes but they can also be grown indoors or outdoors. There are some varieties ' +
+            'bred especially for containers and hanging baskets. Sow seeds in early spring if growing outdoors or ' +
+            'late winter if using a greenhouse. Tie the main stem to a vertical bamboo cane or wind it up a ' +
+            'well-anchored but slack sturdy string. Those grown as bush or hanging basket types do not need support. ' +
+            'Remove the sideshoots regularly when they are about 2.5cm long. Those grown as bush or hanging basket ' +
+            'types do not need to have sideshoots removed. Water regularly to keep the soil/compost evenly moist. ' +
+            'Feed every 10-14 days with a balanced liquid fertiliser. Remove yellowing leaves below developing fruit ' +
+            'trusses.',
+        how_to_harvest: 'Start picking when the fruit is ripe and fully coloured.',
+        sow_indoors: {
+            sow_indoors: [0,1,1,1,1,0,0,0,0,0,0,0],
+            plant_out: [0,0,0,1,1,1,1,0,0,0,0,0],
+            harvest: [0,0,0,0,0,0,1,1,1,1,0,0],
+        },
     },
 }
