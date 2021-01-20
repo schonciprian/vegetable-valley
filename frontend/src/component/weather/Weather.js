@@ -9,14 +9,21 @@ export default function Weather() {
     const [weather, setWeather] = useState([]);
     const [city, setCity] = useState("Budapest");
     const [coordinate, setCoordinate] = useState({});
+    const [, setIsError] = useState(false);
 
     useEffect(() => {
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f913779188ecd17807fa0473780a29fb`)
-                .then(response => {
-                    setCoordinate(response.data.coord)
-                    setWeather(response.data);
-                })
-        }, [city]);
+        const fetchData = async () => {
+            try {
+                const response = await axios(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f913779188ecd17807fa0473780a29fb`);
+                setCoordinate(response.data.coord)
+                setWeather(response.data);
+            } catch (error) {
+                setIsError(true);
+                console.log(error.response)
+            }
+        };
+        fetchData();
+    }, [city]);
 
 
     if (weather.length === 0) {
