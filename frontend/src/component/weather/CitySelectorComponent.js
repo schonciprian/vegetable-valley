@@ -34,15 +34,22 @@ export default function CitySelectorComponent(props) {
         }
     }
 
-    const handleNewCity = () => {
-        const cityInputField =  document.getElementById("city-input");
-        if (cityInputField.value) {
-            props.setCity(cityInputField.value)
-            hideCitySelection()
-            cityInputField.value = "";
-        } else {
+    const fetchData = async (cityInputField) => {
+        try {
+            const response = await axios(`https://api.openweathermap.org/data/2.5/weather?q=${cityInputField.value}&appid=f913779188ecd17807fa0473780a29fb`);
+            if (response.status === 200) {
+                props.setCity(cityInputField.value)
+                hideCitySelection()
+                cityInputField.value = "";
+            }
+        } catch (error) {
             cityInputField.classList.add("no-input-error");
         }
+    };
+
+    const handleNewCity = () => {
+        const cityInputField =  document.getElementById("city-input");
+        fetchData(cityInputField);
         setTimeout(() => {
             cityInputField.classList.remove("no-input-error");
         }, 1000);
