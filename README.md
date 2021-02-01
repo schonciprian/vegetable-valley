@@ -1,4 +1,4 @@
-This is our frontend application in React using the Bored API.
+This is my frontend application in React using the OpenWeatherMap API.
 
 ## How to Install
 
