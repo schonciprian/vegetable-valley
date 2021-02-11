@@ -6,13 +6,13 @@ import my_garden_1 from '../my_garden_1.jpg';
 function Home() {
 
     const vegetableInformation = [
+        "Basic information",
         "Sowing depth",
         "Line spacing",
         "Row spacing",
         "Planting guidelines by month to month",
         "How to grow",
         "How to harvest",
-        "I love P",
     ]
 
     return (
