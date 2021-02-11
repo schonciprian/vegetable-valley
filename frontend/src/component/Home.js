@@ -1,6 +1,6 @@
 import React from 'react';
 import {FaLeaf} from "react-icons/fa";
-import my_garden from '../my_garden.jpg';
+import my_garden_1 from '../my_garden_1.jpg';
 
 
 function Home() {
@@ -42,7 +42,7 @@ function Home() {
 
             <div className="my-garden">
                 <h2>A picture of my small vegetable garden in 2020:</h2>
-                <img src={my_garden} alt="A picture of my garden." title="My garden plot in 2020" width="80%"/>
+                <img src={my_garden_1} alt="A picture of my garden." title="My garden plot in 2020" width="80%"/>
             </div>
 
         </div>
