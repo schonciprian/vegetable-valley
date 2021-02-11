@@ -5,9 +5,9 @@
   align-items: center;
   flex-direction: column;
 
-  width: 60%;
+  width: 80%;
   padding: 30px;
-  margin: 50px auto 0;
+  margin: 50px auto;
 
   line-height: 1.5;
   text-align: justify;
@@ -15,6 +15,11 @@
   color: #eeeeee;
   background-color: $darker-color-blue;
   border-radius: 20px;
+
+  h1 {
+    font-size: $font-size-large-vw;
+    text-align: center;
+  }
 }
 
 .self-introduction {
@@ -38,4 +43,16 @@
       }
     }
   }
+}
+
+.my-garden {
+  text-align: center;
+
+  img {
+    border-radius: 20px;
+  }
+}
+
+.highlight {
+  color: darkorange;
 }
