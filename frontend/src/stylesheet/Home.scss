@@ -11,7 +11,7 @@
 
   line-height: 1.5;
   text-align: justify;
-  font-size: $font-size-normal-vw;
+  font-size: 20px;
 
   color: #eeeeee;
   background-color: $darker-color-blue;
@@ -84,7 +84,6 @@
 
       .contact-value {
         font-style: italic;
-        font-size: $font-size-normal-hover-vw;
 
         &:hover {
           color: darkorange;

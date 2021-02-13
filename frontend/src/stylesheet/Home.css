@@ -14,7 +14,7 @@
   margin: 50px auto;
   line-height: 1.5;
   text-align: justify;
-  font-size: 1.5vw;
+  font-size: 20px;
   color: #eeeeee;
   background-color: #0F1329;
   border-radius: 20px;
@@ -77,7 +77,6 @@
 }
 .contact .personal-information p .contact-value {
   font-style: italic;
-  font-size: 1.4vw;
 }
 .contact .personal-information p .contact-value:hover {
   color: darkorange;
