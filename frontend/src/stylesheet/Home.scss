@@ -11,6 +11,7 @@
 
   line-height: 1.5;
   text-align: justify;
+  font-size: $font-size-normal-vw;
 
   color: #eeeeee;
   background-color: $darker-color-blue;
@@ -22,13 +23,8 @@
   }
 }
 
-.self-introduction {
-  font-size: 20px;
-}
-
 .app-introduction {
   width: 100%;
-  font-size: 20px;
 
   ul {
     li {
@@ -50,9 +46,67 @@
 
   img {
     border-radius: 20px;
+    cursor: pointer;
   }
 }
 
 .highlight {
   color: darkorange;
+  text-decoration: none;
+}
+
+.fullscreen {
+  position:fixed;
+  left:10%;
+  top:10%;
+  z-index:10;
+  max-height: 80vh;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.contact {
+  width: 100%;
+  @extend %display-flex-center;
+  margin-top: 30px;
+
+  .personal-information {
+    margin: 0 75px;
+
+    p {
+      display: flex;
+      align-items: center;
+
+      .contact-icon {
+        color: darkorange;
+        padding-right: 10px;
+      }
+
+      .contact-value {
+        font-style: italic;
+        font-size: $font-size-normal-hover-vw;
+
+        &:hover {
+          color: darkorange;
+          transition: color 0.2s ease-in;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        color: #eeeeee;
+
+        &:hover {
+          color: darkorange;
+          transition: color 0.2s ease-in;
+        }
+      }
+    }
+  }
+  img {
+    width: 25%;
+    border-radius: 20px;
+    margin: 0 75px;
+
+  }
 }
