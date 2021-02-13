@@ -1,6 +1,8 @@
 import React from 'react';
 import {FaLeaf} from "react-icons/fa";
 import my_garden_1 from '../my_garden_1.jpg';
+import profile_picture from '../profile_picture.jpg';
+import {Link} from "react-router-dom";
 
 
 function Home() {
@@ -27,7 +29,7 @@ function Home() {
             <div className="app-introduction">
                 <h2>What is Vegetable Valley?</h2>
                 <p>Vegetable Valley is an online application where you can find many
-                    <span className="highlight"> information about vegetables </span>
+                    <Link className="highlight" to="/grow-guides"> information about vegetables </Link>
                     such as:</p>
                 <ul>
                     {vegetableInformation.map((example, index) =>
@@ -35,7 +37,7 @@ function Home() {
                     }
                 </ul>
                 <p>Vegetable Valley also helps you to search for
-                    <span className="highlight"> weather forecast </span>
+                    <Link className="highlight" to="/weather-forecast"> weather forecast </Link>
                     according to a chosen settlement. Knowing the following weather conditions would help a
                     lot for you to plan your tasks in the garden for the next days.</p>
             </div>
