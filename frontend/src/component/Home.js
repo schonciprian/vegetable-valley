@@ -50,7 +50,7 @@ function Home() {
                     <Link className="highlight" to="/grow-guides"> information about vegetables </Link>
                     such as:</p>
                 <ul>
-                    {vegetableInformation.map((example, index) =>
+                    {vegetableInformation.forEach((example, index) =>
                         <li><FaLeaf className="leaf-icon"/><span>{vegetableInformation[index]}</span></li>)
                     }
                 </ul>
@@ -67,7 +67,7 @@ function Home() {
                          ? {transform: "scale(1.2)", transition: "all 0.3s ease-out", margin: "70px 0"}
                          : {transform: "scale(1)", transition: "all 0.3s ease-out"}}
                      src={my_garden_1}
-                     alt="A picture of my garden."
+                     alt="My garden plot in 2020"
                      title="My garden plot in 2020"
                      width="80%"/>
             </div>

@@ -16,28 +16,28 @@ function SowingTableInside(props) {
                 <tbody>
                 <tr>
                     <th/>
-                    {months.map((month => (
-                        <th>{month}</th>
+                    {months.map(((month, index) => (
+                        <th key={index}>{month}</th>
                     )))}
                 </tr>
                 <tr>
                     <th>Sow indoors</th>
-                    {vegetableInfo.sow_indoors.sow_indoors.map((value => (
-                        <th>{value === 1 ? <img src={sowicon_selected} alt=""/> :
+                    {vegetableInfo.sow_indoors.sow_indoors.map(((value, index) => (
+                        <th key={index}>{value === 1 ? <img src={sowicon_selected} alt=""/> :
                             <img src={sowicon_greyout} alt=""/>}</th>
                     )))}
                 </tr>
                 <tr>
                     <th>Plant out</th>
-                    {vegetableInfo.sow_indoors.plant_out.map((value => (
-                        <th>{value === 1 ? <img src={planticon_selected} alt=""/> :
+                    {vegetableInfo.sow_indoors.plant_out.map(((value, index) => (
+                        <th key={index}>{value === 1 ? <img src={planticon_selected} alt=""/> :
                             <img src={planticon_greyout} alt=""/>}</th>
                     )))}
                 </tr>
                 <tr>
                     <th>Harvest</th>
-                    {vegetableInfo.sow_indoors.harvest.map((value => (
-                        <th>{value === 1 ? <img src={harvesticon_selected} alt=""/> :
+                    {vegetableInfo.sow_indoors.harvest.map(((value, index) => (
+                        <th key={index}>{value === 1 ? <img src={harvesticon_selected} alt=""/> :
                             <img src={harvesticon_greyout} alt=""/>}</th>
                     )))}
                 </tr>

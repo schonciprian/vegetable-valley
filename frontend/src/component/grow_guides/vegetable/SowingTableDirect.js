@@ -14,21 +14,21 @@ function SowingTableDirect(props) {
                 <tbody>
                 <tr>
                     <th/>
-                    {months.map((month => (
-                        <th>{month}</th>
+                    {months.map(((month, index) => (
+                        <th key={index}>{month}</th>
                     )))}
                 </tr>
                 <tr>
                     <th>Sow directly</th>
-                    {vegetableInfo.sow_direct.sow_direct.map((value => (
-                        <th>{value === 1 ? <img src={sowicon_selected} alt=""/> :
+                    {vegetableInfo.sow_direct.sow_direct.map(((value, index) => (
+                        <th key={index}>{value === 1 ? <img src={sowicon_selected} alt=""/> :
                             <img src={sowicon_greyout} alt=""/>}</th>
                     )))}
                 </tr>
                 <tr>
                     <th>Harvest</th>
-                    {vegetableInfo.sow_direct.harvest.map((value => (
-                        <th>{value === 1 ? <img src={harvesticon_selected} alt=""/> :
+                    {vegetableInfo.sow_direct.harvest.map(((value, index) => (
+                        <th key={index}>{value === 1 ? <img src={harvesticon_selected} alt=""/> :
                             <img src={harvesticon_greyout} alt=""/>}</th>
                     )))}
                 </tr>
