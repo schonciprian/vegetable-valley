@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Vegetables} from './Descriptions';
-import {FaEyeDropper} from "react-icons/fa";
-import {pinCard, toggleCard} from "./GrowGuideCardActions";
+import {FaEyeDropper, FaHeart} from "react-icons/fa";
+import {heartCard, pinCard, toggleCard} from "./GrowGuideCardActions";
 import {Link} from "react-router-dom";
 
 export default function GrowGuideCard() {
@@ -43,8 +43,13 @@ export default function GrowGuideCard() {
                         </div>
                         <div className="card-face card-face-back">
                             <div className="card-content">
+                                <div id={`heart-icon-${index}`}
+                                     className="icon heart-icon"
+                                     onClick={(event) => heartCard(event, index)}>
+                                    <FaHeart/>
+                                </div>
                                 <div id={`pin-icon-${index}`}
-                                     className="pin-icon"
+                                     className="icon pin-icon"
                                      onClick={(event) => pinCard(event, index)}>
                                     <FaEyeDropper/>
                                 </div>

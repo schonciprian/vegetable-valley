@@ -91,15 +91,13 @@ $light: #f3f3f3;
     width: 100%;
     height: 100%;
 
-    .pin-icon {
+    .icon {
       z-index: 1;
       @extend %display-flex-center;
       width: 30px;
       height: 29px;
       cursor: pointer;
       position: absolute;
-      top: 40px;
-      right: 10px;
 
       color: #eeeeee;
 
@@ -110,6 +108,16 @@ $light: #f3f3f3;
       &.active {
         color: darkorange;
       }
+    }
+
+    .pin-icon {
+      top: 40px;
+      right: 10px;
+    }
+
+    .heart-icon {
+      top: 40px;
+      left: 10px;
     }
 
     .card-header {

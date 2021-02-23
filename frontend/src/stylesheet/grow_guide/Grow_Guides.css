@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.card-face-back .card-content .card-body .buttons, .card-face-back .card-content .pin-icon, .card-face-front {
+.card-face-back .card-content .card-body .buttons, .card-face-back .card-content .icon, .card-face-front {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,21 +85,27 @@
   width: 100%;
   height: 100%;
 }
-.card-face-back .card-content .pin-icon {
+.card-face-back .card-content .icon {
   z-index: 1;
   width: 30px;
   height: 29px;
   cursor: pointer;
   position: absolute;
-  top: 40px;
-  right: 10px;
   color: #eeeeee;
 }
-.card-face-back .card-content .pin-icon:hover {
+.card-face-back .card-content .icon:hover {
   color: #151A30;
 }
-.card-face-back .card-content .pin-icon.active {
+.card-face-back .card-content .icon.active {
   color: darkorange;
+}
+.card-face-back .card-content .pin-icon {
+  top: 40px;
+  right: 10px;
+}
+.card-face-back .card-content .heart-icon {
+  top: 40px;
+  left: 10px;
 }
 .card-face-back .card-content .card-header {
   position: relative;

@@ -16,3 +16,8 @@ export const pinCard = (event, index) => {
     document.getElementById(`pin-icon-${index}`).classList.toggle('active')
     document.getElementById(`${index}`).classList.toggle('pin')
 }
+
+export const heartCard = (event, index) => {
+    event.stopPropagation();
+    document.getElementById(`heart-icon-${index}`).classList.toggle('active')
+}
