@@ -27,6 +27,7 @@
 
 .app-introduction {
   width: 100%;
+  border-top: 1px dashed darkorange;
 }
 .app-introduction h2 {
   color: darkorange;
