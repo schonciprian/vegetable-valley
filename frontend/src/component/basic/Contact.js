@@ -2,7 +2,7 @@ import React from 'react';
 import {GoPerson} from "react-icons/go";
 import {GrMail} from "react-icons/gr";
 import {FaGithub, FaLinkedin} from "react-icons/fa";
-import profile_picture from "../image/profile_picture/profile_picture.jpg";
+import profile_picture from "../../image/profile_picture/profile_picture.jpg";
 
 export function Contact() {
     return (

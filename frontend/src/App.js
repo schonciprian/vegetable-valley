@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Home from "./component/Home";
-import Header from "./component/Header";
+import Home from "./component/basic/Home";
+import Header from "./component/basic/Header";
 import GrowGuideCard from "./component/grow_guides/GrowGuideCard";
 import VegetablePage from "./component/grow_guides/vegetable/VegetablePage";
 import Weather from "./component/weather/Weather";
