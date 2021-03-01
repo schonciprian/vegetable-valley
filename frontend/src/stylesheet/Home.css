@@ -27,6 +27,9 @@
 .app-introduction {
   width: 100%;
 }
+.app-introduction h2 {
+  color: darkorange;
+}
 .app-introduction ul li {
   list-style: none;
 }
