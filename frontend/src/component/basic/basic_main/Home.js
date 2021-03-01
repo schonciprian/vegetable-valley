@@ -1,9 +1,16 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {Contact} from "../basic_sub/Contact";           // Component
-import MyGardenImage from "../basic_sub/MyGardenImage"; // Component
-import '../../../stylesheet/Home.css';                  // Stylesheet
-import {FaLeaf} from "react-icons/fa";                  // Icon
+
+// Components
+import {Contact} from "../basic_sub/Contact";
+import MyGardenImage from "../basic_sub/MyGardenImage";
+
+// Stylesheets
+import '../../../stylesheet/basic/basic_main/Home.css';
+
+// React-icon
+import {FaLeaf} from "react-icons/fa";
+//**************************************************//
 
 export function Home() {
     const vegetableInformation = [
