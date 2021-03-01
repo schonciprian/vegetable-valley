@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
-import {FaLeaf, FaGithub, FaLinkedin} from "react-icons/fa";
-import {GoPerson} from "react-icons/go";
-import {GrMail} from "react-icons/gr";
+import {FaLeaf} from "react-icons/fa";
 import my_garden_1 from '../image/my_garden_2020/my_garden_1.jpg';
-import profile_picture from '../image/profile_picture/profile_picture.jpg';
 import {Link} from "react-router-dom";
 import {Contact} from "./Contact";
 
