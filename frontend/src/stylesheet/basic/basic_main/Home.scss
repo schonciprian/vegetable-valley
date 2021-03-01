@@ -22,43 +22,36 @@
     text-align: center;
     color: darkorange;
   }
-}
 
-.app-introduction {
-  width: 100%;
-  border-top: 1px dashed darkorange;
+  .app-introduction {
+    width: 100%;
+    border-top: 1px dashed darkorange;
 
-  h2 {
-    color: darkorange;
-  }
+    h2 {
+      color: darkorange;
+    }
 
-  ul {
-    li {
-      list-style: none;
+    ul {
+      li {
+        list-style: none;
 
-      .leaf-icon {
-        color: darkorange;
-      }
+        .leaf-icon {
+          color: darkorange;
+        }
 
-      span {
-        padding-left: 20px;
+        span {
+          padding-left: 20px;
+        }
       }
     }
   }
 }
 
+//***************//
+//Highlight links//
+//***************//
+
 .highlight {
   color: darkorange;
   text-decoration: none;
 }
-
-.fullscreen {
-  position:fixed;
-  left:10%;
-  top:10%;
-  z-index:10;
-  max-height: 80vh;
-  object-fit: cover;
-  border-radius: 20px;
-}
-

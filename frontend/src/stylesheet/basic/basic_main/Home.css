@@ -18,37 +18,26 @@
   text-align: center;
   color: darkorange;
 }
-
-.app-introduction {
+.home-container .app-introduction {
   width: 100%;
   border-top: 1px dashed darkorange;
 }
-.app-introduction h2 {
+.home-container .app-introduction h2 {
   color: darkorange;
 }
-.app-introduction ul li {
+.home-container .app-introduction ul li {
   list-style: none;
 }
-.app-introduction ul li .leaf-icon {
+.home-container .app-introduction ul li .leaf-icon {
   color: darkorange;
 }
-.app-introduction ul li span {
+.home-container .app-introduction ul li span {
   padding-left: 20px;
 }
 
 .highlight {
   color: darkorange;
   text-decoration: none;
-}
-
-.fullscreen {
-  position: fixed;
-  left: 10%;
-  top: 10%;
-  z-index: 10;
-  max-height: 80vh;
-  object-fit: cover;
-  border-radius: 20px;
 }
 
 /*# sourceMappingURL=Home.css.map */
