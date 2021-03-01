@@ -1,10 +1,10 @@
 import React from 'react';
-import sowicon_selected from "../../../image/sowicon-selected.png";
-import sowicon_greyout from "../../../image/sowicon-greyout.png";
-import planticon_selected from "../../../image/planticon-selected.png";
-import planticon_greyout from "../../../image/planticon-greyout.png";
-import harvesticon_selected from "../../../image/harvesticon-selected.png";
-import harvesticon_greyout from "../../../image/harvesticon-greyout.png";
+import sowicon_selected from "../../../image/gardening_icons/sowicon-selected.png";
+import sowicon_greyout from "../../../image/gardening_icons/sowicon-greyout.png";
+import planticon_selected from "../../../image/gardening_icons/planticon-selected.png";
+import planticon_greyout from "../../../image/gardening_icons/planticon-greyout.png";
+import harvesticon_selected from "../../../image/gardening_icons/harvesticon-selected.png";
+import harvesticon_greyout from "../../../image/gardening_icons/harvesticon-greyout.png";
 
 function SowingTableInside(props) {
     const vegetableInfo = props.vegetableInfo;
