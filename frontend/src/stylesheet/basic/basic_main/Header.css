@@ -9,6 +9,7 @@
   width: 100%;
   height: fit-content;
   padding: 5px 0;
+  background-color: #0F1329;
 }
 .header .title {
   display: flex;
