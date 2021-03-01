@@ -86,6 +86,11 @@ function Home() {
                     I would love any feedback or suggestions for improvement.</p>
             </div>
 
+            {/****************/}
+            {/* Contact page */}
+            {/****************/}
+            <Contact />
+
             {/***************************/}
             {/* Image of my garden 2020 */}
             {/***************************/}
@@ -100,12 +105,6 @@ function Home() {
                      title="My garden plot in 2020"
                      width="80%"/>
             </div>
-
-            {/****************/}
-            {/* Contact page */}
-            {/****************/}
-            <Contact />
-
         </div>
     );
 }
