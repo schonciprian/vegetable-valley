@@ -80,6 +80,9 @@
   display: flex;
   align-items: center;
 }
+.contact .personal-information p span, .contact .personal-information p a {
+  font-size: 20px;
+}
 .contact .personal-information p .contact-icon {
   color: darkorange;
   padding-right: 10px;
