@@ -9,7 +9,6 @@ import Weather from "./component/weather/Weather";
 
 
 import './stylesheet/App.css';
-import './stylesheet/Home.css';
 import './stylesheet/weather/Weather_forecast.css';
 import './stylesheet/grow_guide/Grow_Guides.css';
 import './stylesheet/grow_guide/VegetableInfo.css';
