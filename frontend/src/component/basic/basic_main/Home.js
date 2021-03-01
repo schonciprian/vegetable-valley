@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {FaLeaf} from "react-icons/fa";
-import my_garden_1 from '../../image/my_garden_2020/my_garden_1.jpg';
+import my_garden_1 from '../../../image/my_garden_2020/my_garden_1.jpg';
 import {Link} from "react-router-dom";
-import {Contact} from "./Contact";
+import {Contact} from "../basic_sub/Contact";
 
 
 function Home() {
