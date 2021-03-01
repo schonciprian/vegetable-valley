@@ -1,15 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {FaLeaf} from "react-icons/fa";
-import my_garden_1 from '../../../image/my_garden_2020/my_garden_1.jpg';
 import {Link} from "react-router-dom";
 import {Contact} from "../basic_sub/Contact";
+import MyGardenImage from "../basic_sub/MyGardenImage";
 
-
-function Home() {
-
-    const [showFullScreen, setShowFullScreen] = useState(false);
-    const [openYAxis, setOpenYAxis] = useState(0);
-
+export function Home() {
     const vegetableInformation = [
         "Basic information",
         "Sowing depth",
@@ -27,18 +22,6 @@ function Home() {
         "Charts for weather forecast",
         "Planning page to plan gardening tasks by month to month",
     ];
-
-    const fullScreen = () => {
-        setShowFullScreen(!showFullScreen);
-        console.log(showFullScreen);
-        setOpenYAxis(window.scrollY);
-    }
-
-    window.onscroll = () => {
-        if (window.scrollY < openYAxis - 150 || window.scrollY > openYAxis + 150) {
-            setShowFullScreen(false)
-        }
-    }
 
     return (
         <div className="home-container">
@@ -94,19 +77,7 @@ function Home() {
             {/***************************/}
             {/* Image of my garden 2020 */}
             {/***************************/}
-            <div className="my-garden">
-                <h2>A picture of my small vegetable garden in 2020:</h2>
-                <img onClick={fullScreen}
-                     style={showFullScreen
-                         ? {transform: "scale(1.2)", transition: "all 0.3s ease-out", margin: "70px 0"}
-                         : {transform: "scale(1)", transition: "all 0.3s ease-out"}}
-                     src={my_garden_1}
-                     alt="My garden plot in 2020"
-                     title="My garden plot in 2020"
-                     width="80%"/>
-            </div>
+            <MyGardenImage />
         </div>
     );
 }
-
-export default Home;
