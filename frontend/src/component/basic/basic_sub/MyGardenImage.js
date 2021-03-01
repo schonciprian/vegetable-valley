@@ -1,13 +1,17 @@
 import React, {useState} from 'react';
+
+// Stylesheets
+import '../../../stylesheet/basic/basic_sub/MyGardenImage.css';
+
+// Images
 import my_garden_1 from "../../../image/my_garden_2020/my_garden_1.jpg";
 
-function MyGardenImage(props) {
+function MyGardenImage() {
     const [showFullScreen, setShowFullScreen] = useState(false);
     const [openYAxis, setOpenYAxis] = useState(0);
 
     const fullScreen = () => {
         setShowFullScreen(!showFullScreen);
-        console.log(showFullScreen);
         setOpenYAxis(window.scrollY);
     }
 
@@ -28,7 +32,8 @@ function MyGardenImage(props) {
                  alt="My garden plot in 2020"
                  title="My garden plot in 2020"
                  width="80%"/>
-        </div>    );
+        </div>
+    );
 }
 
 export default MyGardenImage;
