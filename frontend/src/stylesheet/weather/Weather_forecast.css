@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination, .loading, .header {
+.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination, .loading {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,70 +33,7 @@ body {
   background-color: #040617;
 }
 
-.header {
-  width: 100%;
-  height: fit-content;
-  padding: 5px 0;
-}
-
-.title {
-  display: flex;
-  align-items: center;
-  width: 40%;
-  height: 100%;
-  font-family: "Montserrat", sans-serif;
-  font-size: 3vw;
-  letter-spacing: 5px;
-}
-@media screen and (max-width: 775px) {
-  .title {
-    font-size: 65px;
-  }
-}
-@media screen and (max-width: 625px) {
-  .title {
-    font-size: 50px;
-  }
-}
-.title a {
-  text-align: left;
-  margin: 0 0 0 20px;
-  text-decoration: none;
-  color: darkorange;
-}
-
-.navbar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 60%;
-  height: 75px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 2vw;
-  letter-spacing: 2px;
-  text-align: center;
-  background-color: transparent;
-}
-@media screen and (max-width: 775px) {
-  .navbar {
-    font-size: 25px;
-  }
-}
-@media screen and (max-width: 625px) {
-  .navbar {
-    font-size: 20px;
-  }
-}
-.navbar a {
-  margin: 20px;
-  text-decoration: none;
-  color: #eeeeee;
-}
-.navbar a:hover {
-  color: #7F8EC0;
-}
-
-.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination, .loading, .header {
+.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination, .loading {
   display: flex;
   justify-content: center;
   align-items: center;

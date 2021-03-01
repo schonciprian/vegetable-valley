@@ -6,6 +6,7 @@ import '../../../stylesheet/basic/basic_sub/MyGardenImage.css';
 // Images
 import my_garden_1 from "../../../image/my_garden_2020/my_garden_1.jpg";
 
+
 function MyGardenImage() {
     const [showFullScreen, setShowFullScreen] = useState(false);
     const [openYAxis, setOpenYAxis] = useState(0);

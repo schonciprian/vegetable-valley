@@ -1,0 +1,71 @@
+@import "../../Variables.scss";
+
+.header {
+  @extend %display-flex-center;
+  width: 100%;
+  height: fit-content;
+
+  padding: 5px 0;
+
+  .title {
+    display: flex;
+    align-items: center;
+
+    width: 40%;
+    height: 100%;
+
+    font-family: $font-style-titles;
+    font-size: $font-size-large-vw;
+    letter-spacing: 5px;
+
+    @media screen and (max-width: 775px) {
+      font-size: 65px;
+    }
+
+    @media screen and (max-width: 625px) {
+      font-size: 50px;
+    }
+
+    a {
+      text-align: left;
+      margin: 0 0 0 20px;
+      text-decoration: none;
+      color: darkorange;
+    }
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    width: 60%;
+    height: 75px;
+
+    font-family: $font-style-titles;
+    font-size: $font-size-larger-vw;
+    letter-spacing: 2px;
+    text-align: center;
+
+    background-color: transparent;
+
+    @media screen and (max-width: 775px) {
+      font-size: 25px;
+    }
+
+    @media screen and (max-width: 625px) {
+      font-size: 20px;
+    }
+
+    a {
+      margin: 20px;
+
+      text-decoration: none;
+      color: #eeeeee;
+    }
+
+    a:hover {
+      color: $text-color-yellow-hover;
+    }
+  }
+}
