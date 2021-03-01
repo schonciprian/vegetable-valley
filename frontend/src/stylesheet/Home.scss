@@ -49,6 +49,7 @@
 
 .my-garden {
   text-align: center;
+  color: darkorange;
 
   img {
     border-radius: 20px;
@@ -78,6 +79,10 @@
 
   .personal-information {
     margin: 0 75px;
+
+    h2 {
+      color: darkorange;
+    }
 
     p {
       display: flex;

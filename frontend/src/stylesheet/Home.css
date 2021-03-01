@@ -44,6 +44,7 @@
 
 .my-garden {
   text-align: center;
+  color: darkorange;
 }
 .my-garden img {
   border-radius: 20px;
@@ -71,6 +72,9 @@
 }
 .contact .personal-information {
   margin: 0 75px;
+}
+.contact .personal-information h2 {
+  color: darkorange;
 }
 .contact .personal-information p {
   display: flex;
