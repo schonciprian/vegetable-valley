@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+// Stylesheets
+import '../../../stylesheet/basic/basic_main/Header.css';
+//**************************************************//
+
+
 function Header() {
     return (
         <div className="header">
