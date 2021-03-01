@@ -40,7 +40,8 @@ function Home() {
             <p className="self-introduction">My name is Ciprian and I love spending time in the garden while
                 I am listening to the chirping of birds or the noise of the wind.
                 I started gardening back in my childhood during summer breaks in my
-                grandparents' garden with my own small plot.</p>
+                grandparents' garden with my own small plot. During the 2020's quarantine I have started a small garden.
+                I have planted carrot, kohlrabi, tomato, potato, peas, beans and cucumber.</p>
 
             <div className="app-introduction">
                 <h2>What is Vegetable Valley?</h2>
