@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact {
+  width: 100%;
+  margin-top: 30px;
+}
+.contact .personal-information {
+  margin: 0 75px;
+}
+.contact .personal-information h2 {
+  color: darkorange;
+}
+.contact .personal-information p {
+  display: flex;
+  align-items: center;
+}
+.contact .personal-information p span, .contact .personal-information p a {
+  font-size: 20px;
+}
+.contact .personal-information p .contact-icon {
+  padding-right: 10px;
+  color: darkorange;
+}
+.contact .personal-information p .contact-value {
+  font-style: italic;
+}
+.contact .personal-information p .contact-value:hover {
+  color: darkorange;
+  transition: color 0.2s ease-in;
+}
+.contact .personal-information p a {
+  text-decoration: none;
+  color: #eeeeee;
+}
+.contact .personal-information p a:hover {
+  color: darkorange;
+  transition: color 0.2s ease-in;
+}
+.contact img {
+  width: 25%;
+  border-radius: 20px;
+  margin: 0 75px;
+}
+
+/*# sourceMappingURL=Contact.css.map */
