@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.card-face-back .card-content .card-body .buttons, .card-face-back .card-content .icon, .card-face-front {
+.plant-type-selection-container, .card-face-back .card-content .card-body .buttons, .card-face-back .card-content .icon, .card-face-front {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -191,6 +191,53 @@
 
 .is-flipped {
   transform: rotateY(180deg);
+}
+
+.plant-type-selection-container {
+  flex-direction: column;
+  width: 100%;
+  padding: 0 20px 20px;
+  border-bottom: 1px dashed darkorange;
+  border-radius: 10px 10px 0 0;
+  color: #eeeeee;
+  user-select: none;
+}
+.plant-type-selection-container h2 {
+  margin: 10px;
+  color: darkorange;
+  font-size: 2vw;
+}
+.plant-type-selection-container .plant-types {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, max-content));
+  grid-gap: 16px;
+  justify-content: center;
+  padding: initial;
+}
+.plant-type-selection-container .plant-types li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 210px;
+  padding: 10px;
+  margin: 5px;
+  font-weight: bold;
+  font-size: 1.5vw;
+  background-color: #181d35;
+  border-radius: 20px;
+  list-style-type: none;
+}
+.plant-type-selection-container .plant-types li .type-icon {
+  width: 40px;
+  pointer-events: none;
+}
+.plant-type-selection-container .plant-types li span {
+  pointer-events: none;
+}
+
+.active-selection {
+  color: darkorange;
 }
 
 /*# sourceMappingURL=Grow_Guides.css.map */
