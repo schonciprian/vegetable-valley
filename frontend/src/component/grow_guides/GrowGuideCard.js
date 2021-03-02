@@ -3,6 +3,8 @@ import {Vegetables} from './Descriptions';
 import {FaEyeDropper, FaHeart} from "react-icons/fa";
 import {heartCard, pinCard, toggleCard} from "./GrowGuideCardActions";
 import {Link} from "react-router-dom";
+import {GiBananaBunch, GiTomato} from "react-icons/gi";
+import {BiSelectMultiple} from "react-icons/bi";
 
 export default function GrowGuideCard() {
 
@@ -31,8 +33,71 @@ export default function GrowGuideCard() {
         }
     }, [isFetching, dataEndIndex])
 
+    const setSelectedType = (event) => {
+        event.target.classList.toggle('active-selection')
+    }
+
+    const selectionTypes = {
+        'All plants': {
+            name: 'All plants',
+            icon: BiSelectMultiple,
+            selected: true,
+        },
+        'Fruits': {
+            name: 'Fruits',
+            icon: GiBananaBunch,
+        },
+        'Vegetables': {
+            name: 'Vegetables',
+            icon: GiTomato,
+        },
+        'Banana': {
+            name: 'Banana',
+            icon: BiSelectMultiple,
+        },
+        'Peas': {
+            name: 'Peas',
+            icon: GiBananaBunch,
+        },
+        'Tomato': {
+            name: 'Tomato',
+            icon: GiTomato,
+        },
+        'Pepper': {
+            name: 'Pepper',
+            icon: BiSelectMultiple,
+        },
+        'Onion': {
+            name: 'Onion',
+            icon: GiBananaBunch,
+        },
+        'Eggplant': {
+            name: 'Eggplant',
+            icon: GiTomato,
+        },
+    }
+
     return (
         <div className="grow-guides-container">
+            <div className="plant-type-selection-container">
+                <h2>Selection box</h2>
+                <ul className="plant-types">
+                    {Object.keys(selectionTypes).map((selectionType, index) => {
+                        const TagName = selectionTypes[selectionType].icon;
+
+                        return (
+                            <li key={index}
+                               className={selectionTypes[selectionType].selected
+                                    ? 'active-selection'
+                                    : ""}
+                               onClick={(event) => setSelectedType(event)}>
+                                <TagName className="type-icon" onClick={event => event.stopPropagation()}/>
+                                <span onClick={event => event.stopPropagation()}>{selectionTypes[selectionType].name}</span>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
 
             {Object.keys(data).map((veggie, index) => (
                 <div key={index} className="grow-guide-card-outer" onClick={() => toggleCard(index)}>
