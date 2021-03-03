@@ -31,6 +31,7 @@ export const Vegetables = {
     aubergine: {
         id : 'aubergine',
         name: 'Aubergine',
+        types: ['Vegetable', 'Egg'],
         pictureURL: aubergine,
         sow_depth: '2 cm',
         spacing_between_rows: '60 cm',
@@ -51,6 +52,7 @@ export const Vegetables = {
     beans: {
         id : 'beans',
         name: 'Beans',
+        types: ['Egg'],
         pictureURL: beans,
         sow_depth: '5 cm',
         spacing_between_rows: '60 cm',
@@ -74,6 +76,7 @@ export const Vegetables = {
     beetroot: {
         id : 'beetroot',
         name: 'Beetroot',
+        types: ['Vegetable', 'Root'],
         pictureURL: beetroot,
         sow_depth: '1 cm',
         spacing_between_rows: '30 cm',
@@ -102,6 +105,7 @@ export const Vegetables = {
     brussels_sprouts: {
         id : 'brussels_sprouts',
         name: 'Brussels sprouts',
+        types: ['Vegetable', 'Root'],
         pictureURL: brussels_sprouts,
         sow_depth: '1 cm',
         spacing_between_rows: '75 cm',
@@ -129,6 +133,7 @@ export const Vegetables = {
     cabbage: {
         id : 'cabbage',
         name: 'Cabbage',
+        types: ['Vegetable', 'Root'],
         pictureURL: cabbage,
         sow_depth: '1 cm',
         spacing_between_rows: '45 cm',
@@ -156,6 +161,7 @@ export const Vegetables = {
     purple_cabbage: {
         id : 'purple_cabbage',
         name: 'Cabbage - Purple',
+        types: ['Vegetable', 'Root'],
         pictureURL: purple_cabbage,
         sow_depth: '1 cm',
         spacing_between_rows: '45 cm',
@@ -183,6 +189,7 @@ export const Vegetables = {
     carrot: {
         id : 'carrot',
         name: 'Carrot',
+        types: ['Vegetable', 'Root'],
         pictureURL: carrot,
         sow_depth: '1 cm',
         spacing_between_rows: '25 cm',
@@ -203,6 +210,7 @@ export const Vegetables = {
     celeriac: {
         id : 'celeriac',
         name: 'Celeriac',
+        types: ['Vegetable', 'Root'],
         pictureURL: celeriac,
         sow_depth: '1 cm',
         spacing_between_rows: '35 cm',
@@ -232,6 +240,7 @@ export const Vegetables = {
     courgette: {
         id : 'courgette',
         name: 'Courgette',
+        types: ['Vegetable', 'Root'],
         pictureURL: courgette,
         sow_depth: '2 cm',
         spacing_between_rows: '90 cm',
@@ -255,6 +264,7 @@ export const Vegetables = {
     cucumber: {
         id : 'cucumber',
         name: 'Cucumber',
+        types: ['Vegetable', 'Root'],
         pictureURL: cucumber,
         sow_depth: '3 cm',
         spacing_between_rows: '90 cm',
@@ -274,6 +284,7 @@ export const Vegetables = {
     dill: {
         id : 'dill',
         name: 'Dill',
+        types: ['Vegetable', 'Root'],
         pictureURL: dill,
         sow_depth: '1 cm',
         spacing_between_rows: '30 cm',

@@ -9,6 +9,7 @@ import {BiSelectMultiple} from "react-icons/bi";
 export default function GrowGuideCard() {
 
     const [data, setData] = useState([]);
+    const [vegetableData, setVegetableData] = useState(Vegetables);
     const [isFetching, setIsFetching] = useState(true);
     const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 155) / 340) * Math.floor(window.innerWidth * 0.8 / 255));
     const [selectedTypeCount, setSelectedTypeCount] = useState(0);
@@ -23,7 +24,7 @@ export default function GrowGuideCard() {
 
     useEffect(() => {
         window.addEventListener("scroll", isScrolling);
-        const fetchData = Object.keys(Vegetables).slice(0, dataEndIndex).reduce((result, key) => {
+        const fetchData = Object.keys(vegetableData).slice(0, dataEndIndex).reduce((result, key) => {
             result[key] = Vegetables[key];
             return result;
         }, {});
@@ -33,7 +34,30 @@ export default function GrowGuideCard() {
             setIsFetching(false);
             setDataEndIndex(dataEndIndex => dataEndIndex + (Math.floor(window.innerWidth * 0.8 / 255)))
         }
-    }, [isFetching, dataEndIndex])
+    }, [isFetching, dataEndIndex, vegetableData])
+
+    useEffect(() => {
+        if (selectedTypeList.length !== 0) {
+            setVegetableData(Object.keys(Vegetables).reduce((result, vegetable) => {
+                if (Vegetables[vegetable].types) {
+                    Vegetables[vegetable].types.forEach(type => {
+                            if (selectedTypeList.includes(type)) {
+                                result[vegetable] = Vegetables[vegetable];
+                            }
+                        }
+                    )
+                }
+                setIsFetching(true);
+                return result;
+            }, {}))
+        } else {
+            setVegetableData(Vegetables);
+            setIsFetching(true);
+            console.log("asd")
+        }
+
+    }, [selectedTypeList])
+
 
     const setSelectedType = (event) => {
 
@@ -60,13 +84,13 @@ export default function GrowGuideCard() {
     const selectionTypes = {
         'All': {name: 'All plants', icon: BiSelectMultiple, selected: selectedTypeCount === 0,},
         'Fruits': {name: 'Fruits', icon: GiBananaBunch,},
-        'Vegetables': {name: 'Vegetables', icon: GiTomato,},
+        'Vegetable': {name: 'Vegetable', icon: GiTomato,},
         'Banana': {name: 'Banana', icon: GiCarrot,},
         'Peas': {name: 'Peas', icon: GiBananaBunch,},
         'Tomato': {name: 'Tomato', icon: GiTomato,},
         'Pepper': {name: 'Pepper', icon: GiChiliPepper,},
-        'Onion': {name: 'Onion', icon: GiBananaBunch,},
-        'Eggplant': {name: 'Eggplant', icon: GiTomato,},
+        'Root': {name: 'Root', icon: GiBananaBunch,},
+        'Egg': {name: 'Egg', icon: GiTomato,},
     }
 
     return (
@@ -80,12 +104,13 @@ export default function GrowGuideCard() {
                         return (
                             <li key={index}
                                 id={Object.keys(selectionTypes)[index]}
-                               className={selectionTypes[selectionType].selected
+                                className={selectionTypes[selectionType].selected
                                     ? 'active-selection'
                                     : ""}
-                               onClick={(event) => setSelectedType(event)}>
+                                onClick={(event) => setSelectedType(event)}>
                                 <TagName className="type-icon" onClick={event => event.stopPropagation()}/>
-                                <span onClick={event => event.stopPropagation()}>{selectionTypes[selectionType].name}</span>
+                                <span
+                                    onClick={event => event.stopPropagation()}>{selectionTypes[selectionType].name}</span>
                             </li>
                         )
                     })}
@@ -129,7 +154,8 @@ export default function GrowGuideCard() {
                                         <span>{Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</span>
                                     </p>
                                     <div className="buttons" onClick={(event) => event.stopPropagation()}>
-                                        <Link className="more-info" to={`/grow-guides/${Vegetables[veggie].id}`}>More info</Link>
+                                        <Link className="more-info" to={`/grow-guides/${Vegetables[veggie].id}`}>More
+                                            info</Link>
                                     </div>
                                 </div>
                             </div>
