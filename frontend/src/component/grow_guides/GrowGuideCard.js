@@ -59,13 +59,15 @@ export default function GrowGuideCard() {
                     )
                 }
                 setIsFetching(true);
-                setDataEndIndex(Math.ceil((window.innerHeight - 155) / 360) * Math.floor(window.innerWidth * 0.8 / 255));
+                // setDataEndIndex(Math.ceil((window.innerHeight - 155) / 360) * Math.floor(window.innerWidth * 0.8 / 255));
                 return result;
             }, {}))
         } else {
             setVegetableData(Vegetables);
             setIsFetching(true);
         }
+        setDataEndIndex(Math.ceil((window.innerHeight - 155) / 360) * Math.floor(window.innerWidth * 0.8 / 255));
+
 
     }, [selectedTypeList])
 
