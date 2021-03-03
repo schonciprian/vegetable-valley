@@ -12,6 +12,7 @@ export default function GrowGuideCard() {
     const [isFetching, setIsFetching] = useState(true);
     const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 155) / 340) * Math.floor(window.innerWidth * 0.8 / 255));
     const [selectedTypeCount, setSelectedTypeCount] = useState(0);
+    const [selectedTypeList, setSelectedTypeList] = useState([]);
 
     const isScrolling = () => {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
@@ -38,14 +39,14 @@ export default function GrowGuideCard() {
 
         if (event.target.classList.contains('active-selection')) {
             setSelectedTypeCount(selectedTypeCount - 1)
+            setSelectedTypeList(selectedTypeList => selectedTypeList.filter(item => item !== event.target.id))
         } else {
             setSelectedTypeCount(selectedTypeCount + 1)
+            setSelectedTypeList([...selectedTypeList, event.target.id])
         }
 
         // Clicking on "All plants" after more types are selected, only "All" will remain active
         if (event.target.id === 'All') {
-            console.log('helo');
-            console.log(selectedTypeCount);
             document.querySelectorAll('.active-selection')
                 .forEach(element => element.classList
                 .remove('active-selection'))
