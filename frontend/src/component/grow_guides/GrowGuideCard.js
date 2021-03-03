@@ -53,7 +53,6 @@ export default function GrowGuideCard() {
         } else {
             setVegetableData(Vegetables);
             setIsFetching(true);
-            console.log("asd")
         }
 
     }, [selectedTypeList])
@@ -83,7 +82,7 @@ export default function GrowGuideCard() {
 
     const selectionTypes = {
         'All': {name: 'All plants', icon: BiSelectMultiple, selected: selectedTypeCount === 0,},
-        'Fruits': {name: 'Fruits', icon: GiBananaBunch,},
+        'Fruit': {name: 'Fruit', icon: GiBananaBunch,},
         'Vegetable': {name: 'Vegetable', icon: GiTomato,},
         'Banana': {name: 'Banana', icon: GiCarrot,},
         'Peas': {name: 'Peas', icon: GiBananaBunch,},
@@ -116,7 +115,7 @@ export default function GrowGuideCard() {
                     })}
                 </ul>
             </div>
-
+            {Object.keys(data).length === 0 ? <div style={{color: 'darkorange', fontSize: '30px'}}>No result</div> : ""}
             {Object.keys(data).map((veggie, index) => (
                 <div key={index} className="grow-guide-card-outer" onClick={() => toggleCard(index)}>
                     <div id={index} className="grow-guide-card-inner" key={index}>
