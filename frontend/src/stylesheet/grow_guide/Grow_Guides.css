@@ -27,28 +27,45 @@
   background-color: #0F1329;
   border-radius: 25px;
 }
-.grow-guides-container .grow-guide-card-outer {
+.grow-guides-container .grow-guides-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, max-content));
+  grid-gap: 16px;
+  justify-content: center;
+  padding: initial;
+}
+.grow-guides-container .grow-guides-card .grow-guide-card-outer {
   user-select: none;
   width: 225px;
   height: 320px;
   margin: 20px 15px;
   perspective: 1000px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1.5vw;
+  background-color: #181d35;
+  border-radius: 20px;
+  list-style-type: none;
 }
-.grow-guides-container .grow-guide-card-outer .grow-guide-card-inner {
+.grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
   cursor: pointer;
   transition: transform 1s;
   transform-style: preserve-3d;
-  --gradient: linear-gradient( 135deg, #151A30, #4B5682);
+  --gradient: linear-gradient(135deg, #151A30, #4B5682);
 }
-.grow-guides-container .grow-guide-card-outer .grow-guide-card-inner img {
+.grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner img {
   max-width: 85%;
   height: 85%;
   object-fit: contain;
 }
-.grow-guides-container .grow-guide-card-outer .grow-guide-card-inner .vegetable-name {
+.grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner .vegetable-name {
   margin: 15px auto;
   text-transform: uppercase;
   text-align: center;

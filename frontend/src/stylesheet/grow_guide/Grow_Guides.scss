@@ -21,41 +21,61 @@ $light: #f3f3f3;
   background-color: $darker-color-blue;
   border-radius: 25px;
 
-  .grow-guide-card-outer {
-    user-select: none;
 
-    width: 225px;
-    height: 320px;
+  .grow-guides-card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(225px, max-content));
+    grid-gap: 16px;
+    justify-content: center;
+    padding: initial;
 
-    margin: 20px 15px;
+    .grow-guide-card-outer {
+      user-select: none;
 
-    perspective: 1000px;
+      width: 225px;
+      height: 320px;
 
-    .grow-guide-card-inner {
-      position: relative;
+      margin: 20px 15px;
 
-      width: 100%;
-      height: 100%;
-
+      perspective: 1000px;
+      display: flex;
+      align-items: center;
       cursor: pointer;
+      padding: 5px;
+      font-weight: bold;
+      font-size: 1.5vw;
+      background-color: #181d35;
+      border-radius: 20px;
 
-      transition: transform 1s;
-      transform-style: preserve-3d;
-      --gradient: linear-gradient( 135deg, #151A30, #4B5682);
+      list-style-type: none;
 
-      img {
-        max-width: 85%;
-        height: 85%;
-        object-fit: contain;
-      }
+      .grow-guide-card-inner {
+        position: relative;
 
-      .vegetable-name {
-        margin: 15px auto;
-        text-transform: uppercase;
-        text-align: center;
-        font-size: 18px;
-        font-weight: 700;
-        color: $color-whisper;
+        width: 100%;
+        height: 100%;
+
+        cursor: pointer;
+
+        transition: transform 1s;
+        transform-style: preserve-3d;
+        --gradient: linear-gradient(135deg, #151A30, #4B5682);
+
+        img {
+          max-width: 85%;
+          height: 85%;
+          object-fit: contain;
+        }
+
+        .vegetable-name {
+          margin: 15px auto;
+          text-transform: uppercase;
+          text-align: center;
+          font-size: 18px;
+          font-weight: 700;
+          color: $color-whisper;
+        }
       }
     }
   }
@@ -231,7 +251,7 @@ $light: #f3f3f3;
   border-bottom: 1px dashed darkorange;
   border-radius: 10px 10px 0 0;
   color: #eeeeee;
-  user-select:none;
+  user-select: none;
 
   h2 {
     margin: 10px;

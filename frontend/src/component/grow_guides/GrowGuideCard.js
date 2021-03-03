@@ -3,7 +3,18 @@ import {Vegetables} from './Descriptions';
 import {FaEyeDropper, FaHeart} from "react-icons/fa";
 import {heartCard, pinCard, toggleCard} from "./GrowGuideCardActions";
 import {Link} from "react-router-dom";
-import {GiBananaBunch, GiTomato, GiCarrot, GiHerbsBundle, GiGarlic, GiBroccoli, GiAubergine, GiPeas, GiPumpkin, GiThreeLeaves} from "react-icons/gi";
+import {
+    GiBananaBunch,
+    GiTomato,
+    GiCarrot,
+    GiHerbsBundle,
+    GiGarlic,
+    GiBroccoli,
+    GiAubergine,
+    GiPeas,
+    GiPumpkin,
+    GiThreeLeaves
+} from "react-icons/gi";
 import {BiSelectMultiple} from "react-icons/bi";
 
 export default function GrowGuideCard() {
@@ -72,7 +83,7 @@ export default function GrowGuideCard() {
         if (event.target.id === 'All') {
             document.querySelectorAll('.active-selection')
                 .forEach(element => element.classList
-                .remove('active-selection'))
+                    .remove('active-selection'))
             setSelectedTypeList([])
             setSelectedTypeCount(0)
         }
@@ -117,53 +128,56 @@ export default function GrowGuideCard() {
                     })}
                 </ul>
             </div>
-            {Object.keys(data).length === 0 ? <div style={{color: 'darkorange', fontSize: '30px'}}>No result</div> : ""}
-            {Object.keys(data).map((veggie, index) => (
-                <div key={index} className="grow-guide-card-outer" onClick={() => toggleCard(index)}>
-                    <div id={index} className="grow-guide-card-inner" key={index}>
-                        <div className="card-face card-face-front">
-                            <div className="vegetable-name">{Vegetables[veggie].name}</div>
-                            <img src={Vegetables[veggie].pictureURL} alt=""/>
-                        </div>
-                        <div className="card-face card-face-back">
-                            <div className="card-content">
-                                <div id={`heart-icon-${index}`}
-                                     className="icon heart-icon"
-                                     onClick={(event) => heartCard(event, index)}>
-                                    <FaHeart/>
-                                </div>
-                                <div id={`pin-icon-${index}`}
-                                     className="icon pin-icon"
-                                     onClick={(event) => pinCard(event, index)}>
-                                    <FaEyeDropper/>
-                                </div>
-                                <div className="card-header">
-                                    <h2>{Vegetables[veggie].name}</h2>
-                                    <img className="pp" src={Vegetables[veggie].pictureURL} alt=""/>
-                                </div>
-                                <div className="card-body">
-                                    <p>
-                                        <span>Sowing depth: </span>
-                                        <span>{Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</span>
-                                    </p>
-                                    <p>
-                                        <span>Line spacing:</span>
-                                        <span>{Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</span>
-                                    </p>
-                                    <p>
-                                        <span>Inline spacing: </span>
-                                        <span>{Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</span>
-                                    </p>
-                                    <div className="buttons" onClick={(event) => event.stopPropagation()}>
-                                        <Link className="more-info" to={`/grow-guides/${Vegetables[veggie].id}`}>More
-                                            info</Link>
+            <div className="grow-guides-card">
+                {Object.keys(data).length === 0 ?
+                    <div style={{color: 'darkorange', fontSize: '30px'}}>No result</div> : ""}
+                {Object.keys(data).map((veggie, index) => (
+                    <div key={index} className="grow-guide-card-outer" onClick={() => toggleCard(index)}>
+                        <div id={index} className="grow-guide-card-inner" key={index}>
+                            <div className="card-face card-face-front">
+                                <div className="vegetable-name">{Vegetables[veggie].name}</div>
+                                <img src={Vegetables[veggie].pictureURL} alt=""/>
+                            </div>
+                            <div className="card-face card-face-back">
+                                <div className="card-content">
+                                    <div id={`heart-icon-${index}`}
+                                         className="icon heart-icon"
+                                         onClick={(event) => heartCard(event, index)}>
+                                        <FaHeart/>
+                                    </div>
+                                    <div id={`pin-icon-${index}`}
+                                         className="icon pin-icon"
+                                         onClick={(event) => pinCard(event, index)}>
+                                        <FaEyeDropper/>
+                                    </div>
+                                    <div className="card-header">
+                                        <h2>{Vegetables[veggie].name}</h2>
+                                        <img className="pp" src={Vegetables[veggie].pictureURL} alt=""/>
+                                    </div>
+                                    <div className="card-body">
+                                        <p>
+                                            <span>Sowing depth: </span>
+                                            <span>{Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</span>
+                                        </p>
+                                        <p>
+                                            <span>Line spacing:</span>
+                                            <span>{Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</span>
+                                        </p>
+                                        <p>
+                                            <span>Inline spacing: </span>
+                                            <span>{Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</span>
+                                        </p>
+                                        <div className="buttons" onClick={(event) => event.stopPropagation()}>
+                                            <Link className="more-info" to={`/grow-guides/${Vegetables[veggie].id}`}>More
+                                                info</Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 }
