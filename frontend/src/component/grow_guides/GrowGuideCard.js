@@ -50,7 +50,7 @@ export default function GrowGuideCard() {
             document.querySelectorAll('.active-selection')
                 .forEach(element => element.classList
                 .remove('active-selection'))
-
+            setSelectedTypeList([])
             setSelectedTypeCount(0)
         }
 
