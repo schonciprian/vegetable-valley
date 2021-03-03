@@ -38,43 +38,15 @@ export default function GrowGuideCard() {
     }
 
     const selectionTypes = {
-        'All plants': {
-            name: 'All plants',
-            icon: BiSelectMultiple,
-            selected: true,
-        },
-        'Fruits': {
-            name: 'Fruits',
-            icon: GiBananaBunch,
-        },
-        'Vegetables': {
-            name: 'Vegetables',
-            icon: GiTomato,
-        },
-        'Banana': {
-            name: 'Banana',
-            icon: BiSelectMultiple,
-        },
-        'Peas': {
-            name: 'Peas',
-            icon: GiBananaBunch,
-        },
-        'Tomato': {
-            name: 'Tomato',
-            icon: GiTomato,
-        },
-        'Pepper': {
-            name: 'Pepper',
-            icon: BiSelectMultiple,
-        },
-        'Onion': {
-            name: 'Onion',
-            icon: GiBananaBunch,
-        },
-        'Eggplant': {
-            name: 'Eggplant',
-            icon: GiTomato,
-        },
+        'All': {name: 'All plants', icon: BiSelectMultiple, selected: selectedTypeCount === 0,},
+        'Fruits': {name: 'Fruits', icon: GiBananaBunch,},
+        'Vegetables': {name: 'Vegetables', icon: GiTomato,},
+        'Banana': {name: 'Banana', icon: GiCarrot,},
+        'Peas': {name: 'Peas', icon: GiBananaBunch,},
+        'Tomato': {name: 'Tomato', icon: GiTomato,},
+        'Pepper': {name: 'Pepper', icon: GiChiliPepper,},
+        'Onion': {name: 'Onion', icon: GiBananaBunch,},
+        'Eggplant': {name: 'Eggplant', icon: GiTomato,},
     }
 
     return (
