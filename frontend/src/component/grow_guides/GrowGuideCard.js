@@ -22,7 +22,7 @@ export default function GrowGuideCard() {
     const [data, setData] = useState([]);
     const [vegetableData, setVegetableData] = useState(Vegetables);
     const [isFetching, setIsFetching] = useState(true);
-    const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 155) / 340) * Math.floor(window.innerWidth * 0.8 / 255));
+    const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 155) / 360) * Math.floor(window.innerWidth * 0.8 / 255)-4);
     const [selectedTypeCount, setSelectedTypeCount] = useState(0);
     const [selectedTypeList, setSelectedTypeList] = useState([]);
 
@@ -45,7 +45,7 @@ export default function GrowGuideCard() {
             setIsFetching(false);
             setDataEndIndex(dataEndIndex => dataEndIndex + (Math.floor(window.innerWidth * 0.8 / 255)))
         }
-    }, [isFetching, dataEndIndex, vegetableData])
+    }, [isFetching, dataEndIndex])
 
     useEffect(() => {
         if (selectedTypeList.length !== 0) {
@@ -59,6 +59,7 @@ export default function GrowGuideCard() {
                     )
                 }
                 setIsFetching(true);
+                setDataEndIndex(Math.ceil((window.innerHeight - 155) / 360) * Math.floor(window.innerWidth * 0.8 / 255));
                 return result;
             }, {}))
         } else {
