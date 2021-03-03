@@ -3,7 +3,7 @@ import {Vegetables} from './Descriptions';
 import {FaEyeDropper, FaHeart} from "react-icons/fa";
 import {heartCard, pinCard, toggleCard} from "./GrowGuideCardActions";
 import {Link} from "react-router-dom";
-import {GiBananaBunch, GiTomato} from "react-icons/gi";
+import {GiBananaBunch, GiTomato, GiCarrot, GiChiliPepper} from "react-icons/gi";
 import {BiSelectMultiple} from "react-icons/bi";
 
 export default function GrowGuideCard() {
