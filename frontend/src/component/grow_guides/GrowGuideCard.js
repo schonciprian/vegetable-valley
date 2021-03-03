@@ -3,7 +3,7 @@ import {Vegetables} from './Descriptions';
 import {FaEyeDropper, FaHeart} from "react-icons/fa";
 import {heartCard, pinCard, toggleCard} from "./GrowGuideCardActions";
 import {Link} from "react-router-dom";
-import {GiBananaBunch, GiTomato, GiCarrot, GiChiliPepper} from "react-icons/gi";
+import {GiBananaBunch, GiTomato, GiCarrot, GiHerbsBundle, GiGarlic, GiBroccoli, GiAubergine, GiPeas, GiPumpkin, GiThreeLeaves} from "react-icons/gi";
 import {BiSelectMultiple} from "react-icons/bi";
 
 export default function GrowGuideCard() {
@@ -82,14 +82,16 @@ export default function GrowGuideCard() {
 
     const selectionTypes = {
         'All': {name: 'All plants', icon: BiSelectMultiple, selected: selectedTypeCount === 0,},
-        'Fruit': {name: 'Fruit', icon: GiBananaBunch,},
-        'Vegetable': {name: 'Vegetable', icon: GiTomato,},
-        'Banana': {name: 'Banana', icon: GiCarrot,},
-        'Peas': {name: 'Peas', icon: GiBananaBunch,},
-        'Tomato': {name: 'Tomato', icon: GiTomato,},
-        'Pepper': {name: 'Pepper', icon: GiChiliPepper,},
-        'Root': {name: 'Root', icon: GiBananaBunch,},
-        'Egg': {name: 'Egg', icon: GiTomato,},
+        'Fruit': {name: 'Fruits', icon: GiBananaBunch,},
+        'Vegetable': {name: 'Vegetables', icon: GiAubergine,},
+        'Root': {name: 'Root veggies', icon: GiCarrot,},
+        'Herb': {name: 'Herbs', icon: GiHerbsBundle,},
+        'Onion': {name: 'Onions', icon: GiGarlic,},
+        'Brassica': {name: 'Brassicas', icon: GiBroccoli,},
+        'Nightshade': {name: 'Nightshades', icon: GiTomato,},
+        'Fabales': {name: 'Fabales', icon: GiPeas,},
+        'Cucurbita': {name: 'Cucurbitas', icon: GiPumpkin,},
+        'Lactuca': {name: 'Lactucas', icon: GiThreeLeaves,},
     }
 
     return (
