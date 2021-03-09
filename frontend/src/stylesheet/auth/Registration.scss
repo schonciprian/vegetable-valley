@@ -1,0 +1,105 @@
+@import "../Variables";
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  width: 500px;
+  height: content-box;
+
+  margin: 50px auto;
+
+  background-color: $darker-color-blue;
+  border-radius: 20px;
+  border: 1px dashed darkorange;
+
+  h1 {
+    margin: 20px auto;
+
+    color: darkorange;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 80%;
+
+    margin: 0 auto;
+
+    label {
+      width: 100%;
+
+      font-size: $font-size-normal-vw;
+      color: darkorange;
+
+      pointer-events: none;
+    }
+
+    input {
+      width: 100%;
+      height: 35px;
+
+      margin-bottom: 20px;
+      padding: 0 10px;
+
+      border-radius: 10px;
+      border: none;
+      outline: none;
+
+      background-color: #1b223e;
+      color: $color-whisper;
+
+      transition: 200ms ease;
+
+      &::placeholder {
+        font-style: italic;
+
+        color: $color-whisper;
+      }
+
+      &:focus {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+        -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+        background-color: #4B5682;
+      }
+    }
+
+    button {
+      width: 200px;
+      height: 40px;
+
+      margin-bottom: 20px;
+
+      font-size: $font-size-normal-vw;
+
+      border: none;
+      border-radius: 10px;
+      outline: none;
+
+      color: darkorange;
+      --gradient: linear-gradient(135deg, #0F1329, #4B5682, #0F1329);
+      background-image: var(--gradient);
+
+      transition: 200ms ease;
+      cursor: pointer;
+
+      &:hover {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+        -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+.error {
+  border: 1px solid red !important;
+}

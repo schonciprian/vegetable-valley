@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 500px;
+  height: content-box;
+  margin: 50px auto;
+  background-color: #0F1329;
+  border-radius: 20px;
+  border: 1px dashed darkorange;
+}
+.form-container h1 {
+  margin: 20px auto;
+  color: darkorange;
+}
+.form-container .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+.form-container .form label {
+  width: 100%;
+  font-size: 1.5vw;
+  color: darkorange;
+  pointer-events: none;
+}
+.form-container .form input {
+  width: 100%;
+  height: 35px;
+  margin-bottom: 20px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: #1b223e;
+  color: #eeeeee;
+  transition: 200ms ease;
+}
+.form-container .form input::placeholder {
+  font-style: italic;
+  color: #eeeeee;
+}
+.form-container .form input:focus {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+  background-color: #4B5682;
+}
+.form-container .form button {
+  width: 200px;
+  height: 40px;
+  margin-bottom: 20px;
+  font-size: 1.5vw;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  color: darkorange;
+  --gradient: linear-gradient(135deg, #0F1329, #4B5682, #0F1329);
+  background-image: var(--gradient);
+  transition: 200ms ease;
+  cursor: pointer;
+}
+.form-container .form button:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+}
+
+.error {
+  border: 1px solid red !important;
+}
+
+/*# sourceMappingURL=Registration.css.map */
