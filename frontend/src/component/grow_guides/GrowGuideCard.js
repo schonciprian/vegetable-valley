@@ -45,7 +45,7 @@ export default function GrowGuideCard() {
             setIsFetching(false);
             setDataEndIndex(dataEndIndex => dataEndIndex + (Math.floor(window.innerWidth * 0.8 / 255)))
         }
-    }, [isFetching, dataEndIndex])
+    }, [isFetching, dataEndIndex, vegetableData])
 
     useEffect(() => {
         if (selectedTypeList.length !== 0) {
