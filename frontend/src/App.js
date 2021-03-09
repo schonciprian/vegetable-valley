@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import Registration from "./component/auth/Registration";
 import {Home} from "./component/basic/basic_main/Home";
 import Header from "./component/basic/basic_main/Header";
 import GrowGuideCard from "./component/grow_guides/GrowGuideCard";
@@ -24,6 +25,7 @@ function App() {
                 <Route exact path="/grow-guides" component={GrowGuideCard}/>
                 <Route path="/grow-guides/:vegetableName" component={VegetablePage}/>
                 <Route exact path="/weather-forecast" component={Weather} />
+                <Route exact path="/register" component={Registration} />
             </div>
           </div>
       </Router>
