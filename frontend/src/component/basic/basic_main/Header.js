@@ -15,6 +15,8 @@ function Header() {
             <div className="navbar">
                 <Link to="/grow-guides">Grow Guides</Link>
                 <Link to="/weather-forecast">Weather forecast</Link>
+                <Link to="/register">Registration</Link>
+                <Link to="/login">Login</Link>
             </div>
         </div>
     );
