@@ -1,7 +1,10 @@
 @import "../../Variables.scss";
 
 .header {
-  @extend %display-flex-center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   width: 100%;
   height: fit-content;
 
@@ -13,7 +16,7 @@
     display: flex;
     align-items: center;
 
-    width: 40%;
+    width: 35%;
     height: 100%;
 
     font-family: $font-style-titles;
@@ -41,12 +44,12 @@
     justify-content: flex-end;
     align-items: center;
 
-    width: 60%;
+    width: 65%;
     height: 75px;
 
     font-family: $font-style-titles;
     font-size: $font-size-larger-vw;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-align: center;
 
     background-color: transparent;
@@ -60,7 +63,7 @@
     }
 
     a {
-      margin: 20px;
+      margin: 15px;
 
       text-decoration: none;
       color: #eeeeee;
