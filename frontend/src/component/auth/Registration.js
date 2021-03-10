@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import axios from "axios";
 import swal from 'sweetalert';
 
-// Helper functions
+// Helpers
+import {environmentVariables} from "../../EnvironmentVariables";
 import {removeError, removeShakingError} from "./AuthenticationHelper";
 
 // Stylesheets
@@ -25,7 +26,7 @@ export default function Registration() {
         const userData = getUserData();
         await axios({
             method: "post",
-            url: `http://127.0.0.1:8000/api/register`,
+            url: `${environmentVariables.BACKEND_URL}/api/register`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*"

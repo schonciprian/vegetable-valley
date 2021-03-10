@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 
+// Helpers
+import {environmentVariables} from "../../../EnvironmentVariables";
+
 // Stylesheets
 import '../../../stylesheet/basic/basic_main/Header.css';
 //**************************************************//
@@ -12,7 +15,7 @@ function Header() {
     const logoutRequest = async () => {
         await axios({
             method: "delete",
-            url: `http://127.0.0.1:8000/api/logout`,
+            url: `${environmentVariables.BACKEND_URL}/api/logout`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*",
