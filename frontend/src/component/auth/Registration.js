@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import axios from "axios";
 import swal from 'sweetalert';
 
+// Helper functions
+import {removeError, removeShakingError} from "./AuthenticationHelper";
+
 // Stylesheets
 import '../../stylesheet/auth/Registration.css';
 //**************************************************//
@@ -43,17 +46,6 @@ export default function Registration() {
                 removeShakingError(error)
             })
         })
-    }
-
-    const removeShakingError = (id) => {
-        document.querySelector(`#${id}`).classList.add("input-error");
-        setTimeout(() => {
-            document.querySelector(`#${id}`).classList.remove("input-error");
-        }, 1000);
-    }
-
-    const removeError = (event) => {
-        event.target.classList.remove("error")
     }
 
     return (
