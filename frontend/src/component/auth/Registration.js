@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import swal from 'sweetalert';
-import  { Redirect } from 'react-router-dom'
-
 
 // Stylesheets
 import '../../stylesheet/auth/Registration.css';
@@ -41,7 +39,7 @@ export default function Registration() {
             setErrorMessages(error.response.data);
 
             // Toggle shaking style from the input field
-            Object.keys(error.response.data).map(error => {
+            Object.keys(error.response.data).forEach(error => {
                 removeShakingError(error)
             })
         })
