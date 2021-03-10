@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 
 // Helpers
 import {environmentVariables} from "../../EnvironmentVariables";
-import {removeError, removeShakingError} from "./AuthenticationHelper";
+import {removeError, handleShakingError} from "./AuthenticationHelper";
 
 // Stylesheets
 import '../../stylesheet/auth/Authentication.css';
@@ -43,7 +43,7 @@ export default function Registration() {
 
             // Toggle shaking style from the input field
             Object.keys(error.response.data).forEach(error => {
-                removeShakingError(error)
+                handleShakingError(error)
             })
         })
     }

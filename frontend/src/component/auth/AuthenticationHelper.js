@@ -1,4 +1,4 @@
-export const removeShakingError = (id) => {
+export const handleShakingError = (id) => {
     document.querySelector(`#${id}`).classList.add("input-error");
     setTimeout(() => {
         document.querySelector(`#${id}`).classList.remove("input-error");
