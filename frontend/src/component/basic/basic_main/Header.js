@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import axios from "axios";
+import swal from "sweetalert";
 
 // Stylesheets
 import '../../../stylesheet/basic/basic_main/Header.css';
-import axios from "axios";
-import swal from "sweetalert";
 //**************************************************//
 
-
 function Header() {
+
     const logoutRequest = async () => {
         await axios({
             method: "delete",
@@ -22,7 +22,7 @@ function Header() {
             swal("Successfully logout", "You are redirected to the main page");
             setTimeout(() => {
                 window.location.replace("/");
-            }, 2000);
+            }, 1000);
             window.sessionStorage.removeItem("token");
 
         }).catch((error) => {
@@ -38,9 +38,9 @@ function Header() {
             <div className="navbar">
                 <Link to="/grow-guides">Grow Guides</Link>
                 <Link to="/weather-forecast">Weather forecast</Link>
-                <Link to="/register">Registration</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/logout" onClick={logoutRequest}>Logout</Link>
+                {!window.sessionStorage.getItem("token") && <Link to="/register">Registration</Link>}
+                {!window.sessionStorage.getItem("token") && <Link to="/login">Login</Link>}
+                {window.sessionStorage.getItem("token") && <Link to="/logout" onClick={logoutRequest}>Logout</Link>}
             </div>
         </div>
     );
