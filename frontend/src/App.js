@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Registration from "./component/auth/Registration";
+import Login from "./component/auth/Login";
 import {Home} from "./component/basic/basic_main/Home";
 import Header from "./component/basic/basic_main/Header";
 import GrowGuideCard from "./component/grow_guides/GrowGuideCard";
