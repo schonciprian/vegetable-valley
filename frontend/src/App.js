@@ -26,6 +26,7 @@ function App() {
                 <Route path="/grow-guides/:vegetableName" component={VegetablePage}/>
                 <Route exact path="/weather-forecast" component={Weather} />
                 <Route exact path="/register" component={Registration} />
+                <Route exact path="/login" component={Login} />
             </div>
           </div>
       </Router>
