@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import {removeError, removeShakingError} from "./AuthenticationHelper";
 
 // Stylesheets
-import '../../stylesheet/auth/Registration.css';
+import '../../stylesheet/auth/Authentication.css';
 //**************************************************//
 
 export default function Registration() {
