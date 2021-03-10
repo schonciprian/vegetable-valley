@@ -12,7 +12,7 @@
 
   background-color: $darker-color-blue;
   border-radius: 20px;
-  border: 1px dashed darkorange;
+  border: 5px solid $normal-color-blue;
 
   h1 {
     margin: 20px auto;
@@ -46,7 +46,7 @@
       padding: 0 10px;
 
       border-radius: 10px;
-      border: none;
+      border: 1px solid transparent;
       outline: none;
 
       background-color: #1b223e;
@@ -102,4 +102,36 @@
 
 .error {
   border: 1px solid red !important;
+}
+
+.error-message {
+  color: red;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.input-error {
+  background: linear-gradient(130deg, #f36565 50%, #a70606 100%) !important;
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

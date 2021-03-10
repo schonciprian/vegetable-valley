@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
+import swal from 'sweetalert';
+import  { Redirect } from 'react-router-dom'
+
 
 // Stylesheets
 import '../../stylesheet/auth/Registration.css';
 //**************************************************//
 
 export default function Registration() {
+    const [errorMessages, setErrorMessages] = useState({});
+
     const getUserData = () => {
         return {
             name: document.getElementById("name").value,
@@ -26,10 +31,31 @@ export default function Registration() {
             },
             data: userData
         }).then((res) => {
-            console.log(res.data);
+            swal("Successfully registered", "You are redirected to the main page", "success");
+            setTimeout(() => {
+                window.location.replace("/");
+            }, 2000);
+
         }).catch((error) => {
-            console.log(error.response.data);
+            // Store the errors in errorMessages to represent them for the user
+            setErrorMessages(error.response.data);
+
+            // Toggle shaking style from the input field
+            Object.keys(error.response.data).map(error => {
+                removeShakingError(error)
+            })
         })
+    }
+
+    const removeShakingError = (id) => {
+        document.querySelector(`#${id}`).classList.add("input-error");
+        setTimeout(() => {
+            document.querySelector(`#${id}`).classList.remove("input-error");
+        }, 1000);
+    }
+
+    const removeError = (event) => {
+        event.target.classList.remove("error")
     }
 
     return (
@@ -37,16 +63,44 @@ export default function Registration() {
             <h1>Registration</h1>
             <form className="form">
                 <label htmlFor="name">Name:</label><br/>
-                <input id="name" className={} type="text" name="name" placeholder="Enter your name" required/>
+                {errorMessages.name && <div className="error-message">{errorMessages.name}</div>}
+                <input id="name"
+                       className={errorMessages.name ? "error" : ""}
+                       type="text"
+                       name="name"
+                       placeholder="Enter your name"
+                       onClick={(event) => removeError(event)}
+                       required/>
 
                 <label htmlFor="email">Email:</label><br/>
-                <input id="email" type="email" name="email" placeholder="Enter your email" required/>
+                {errorMessages.email && <div className="error-message">{errorMessages.email}</div>}
+                <input id="email"
+                       className={errorMessages.email ? "error" : ""}
+                       type="email"
+                       name="email"
+                       placeholder="Enter your email"
+                       onClick={(event) => removeError(event)}
+                       required/>
 
                 <label htmlFor="password">Password:</label><br/>
-                <input id="password" type="password" name="password" placeholder="Enter your password" required/>
+                {errorMessages.password && <div className="error-message">{errorMessages.password}</div>}
+                <input id="password"
+                       className={errorMessages.password ? "error" : ""}
+                       type="password"
+                       name="password"
+                       placeholder="Enter your password"
+                       onClick={(event) => removeError(event)}
+                       required/>
 
                 <label htmlFor="confirm_password">Password again:</label><br/>
-                <input id="confirm_password" type="password" name="confirm_password" placeholder="Enter your password again" required/>
+                {errorMessages.confirm_password && <div className="error-message">{errorMessages.confirm_password}</div>}
+                <input id="confirm_password"
+                       className={errorMessages.confirm_password ? "error" : ""}
+                       type="password"
+                       name="confirm_password"
+                       placeholder="Enter your password again"
+                       onClick={(event) => removeError(event)}
+                       required/>
 
                 <button type="button" onClick={registrationRequest}>Register</button>
             </form>
