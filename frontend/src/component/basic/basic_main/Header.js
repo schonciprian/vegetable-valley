@@ -3,10 +3,33 @@ import { Link } from "react-router-dom";
 
 // Stylesheets
 import '../../../stylesheet/basic/basic_main/Header.css';
+import axios from "axios";
+import swal from "sweetalert";
 //**************************************************//
 
 
 function Header() {
+    const logoutRequest = async () => {
+        await axios({
+            method: "delete",
+            url: `http://127.0.0.1:8000/api/logout`,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json, text/plain, */*",
+                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+            },
+        }).then((res) => {
+            swal("Successfully logout", "You are redirected to the main page");
+            setTimeout(() => {
+                window.location.replace("/");
+            }, 2000);
+            window.sessionStorage.removeItem("token");
+
+        }).catch((error) => {
+            console.log(error.response.data)
+        })
+    }
+
     return (
         <div className="header">
             <div className="title">
@@ -17,7 +40,7 @@ function Header() {
                 <Link to="/weather-forecast">Weather forecast</Link>
                 <Link to="/register">Registration</Link>
                 <Link to="/login">Login</Link>
-                <Link to="/logout">Logout</Link>
+                <Link to="/logout" onClick={logoutRequest}>Logout</Link>
             </div>
         </div>
     );
