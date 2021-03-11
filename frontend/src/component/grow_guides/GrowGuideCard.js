@@ -112,7 +112,7 @@ export default function GrowGuideCard() {
     return (
         <div className="grow-guides-container">
             <div className="plant-type-selection-container">
-                <h2>Selection box</h2>
+                <h2>Selection Box</h2>
                 <ul className="plant-types">
                     {Object.keys(selectionTypes).map((selectionType, index) => {
                         const TagName = selectionTypes[selectionType].icon;
