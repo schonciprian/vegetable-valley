@@ -40,7 +40,7 @@ function Header() {
             </div>
             <div className="navbar">
                 <Link to="/grow-guides">Grow Guides</Link>
-                <Link to="/weather-forecast">Weather forecast</Link>
+                <Link to="/weather-forecast">Weather Forecast</Link>
                 {!window.sessionStorage.getItem("token") && <Link to="/register">Registration</Link>}
                 {!window.sessionStorage.getItem("token") && <Link to="/login">Login</Link>}
                 {window.sessionStorage.getItem("token") && <Link to="/logout" onClick={logoutRequest}>Logout</Link>}
