@@ -10,6 +10,8 @@
 
   margin: 50px auto;
 
+  font-family: $font-style-text;
+
   background-color: $darker-color-blue;
   border-radius: 20px;
   border: 5px solid $normal-color-blue;
@@ -49,6 +51,8 @@
       border: 1px solid transparent;
       outline: none;
 
+      font-family: $font-style-text !important;
+
       background-color: #1b223e;
       color: $color-whisper;
 
@@ -56,6 +60,7 @@
 
       &::placeholder {
         font-style: italic;
+        font-family: $font-style-text !important;
 
         color: $color-whisper;
       }
@@ -77,6 +82,7 @@
       margin-bottom: 20px;
 
       font-size: $font-size-normal-vw;
+      font-family: $font-style-text !important;
 
       border: none;
       border-radius: 10px;

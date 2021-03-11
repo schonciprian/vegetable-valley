@@ -6,6 +6,7 @@
   width: 500px;
   height: content-box;
   margin: 50px auto;
+  font-family: "Montserrat", sans-serif;
   background-color: #0F1329;
   border-radius: 20px;
   border: 5px solid #2d3748;
@@ -35,12 +36,14 @@
   border-radius: 10px;
   border: 1px solid transparent;
   outline: none;
+  font-family: "Montserrat", sans-serif !important;
   background-color: #1b223e;
   color: #eeeeee;
   transition: 200ms ease;
 }
 .form-container .form input::placeholder {
   font-style: italic;
+  font-family: "Montserrat", sans-serif !important;
   color: #eeeeee;
 }
 .form-container .form input:focus {
@@ -56,6 +59,7 @@
   height: 40px;
   margin-bottom: 20px;
   font-size: 1.5vw;
+  font-family: "Montserrat", sans-serif !important;
   border: none;
   border-radius: 10px;
   outline: none;
