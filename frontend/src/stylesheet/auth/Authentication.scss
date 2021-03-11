@@ -13,7 +13,7 @@
   font-family: $font-style-text;
 
   background-color: $darker-color-blue;
-  border-radius: 20px;
+  border-radius: $border-radius-bigger;
   border: 5px solid $normal-color-blue;
 
   h1 {
