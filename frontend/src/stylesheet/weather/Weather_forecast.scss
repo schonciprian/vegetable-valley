@@ -225,6 +225,7 @@ $border-radius: 25px;
 
 
       .page-number {
+        @extend %display-flex-center;
         cursor: pointer;
         text-align: center;
         width: 24px;
@@ -232,18 +233,18 @@ $border-radius: 25px;
         margin: 5px 10px;
         padding: 5px 10px;
         background-color: $darkest-color-blue;
+        color: $color-whisper;
+
         border-radius: 7px;
 
         &:hover {
           background-image: var(--gradient);
-          color: $color-whisper;
           -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2)
         }
 
         &.active {
           background-image: var(--gradient);
-          color: $color-whisper;
         }
       }
     }

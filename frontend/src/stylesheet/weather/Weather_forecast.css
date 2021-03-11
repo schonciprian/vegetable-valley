@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination, .loading {
+.city-selector .city-list-container .city-list-container-left .get-location, .city-selector .city-list-container, .city-selector .city-input-container .search-box, .city-selector .city-input-container, .forecast-weather-side .active-day-info-container, .forecast-weather-side .week-list-container .week-list, .forecast-weather-side .week-list-container .pagination .page-number, .forecast-weather-side .week-list-container .pagination, .loading {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,17 +171,16 @@
   margin: 5px 10px;
   padding: 5px 10px;
   background-color: #040617;
+  color: #eeeeee;
   border-radius: 7px;
 }
 .forecast-weather-side .week-list-container .pagination .page-number:hover {
   background-image: var(--gradient);
-  color: #eeeeee;
   -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
 }
 .forecast-weather-side .week-list-container .pagination .page-number.active {
   background-image: var(--gradient);
-  color: #eeeeee;
 }
 .forecast-weather-side .week-list-container .week-list {
   flex-wrap: wrap;
