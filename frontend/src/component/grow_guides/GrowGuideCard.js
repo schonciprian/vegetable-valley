@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Vegetables} from './Descriptions';
-import {FaEyeDropper, FaHeart} from "react-icons/fa";
+import {FaHeart} from "react-icons/fa";
+import {GiPin} from "react-icons/gi";
 import {heartCard, pinCard, toggleCard} from "./GrowGuideCardActions";
 import {Link} from "react-router-dom";
 import {
@@ -151,7 +152,7 @@ export default function GrowGuideCard() {
                                     <div id={`pin-icon-${index}`}
                                          className="icon pin-icon"
                                          onClick={(event) => pinCard(event, index)}>
-                                        <FaEyeDropper/>
+                                        <GiPin style={{width: "20px", height: "20px"}}/>
                                     </div>
                                     <div className="card-header">
                                         <h2>{Vegetables[veggie].name}</h2>
