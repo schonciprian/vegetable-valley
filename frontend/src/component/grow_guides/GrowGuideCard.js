@@ -134,7 +134,7 @@ export default function GrowGuideCard() {
             </div>
             <div className="grow-guides-card">
                 {Object.keys(data).length === 0 ?
-                    <div style={{color: 'darkorange', fontSize: '30px'}}>No result</div> : ""}
+                    <div style={{color: 'darkorange', fontSize: '30px', marginTop: "20px"}}>No result</div> : ""}
                 {Object.keys(data).map((veggie, index) => (
                     <div key={index} className="grow-guide-card-outer" onClick={() => toggleCard(index)}>
                         <div id={index} className="grow-guide-card-inner" key={index}>
