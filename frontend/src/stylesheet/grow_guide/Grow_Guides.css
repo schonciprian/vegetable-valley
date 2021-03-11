@@ -56,18 +56,20 @@
   transform-style: preserve-3d;
   --gradient: linear-gradient(135deg, #151A30, #4B5682);
 }
-.grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner img {
+.grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner .card-face-front img {
   max-width: 85%;
-  height: 85%;
   object-fit: contain;
+  margin-top: 100px;
 }
-.grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner .vegetable-name {
-  margin: 15px auto;
+.grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner .card-face-front .vegetable-name {
+  margin: 25px auto;
   text-transform: uppercase;
   text-align: center;
   font-size: 18px;
   font-weight: 700;
   color: #eeeeee;
+  position: absolute;
+  top: 0;
 }
 
 .card-face {

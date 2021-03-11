@@ -65,19 +65,27 @@ $light: #f3f3f3;
         transform-style: preserve-3d;
         --gradient: linear-gradient(135deg, #151A30, #4B5682);
 
-        img {
-          max-width: 85%;
-          height: 85%;
-          object-fit: contain;
-        }
+        .card-face-front {
 
-        .vegetable-name {
-          margin: 15px auto;
-          text-transform: uppercase;
-          text-align: center;
-          font-size: 18px;
-          font-weight: 700;
-          color: $color-whisper;
+          img {
+            max-width: 85%;
+            //height: 85%;
+            object-fit: contain;
+            //position: absolute;
+            //bottom: 40px;
+            margin-top: 100px;
+          }
+
+          .vegetable-name {
+            margin: 25px auto;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: $color-whisper;
+            position: absolute;
+            top: 0;
+          }
         }
       }
     }
