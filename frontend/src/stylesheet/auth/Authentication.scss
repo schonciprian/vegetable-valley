@@ -10,16 +10,16 @@
 
   margin: 50px auto;
 
-  font-family: $font-style-text;
+  font-family: $font-family-text;
 
-  background-color: $darker-color-blue;
+  background-color: $background-color-darker;
   border-radius: $border-radius-bigger;
-  border: 5px solid $normal-color-blue;
+  border: 5px solid $border-color-authentication;
 
   h1 {
     margin: 20px auto;
 
-    color: darkorange;
+    color: $color-highlight;
   }
 
   .form {
@@ -35,7 +35,7 @@
       width: 100%;
 
       font-size: $font-size-normal-vw;
-      color: darkorange;
+      color: $color-highlight;
 
       pointer-events: none;
     }
@@ -47,22 +47,22 @@
       margin-bottom: 20px;
       padding: 0 10px;
 
-      border-radius: 10px;
+      border-radius: $border-radius-smaller;
       border: 1px solid transparent;
       outline: none;
 
-      font-family: $font-style-text !important;
+      font-family: $font-family-text !important;
 
-      background-color: #1b223e;
-      color: $color-whisper;
+      background-color: $background-color-normal;
+      color: $color-text;
 
       transition: 200ms ease;
 
       &::placeholder {
         font-style: italic;
-        font-family: $font-style-text !important;
+        font-family: $font-family-text !important;
 
-        color: $color-whisper;
+        color: $color-text;
       }
 
       &:focus {
@@ -71,7 +71,7 @@
         transform: scale(1.05);
         -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
         box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
-        background-color: #4B5682;
+        background-color: $focus-color-lighter;
       }
     }
 
@@ -82,13 +82,13 @@
       margin-bottom: 20px;
 
       font-size: $font-size-normal-vw;
-      font-family: $font-style-text !important;
+      font-family: $font-family-text !important;
 
       border: none;
-      border-radius: 10px;
+      border-radius: $border-radius-smaller;
       outline: none;
 
-      color: darkorange;
+      color: $color-highlight;
       --gradient: linear-gradient(135deg, #0F1329, #4B5682, #0F1329);
       background-image: var(--gradient);
 
@@ -107,11 +107,11 @@
 }
 
 .error {
-  border: 1px solid red !important;
+  border: 1px solid $color-error !important;
 }
 
 .error-message {
-  color: red;
+  color: $color-error;
   width: 100%;
   margin-bottom: 5px;
 }
