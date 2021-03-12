@@ -1,9 +1,7 @@
 @import "../../Variables.scss";
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @extend  %display-flex-space-between;
 
   width: 100%;
   height: fit-content;
@@ -17,9 +15,8 @@
     align-items: center;
 
     width: 35%;
-    height: 100%;
 
-    font-family: $font-style-titles;
+    font-family: $font-family-title;
     font-size: $font-size-large-vw;
     letter-spacing: 5px;
 
@@ -33,44 +30,35 @@
 
     a {
       text-align: left;
-      margin: 0 0 0 20px;
       text-decoration: none;
-      color: darkorange;
+
+      margin-left: 20px;
+
+      color: $color-highlight;
     }
   }
 
   .navbar {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    @extend %display-flex-flex-end;
 
     width: 65%;
-    height: 75px;
 
-    font-family: $font-style-titles;
+    font-family: $font-family-title;
     font-size: $font-size-larger-vw;
     letter-spacing: 1px;
     text-align: center;
-
-    background-color: transparent;
-
-    @media screen and (max-width: 775px) {
-      font-size: 25px;
-    }
-
-    @media screen and (max-width: 625px) {
-      font-size: 20px;
-    }
 
     a {
       margin: 15px;
 
       text-decoration: none;
-      color: #eeeeee;
+      font-size: $font-size-larger-header-vw;
+
+      color: $color-text;
     }
 
     a:hover {
-      color: $text-color-yellow-hover;
+      color: $focus-color-lighter-hover;
     }
   }
 }

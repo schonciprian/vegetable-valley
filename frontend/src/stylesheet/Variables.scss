@@ -6,6 +6,7 @@ $background-color-darker: #0F1329;
 $background-color-normal: #1B223E;
 
 $focus-color-lighter: #4B5682;
+$focus-color-lighter-hover: #7F8EC0;
 
 $border-color-authentication: #2d3748;
 
@@ -14,8 +15,12 @@ $color-highlight: darkorange;
 $color-error: red;
 
   // Fonts
+$font-family-title: "Montserrat", sans-serif;
 $font-family-text: "Montserrat", sans-serif;
 
+$font-size-large-vw: 3vw;
+$font-size-larger-vw: 2vw;
+$font-size-larger-header-vw: 1.8vw;
 $font-size-normal-vw: 1.5vw;
 
   //Borders
@@ -40,8 +45,8 @@ $font-size-larger: 30px;
 $font-size-normal: 25px;
 $font-size-smaller: 20px;
 
-$font-size-large-vw: 3vw;
-$font-size-larger-vw: 2vw;
+//$font-size-large-vw: 3vw;
+//$font-size-larger-vw: 2vw;
 $font-size-larger-hover-vw: 1.9vw;
 $font-size-normal-hover-vw: 1.4vw;
 $font-size-smaller-vw: 1vw;
@@ -62,5 +67,11 @@ $font-size-smaller-vw: 1vw;
 %display-flex-space-between {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+%display-flex-flex-end {
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
 }

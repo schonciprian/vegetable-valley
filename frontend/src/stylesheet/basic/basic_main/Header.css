@@ -3,6 +3,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header .navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header {
   width: 100%;
   height: fit-content;
   padding: 5px 0;
@@ -12,7 +21,6 @@
   display: flex;
   align-items: center;
   width: 35%;
-  height: 100%;
   font-family: "Montserrat", sans-serif;
   font-size: 3vw;
   letter-spacing: 5px;
@@ -29,35 +37,21 @@
 }
 .header .title a {
   text-align: left;
-  margin: 0 0 0 20px;
   text-decoration: none;
+  margin-left: 20px;
   color: darkorange;
 }
 .header .navbar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
   width: 65%;
-  height: 75px;
   font-family: "Montserrat", sans-serif;
   font-size: 2vw;
   letter-spacing: 1px;
   text-align: center;
-  background-color: transparent;
-}
-@media screen and (max-width: 775px) {
-  .header .navbar {
-    font-size: 25px;
-  }
-}
-@media screen and (max-width: 625px) {
-  .header .navbar {
-    font-size: 20px;
-  }
 }
 .header .navbar a {
   margin: 15px;
   text-decoration: none;
+  font-size: 1.8vw;
   color: #eeeeee;
 }
 .header .navbar a:hover {
