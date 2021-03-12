@@ -10,7 +10,7 @@
     margin: 0 75px;
 
     h2 {
-      color: darkorange;
+      color: $color-highlight;
     }
 
     p {
@@ -24,24 +24,24 @@
       .contact-icon {
         padding-right: 10px;
 
-        color: darkorange;
+        color: $color-highlight;
       }
 
       .contact-value {
         font-style: italic;
 
         &:hover {
-          color: darkorange;
+          color: $color-highlight;
           transition: color 0.2s ease-in;
         }
       }
 
       a {
         text-decoration: none;
-        color: #eeeeee;
+        color: $color-text;
 
         &:hover {
-          color: darkorange;
+          color: $color-highlight;
           transition: color 0.2s ease-in;
         }
       }
@@ -50,7 +50,7 @@
 
   img {
     width: 25%;
-    border-radius: 20px;
+    border-radius: $border-radius-bigger;
     margin: 0 75px;
   }
 }
