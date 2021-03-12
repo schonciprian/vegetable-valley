@@ -8,6 +8,7 @@ import {removeError, handleShakingError} from "./AuthenticationHelper";
 
 // Stylesheets
 import '../../stylesheet/auth/Authentication.css';
+import '../../stylesheet/error/Error.css';
 //**************************************************//
 
 export default function Registration() {
