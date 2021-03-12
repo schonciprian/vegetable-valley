@@ -11,25 +11,25 @@
 
   line-height: 1.5;
   text-align: justify;
-  font-size: 20px;
-  font-family: $font-style-text;
+  font-size: $font-size-normal-hover-vw;
+  font-family: $font-family-text;
 
-  color: #eeeeee;
-  background-color: $darker-color-blue;
-  border-radius: 20px;
+  color: $color-text;
+  background-color: $background-color-darker;
+  border-radius: $border-radius-bigger;
 
   h1 {
     font-size: $font-size-large-vw;
     text-align: center;
-    color: darkorange;
+    color: $color-highlight;
   }
 
   .app-introduction {
     width: 100%;
-    border-top: 1px dashed darkorange;
+    border-top: 1px dashed $color-highlight;
 
     h2 {
-      color: darkorange;
+      color: $color-highlight;
     }
 
     ul {
@@ -37,7 +37,7 @@
         list-style: none;
 
         .leaf-icon {
-          color: darkorange;
+          color: $color-highlight;
         }
 
         span {
@@ -53,6 +53,6 @@
 //***************//
 
 .highlight {
-  color: darkorange;
+  color: $color-highlight;
   text-decoration: none;
 }
