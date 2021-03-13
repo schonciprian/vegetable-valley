@@ -5,13 +5,13 @@
 }
 
 ::selection {
-  color: #eeeeee;
-  background-color: darkorange;
+  color: $color-text;
+  background-color: $color-highlight;
 }
 
 body {
   margin: 0;
   padding: 0;
 
-  background-color: $darkest-color-blue;
+  background-color: $background-color-darkest;
 }
