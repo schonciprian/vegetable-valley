@@ -3,6 +3,9 @@ import axios from "axios";
 import TodayWeatherComponent from "./TodayWeatherComponent";
 import WeatherForecastComponent from "./WeatherForecastComponent";
 import CitySelectorComponent from "./CitySelectorComponent";
+import '../../stylesheet/weather/Today_Weather.css';
+import '../../stylesheet/weather/Forecast_Weather.css';
+
 
 
 export default function Weather() {

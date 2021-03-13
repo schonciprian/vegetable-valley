@@ -27,8 +27,14 @@ $font-size-normal-vw: 1.5vw;
 $font-size-normal-hover-vw: 1.4vw;
 $font-size-smaller-vw: 1vw;
 
+$font-size-larger: 30px;
+$font-size-normal: 25px;
+$font-size-smaller: 20px;
+
+
   //Borders
 $border-radius-container: 25px;
+$border-radius: 25px; // remove
 $border-radius-bigger: 20px;
 $border-radius-smaller: 10px;
 
@@ -36,19 +42,19 @@ $border-radius-smaller: 10px;
 
 $darkest-color-blue: #040617;
 $darker-color-blue: #0F1329;
-$dark-color-blue: #151A30;
+$dark-color-blue: #151a30;
 
-$text-color-yellow: #4B5682;
-$text-color-yellow-hover: #7F8EC0;
+//$text-color-yellow: #4B5682;
+//$text-color-yellow-hover: #7F8EC0;
 
-$color-whisper: #eeeeee;
+//$color-text: #eeeeee;
 
 $font-style-titles: "Montserrat", sans-serif;
 $font-style-text: "Montserrat", sans-serif;
 
-$font-size-larger: 30px;
-$font-size-normal: 25px;
-$font-size-smaller: 20px;
+//$font-size-larger: 30px;
+//$font-size-normal: 25px;
+//$font-size-smaller: 20px;
 
 $font-size-larger-hover-vw: 1.9vw;
 $font-size-smaller-vw: 1vw;
