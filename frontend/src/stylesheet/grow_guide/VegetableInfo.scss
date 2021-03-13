@@ -8,12 +8,12 @@
   margin: 50px auto;
   padding: 20px;
 
-  font-family: $font-style-text;
+  font-family: $font-family-text;
   font-weight: 600;
 
-  color: #eeeeee;
-  background-color: $darker-color-blue;
-  border-radius: 25px;
+  color: $color-text;
+  background-color: $background-color-darker;
+  border-radius: $border-radius-container;
 
   .vegetable-info {
     @extend %display-flex-space-between;
@@ -34,11 +34,11 @@
         text-align: center;
 
         background-image: linear-gradient(135deg, #151A30, #4B5682);
-        border-radius: 10px;
+        border-radius: $border-radius-bigger;
 
         .vegetable-name {
           width: fit-content;
-          color: darkorange;
+          color: $color-highlight;
           text-decoration: underline;
           font-size: $font-size-large-vw;
           margin: 10px;
@@ -56,13 +56,13 @@
           @extend %display-flex-space-between;
           width: 90%;
           margin: 5px 0 10px;
-          font-size: 1.8vw;
+          font-size: $font-size-normal-vw;
         }
       }
 
       .sowing-table-container {
         background-image: linear-gradient(-135deg, #1b213e, #2b3562);
-        border-radius: 10px;
+        border-radius: $border-radius-bigger;
         max-height: 500px;
 
         .sowing-table-title {
@@ -71,21 +71,21 @@
           text-align: center;
 
           span {
-            color: darkorange;
+            color: $color-highlight;
             text-decoration: underline;
           }
         }
 
         .sowing-table {
           margin: 20px;
-          font-size: 1.5vw;
+          font-size: $font-size-normal-vw;
 
           table {
-            border: 2px solid #7F8EC0;
+            border: 2px solid $focus-color-lighter-hover;
             border-spacing: 5px;
 
             tr:first-child {
-              color: darkorange;
+              color: $color-highlight;
 
               th:first-child {
                 border: none;
@@ -94,14 +94,14 @@
 
             tr {
               th:first-child {
-                color: darkorange;
+                color: $color-highlight;
                 width: fit-content;
                 min-width: 80px;
                 padding: 0 10px;
               }
 
               th {
-                border: 1px dotted #7F8EC0;
+                border: 1px dotted $focus-color-lighter-hover;
                 width: 2vw;
                 height: 2vw;
 
@@ -121,7 +121,7 @@
       width: 100%;
       margin-top: 25px;
       padding-top: 25px;
-      border-top: 1px dotted #eee;
+      border-top: 1px dotted $color-highlight;
       text-align: justify;
 
       .longer-information {
@@ -131,13 +131,13 @@
         .longer-information-title {
           margin-bottom: 10px;
           font-size: $font-size-larger-vw;
-          color: darkorange;
+          color: $color-highlight;
           font-style: italic;
         }
 
         .longer-information-text {
           margin-bottom: 30px;
-          font-size: $font-size-normal-vw;
+          font-size: 1.3vw;
         }
       }
     }
@@ -145,16 +145,16 @@
 
   .back-button {
     text-decoration: none;
-    color: #eeeeee;
+    color: $color-text;
     position: absolute;
     top: 20px;
     right: 20px;
-    background-color: #4B5682;
+    background-color: $focus-color-lighter;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: $border-radius-smaller;
 
     &:hover {
-      color: darkorange;
+      color: $color-highlight;
     }
   }
 }
