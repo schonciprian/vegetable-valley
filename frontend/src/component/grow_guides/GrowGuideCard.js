@@ -17,6 +17,8 @@ import {
     GiThreeLeaves
 } from "react-icons/gi";
 import {BiSelectMultiple} from "react-icons/bi";
+import '../../stylesheet/grow_guide/Grow_Guides_Selection.css';
+
 
 export default function GrowGuideCard() {
 

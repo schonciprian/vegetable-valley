@@ -1,9 +1,5 @@
 @import "../Variables";
 
-
-$primary: #4B5682;
-$secondary: #7F8EC0;
-$dark: #212121;
 $light: #f3f3f3;
 
 .grow-guides-container {
@@ -21,9 +17,6 @@ $light: #f3f3f3;
   background-color: $darker-color-blue;
   border-radius: 25px;
 
-  // Not responsive cards, kilog jobbra egy sorban ha össze van tolva
-
-
   .grow-guides-card {
     width: 100%;
     display: grid;
@@ -38,16 +31,12 @@ $light: #f3f3f3;
       width: 225px;
       height: 320px;
 
-      //margin: 20px 15px;
       margin: 20px 0;
 
       perspective: 1000px;
       display: flex;
       align-items: center;
       cursor: pointer;
-      //padding: 10px;
-      //font-weight: bold;
-      //font-size: 1.5vw;
       background-color: #181d35;
       border-radius: 20px;
 
@@ -59,8 +48,6 @@ $light: #f3f3f3;
         width: 100%;
         height: 100%;
 
-        //cursor: pointer;
-
         transition: transform 1s;
         transform-style: preserve-3d;
         --gradient: linear-gradient(135deg, #151A30, #4B5682);
@@ -69,10 +56,7 @@ $light: #f3f3f3;
 
           img {
             max-width: 85%;
-            //height: 85%;
             object-fit: contain;
-            //position: absolute;
-            //bottom: 40px;
             margin-top: 100px;
           }
 
@@ -193,13 +177,6 @@ $light: #f3f3f3;
     .card-body {
       padding: 10px;
 
-      h3 {
-        color: $dark;
-        font-size: 15px;
-        font-weight: 600;
-        margin: 5px 0;
-      }
-
       p {
         @extend %display-flex-space-between;
         color: $light;
@@ -211,8 +188,6 @@ $light: #f3f3f3;
 
       .buttons {
         @extend %display-flex-center;
-        //width: 100%;
-        cursor: auto;
 
         .more-info {
           position: relative;
@@ -248,64 +223,7 @@ $light: #f3f3f3;
   }
 }
 
-
 .is-flipped {
   transform: rotateY(180deg);
-}
-
-
-.plant-type-selection-container {
-  @extend %display-flex-center;
-  flex-direction: column;
-  width: 100%;
-  padding: 0 20px 20px;
-  border-bottom: 1px dashed darkorange;
-  border-radius: 10px 10px 0 0;
-  color: #eeeeee;
-  user-select: none;
-
-  h2 {
-    margin: 10px;
-    color: darkorange;
-    font-size: 2vw;
-  }
-
-  .plant-types {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15vw, max-content));
-    grid-gap: 10px 30px;
-    justify-content: center;
-    padding: initial;
-
-    li {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      width: 15vw;
-      padding: 10px;
-      margin: 5px;
-      font-weight: bold;
-      font-size: 1.5vw;
-      background-color: #181d35;
-      border-radius: 20px;
-
-      list-style-type: none;
-
-      .type-icon {
-        width: 40px;
-        pointer-events: none;
-      }
-
-      span {
-        pointer-events: none;
-      }
-    }
-  }
-
-}
-
-.active-selection {
-  color: darkorange;
 }
 

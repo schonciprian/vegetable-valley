@@ -1,0 +1,66 @@
+@import "../Variables";
+
+.plant-type-selection-container {
+  @extend %display-flex-center;
+  flex-direction: column;
+
+  width: 100%;
+  padding: 0 20px 20px;
+
+  border-bottom: 1px dashed $color-highlight;
+  border-radius: 10px 10px 0 0;
+
+  color: $color-text;
+
+  user-select: none;
+
+  h2 {
+    margin: 10px;
+    color: $color-highlight;
+    font-size: $font-size-larger-vw;
+  }
+
+  .plant-types {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15vw, max-content));
+    grid-gap: 10px 30px;
+
+    justify-content: center;
+
+    padding: initial;
+
+    li {
+      display: flex;
+      align-items: center;
+
+      width: 15vw;
+
+      padding: 10px;
+      margin: 5px;
+
+      font-weight: bold;
+      font-size: $font-size-normal-vw;
+
+      background-color: $background-color-normal;
+      border-radius: $border-radius-bigger;
+
+      cursor: pointer;
+      list-style-type: none;
+
+      .type-icon {
+        width: 40px;
+        pointer-events: none;
+      }
+
+      span {
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.active-selection {
+  color: $color-highlight;
+}

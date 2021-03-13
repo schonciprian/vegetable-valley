@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.plant-type-selection-container, .card-face-back .card-content .card-body .buttons, .card-face-back .card-content .icon, .card-face-front {
+.card-face-back .card-content .card-body .buttons, .card-face-back .card-content .icon, .card-face-front {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,21 +160,12 @@
 .card-face-back .card-content .card-body {
   padding: 10px;
 }
-.card-face-back .card-content .card-body h3 {
-  color: #212121;
-  font-size: 15px;
-  font-weight: 600;
-  margin: 5px 0;
-}
 .card-face-back .card-content .card-body p {
   color: #f3f3f3;
   font-size: 13px;
   font-weight: 600;
   line-height: 2.2;
   margin: 5px auto;
-}
-.card-face-back .card-content .card-body .buttons {
-  cursor: auto;
 }
 .card-face-back .card-content .card-body .buttons .more-info {
   position: relative;
@@ -208,51 +199,4 @@
   transform: rotateY(180deg);
 }
 
-.plant-type-selection-container {
-  flex-direction: column;
-  width: 100%;
-  padding: 0 20px 20px;
-  border-bottom: 1px dashed darkorange;
-  border-radius: 10px 10px 0 0;
-  color: #eeeeee;
-  user-select: none;
-}
-.plant-type-selection-container h2 {
-  margin: 10px;
-  color: darkorange;
-  font-size: 2vw;
-}
-.plant-type-selection-container .plant-types {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15vw, max-content));
-  grid-gap: 10px 30px;
-  justify-content: center;
-  padding: initial;
-}
-.plant-type-selection-container .plant-types li {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  width: 15vw;
-  padding: 10px;
-  margin: 5px;
-  font-weight: bold;
-  font-size: 1.5vw;
-  background-color: #181d35;
-  border-radius: 20px;
-  list-style-type: none;
-}
-.plant-type-selection-container .plant-types li .type-icon {
-  width: 40px;
-  pointer-events: none;
-}
-.plant-type-selection-container .plant-types li span {
-  pointer-events: none;
-}
-
-.active-selection {
-  color: darkorange;
-}
-
-/*# sourceMappingURL=Grow_Guides.css.map */
+/*# sourceMappingURL=Grow_Guides_Card.css.map */
