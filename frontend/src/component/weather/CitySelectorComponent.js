@@ -14,7 +14,11 @@ export default function CitySelectorComponent(props) {
     const [loading, setLoading] = useState(false);
 
     const getCoordinates = (position) => {
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${(position.coords.latitude)}&lon=${(position.coords.longitude)}&appid=f913779188ecd17807fa0473780a29fb`)
+        const longitudeCorrection = 0.05;
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?` +
+                    `lat=${(position.coords.latitude)}` +
+                    `&lon=${(position.coords.longitude - longitudeCorrection)}` +
+                    `&appid=f913779188ecd17807fa0473780a29fb`)
             .then(response => {
                 props.setCity(response.data.name);
                 setLoading(false);
