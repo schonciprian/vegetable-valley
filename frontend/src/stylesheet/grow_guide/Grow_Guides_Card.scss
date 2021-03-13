@@ -15,18 +15,22 @@ $light: #f3f3f3;
   font-family: $font-style-text;
 
   background-color: $darker-color-blue;
-  border-radius: 25px;
+  border-radius: $border-radius-container;
 
   .grow-guides-card {
     width: 100%;
+
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(225px, max-content));
     grid-gap: 10px 30px;
+
     justify-content: space-evenly;
+
     padding: initial;
 
     .grow-guide-card-outer {
-      user-select: none;
+      display: flex;
+      align-items: center;
 
       width: 225px;
       height: 320px;
@@ -34,12 +38,12 @@ $light: #f3f3f3;
       margin: 20px 0;
 
       perspective: 1000px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      background-color: #181d35;
-      border-radius: 20px;
 
+      background-color: $background-color-normal;
+      border-radius: $border-radius-bigger;
+
+      user-select: none;
+      cursor: pointer;
       list-style-type: none;
 
       .grow-guide-card-inner {
@@ -61,14 +65,17 @@ $light: #f3f3f3;
           }
 
           .vegetable-name {
+            position: absolute;
+            top: 0;
+
             margin: 25px auto;
+
             text-transform: uppercase;
             text-align: center;
             font-size: 18px;
             font-weight: 700;
-            color: $color-whisper;
-            position: absolute;
-            top: 0;
+
+            color: $color-text;
           }
         }
       }
@@ -83,23 +90,23 @@ $light: #f3f3f3;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: $border-radius-bigger;
   box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
 }
 
 .card-face-front {
+  @extend %display-flex-center;
   flex-direction: column;
   background-image: var(--gradient);
-  @extend %display-flex-center;
 
   h2 {
-    color: #fff;
+    color: $color-text;
     font-size: 32px;
   }
 }
 
 .card-face-back {
-  background-color: $text-color-yellow;
+  background-color: $focus-color-lighter;
   transform: rotateY(180deg);
 
   .card-content {
@@ -114,14 +121,14 @@ $light: #f3f3f3;
       cursor: pointer;
       position: absolute;
 
-      color: #eeeeee;
+      color: $color-text;
 
       &:hover {
-        color: $dark-color-blue;
+        color: $background-color-dark;
       }
 
       &.active {
-        color: darkorange;
+        color: $color-highlight;
       }
     }
 
@@ -152,20 +159,20 @@ $light: #f3f3f3;
         background-image: linear-gradient(to bottom left, #4B5682 10%, #7F8EC0 115%);
       }
 
-      .pp {
+      .vegetable-picture {
         display: block;
         width: 80px;
         height: 80px;
         padding: 5px;
         margin: 0 auto 10px;
         border-radius: 50%;
-        background-color: #fff;
-        border: 1px solid #fff;
+        background-color: #eee;
+        border: 1px solid #eee;
         object-fit: cover;
       }
 
       h2 {
-        color: #fff;
+        color: $color-text;
         font-size: 18px;
         font-weight: 900;
         text-transform: uppercase;
@@ -179,7 +186,7 @@ $light: #f3f3f3;
 
       p {
         @extend %display-flex-space-between;
-        color: $light;
+        color: $color-text;
         font-size: 13px;
         font-weight: 600;
         line-height: 2.2;
@@ -196,9 +203,9 @@ $light: #f3f3f3;
           margin: 5px auto;
           padding: 5px 20px;
           font-weight: 600;
-          color: $color-whisper;
+          color: $color-text;
           background-image: linear-gradient(135deg, #151A30, #4B5682, #151A30);
-          border-radius: 10px;
+          border-radius: $border-radius-smaller;
           overflow: hidden;
           cursor: pointer;
           text-decoration: none;

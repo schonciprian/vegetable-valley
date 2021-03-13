@@ -158,7 +158,7 @@ export default function GrowGuideCard() {
                                     </div>
                                     <div className="card-header">
                                         <h2>{Vegetables[veggie].name}</h2>
-                                        <img className="pp" src={Vegetables[veggie].pictureURL} alt=""/>
+                                        <img className="vegetable-picture" src={Vegetables[veggie].pictureURL} alt=""/>
                                     </div>
                                     <div className="card-body">
                                         <p>
