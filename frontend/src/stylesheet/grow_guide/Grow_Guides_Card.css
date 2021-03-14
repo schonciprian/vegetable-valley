@@ -199,4 +199,24 @@
   transform: rotateY(180deg);
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.loading-spinner {
+  margin-top: 50px;
+  font-size: 75px;
+  color: darkorange;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 /*# sourceMappingURL=Grow_Guides_Card.css.map */

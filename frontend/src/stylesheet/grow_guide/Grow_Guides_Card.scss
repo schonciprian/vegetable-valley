@@ -1,7 +1,5 @@
 @import "../Variables";
 
-$light: #f3f3f3;
-
 .grow-guides-container {
   @extend %display-flex-space-around;
   flex-wrap: wrap;
@@ -234,3 +232,22 @@ $light: #f3f3f3;
   transform: rotateY(180deg);
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.loading-spinner {
+  margin-top: 50px;
+  font-size: 75px;
+  color: $color-highlight;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
