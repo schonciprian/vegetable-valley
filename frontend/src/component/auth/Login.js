@@ -44,7 +44,13 @@ export default function Registration() {
 
             // Toggle shaking style from the input field
             Object.keys(error.response.data).forEach(error => {
-                handleShakingError(error)
+                // Shaking only allowed for input fields
+                if (error !== 'failed') {
+                    handleShakingError(error)
+                } else {
+                    // Set the password input field's value to empty after failed authentication
+                    document.getElementById("password").value = "";
+                }
             })
         })
     }
@@ -53,6 +59,10 @@ export default function Registration() {
         <div className="form-container">
             <h1>Login</h1>
             <form className="form">
+                {errorMessages.failed &&
+                    <div id='auth_failed' className="error-message error-message-authentication">
+                        {errorMessages.failed}
+                    </div>}
 
                 <label htmlFor="email">Email:</label><br/>
                 {errorMessages.email && <div className="error-message">{errorMessages.email}</div>}

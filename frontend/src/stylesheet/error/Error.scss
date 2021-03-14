@@ -10,6 +10,11 @@
   margin-bottom: 5px;
 }
 
+.error-message-authentication {
+  font-weight: bold;
+  text-align: center;
+}
+
 .input-error {
   background: linear-gradient(130deg, #f36565 50%, #a70606 100%) !important;
   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
