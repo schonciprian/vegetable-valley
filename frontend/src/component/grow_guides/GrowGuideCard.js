@@ -81,6 +81,12 @@ export default function GrowGuideCard() {
 
     const setSelectedType = (event) => {
         setLoading(true);
+        const isFlippedCards = Array.prototype.slice.call(document.querySelectorAll('.is-flipped'));
+        isFlippedCards.forEach((isFlippedCard) => {
+            if (!isFlippedCard.classList.contains('pin')) {
+                isFlippedCard.classList.remove('is-flipped');
+            }
+        })
 
         if (event.target.classList.contains('active-selection')) {
             setSelectedTypeCount(selectedTypeCount - 1)
@@ -145,7 +151,9 @@ export default function GrowGuideCard() {
                     <div style={{color: 'darkorange', fontSize: '30px', marginTop: "20px"}}>No result</div> : ""}
                 {Object.keys(data).map((veggie, index) => (
                     <div key={index} className="grow-guide-card-outer" onClick={() => toggleCard(index)}>
-                        <div id={index} className="grow-guide-card-inner" key={index}>
+                        <div id={index}
+                             className={`grow-guide-card-inner ${Vegetables[veggie].is_pinned ? "is-flipped pin" : ""}`}
+                             key={index}>
                             <div className="card-face card-face-front">
                                 <div className="vegetable-name">{Vegetables[veggie].name}</div>
                                 <img src={Vegetables[veggie].pictureURL} alt=""/>
@@ -158,8 +166,8 @@ export default function GrowGuideCard() {
                                         <FaHeart/>
                                     </div>
                                     <div id={`pin-icon-${index}`}
-                                         className="icon pin-icon"
-                                         onClick={(event) => pinCard(event, index)}>
+                                         className={`icon pin-icon ${Vegetables[veggie].is_pinned ? "active" : ""}`}
+                                         onClick={(event) => pinCard(event, index, Vegetables[veggie].id)}>
                                         <GiPin style={{width: "20px", height: "20px"}}/>
                                     </div>
                                     <div className="card-header">
