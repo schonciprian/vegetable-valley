@@ -203,7 +203,7 @@
   visibility: hidden;
 }
 
-.loading-spinner {
+.type-loading-spinner {
   margin-top: 50px;
   font-size: 75px;
   color: darkorange;

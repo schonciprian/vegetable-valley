@@ -147,7 +147,7 @@ export default function GrowGuideCard() {
                     })}
                 </ul>
             </div>
-            {loading ? <FaSpinner className="loading-spinner"/> : <React.Fragment/>}
+            {loading ? <FaSpinner className="type-loading-spinner"/> : <React.Fragment/>}
             <div className={`grow-guides-card ${loading ? "hidden" : ""}`}>
                 {Object.keys(data).length === 0 ?
                     <div style={{color: 'darkorange', fontSize: '30px', marginTop: "20px"}}>No result</div> : ""}
