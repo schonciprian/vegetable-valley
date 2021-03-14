@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Vegetables} from './Descriptions';
-import {FaHeart} from "react-icons/fa";
+import {FaHeart, FaSpinner} from "react-icons/fa";
 import {GiPin} from "react-icons/gi";
 import {heartCard, pinCard, toggleCard} from "./GrowGuideCardActions";
 import {Link} from "react-router-dom";
@@ -28,6 +28,7 @@ export default function GrowGuideCard() {
     const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 155) / 360) * Math.floor(window.innerWidth * 0.8 / 255)-4);
     const [selectedTypeCount, setSelectedTypeCount] = useState(0);
     const [selectedTypeList, setSelectedTypeList] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const isScrolling = () => {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
@@ -71,11 +72,15 @@ export default function GrowGuideCard() {
         }
         setDataEndIndex(Math.ceil((window.innerHeight - 155) / 360) * Math.floor(window.innerWidth * 0.8 / 255));
 
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000);
 
     }, [selectedTypeList])
 
 
     const setSelectedType = (event) => {
+        setLoading(true);
 
         if (event.target.classList.contains('active-selection')) {
             setSelectedTypeCount(selectedTypeCount - 1)
@@ -134,7 +139,8 @@ export default function GrowGuideCard() {
                     })}
                 </ul>
             </div>
-            <div className="grow-guides-card">
+            {loading ? <FaSpinner className="loading-spinner"/> : <React.Fragment/>}
+            <div className={`grow-guides-card ${loading ? "hidden" : ""}`}>
                 {Object.keys(data).length === 0 ?
                     <div style={{color: 'darkorange', fontSize: '30px', marginTop: "20px"}}>No result</div> : ""}
                 {Object.keys(data).map((veggie, index) => (
