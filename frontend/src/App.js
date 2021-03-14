@@ -11,9 +11,7 @@ import Weather from "./component/weather/Weather";
 
 
 import './stylesheet/App.css';
-import './stylesheet/weather/Weather_forecast.css';
-import './stylesheet/grow_guide/Grow_Guides_Card.css';
-import './stylesheet/grow_guide/VegetableInfo.css';
+
 
 
 function App() {

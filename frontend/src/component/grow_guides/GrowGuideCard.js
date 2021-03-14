@@ -18,6 +18,8 @@ import {
 } from "react-icons/gi";
 import {BiSelectMultiple} from "react-icons/bi";
 import '../../stylesheet/grow_guide/Grow_Guides_Selection.css';
+import '../../stylesheet/grow_guide/Grow_Guides_Card.css';
+import '../../stylesheet/grow_guide/VegetableInfo.css';
 
 
 export default function GrowGuideCard() {
