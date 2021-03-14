@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap');
 
-// REFACTORED VARIABLES
   // Colors
 $background-color-darkest: #040617;
 $background-color-darker: #0F1329;
@@ -39,26 +38,6 @@ $border-radius-bigger: 20px;
 $border-radius-smaller: 10px;
 
 // ************************************************ //
-
-$darkest-color-blue: #040617;
-$darker-color-blue: #0F1329;
-$dark-color-blue: #151a30;
-
-//$text-color-yellow: #4B5682;
-//$text-color-yellow-hover: #7F8EC0;
-
-//$color-text: #eeeeee;
-
-$font-style-titles: "Montserrat", sans-serif;
-$font-style-text: "Montserrat", sans-serif;
-
-//$font-size-larger: 30px;
-//$font-size-normal: 25px;
-//$font-size-smaller: 20px;
-
-$font-size-larger-hover-vw: 1.9vw;
-$font-size-smaller-vw: 1vw;
-
 
 %display-flex-center {
   display: flex;
