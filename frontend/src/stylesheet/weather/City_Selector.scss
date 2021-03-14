@@ -1,0 +1,208 @@
+@import "../Variables";
+
+.city-selector-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  background-color: $background-color-darkest;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.city-selector {
+  position: fixed;
+  top: 5%;
+  left: 10%;
+
+  text-align: center;
+
+  max-height: 870px;
+  height: 85%;
+  overflow: scroll;
+  width: 80%;
+  --gradient: linear-gradient( 135deg, #040617 10%, #151A30 60%, #040617 100%);
+  background-image: var(--gradient);
+
+  box-shadow: 0 0 30px -5px rgba(200, 200, 200, 0.25);
+
+  border-radius: $border-radius-container;
+  z-index: 2;
+  opacity: 1;
+
+  .city-input-container {
+    @extend %display-flex-center;
+    flex-wrap: wrap;
+    font: 600 $font-size-smaller $font-family-text;
+    color: $color-text;
+
+    .city-input-text {
+      margin: 10px;
+    }
+
+    .search-box {
+      @extend %display-flex-center;
+
+      .city-input {
+        outline: none;
+        width: 200px;
+        height: 30px;
+        border: none;
+        border-radius: $border-radius-smaller;
+        margin: 20px;
+        padding: 0 5px;
+        color: $color-text;
+        font: 600 $font-size-smaller $font-family-text;
+        text-transform: capitalize;
+
+        --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
+        background-image: var(--gradient);
+      }
+
+      .search-icon {
+        cursor: pointer;
+        height: 24px;
+        margin-right: 10px;
+        color: $color-highlight;
+      }
+    }
+  }
+
+  .city-list-container {
+    @extend %display-flex-center;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    font: 600 $font-size-smaller $font-family-text;
+
+    .city-list-container-left {
+
+      .get-location {
+        @extend %display-flex-center;
+        width: fit-content;
+        height: 40px;
+        padding: 0 20px;
+        margin: 10px auto 30px;
+        --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
+        background-image: var(--gradient);
+        color: $color-text;
+        border-radius: $border-radius-smaller;
+        cursor: pointer;
+        transition: transform 200ms ease;
+
+
+        &:hover {
+          -webkit-transform: scale(0.95);
+          -ms-transform: scale(0.95);
+          transform: scale(0.95);
+        }
+      }
+
+      .city-list-hungary {
+        max-width: 750px;
+        margin: 10px 10px 20px 20px;
+        background-color: $background-color-darker;
+        border-radius: $border-radius-smaller;
+
+        ul {
+          @extend %display-flex-space-around;
+          flex-wrap: wrap;
+          padding: 10px;
+          margin: 0;
+
+          li {
+            list-style: none;
+            width: 200px;
+            margin: 7px;
+            padding: 5px;
+            font-size: 18px;
+
+            color: $color-text;
+
+            box-shadow: 2px 2px 1px 0 $focus-color-lighter;
+
+            background-color: $background-color-dark;
+            border-radius: $border-radius-smaller;
+            cursor: pointer;
+          }
+
+          li:hover {
+            color: $color-highlight;
+          }
+        }
+      }
+    }
+
+    .city-list-abroad {
+      width: 260px;
+      margin: 10px 10px 20px 20px;
+      background-color: $background-color-darker;
+      border-radius: $border-radius-smaller;
+
+      @media (max-width: 1337px) {
+        width: fit-content;
+        max-width: 750px;
+      }
+
+      ul {
+        @extend %display-flex-space-around;
+        flex-wrap: wrap;
+        padding: 10px;
+        margin: 0;
+
+        li {
+          list-style: none;
+          width: 200px;
+          margin: 7px 5px;
+          padding: 5px;
+
+          color: $color-text;
+
+          box-shadow: 2px 2px 1px 0 #4B5682;
+
+          background-color: $background-color-dark;
+          border-radius: $border-radius-smaller;
+          cursor: pointer;
+        }
+
+        li:hover {
+          color: $color-highlight;
+        }
+      }
+    }
+  }
+}
+
+.city-list-title {
+  width: fit-content;
+  margin: 5px auto;
+  padding: 10px;
+  color: $color-text;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(130deg, #0F1329, $color-highlight 50%, #0F1329 100%);
+  }
+}
+
+.loading-spinner {
+  color: $color-highlight;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
