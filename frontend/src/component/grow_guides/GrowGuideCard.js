@@ -189,10 +189,10 @@ export default function GrowGuideCard() {
                                             <span>Inline spacing: </span>
                                             <span>{Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : "-"}</span>
                                         </p>
-                                        <div className="buttons" onClick={(event) => event.stopPropagation()}>
+                                        {Vegetables[veggie].types.includes("Vegetable") && <div className="buttons" onClick={(event) => event.stopPropagation()}>
                                             <Link className="more-info" to={`/grow-guides/${Vegetables[veggie].id}`}>More
                                                 info</Link>
-                                        </div>
+                                        </div>}
                                     </div>
                                 </div>
                             </div>
