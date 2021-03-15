@@ -1,33 +1,99 @@
+import apple from '../../image/vegetables/apple.png';
+import apricot from '../../image/vegetables/apricot.png';
+import avocado from '../../image/vegetables/avocado.png';
 import aubergine from '../../image/vegetables/eggplant.png';
+import banana from '../../image/vegetables/banana.png';
 import beans from '../../image/vegetables/beans.png';
 import beetroot from '../../image/vegetables/beetroot.png';
+import blackberry from '../../image/vegetables/blackberry.png';
+import blueberry from '../../image/vegetables/blueberry.png';
 import brussels_sprouts from '../../image/vegetables/brussels_sprouts.png';
 import cabbage from '../../image/vegetables/cabbage.png';
 import purple_cabbage from '../../image/vegetables/purple_cabbage.png';
 import carrot from '../../image/vegetables/carrot.png';
 import celeriac from '../../image/vegetables/celeriac.png';
+import cherry from '../../image/vegetables/cherry.png';
 import courgette from '../../image/vegetables/courgette.png';
 import cucumber from '../../image/vegetables/cucumber.png';
 import dill from '../../image/vegetables/dill.png';
+import fig from '../../image/vegetables/fig.png';
 import garlic from '../../image/vegetables/garlic.png';
+import grape from '../../image/vegetables/grape.png';
+import grapefruit from '../../image/vegetables/grapefruit.png';
 import kale from '../../image/vegetables/kale.png';
+import kiwi from '../../image/vegetables/kiwi.png';
 import green_kohlrabi from '../../image/vegetables/green_kohlrabi.png';
 import purple_kohlrabi from '../../image/vegetables/purple_kohlrabi.png';
 import leek from '../../image/vegetables/leek.png';
+import lemon from '../../image/vegetables/lemon.png';
 import lettuce from '../../image/vegetables/lettuce.png';
+import melon from '../../image/vegetables/melon.png';
 import onion from '../../image/vegetables/onion.png';
 import red_onion from '../../image/vegetables/red_onion.png';
+import orange from '../../image/vegetables/orange.png';
 import paprika from '../../image/vegetables/paprika.png';
 import parsley from '../../image/vegetables/parsley.png';
+import peach from '../../image/vegetables/peach.png';
+import pear from '../../image/vegetables/pear.png';
 import peas from '../../image/vegetables/peas.png';
+import pineapple from '../../image/vegetables/pineapple.png';
+import plum from '../../image/vegetables/plum.png';
+import pomegranate from '../../image/vegetables/pomegranate.png';
 import potato from '../../image/vegetables/potato.png';
 import radish from '../../image/vegetables/radish.png';
+import raspberry from '../../image/vegetables/raspberry.png';
+import sour_cherry from '../../image/vegetables/sour_cherry.png';
 import squash from '../../image/vegetables/squash.png';
+import strawberry from '../../image/vegetables/strawberry.png';
 import sweet_potato from '../../image/vegetables/sweet_potato.png';
 import tomato from '../../image/vegetables/tomato.png';
 import pear_tomato from '../../image/vegetables/pear_tomato.png';
+import watermelon from '../../image/vegetables/watermelon.png';
 
 export const Vegetables = {
+    apple: {
+        id : 'apple',
+        name: 'Apple',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: apple,
+        sow_depth: '2 cm',
+        spacing_between_rows: '100 cm',
+        spacing_along_row: '100 cm',
+        basic_information: 'Apple trees are small to medium sized trees. They flower in the spring and the fruit ' +
+            'form over the summer and can be picked in the autumn.',
+        how_to_grow: 'Normally apple trees are grown in pots from seed by nurseries to small trees about 100cm tall. ' +
+            'Grow fruit trees in a sunny and sheltered position, and make sure the site has good quality and ' +
+            'well-drained soil. The best time to replant is in the Autumn or Winter.',
+        how_to_harvest: '',
+        sow_indoors: {
+            sow_indoors: [1,1,0,0,0,0,0,0,0,0,1,1],
+            plant_out: [1,1,0,0,0,0,0,0,0,0,1,1],
+            harvest: [0,0,0,0,0,0,1,1,1,0,0,0],
+        },
+    },
+    apricot: {
+        id : 'apricot',
+        name: 'Apricot',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: apricot,
+        basic_information: 'Hello there',
+    },
+    avocado: {
+        id : 'avocado',
+        name: 'Avocado',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: avocado,
+    },
+    banana: {
+        id : 'banana',
+        name: 'Banana',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: banana,
+    },
     aubergine: {
         id : 'aubergine',
         name: 'Aubergine',
@@ -104,6 +170,20 @@ export const Vegetables = {
             plant_out: [0,0,1,1,1,1,1,1,1,0,0,0],
             harvest: [0,0,0,0,1,1,1,1,1,1,1,0],
         },
+    },
+    blackberry: {
+        id : 'blackberry',
+        name: 'Blackberry',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: blackberry,
+    },
+    blueberry: {
+        id : 'blueberry',
+        name: 'Blueberry',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: blueberry,
     },
     brussels_sprouts: {
         id : 'brussels_sprouts',
@@ -245,6 +325,13 @@ export const Vegetables = {
             harvest: [0,0,0,0,0,0,1,1,1,1,0,0],
         },
     },
+    cherry: {
+        id : 'cherry',
+        name: 'Cherry',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: cherry,
+    },
     courgette: {
         id : 'courgette',
         name: 'Courgette',
@@ -316,6 +403,13 @@ export const Vegetables = {
             harvest: [0,0,0,0,0,0,0,1,1,0,0,0],
         },
     },
+    fig: {
+        id : 'fig',
+        name: 'Fig',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: fig,
+    },
     garlic: {
         id: 'garlic',
         name: 'Garlic',
@@ -348,6 +442,20 @@ export const Vegetables = {
             harvest: [1,1,1,0,0,0,0,1,1,1,1,1],
         },
     },
+    grape: {
+        id : 'grape',
+        name: 'Grape',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: grape,
+    },
+    grapefruit: {
+        id : 'grapefruit',
+        name: 'Grapefruit',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: grapefruit,
+    },
     kale: {
         id : 'kale',
         name: 'Kale',
@@ -374,7 +482,7 @@ export const Vegetables = {
     },
     green_kohlrabi: {
         id : 'green_kohlrabi',
-        name: 'Green kohlrabi',
+        name: 'Kohlrabi - Green',
         types: ['Vegetable', 'Brassica'],
         is_pinned: false,
         pictureURL: green_kohlrabi,
@@ -405,7 +513,7 @@ export const Vegetables = {
     },
     purple_kohlrabi: {
         id : 'purple_kohlrabi',
-        name: 'Purple kohlrabi',
+        name: 'Kohlrabi - Purple',
         types: ['Vegetable', 'Brassica'],
         is_pinned: false,
         pictureURL: purple_kohlrabi,
@@ -433,6 +541,13 @@ export const Vegetables = {
             plant_out: [0,0,1,1,1,1,1,1,1,1,0,0],
             harvest: [0,0,0,1,1,1,1,1,1,1,1,0],
         },
+    },
+    kiwi: {
+        id : 'kiwi',
+        name: 'Kiwi',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: kiwi,
     },
     leek: {
         id: 'leek',
@@ -463,6 +578,13 @@ export const Vegetables = {
             harvest: [1,1,1,1,1,1,1,1,1,1,1,1],
         },
     },
+    lemon: {
+        id : 'lemon',
+        name: 'Lemon',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: lemon,
+    },
     lettuce: {
         id : 'lettuce',
         name: 'Lettuce',
@@ -490,6 +612,13 @@ export const Vegetables = {
             plant_out: [0,0,1,1,1,1,1,1,0,0,0,0],
             harvest: [1,1,0,0,0,1,1,1,1,1,1,1],
         },
+    },
+    melon: {
+        id : 'melon',
+        name: 'Melon',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: melon,
     },
     onion: {
         id: 'onion',
@@ -559,6 +688,13 @@ export const Vegetables = {
             harvest: [1,1,1,1,0,1,1,1,1,1,1,1],
         },
     },
+    orange: {
+        id : 'orange',
+        name: 'Orange',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: orange,
+    },
     paprika: {
         id : 'paprika',
         name: 'Paprika',
@@ -605,6 +741,20 @@ export const Vegetables = {
             harvest: [0,0,0,0,0,0,1,1,1,1,0,0],
         },
     },
+    peach: {
+        id : 'peach',
+        name: 'Peach',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: peach,
+    },
+    pear: {
+        id : 'pear',
+        name: 'Pear',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: pear,
+    },
     peas: {
         id : 'peas',
         name: 'Peas',
@@ -629,6 +779,27 @@ export const Vegetables = {
             plant_out: [0,0,1,1,1,1,1,1,0,0,0,0],
             harvest: [0,0,0,0,0,1,1,1,1,1,1,0],
         },
+    },
+    pineapple: {
+        id : 'pineapple',
+        name: 'Pineapple',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: pineapple,
+    },
+    plum: {
+        id : 'plum',
+        name: 'Plum',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: plum,
+    },
+    pomegranate: {
+        id : 'pomegranate',
+        name: 'Pomegranate',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: pomegranate,
     },
     potato: {
         id : 'potato',
@@ -672,6 +843,20 @@ export const Vegetables = {
             harvest: [0,0,0,0,1,1,1,1,1,1,1,0],
         },
     },
+    raspberry: {
+        id : 'raspberry',
+        name: 'Raspberry',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: raspberry,
+    },
+    sour_cherry: {
+        id : 'sour_cherry',
+        name: 'Sour cherry',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: sour_cherry,
+    },
     squash: {
         id : 'squash',
         name: 'Squash',
@@ -698,6 +883,13 @@ export const Vegetables = {
             plant_out: [0,0,0,1,1,1,1,0,0,0,0,0],
             harvest: [0,0,0,0,0,0,1,1,1,1,0,0],
         },
+    },
+    strawberry: {
+        id : 'strawberry',
+        name: 'Strawberry',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: strawberry,
     },
     sweet_potato: {
         id : 'sweet_potato',
@@ -773,5 +965,12 @@ export const Vegetables = {
             plant_out: [0,0,0,1,1,1,1,0,0,0,0,0],
             harvest: [0,0,0,0,0,0,1,1,1,1,0,0],
         },
+    },
+    watermelon: {
+        id : 'watermelon',
+        name: 'Watermelon',
+        types: ['Fruit'],
+        is_pinned: false,
+        pictureURL: watermelon,
     },
 }
