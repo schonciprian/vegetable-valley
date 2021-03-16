@@ -27,7 +27,7 @@ export default function GrowGuideCard() {
     const [data, setData] = useState([]);
     const [vegetableData, setVegetableData] = useState(Vegetables);
     const [isFetching, setIsFetching] = useState(true);
-    const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 355) / 360) * Math.floor(window.innerWidth * 0.8 / 255)-4);
+    const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 355) / 360) * Math.floor(window.innerWidth * 0.8 / 255) - 4);
     const [selectedTypeCount, setSelectedTypeCount] = useState(0);
     const [selectedTypeList, setSelectedTypeList] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -41,31 +41,32 @@ export default function GrowGuideCard() {
 
     useEffect(() => {
         window.addEventListener("scroll", isScrolling);
-        const fetchData = Object.keys(vegetableData).slice(0, dataEndIndex).reduce((result, key) => {
-            result[key] = Vegetables[key];
-            return result;
-        }, {});
+        return (() => {
+            window.removeEventListener("scroll", isScrolling)
+        })
+    }, [])
 
+    useEffect(() => {
         if (isFetching) {
+            setDataEndIndex(dataEndIndex => dataEndIndex + (Math.floor(window.innerWidth * 0.8 / 255)))
+
+            const fetchData = Object.keys(vegetableData).slice(0, dataEndIndex).reduce((result, key) => {
+                result[key] = Vegetables[key];
+                return result;
+            }, {});
+
             setData(fetchData);
             setIsFetching(false);
-            setDataEndIndex(dataEndIndex => dataEndIndex + (Math.floor(window.innerWidth * 0.8 / 255)))
         }
     }, [isFetching, dataEndIndex, vegetableData])
 
     useEffect(() => {
         if (selectedTypeList.length !== 0) {
             setVegetableData(Object.keys(Vegetables).reduce((result, vegetable) => {
-                if (Vegetables[vegetable].types) {
-                    Vegetables[vegetable].types.forEach(type => {
-                            if (selectedTypeList.includes(type)) {
-                                result[vegetable] = Vegetables[vegetable];
-                            }
-                        }
-                    )
+                if (Vegetables[vegetable].types.some(type => selectedTypeList.includes(type))) {
+                    result[vegetable] = Vegetables[vegetable]
                 }
                 setIsFetching(true);
-                // setDataEndIndex(Math.ceil((window.innerHeight - 155) / 360) * Math.floor(window.innerWidth * 0.8 / 255));
                 return result;
             }, {}))
         } else {
@@ -79,7 +80,6 @@ export default function GrowGuideCard() {
         }, 1000);
 
     }, [selectedTypeList])
-
 
     const setSelectedType = (event) => {
         setLoading(true);
