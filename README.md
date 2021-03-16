@@ -1,4 +1,4 @@
-#Vegetable Valley
+# Vegetable Valley
 
 This is a frontend application in React using the OpenWeatherMap API.
 
