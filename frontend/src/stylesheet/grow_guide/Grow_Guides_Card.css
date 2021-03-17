@@ -108,6 +108,9 @@
   position: absolute;
   color: #eeeeee;
 }
+.card-face-back .card-content .icon svg {
+  pointer-events: none;
+}
 .card-face-back .card-content .icon:hover {
   color: #151A30;
 }
