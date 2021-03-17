@@ -11,6 +11,8 @@ import Weather from "./component/weather/Weather";
 
 
 import './stylesheet/App.css';
+import {SelectedTypeListProvider} from "./context/SelectedTypeListContext";
+import {LoadingProvider} from "./context/LoadingContext";
 
 
 
@@ -21,9 +23,16 @@ function App() {
             <Header />
             <div className="main-container">
                 <Route exact path="/" component={Home}/>
-                <Route exact path="/grow-guides" component={GrowGuideCard}/>
-                <Route path="/grow-guides/:vegetableName" component={VegetablePage}/>
-                <Route exact path="/weather-forecast" component={Weather} />
+
+                <LoadingProvider>
+                    <SelectedTypeListProvider>
+                        <Route exact path="/grow-guides" component={GrowGuideCard}/>
+                        <Route path="/grow-guides/:vegetableName" component={VegetablePage}/>
+                    </SelectedTypeListProvider>
+
+                    <Route exact path="/weather-forecast" component={Weather} />
+                </LoadingProvider>
+
                 <Route exact path="/register" component={Registration} />
                 <Route exact path="/login" component={Login} />
             </div>
