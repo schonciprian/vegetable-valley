@@ -72,7 +72,7 @@ export default function GrowGuideCard() {
     }, [selectedTypeList, setLoading])
 
     return (
-        <div className="grow-guides-container" onScroll={isScrolling}>
+        <div className="grow-guides-container">
             <SelectionBox />
 
             {loading ? <FaSpinner className="type-loading-spinner"/> : <React.Fragment/>}
