@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {MapPin, Sunrise, Sunset} from "react-feather";
 import {calculateSunriseSunset, getDayName, getMonth} from "./TodayWeatherFunctions";
-// Is it cleaner if I create an object of these and I import the object only
-// and I refer to methods as object.method?
+
 import {getDateOfDailyForecast,
         getDayNameOfDailyForecast,
         getDayTemperatureDailyForecast,
@@ -14,6 +13,7 @@ import {getDateOfDailyForecast,
         getSnowDailyForecast,
         getWindDailyForecast} from "./WeatherForecastGetterFunctions";
 import {showCitySelection} from "./CitySelectorHelperVariables";
+import {FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
 
 export default function WeatherForecastComponent(props) {
 
@@ -137,11 +137,11 @@ export default function WeatherForecastComponent(props) {
                 <div className="pagination">
                     <div className={(showDayFromIndex === 0 ? 'page-number active ' : 'page-number ')}
                          onClick={() => {updateShowDayIndexes(1)}}>
-                        1
+                        <FaArrowCircleLeft/>
                     </div>
                     <div className={(showDayFromIndex === 4 ? 'page-number active ' : 'page-number ')}
                          onClick={() => {updateShowDayIndexes(2)}}>
-                        2
+                        <FaArrowCircleRight />
                     </div>
                 </div>
             </div>

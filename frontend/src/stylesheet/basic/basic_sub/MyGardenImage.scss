@@ -1,9 +1,11 @@
+@import "../../Variables.scss";
+
 .my-garden {
   text-align: center;
-  color: darkorange;
+  color: $color-highlight;
 
   img {
-    border-radius: 20px;
+    border-radius: $border-radius-bigger;
     cursor: pointer;
   }
 }

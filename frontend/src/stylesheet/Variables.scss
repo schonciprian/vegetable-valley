@@ -1,29 +1,43 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap');
 
-$darkest-color-blue: #040617;
-$darker-color-blue: #0F1329;
-$dark-color-blue: #151A30;
-$normal-color-blue: #2d3748;
+  // Colors
+$background-color-darkest: #040617;
+$background-color-darker: #0F1329;
+$background-color-dark: #151A30;
+$background-color-normal: #1B223E;
 
+$focus-color-lighter: #4B5682;
+$focus-color-lighter-hover: #7F8EC0;
 
-$text-color-yellow: #4B5682;
-$text-color-yellow-hover: #7F8EC0;
+$border-color-authentication: #2d3748;
 
-$color-whisper: #eeeeee;
+$color-text: #eeeeee;
+$color-highlight: darkorange;
+$color-error: red;
 
-$font-style-titles: "Montserrat", sans-serif;
-$font-style-text: "Montserrat", sans-serif;
+  // Fonts
+$font-family-title: "Montserrat", sans-serif;
+$font-family-text: "Montserrat", sans-serif;
+
+$font-size-large-vw: 3vw;
+$font-size-larger-vw: 2vw;
+$font-size-larger-header-vw: 1.8vw;
+$font-size-normal-vw: 1.5vw;
+$font-size-normal-hover-vw: 1.4vw;
+$font-size-smaller-vw: 1vw;
 
 $font-size-larger: 30px;
 $font-size-normal: 25px;
 $font-size-smaller: 20px;
 
-$font-size-large-vw: 3vw;
-$font-size-larger-vw: 2vw;
-$font-size-larger-hover-vw: 1.9vw;
-$font-size-normal-vw: 1.5vw;
-$font-size-normal-hover-vw: 1.4vw;
-$font-size-smaller-vw: 1vw;
+
+  //Borders
+$border-radius-container: 25px;
+$border-radius: 25px; // remove
+$border-radius-bigger: 20px;
+$border-radius-smaller: 10px;
+
+// ************************************************ //
 
 %display-flex-center {
   display: flex;
@@ -40,5 +54,11 @@ $font-size-smaller-vw: 1vw;
 %display-flex-space-between {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+%display-flex-flex-end {
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
 }

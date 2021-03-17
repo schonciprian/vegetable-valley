@@ -1,0 +1,107 @@
+@import "../Variables";
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  width: 500px;
+  height: content-box;
+
+  margin: 50px auto;
+
+  font-family: $font-family-text;
+
+  background-color: $background-color-darker;
+  border-radius: $border-radius-bigger;
+  border: 5px solid $border-color-authentication;
+
+  h1 {
+    margin: 20px auto;
+
+    color: $color-highlight;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 80%;
+
+    margin: 0 auto;
+
+    label {
+      width: 100%;
+
+      font-size: $font-size-normal-vw;
+      color: $color-highlight;
+
+      pointer-events: none;
+    }
+
+    input {
+      width: 100%;
+      height: 35px;
+
+      margin-bottom: 20px;
+      padding: 0 10px;
+
+      border-radius: $border-radius-smaller;
+      border: 1px solid transparent;
+      outline: none;
+
+      font-family: $font-family-text !important;
+
+      background-color: $background-color-normal;
+      color: $color-text;
+
+      transition: 200ms ease;
+
+      &::placeholder {
+        font-style: italic;
+        font-family: $font-family-text !important;
+
+        color: $color-text;
+      }
+
+      &:focus {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+        -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+        background-color: $focus-color-lighter;
+      }
+    }
+
+    button {
+      width: 200px;
+      height: 40px;
+
+      margin-bottom: 20px;
+
+      font-size: $font-size-normal-vw;
+      font-family: $font-family-text !important;
+
+      border: none;
+      border-radius: $border-radius-smaller;
+      outline: none;
+
+      color: $color-highlight;
+      --gradient: linear-gradient(135deg, #0F1329, #4B5682, #0F1329);
+      background-image: var(--gradient);
+
+      transition: 200ms ease;
+      cursor: pointer;
+
+      &:hover {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+        -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}

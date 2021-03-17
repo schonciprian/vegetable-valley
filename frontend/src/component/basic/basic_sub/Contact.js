@@ -37,7 +37,7 @@ export function Contact() {
                     <a href="https://www.linkedin.com/in/cipri%C3%A1n-sch%C5%91n/" target="blank">LinkedIn profile</a>
                 </p>
             </div>
-            <img src={profile_picture} alt="Picture of me"/>
+            <img src={profile_picture} alt="Profile"/>
         </div>
     );
 }

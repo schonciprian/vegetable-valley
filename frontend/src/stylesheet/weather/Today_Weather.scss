@@ -1,0 +1,117 @@
+@import "../Variables";
+
+$background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80");
+
+.today-weather-side {
+  height: 550px;
+  width: 320px;
+  margin: 0 20px;
+
+  position: relative;
+  float: left;
+
+  background-image: $background-image;
+  border-radius: $border-radius-bigger;
+
+  -webkit-box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
+
+  -webkit-transition: -webkit-transform 300ms ease;
+  -o-transition: transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
+
+  -webkit-transform: translateZ(0) scale(1.02) perspective(1000px);
+  transform: translateZ(0) scale(1.02) perspective(1000px);
+
+  &:hover {
+    -webkit-transform: scale(1.1) perspective(1500px) rotateY(10deg);
+    transform: scale(1.1) perspective(1500px) rotateY(10deg);
+  }
+
+  .today-weather-gradient {
+    width: 100%;
+    height: 100%;
+
+    background-image: var(--gradient);
+    border-radius: $border-radius-bigger;
+
+    opacity: 0.8;
+  }
+
+  .today-location-and-date-container {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+
+    .today-location-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+
+      margin-bottom: 10px;
+
+      svg {
+        margin: 5px;
+        color: $color-highlight;
+      }
+
+      .today-location {
+        width: 270px;
+
+        word-wrap: break-word;
+
+        font-size: $font-size-normal;
+        font-weight: 600;
+      }
+    }
+
+    .today-day-name {
+      position: absolute;
+      top: 75px;
+
+      margin: 0;
+    }
+
+    .today-date {
+      position: absolute;
+      top: 110px;
+    }
+  }
+
+  .today-weather-extras-container {
+    width: 85%;
+
+    position: absolute;
+    top: 180px;
+    left: 20px;
+
+    .today-extras {
+      @extend %display-flex-space-between;
+
+      margin-bottom: 20px;
+      font-size: $font-size-smaller;
+      font-weight: 700;
+    }
+  }
+
+  .today-weather-container {
+    position: absolute;
+    bottom: 25px;
+    left: 20px;
+
+    img {
+      margin-bottom: -15px;
+    }
+
+    .weather-temp {
+      margin: 0;
+      font-weight: 700;
+      font-size: 4em;
+    }
+
+    .weather-desc {
+      margin: 0;
+    }
+  }
+}

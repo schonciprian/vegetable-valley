@@ -27,29 +27,44 @@
   background-color: #0F1329;
   border-radius: 25px;
 }
-.grow-guides-container .grow-guide-card-outer {
-  user-select: none;
+.grow-guides-container .grow-guides-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, max-content));
+  grid-gap: 10px 30px;
+  justify-content: space-evenly;
+  padding: initial;
+}
+.grow-guides-container .grow-guides-card .grow-guide-card-outer {
+  display: flex;
+  align-items: center;
   width: 225px;
   height: 320px;
-  margin: 20px 15px;
+  margin: 20px 0;
   perspective: 1000px;
+  background-color: #1B223E;
+  border-radius: 20px;
+  user-select: none;
+  cursor: pointer;
+  list-style-type: none;
 }
-.grow-guides-container .grow-guide-card-outer .grow-guide-card-inner {
+.grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  cursor: pointer;
   transition: transform 1s;
   transform-style: preserve-3d;
-  --gradient: linear-gradient( 135deg, #151A30, #4B5682);
+  --gradient: linear-gradient(135deg, #151A30, #4B5682);
 }
-.grow-guides-container .grow-guide-card-outer .grow-guide-card-inner img {
+.grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner .card-face-front img {
   max-width: 85%;
-  height: 85%;
   object-fit: contain;
+  margin-top: 100px;
 }
-.grow-guides-container .grow-guide-card-outer .grow-guide-card-inner .vegetable-name {
-  margin: 15px auto;
+.grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner .card-face-front .vegetable-name {
+  position: absolute;
+  top: 0;
+  margin: 25px auto;
   text-transform: uppercase;
   text-align: center;
   font-size: 18px;
@@ -64,7 +79,7 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 20px;
   box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -73,7 +88,7 @@
   background-image: var(--gradient);
 }
 .card-face-front h2 {
-  color: #fff;
+  color: #eeeeee;
   font-size: 32px;
 }
 
@@ -92,6 +107,9 @@
   cursor: pointer;
   position: absolute;
   color: #eeeeee;
+}
+.card-face-back .card-content .icon svg {
+  pointer-events: none;
 }
 .card-face-back .card-content .icon:hover {
   color: #151A30;
@@ -123,19 +141,19 @@
   border-radius: 0 0 50% 0;
   background-image: linear-gradient(to bottom left, #4B5682 10%, #7F8EC0 115%);
 }
-.card-face-back .card-content .card-header .pp {
+.card-face-back .card-content .card-header .vegetable-picture {
   display: block;
   width: 80px;
   height: 80px;
   padding: 5px;
   margin: 0 auto 10px;
   border-radius: 50%;
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: #eee;
+  border: 1px solid #eee;
   object-fit: cover;
 }
 .card-face-back .card-content .card-header h2 {
-  color: #fff;
+  color: #eeeeee;
   font-size: 18px;
   font-weight: 900;
   text-transform: uppercase;
@@ -145,21 +163,12 @@
 .card-face-back .card-content .card-body {
   padding: 10px;
 }
-.card-face-back .card-content .card-body h3 {
-  color: #212121;
-  font-size: 15px;
-  font-weight: 600;
-  margin: 5px 0;
-}
 .card-face-back .card-content .card-body p {
-  color: #f3f3f3;
+  color: #eeeeee;
   font-size: 13px;
   font-weight: 600;
   line-height: 2.2;
   margin: 5px auto;
-}
-.card-face-back .card-content .card-body .buttons {
-  cursor: auto;
 }
 .card-face-back .card-content .card-body .buttons .more-info {
   position: relative;
@@ -193,4 +202,24 @@
   transform: rotateY(180deg);
 }
 
-/*# sourceMappingURL=Grow_Guides.css.map */
+.hidden {
+  visibility: hidden;
+}
+
+.type-loading-spinner {
+  margin-top: 50px;
+  font-size: 75px;
+  color: darkorange;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/*# sourceMappingURL=Grow_Guides_Card.css.map */

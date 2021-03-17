@@ -1,3 +1,5 @@
+import {Vegetables} from "./Descriptions";
+
 export const toggleCard = (cardIndex) => {
     const card = document.getElementById(`${cardIndex}`);
     card.classList.toggle('is-flipped');
@@ -11,8 +13,9 @@ export const toggleCard = (cardIndex) => {
     })
 }
 
-export const pinCard = (event, index) => {
+export const pinCard = (event, index, id) => {
     event.stopPropagation();
+    Vegetables[id].is_pinned = !Vegetables[id].is_pinned;
     document.getElementById(`pin-icon-${index}`).classList.toggle('active')
     document.getElementById(`${index}`).classList.toggle('pin')
 }

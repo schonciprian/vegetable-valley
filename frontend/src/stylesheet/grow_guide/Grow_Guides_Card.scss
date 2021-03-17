@@ -1,11 +1,5 @@
 @import "../Variables";
 
-
-$primary: #4B5682;
-$secondary: #7F8EC0;
-$dark: #212121;
-$light: #f3f3f3;
-
 .grow-guides-container {
   @extend %display-flex-space-around;
   flex-wrap: wrap;
@@ -16,46 +10,72 @@ $light: #f3f3f3;
   padding: 20px;
   margin: 50px auto 100px;
 
-  font-family: $font-style-text;
+  font-family: $font-family-text;
 
-  background-color: $darker-color-blue;
-  border-radius: 25px;
+  background-color: $background-color-darker;
+  border-radius: $border-radius-container;
 
-  .grow-guide-card-outer {
-    user-select: none;
+  .grow-guides-card {
+    width: 100%;
 
-    width: 225px;
-    height: 320px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(225px, max-content));
+    grid-gap: 10px 30px;
 
-    margin: 20px 15px;
+    justify-content: space-evenly;
 
-    perspective: 1000px;
+    padding: initial;
 
-    .grow-guide-card-inner {
-      position: relative;
+    .grow-guide-card-outer {
+      display: flex;
+      align-items: center;
 
-      width: 100%;
-      height: 100%;
+      width: 225px;
+      height: 320px;
 
+      margin: 20px 0;
+
+      perspective: 1000px;
+
+      background-color: $background-color-normal;
+      border-radius: $border-radius-bigger;
+
+      user-select: none;
       cursor: pointer;
+      list-style-type: none;
 
-      transition: transform 1s;
-      transform-style: preserve-3d;
-      --gradient: linear-gradient( 135deg, #151A30, #4B5682);
+      .grow-guide-card-inner {
+        position: relative;
 
-      img {
-        max-width: 85%;
-        height: 85%;
-        object-fit: contain;
-      }
+        width: 100%;
+        height: 100%;
 
-      .vegetable-name {
-        margin: 15px auto;
-        text-transform: uppercase;
-        text-align: center;
-        font-size: 18px;
-        font-weight: 700;
-        color: $color-whisper;
+        transition: transform 1s;
+        transform-style: preserve-3d;
+        --gradient: linear-gradient(135deg, #151A30, #4B5682);
+
+        .card-face-front {
+
+          img {
+            max-width: 85%;
+            object-fit: contain;
+            margin-top: 100px;
+          }
+
+          .vegetable-name {
+            position: absolute;
+            top: 0;
+
+            margin: 25px auto;
+
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+
+            color: $color-text;
+          }
+        }
       }
     }
   }
@@ -68,23 +88,23 @@ $light: #f3f3f3;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: $border-radius-bigger;
   box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
 }
 
 .card-face-front {
+  @extend %display-flex-center;
   flex-direction: column;
   background-image: var(--gradient);
-  @extend %display-flex-center;
 
   h2 {
-    color: #fff;
+    color: $color-text;
     font-size: 32px;
   }
 }
 
 .card-face-back {
-  background-color: $text-color-yellow;
+  background-color: $focus-color-lighter;
   transform: rotateY(180deg);
 
   .card-content {
@@ -99,14 +119,18 @@ $light: #f3f3f3;
       cursor: pointer;
       position: absolute;
 
-      color: #eeeeee;
+      color: $color-text;
+
+      svg {
+        pointer-events:none;
+      }
 
       &:hover {
-        color: $dark-color-blue;
+        color: $background-color-dark;
       }
 
       &.active {
-        color: darkorange;
+        color: $color-highlight;
       }
     }
 
@@ -137,20 +161,20 @@ $light: #f3f3f3;
         background-image: linear-gradient(to bottom left, #4B5682 10%, #7F8EC0 115%);
       }
 
-      .pp {
+      .vegetable-picture {
         display: block;
         width: 80px;
         height: 80px;
         padding: 5px;
         margin: 0 auto 10px;
         border-radius: 50%;
-        background-color: #fff;
-        border: 1px solid #fff;
+        background-color: #eee;
+        border: 1px solid #eee;
         object-fit: cover;
       }
 
       h2 {
-        color: #fff;
+        color: $color-text;
         font-size: 18px;
         font-weight: 900;
         text-transform: uppercase;
@@ -162,16 +186,9 @@ $light: #f3f3f3;
     .card-body {
       padding: 10px;
 
-      h3 {
-        color: $dark;
-        font-size: 15px;
-        font-weight: 600;
-        margin: 5px 0;
-      }
-
       p {
         @extend %display-flex-space-between;
-        color: $light;
+        color: $color-text;
         font-size: 13px;
         font-weight: 600;
         line-height: 2.2;
@@ -180,8 +197,6 @@ $light: #f3f3f3;
 
       .buttons {
         @extend %display-flex-center;
-        //width: 100%;
-        cursor: auto;
 
         .more-info {
           position: relative;
@@ -190,9 +205,9 @@ $light: #f3f3f3;
           margin: 5px auto;
           padding: 5px 20px;
           font-weight: 600;
-          color: $color-whisper;
+          color: $color-text;
           background-image: linear-gradient(135deg, #151A30, #4B5682, #151A30);
-          border-radius: 10px;
+          border-radius: $border-radius-smaller;
           overflow: hidden;
           cursor: pointer;
           text-decoration: none;
@@ -217,8 +232,26 @@ $light: #f3f3f3;
   }
 }
 
-
 .is-flipped {
   transform: rotateY(180deg);
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.type-loading-spinner {
+  margin-top: 50px;
+  font-size: 75px;
+  color: $color-highlight;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
