@@ -121,6 +121,10 @@
 
       color: $color-text;
 
+      svg {
+        pointer-events:none;
+      }
+
       &:hover {
         color: $background-color-dark;
       }

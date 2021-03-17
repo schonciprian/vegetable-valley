@@ -1,25 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Vegetables} from './Descriptions';
 import {FaHeart, FaSpinner} from "react-icons/fa";
 import {GiPin} from "react-icons/gi";
 import {heartCard, pinCard, toggleCard} from "./GrowGuideCardActions";
 import {Link} from "react-router-dom";
-import {
-    GiBananaBunch,
-    GiTomato,
-    GiCarrot,
-    GiHerbsBundle,
-    GiGarlic,
-    GiBroccoli,
-    GiAubergine,
-    GiPeas,
-    GiPumpkin,
-    GiThreeLeaves
-} from "react-icons/gi";
-import {BiSelectMultiple} from "react-icons/bi";
 import '../../stylesheet/grow_guide/Grow_Guides_Selection.css';
 import '../../stylesheet/grow_guide/Grow_Guides_Card.css';
 import '../../stylesheet/grow_guide/VegetableInfo.css';
+import {SelectedTypeListContext} from "../../context/SelectedTypeListContext";
+import SelectionBox from "./SelectionBox";
+import {LoadingContext} from "../../context/LoadingContext";
 
 
 export default function GrowGuideCard() {
@@ -27,10 +17,9 @@ export default function GrowGuideCard() {
     const [data, setData] = useState([]);
     const [vegetableData, setVegetableData] = useState(Vegetables);
     const [isFetching, setIsFetching] = useState(true);
-    const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 355) / 360) * Math.floor(window.innerWidth * 0.8 / 255)-4);
-    const [selectedTypeCount, setSelectedTypeCount] = useState(0);
-    const [selectedTypeList, setSelectedTypeList] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 355) / 360) * Math.floor(window.innerWidth * 0.8 / 255) - 4);
+    const [selectedTypeList, setSelectedTypeList] = useContext(SelectedTypeListContext);
+    const [loading, setLoading] = useContext(LoadingContext);
 
     const isScrolling = () => {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
@@ -41,31 +30,33 @@ export default function GrowGuideCard() {
 
     useEffect(() => {
         window.addEventListener("scroll", isScrolling);
-        const fetchData = Object.keys(vegetableData).slice(0, dataEndIndex).reduce((result, key) => {
-            result[key] = Vegetables[key];
-            return result;
-        }, {});
+        return (() => {
+            window.removeEventListener("scroll", isScrolling);
+            setSelectedTypeList([]);
+        })
+    }, [setSelectedTypeList])
 
+    useEffect(() => {
         if (isFetching) {
+            setDataEndIndex(dataEndIndex => dataEndIndex + (Math.floor(window.innerWidth * 0.8 / 255)))
+
+            const fetchData = Object.keys(vegetableData).slice(0, dataEndIndex).reduce((result, key) => {
+                result[key] = Vegetables[key];
+                return result;
+            }, {});
+
             setData(fetchData);
             setIsFetching(false);
-            setDataEndIndex(dataEndIndex => dataEndIndex + (Math.floor(window.innerWidth * 0.8 / 255)))
         }
     }, [isFetching, dataEndIndex, vegetableData])
 
     useEffect(() => {
         if (selectedTypeList.length !== 0) {
             setVegetableData(Object.keys(Vegetables).reduce((result, vegetable) => {
-                if (Vegetables[vegetable].types) {
-                    Vegetables[vegetable].types.forEach(type => {
-                            if (selectedTypeList.includes(type)) {
-                                result[vegetable] = Vegetables[vegetable];
-                            }
-                        }
-                    )
+                if (Vegetables[vegetable].types.some(type => selectedTypeList.includes(type))) {
+                    result[vegetable] = Vegetables[vegetable]
                 }
                 setIsFetching(true);
-                // setDataEndIndex(Math.ceil((window.innerHeight - 155) / 360) * Math.floor(window.innerWidth * 0.8 / 255));
                 return result;
             }, {}))
         } else {
@@ -78,75 +69,12 @@ export default function GrowGuideCard() {
             setLoading(false)
         }, 1000);
 
-    }, [selectedTypeList])
-
-
-    const setSelectedType = (event) => {
-        setLoading(true);
-        const isFlippedCards = Array.prototype.slice.call(document.querySelectorAll('.is-flipped'));
-        isFlippedCards.forEach((isFlippedCard) => {
-            if (!isFlippedCard.classList.contains('pin')) {
-                isFlippedCard.classList.remove('is-flipped');
-            }
-        })
-
-        if (event.target.classList.contains('active-selection')) {
-            setSelectedTypeCount(selectedTypeCount - 1)
-            setSelectedTypeList(selectedTypeList => selectedTypeList.filter(item => item !== event.target.id))
-        } else {
-            setSelectedTypeCount(selectedTypeCount + 1)
-            setSelectedTypeList([...selectedTypeList, event.target.id])
-        }
-
-        // Clicking on "All plants" after more types are selected, only "All" will remain active
-        if (event.target.id === 'All') {
-            document.querySelectorAll('.active-selection')
-                .forEach(element => element.classList
-                    .remove('active-selection'))
-            setSelectedTypeList([])
-            setSelectedTypeCount(0)
-        }
-
-        event.target.classList.toggle('active-selection')
-    }
-
-    const selectionTypes = {
-        'All': {name: 'All plants', icon: BiSelectMultiple, selected: selectedTypeCount === 0,},
-        'Fruit': {name: 'Fruits', icon: GiBananaBunch,},
-        'Vegetable': {name: 'Vegetables', icon: GiAubergine,},
-        'Root': {name: 'Root veggies', icon: GiCarrot,},
-        'Herb': {name: 'Herbs', icon: GiHerbsBundle,},
-        'Onion': {name: 'Onions', icon: GiGarlic,},
-        'Brassica': {name: 'Brassicas', icon: GiBroccoli,},
-        'Nightshade': {name: 'Nightshades', icon: GiTomato,},
-        'Fabales': {name: 'Fabales', icon: GiPeas,},
-        'Cucurbita': {name: 'Cucurbitas', icon: GiPumpkin,},
-        'Lactuca': {name: 'Lactucas', icon: GiThreeLeaves,},
-    }
+    }, [selectedTypeList, setLoading])
 
     return (
         <div className="grow-guides-container">
-            <div className="plant-type-selection-container">
-                <h2>Selection Box</h2>
-                <ul className="plant-types">
-                    {Object.keys(selectionTypes).map((selectionType, index) => {
-                        const TagName = selectionTypes[selectionType].icon;
+            <SelectionBox />
 
-                        return (
-                            <li key={index}
-                                id={Object.keys(selectionTypes)[index]}
-                                className={selectionTypes[selectionType].selected
-                                    ? 'active-selection'
-                                    : ""}
-                                onClick={(event) => setSelectedType(event)}>
-                                <TagName className="type-icon" onClick={event => event.stopPropagation()}/>
-                                <span
-                                    onClick={event => event.stopPropagation()}>{selectionTypes[selectionType].name}</span>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </div>
             {loading ? <FaSpinner className="type-loading-spinner"/> : <React.Fragment/>}
             <div className={`grow-guides-card ${loading ? "hidden" : ""}`}>
                 {Object.keys(data).length === 0 ?
