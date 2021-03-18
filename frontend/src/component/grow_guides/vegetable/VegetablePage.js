@@ -31,8 +31,8 @@ function VegetablePage(props) {
                         </div>
                     </div>
 
-                    {vegetableInfo.sow_direct || vegetableInfo.sow_indoors ?
-                        <div className="sowing-table-container">
+                    {vegetableInfo.sow_direct || vegetableInfo.sow_indoors
+                        ? <div className="sowing-table-container">
                             <div className="sowing-table-title">
                                 Planting guidelines for <span>{vegetableInfo.name}</span> by month to month.
                             </div>
@@ -40,8 +40,8 @@ function VegetablePage(props) {
                                 <React.Fragment/>}
                             {vegetableInfo.sow_indoors ? <SowingTableInside vegetableInfo={vegetableInfo}/> :
                                 <React.Fragment/>}
-                        </div> :
-                    <React.Fragment/>}
+                        </div>
+                        : <div className="no-sowing-table">Sowing table for {vegetableInfo.name} is not available!</div>}
                 </div>
                 <div className="longer-information-container">
                     <div className="longer-information">

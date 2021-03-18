@@ -61,6 +61,12 @@
         }
       }
 
+      .no-sowing-table {
+        color: $color-highlight;
+        width: 65%;
+        text-align: center;
+      }
+
       .sowing-table-container {
         background-image: linear-gradient(-135deg, #1b213e, #2b3562);
         border-radius: $border-radius-bigger;
