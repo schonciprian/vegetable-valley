@@ -60,6 +60,7 @@ function SelectionBox() {
     return (
         <div className="plant-type-selection-container">
             <h2>Selection Box</h2>
+            <p>The result will be always the union not the intersection of selected types!</p>
             <ul className="plant-types">
                 {Object.keys(selectionTypes).map((selectionType, index) => {
                     const TagName = selectionTypes[selectionType].icon;

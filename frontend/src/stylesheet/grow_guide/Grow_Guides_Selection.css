@@ -19,6 +19,10 @@
   color: darkorange;
   font-size: 2vw;
 }
+.plant-type-selection-container p {
+  color: darkorange;
+  font-size: 1vw;
+}
 .plant-type-selection-container .plant-types {
   width: 100%;
   display: grid;

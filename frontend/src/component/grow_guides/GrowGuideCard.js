@@ -21,17 +21,35 @@ export default function GrowGuideCard() {
     const [selectedTypeList, setSelectedTypeList] = useContext(SelectedTypeListContext);
     const [loading, setLoading] = useContext(LoadingContext);
 
+
+    // Old check for bottom of the page
     const isScrolling = () => {
         if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
             return;
         }
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            setIsFetching(true)
+        }
         setIsFetching(true)
     }
 
+    // New check for bottom of the page
+    const handleScroll = () => {
+        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+        const body = document.body;
+        const html = document.documentElement;
+        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+        const windowBottom = windowHeight + window.pageYOffset;
+
+        if (windowBottom + 50 >= docHeight) {
+            setIsFetching(true)
+        }
+    }
+
     useEffect(() => {
-        window.addEventListener("scroll", isScrolling);
+        window.addEventListener("scroll", handleScroll);
         return (() => {
-            window.removeEventListener("scroll", isScrolling);
+            window.removeEventListener("scroll", handleScroll);
             setSelectedTypeList([]);
         })
     }, [setSelectedTypeList])
@@ -107,15 +125,15 @@ export default function GrowGuideCard() {
                                     <div className="card-body">
                                         <p>
                                             <span>Sowing depth: </span>
-                                            <span>{Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</span>
+                                            <span>{Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : "-"}</span>
                                         </p>
                                         <p>
                                             <span>Line spacing:</span>
-                                            <span>{Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</span>
+                                            <span>{Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : "-"}</span>
                                         </p>
                                         <p>
                                             <span>Inline spacing: </span>
-                                            <span>{Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</span>
+                                            <span>{Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : "-"}</span>
                                         </p>
                                         <div className="buttons" onClick={(event) => event.stopPropagation()}>
                                             <Link className="more-info" to={`/grow-guides/${Vegetables[veggie].id}`}>More
