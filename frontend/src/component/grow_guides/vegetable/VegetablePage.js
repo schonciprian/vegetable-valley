@@ -2,6 +2,7 @@ import React from 'react';
 import {Vegetables} from "../Descriptions";
 import {Link} from "react-router-dom";
 import SowingTable from "./sowing_table/SowingTable";
+import BasicInformation from "./BasicInformation";
 
 
 function VegetablePage(props) {
@@ -13,22 +14,7 @@ function VegetablePage(props) {
             <Link className="back-button" to="/grow-guides">Back to grow guides</Link><br/>
             <div className="vegetable-info">
                 <div className="smaller-information">
-                    <div className="basic-information">
-                        <div className="vegetable-name">{vegetableInfo.name}</div>
-                        <img src={vegetableInfo.pictureURL} alt=""/>
-                        <div className="vegetable-small-info">
-                            <span>Sowing depth: </span>
-                            <span>{vegetableInfo.sow_depth}</span>
-                        </div>
-                        <div className="vegetable-small-info">
-                            <span>Line spacing: </span>
-                            <span>{vegetableInfo.spacing_between_rows}</span>
-                        </div>
-                        <div className="vegetable-small-info">
-                            <span>Inline spacing: </span>
-                            <span>{vegetableInfo.spacing_along_row}</span>
-                        </div>
-                    </div>
+                    <BasicInformation vegetableInfo={vegetableInfo} />
 
                     {vegetableInfo.sow_direct || vegetableInfo.sow_indoors
                         ? <SowingTable vegetableInfo={vegetableInfo}/>
