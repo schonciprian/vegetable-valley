@@ -28,7 +28,8 @@
         @extend %display-flex-center;
         flex-direction: column;
 
-        max-width: 23vw;
+        width: 30%;
+        max-width: 20vw;
         min-height: 280px;
 
         text-align: center;
@@ -46,7 +47,7 @@
 
         img {
           max-width: 65%;
-          min-height: 180px;
+          min-height: 140px;
 
           margin: 10px 0;
           object-fit: contain;
@@ -60,9 +61,18 @@
         }
       }
 
+      .no-sowing-table {
+        color: $color-highlight;
+        width: 65%;
+        text-align: center;
+      }
+
       .sowing-table-container {
         background-image: linear-gradient(-135deg, #1b213e, #2b3562);
         border-radius: $border-radius-bigger;
+        @extend %display-flex-center;
+        flex-direction: column;
+        width: 65%;
         max-height: 500px;
 
         .sowing-table-title {

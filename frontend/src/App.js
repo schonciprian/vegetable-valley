@@ -6,7 +6,7 @@ import Login from "./component/auth/Login";
 import {Home} from "./component/basic/basic_main/Home";
 import Header from "./component/basic/basic_main/Header";
 import GrowGuideCard from "./component/grow_guides/GrowGuideCard";
-import VegetablePage from "./component/grow_guides/vegetable/VegetablePage";
+import VegetablePage from "./component/grow_guides/vegetable_page/VegetablePage";
 import Weather from "./component/weather/Weather";
 
 

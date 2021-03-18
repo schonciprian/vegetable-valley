@@ -143,11 +143,17 @@
   color: darkorange;
 }
 .forecast-weather-side .week-list-container .week-list li .forecast-day-temp {
-  display: block;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   text-align: center;
   margin: 10px 0;
   font-weight: 700;
   font-size: 20px;
+}
+.forecast-weather-side .week-list-container .week-list li .forecast-day-temp img {
+  width: 35px;
+  height: 35px;
 }
 .forecast-weather-side .active-day-info-container {
   flex-wrap: wrap;

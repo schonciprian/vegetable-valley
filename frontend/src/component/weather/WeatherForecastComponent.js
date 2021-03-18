@@ -70,7 +70,6 @@ export default function WeatherForecastComponent(props) {
         }
     }
 
-    // Do I need to break it down into components or it is acceptable to create all these here?
     return (
         <div className="forecast-weather-side">
             <div className="active-day-info-container">
@@ -129,7 +128,7 @@ export default function WeatherForecastComponent(props) {
                                 <Sunset className="sunset-icon"/>
                                 <span>{oneDayForecast.sunset}</span>
                             </div>
-                            <span className="forecast-day-temp">{oneDayForecast.dailyTemp}°C</span>
+                            <span className="forecast-day-temp">{oneDayForecast.dailyTemp}°C <img src={`https://openweathermap.org/img/w/${oneDayForecast.weatherIcon}.png`} alt=""/></span>
                         </li>
                     ))}
 
