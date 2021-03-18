@@ -1,8 +1,7 @@
 import React from 'react';
 import {Vegetables} from "../Descriptions";
 import {Link} from "react-router-dom";
-import SowingTableDirect from "./SowingTableDirect";
-import SowingTableInside from "./SowingTableInside";
+import SowingTable from "./sowing_table/SowingTable";
 
 
 function VegetablePage(props) {
@@ -32,17 +31,10 @@ function VegetablePage(props) {
                     </div>
 
                     {vegetableInfo.sow_direct || vegetableInfo.sow_indoors
-                        ? <div className="sowing-table-container">
-                            <div className="sowing-table-title">
-                                Planting guidelines for <span>{vegetableInfo.name}</span> by month to month.
-                            </div>
-                            {vegetableInfo.sow_direct ? <SowingTableDirect vegetableInfo={vegetableInfo}/> :
-                                <React.Fragment/>}
-                            {vegetableInfo.sow_indoors ? <SowingTableInside vegetableInfo={vegetableInfo}/> :
-                                <React.Fragment/>}
-                        </div>
+                        ? <SowingTable vegetableInfo={vegetableInfo}/>
                         : <div className="no-sowing-table">Sowing table for {vegetableInfo.name} is not available!</div>}
                 </div>
+
                 <div className="longer-information-container">
                     <div className="longer-information">
                         <span className="longer-information-title">Basic information: </span>
