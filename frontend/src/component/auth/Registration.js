@@ -27,7 +27,7 @@ export default function Registration() {
         const userData = getUserData();
         await axios({
             method: "post",
-            url: `${environmentVariables.BACKEND_URL}/api/register`,
+            url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/register`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*"
