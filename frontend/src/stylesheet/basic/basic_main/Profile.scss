@@ -1,0 +1,139 @@
+@import "../../Variables.scss";
+
+.profile-page-container {
+  @extend %display-flex-center;
+  flex-direction: column;
+  width: 80%;
+  max-width: 1100px;
+
+  margin: 50px auto;
+  padding: 0 20px;
+
+  font-family: $font-family-text;
+
+  background-color: $background-color-darker;
+  border-radius: $border-radius-container;
+
+  h1 {
+    font-size: $font-size-larger-vw;
+    color: $color-highlight;
+    margin: 30px;
+  }
+
+  .profile-page-personal{
+    @extend %display-flex-space-around;
+    width: 90%;
+    height: fit-content;
+
+    padding: 20px;
+
+    background-color: $background-color-dark;
+    border-radius: $border-radius-container;
+
+    .profile-image {
+      @extend %display-flex-center;
+      width: 30%;
+
+      img {
+        width: 220px;
+        height: 220px;
+
+        padding: 10px;
+
+        border: 3px solid $color-highlight;
+        border-radius: $border-radius-bigger;
+      }
+    }
+
+    .profile-data-container{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      width: 60%;
+      min-height: 250px;
+
+      border-radius: $border-radius-bigger;
+
+      .profile-data {
+
+        .profile-data-row {
+          @extend %display-flex-center;
+          width: 100%;
+          color: $color-text;
+          margin-bottom: 5px;
+
+          .profile-data-key {
+            width: 100px;
+            padding: 5px;
+            text-align: right;
+            color: $color-highlight;
+          }
+
+          .profile-data-value {
+            width: 60%;
+
+            margin: 10px;
+            padding: 10px;
+
+            font-family: $font-family-text;
+
+            background-color: $background-color-dark;
+            border-radius: $border-radius-smaller;
+            color: $color-text;
+
+            outline: none;
+            border: none;
+            cursor: auto;
+
+            &::placeholder {
+              visibility: hidden;
+            }
+          }
+
+          .editableField {
+            background-color: $focus-color-lighter;
+
+            &::placeholder {
+              visibility: visible;
+              color: $color-text;
+            }
+          }
+        }
+      }
+
+      button {
+        width: 150px;
+        height: 40px;
+
+        margin: 0 auto;
+
+        font-family: $font-family-text;
+        font-size: $font-size-normal-hover-vw;
+
+        color: $color-text;
+        background-color: $focus-color-lighter;
+        border-radius: 10px;
+        border: 2px solid $color-highlight;
+
+        outline: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $focus-color-lighter-hover;
+        }
+      }
+    }
+  }
+
+  .delete-account {
+    width: 90%;
+
+    margin: 50px;
+    padding: 20px;
+    background-color: #a70606;
+    color: $color-text;
+
+    border-radius: $border-radius-bigger;
+  }
+}
