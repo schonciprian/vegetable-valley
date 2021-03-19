@@ -24,7 +24,7 @@ function Header() {
                 Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
             },
         }).then((res) => {
-            swal("Successfully logout", "You are redirected to the main page");
+            swal("Logged out successfully", "You are redirected to the main page");
             setTimeout(() => {
                 window.location.replace("/");
             }, 1000);
