@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 
 import Registration from "./component/auth/Registration";
 import Login from "./component/auth/Login";
+import Profile from "./component/basic/basic_main/Profile";
 import {Home} from "./component/basic/basic_main/Home";
 import Header from "./component/basic/basic_main/Header";
 import GrowGuideCard from "./component/grow_guides/GrowGuideCard";
@@ -34,6 +35,7 @@ function App() {
                             <Route exact path="/weather-forecast" component={Weather}/>
                         </LoadingProvider>
 
+                        <Route exact path="/profile" component={Profile}/>
                         <Route exact path="/register" component={Registration}/>
                         <Route exact path="/login" component={Login}/>
                     </div>
