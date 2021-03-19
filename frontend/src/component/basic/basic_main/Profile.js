@@ -73,6 +73,39 @@ function Profile(props) {
         window.sessionStorage.setItem("name", userData.name);
     }
 
+    const deleteAccount = () => {
+        async function fetchData() {
+            await axios({
+                method: "delete",
+                url: `${environmentVariables.BACKEND_URL}/api/delete-user`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: "application/json, text/plain, */*",
+                    Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+                },
+                data: userData
+            }).then((res) => {
+                console.log("success")
+            }).catch((error) => {
+                console.log(error.response.data);
+            })
+        }
+
+        fetchData()
+            .then(() => {
+                window.sessionStorage.removeItem("token")
+                window.sessionStorage.removeItem("name")
+                window.location.replace("/")
+            });
+
+
+        // setUser(prevData => ({
+        //     ...prevData,
+        //     name: userData.name
+        // }))
+        // window.sessionStorage.setItem("name", userData.name);
+    }
+
     const createDate = () => {
         let date = new Date(userData.created_at);
         let year = date.getFullYear();
@@ -133,7 +166,9 @@ function Profile(props) {
             </div>
 
             <div className="delete-account">
-                Delete your account
+                <button onClick={deleteAccount}>
+                    Delete your account
+                </button>
             </div>
         </div>
     );
