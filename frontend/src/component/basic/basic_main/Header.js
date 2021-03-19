@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 
 // Helpers
+import {UserContext} from "../../../context/User";
 import {environmentVariables} from "../../../EnvironmentVariables";
 
 // Stylesheets
@@ -11,6 +12,7 @@ import '../../../stylesheet/basic/basic_main/Header.css';
 //**************************************************//
 
 function Header() {
+    const [user] = useContext(UserContext);
 
     const logoutRequest = async () => {
         await axios({
@@ -39,11 +41,11 @@ function Header() {
                 <Link to="/">Vegetable Valley</Link>
             </div>
             <div className="navbar">
-                <Link to="/grow-guides">Grow Guides</Link>
-                <Link to="/weather-forecast">Weather Forecast</Link>
-                {!window.sessionStorage.getItem("token") && <Link to="/register">Registration</Link>}
-                {!window.sessionStorage.getItem("token") && <Link to="/login">Login</Link>}
-                {window.sessionStorage.getItem("token") && <Link to="/logout" onClick={logoutRequest}>Logout</Link>}
+                {user["token"] && <Link to="/grow-guides">Grow Guides</Link>}
+                {user["token"] && <Link to="/weather-forecast">Weather Forecast</Link>}
+                {!user["token"] && <Link to="/register">Registration</Link>}
+                {!user["token"] && <Link to="/login">Login</Link>}
+                {user["token"] && <Link to="/logout" onClick={logoutRequest}>Logout</Link>}
             </div>
         </div>
     );
