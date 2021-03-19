@@ -64,9 +64,11 @@
           margin-bottom: 5px;
 
           .profile-data-key {
-            width: 100px;
+            width: 130px;
             padding: 5px;
             text-align: right;
+            font-size: $font-size-normal-vw;
+
             color: $color-highlight;
           }
 
@@ -77,6 +79,7 @@
             padding: 10px;
 
             font-family: $font-family-text;
+            font-size: $font-size-normal-vw;
 
             background-color: $background-color-dark;
             border-radius: $border-radius-smaller;
