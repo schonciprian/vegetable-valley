@@ -7,7 +7,7 @@ import {UserContext} from "../../../context/User";
 
 function Profile(props) {
     const [editableFields, setEditableFields] = useState(false);
-    const [user] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
     const [userData, setUserData] = useState({});
 
     useEffect(() => {
@@ -38,6 +38,41 @@ function Profile(props) {
         }))
     }
 
+    const updateUserData = () => {
+        setEditableFields(!editableFields)
+
+        async function fetchData() {
+            await axios({
+                method: "put",
+                url: `${environmentVariables.BACKEND_URL}/api/update-user-data`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: "application/json, text/plain, */*",
+                    Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+                },
+                data: userData
+            }).then((res) => {
+                // window.sessionStorage.setItem("name", res.data.name);
+
+                // setUser(prevData => ({
+                //     ...prevData,
+                //     name: res.data.name
+                // }))
+                // console.log("success")
+            }).catch((error) => {
+                console.log(error.response.data);
+            })
+        }
+
+        fetchData();
+
+        setUser(prevData => ({
+            ...prevData,
+            name: userData.name
+        }))
+        window.sessionStorage.setItem("name", userData.name);
+    }
+
     return (
         <div className="profile-page-container">
             <h1>Profile settings</h1>
@@ -51,7 +86,7 @@ function Profile(props) {
                             <div className="profile-data-key">Name:</div>
                             <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
                                    placeholder="Name"
-                                   value={userData.name}
+                                   value={userData.name ? userData.name : ""}
                                    readOnly={!editableFields}
                                    onChange={(event) => {
                                        handleInputChange(event, "name")
@@ -61,7 +96,7 @@ function Profile(props) {
                             <div className="profile-data-key">Email:</div>
                             <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
                                    placeholder="Email"
-                                   value={userData.email}
+                                   value={userData.email ? userData.email : ""}
                                    readOnly={!editableFields}
                                    onChange={(event) => {
                                        handleInputChange(event, "email")
@@ -69,7 +104,7 @@ function Profile(props) {
                         </div>
                     </div>
 
-                    <button onClick={() => setEditableFields(!editableFields)}>
+                    <button onClick={updateUserData}>
                         {!editableFields ? "Edit" : "Save"}
                     </button>
                 </div>
