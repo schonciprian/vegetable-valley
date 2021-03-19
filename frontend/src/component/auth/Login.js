@@ -33,6 +33,7 @@ export default function Registration() {
             data: userData
         }).then((res) => {
             window.sessionStorage.setItem("token", res.data.token);
+            window.sessionStorage.setItem("name", res.data.name);
             swal("Successfully logged in", "Welcome back! You are redirected to the main page", "success");
             setTimeout(() => {
                 window.location.replace("/");
