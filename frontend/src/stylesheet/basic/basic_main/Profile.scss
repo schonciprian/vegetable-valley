@@ -1,13 +1,58 @@
 @import "../../Variables.scss";
 
+@mixin profile-data-value($width) {
+  width: $width;
+
+  margin: 10px;
+  padding: 10px;
+
+  font-family: $font-family-text;
+  font-size: $font-size-normal-vw;
+
+  background-color: $focus-color-lighter;
+  border-radius: $border-radius-smaller;
+  color: $color-text;
+
+  outline: none;
+  border: none;
+  cursor: auto;
+
+  &::placeholder {
+    visibility: hidden;
+  }
+}
+
+@mixin button($width, $borderColor) {
+  width: $width;
+  //height: 40px;
+
+  margin: 0 auto;
+  padding: 5px;
+
+  font-family: $font-family-text;
+  font-size: min(1.5vw, 20px);
+
+  color: $color-text;
+  background-color: $focus-color-lighter;
+  border-radius: 10px;
+  border: 2px solid $borderColor;
+
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $focus-color-lighter-hover;
+  }
+}
+
 .profile-page-container {
   @extend %display-flex-center;
   flex-direction: column;
   width: 80%;
   max-width: 1100px;
 
-  margin: 50px auto;
-  padding: 0 20px;
+  margin: 50px auto 20px;
+  padding: 0 20px 30px;
 
   font-family: $font-family-text;
 
@@ -20,7 +65,7 @@
     margin: 30px;
   }
 
-  .profile-page-personal{
+  .profile-page-personal {
     @extend %display-flex-space-around;
     width: 90%;
     height: fit-content;
@@ -73,25 +118,7 @@
           }
 
           .profile-data-value {
-            width: 60%;
-
-            margin: 10px;
-            padding: 10px;
-
-            font-family: $font-family-text;
-            font-size: $font-size-normal-vw;
-
-            background-color: $background-color-dark;
-            border-radius: $border-radius-smaller;
-            color: $color-text;
-
-            outline: none;
-            border: none;
-            cursor: auto;
-
-            &::placeholder {
-              visibility: hidden;
-            }
+            @include profile-data-value(60%);
           }
 
           .editableField {
@@ -106,37 +133,77 @@
       }
 
       button {
-        width: 150px;
-        height: 40px;
-
-        margin: 0 auto;
-
-        font-family: $font-family-text;
-        font-size: $font-size-normal-hover-vw;
-
-        color: $color-text;
-        background-color: $focus-color-lighter;
-        border-radius: 10px;
-        border: 2px solid $color-highlight;
-
-        outline: none;
-        cursor: pointer;
-
-        &:hover {
-          background-color: $focus-color-lighter-hover;
-        }
+        @include button(100px, $color-highlight);
       }
     }
   }
 
-  .delete-account {
+  .profile-page-important {
+    @extend %display-flex-space-around;
+
     width: 90%;
 
-    margin: 50px;
+    margin-top: 50px;
     padding: 20px;
-    background-color: #a70606;
-    color: $color-text;
+    background-color: $background-color-dark;
+    border-radius: $border-radius-container;
 
-    border-radius: $border-radius-bigger;
+    .profile-page-password {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      width: 55%;
+      padding-right: 30px;
+      border-right: 5px solid darkorange;
+
+      .profile-data-row {
+        @extend %display-flex-center;
+        width: 100%;
+        color: $color-text;
+        margin-bottom: 5px;
+
+        .profile-data-key {
+          width: 240px;
+          padding: 5px;
+          text-align: right;
+          font-size: min(1.5vw, 20px);
+
+          color: $color-highlight;
+        }
+
+        .profile-data-value {
+          @include profile-data-value(50%);
+        }
+      }
+    }
+
+    .change-password-button {
+      @include button(100px, $color-highlight);
+    }
+
+    .delete-account {
+      @extend %display-flex-space-around;
+      flex-direction: column;
+      width: 30%;
+      height: 175px;
+
+      margin: 0 30px 0 50px;
+      padding: 20px;
+      color: $color-text;
+      border: 5px solid #a70606;
+
+      border-radius: $border-radius-bigger;
+
+      h1 {
+        margin: 0;
+        text-align: center;
+        font-size: max(1.5vw, 22px);
+      }
+
+      button {
+        @include button(90%, #a70606);
+      }
+    }
   }
+
 }

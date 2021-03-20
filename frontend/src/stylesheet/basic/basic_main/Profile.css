@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.profile-page-container .profile-page-personal .profile-data-container .profile-data .profile-data-row, .profile-page-container .profile-page-personal .profile-image, .profile-page-container {
+.profile-page-container .profile-page-important .profile-page-password .profile-data-row, .profile-page-container .profile-page-personal .profile-data-container .profile-data .profile-data-row, .profile-page-container .profile-page-personal .profile-image, .profile-page-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.profile-page-container .profile-page-personal {
+.profile-page-container .profile-page-important .delete-account, .profile-page-container .profile-page-important, .profile-page-container .profile-page-personal {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -15,8 +15,8 @@
   flex-direction: column;
   width: 80%;
   max-width: 1100px;
-  margin: 50px auto;
-  padding: 0 20px;
+  margin: 50px auto 20px;
+  padding: 0 20px 30px;
   font-family: "Montserrat", sans-serif;
   background-color: #0F1329;
   border-radius: 25px;
@@ -69,7 +69,7 @@
   padding: 10px;
   font-family: "Montserrat", sans-serif;
   font-size: 1.5vw;
-  background-color: #151A30;
+  background-color: #4B5682;
   border-radius: 10px;
   color: #eeeeee;
   outline: none;
@@ -87,11 +87,11 @@
   color: #eeeeee;
 }
 .profile-page-container .profile-page-personal .profile-data-container button {
-  width: 150px;
-  height: 40px;
+  width: 100px;
   margin: 0 auto;
+  padding: 5px;
   font-family: "Montserrat", sans-serif;
-  font-size: 1.4vw;
+  font-size: min(1.5vw, 20px);
   color: #eeeeee;
   background-color: #4B5682;
   border-radius: 10px;
@@ -102,13 +102,95 @@
 .profile-page-container .profile-page-personal .profile-data-container button:hover {
   background-color: #7F8EC0;
 }
-.profile-page-container .delete-account {
+.profile-page-container .profile-page-important {
   width: 90%;
-  margin: 50px;
+  margin-top: 50px;
   padding: 20px;
-  background-color: #a70606;
+  background-color: #151A30;
+  border-radius: 25px;
+}
+.profile-page-container .profile-page-important .profile-page-password {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 55%;
+  padding-right: 30px;
+  border-right: 5px solid darkorange;
+}
+.profile-page-container .profile-page-important .profile-page-password .profile-data-row {
+  width: 100%;
   color: #eeeeee;
+  margin-bottom: 5px;
+}
+.profile-page-container .profile-page-important .profile-page-password .profile-data-row .profile-data-key {
+  width: 240px;
+  padding: 5px;
+  text-align: right;
+  font-size: min(1.5vw, 20px);
+  color: darkorange;
+}
+.profile-page-container .profile-page-important .profile-page-password .profile-data-row .profile-data-value {
+  width: 50%;
+  margin: 10px;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5vw;
+  background-color: #4B5682;
+  border-radius: 10px;
+  color: #eeeeee;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+.profile-page-container .profile-page-important .profile-page-password .profile-data-row .profile-data-value::placeholder {
+  visibility: hidden;
+}
+.profile-page-container .profile-page-important .change-password-button {
+  width: 100px;
+  margin: 0 auto;
+  padding: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-size: min(1.5vw, 20px);
+  color: #eeeeee;
+  background-color: #4B5682;
+  border-radius: 10px;
+  border: 2px solid darkorange;
+  outline: none;
+  cursor: pointer;
+}
+.profile-page-container .profile-page-important .change-password-button:hover {
+  background-color: #7F8EC0;
+}
+.profile-page-container .profile-page-important .delete-account {
+  flex-direction: column;
+  width: 30%;
+  height: 175px;
+  margin: 0 30px 0 50px;
+  padding: 20px;
+  color: #eeeeee;
+  border: 5px solid #a70606;
   border-radius: 20px;
+}
+.profile-page-container .profile-page-important .delete-account h1 {
+  margin: 0;
+  text-align: center;
+  font-size: max(1.5vw, 22px);
+}
+.profile-page-container .profile-page-important .delete-account button {
+  width: 90%;
+  margin: 0 auto;
+  padding: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-size: min(1.5vw, 20px);
+  color: #eeeeee;
+  background-color: #4B5682;
+  border-radius: 10px;
+  border: 2px solid #a70606;
+  outline: none;
+  cursor: pointer;
+}
+.profile-page-container .profile-page-important .delete-account button:hover {
+  background-color: #7F8EC0;
 }
 
 /*# sourceMappingURL=Profile.css.map */
