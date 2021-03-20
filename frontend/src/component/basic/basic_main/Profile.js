@@ -106,21 +106,21 @@ function Profile(props) {
         // window.sessionStorage.setItem("name", userData.name);
     }
 
-    const createDate = () => {
-        let date = new Date(userData.created_at);
-        let year = date.getFullYear();
-        let month = date.getMonth()+1;
-        let dt = date.getDate();
-
-        if (dt < 10) {
-            dt = '0' + dt;
-        }
-        if (month < 10) {
-            month = '0' + month;
-        }
-
-        return(year+'-' + month + '-'+dt);
-    }
+    // const createDate = () => {
+    //     let date = new Date(userData.created_at);
+    //     let year = date.getFullYear();
+    //     let month = date.getMonth()+1;
+    //     let dt = date.getDate();
+    //
+    //     if (dt < 10) {
+    //         dt = '0' + dt;
+    //     }
+    //     if (month < 10) {
+    //         month = '0' + month;
+    //     }
+    //
+    //     return(year+'-' + month + '-'+dt);
+    // }
 
     return (
         <div className="profile-page-container">
@@ -154,7 +154,7 @@ function Profile(props) {
                         <div className="profile-data-row">
                             <div className="profile-data-key">Registration:</div>
                             <input className="profile-data-value"
-                                   value={userData.created_at ? createDate() : ""}
+                                   value={userData.created_at.split("T")[0]}
                                    readOnly={true}/>
                         </div>
                     </div>
