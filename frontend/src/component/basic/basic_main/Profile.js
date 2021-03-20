@@ -154,7 +154,7 @@ function Profile(props) {
                         <div className="profile-data-row">
                             <div className="profile-data-key">Registration:</div>
                             <input className="profile-data-value"
-                                   value={userData.created_at.split("T")[0]}
+                                   value={userData.created_at ? userData.created_at.split("T")[0] : ""}
                                    readOnly={true}/>
                         </div>
                     </div>
