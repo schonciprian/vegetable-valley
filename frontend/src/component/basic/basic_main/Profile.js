@@ -227,10 +227,11 @@ function Profile(props) {
                 </div>
 
                 <div className="delete-account">
-                    <h1>This action can not be reversed!</h1>
+                    <h1>Delete Your Account</h1>
                     <button onClick={deleteAccount}>
-                        Delete your account
+                        Delete
                     </button>
+                    <p>This action can not be reversed!</p>
                 </div>
             </div>
 
