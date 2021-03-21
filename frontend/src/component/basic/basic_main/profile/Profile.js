@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
-import profile_picture from "../../../image/profile_picture/base_man.png";
-import '../../../stylesheet/basic/basic_main/Profile.css';
+import profile_picture from "../../../../image/profile_picture/base_man.png";
+import '../../../../stylesheet/basic/basic_main/Profile.css';
 import axios from "axios";
-import {environmentVariables} from "../../../EnvironmentVariables";
-import {UserContext} from "../../../context/User";
+import {environmentVariables} from "../../../../EnvironmentVariables";
+import {UserContext} from "../../../../context/User";
 
 function Profile(props) {
     const [editableFields, setEditableFields] = useState(false);
