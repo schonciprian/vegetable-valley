@@ -5,7 +5,7 @@ export const UserContext = createContext({});
 export const UserProvider = (props) => {
     const [user, setUser] = useState({
         token: window.sessionStorage.getItem("token"),
-        name: window.sessionStorage.getItem("name"),
+        username: window.sessionStorage.getItem("username"),
     });
 
     return (
