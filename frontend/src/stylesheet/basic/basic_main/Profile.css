@@ -68,8 +68,8 @@
   margin: 10px;
   padding: 10px;
   font-family: "Montserrat", sans-serif;
-  font-size: 1.5vw;
-  background-color: #4B5682;
+  font-size: min(1.5vw, 22px);
+  background-color: #151A30;
   border-radius: 10px;
   color: #eeeeee;
   outline: none;
@@ -134,7 +134,7 @@
   margin: 10px;
   padding: 10px;
   font-family: "Montserrat", sans-serif;
-  font-size: 1.5vw;
+  font-size: min(1.5vw, 22px);
   background-color: #4B5682;
   border-radius: 10px;
   color: #eeeeee;
@@ -166,7 +166,7 @@
   width: 30%;
   height: 175px;
   margin: 0 30px 0 50px;
-  padding: 20px;
+  padding: 10px 20px;
   color: #eeeeee;
   border: 5px solid #a70606;
   border-radius: 20px;
@@ -177,7 +177,7 @@
   font-size: max(1.5vw, 22px);
 }
 .profile-page-container .profile-page-important .delete-account button {
-  width: 90%;
+  width: 50%;
   margin: 0 auto;
   padding: 5px;
   font-family: "Montserrat", sans-serif;
@@ -188,9 +188,19 @@
   border: 2px solid #a70606;
   outline: none;
   cursor: pointer;
+  background-color: #151A30;
 }
 .profile-page-container .profile-page-important .delete-account button:hover {
   background-color: #7F8EC0;
+}
+.profile-page-container .profile-page-important .delete-account button:hover {
+  background-color: #1B223E;
+}
+.profile-page-container .profile-page-important .delete-account p {
+  margin: 0;
+  text-align: center;
+  font-size: 15px;
+  color: darkorange;
 }
 
 /*# sourceMappingURL=Profile.css.map */

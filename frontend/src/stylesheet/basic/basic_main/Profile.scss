@@ -1,15 +1,15 @@
 @import "../../Variables.scss";
 
-@mixin profile-data-value($width) {
+@mixin profile-data-value($width, $background-color) {
   width: $width;
 
   margin: 10px;
   padding: 10px;
 
   font-family: $font-family-text;
-  font-size: $font-size-normal-vw;
+  font-size: min(1.5vw, 22px);
 
-  background-color: $focus-color-lighter;
+  background-color: $background-color;
   border-radius: $border-radius-smaller;
   color: $color-text;
 
@@ -118,7 +118,7 @@
           }
 
           .profile-data-value {
-            @include profile-data-value(60%);
+            @include profile-data-value(60%, $background-color-dark);
           }
 
           .editableField {
@@ -172,7 +172,7 @@
         }
 
         .profile-data-value {
-          @include profile-data-value(50%);
+          @include profile-data-value(50%, $focus-color-lighter);
         }
       }
     }
@@ -188,7 +188,7 @@
       height: 175px;
 
       margin: 0 30px 0 50px;
-      padding: 20px;
+      padding: 10px 20px;
       color: $color-text;
       border: 5px solid #a70606;
 
@@ -201,7 +201,19 @@
       }
 
       button {
-        @include button(90%, #a70606);
+        @include button(50%, #a70606);
+        background-color: $background-color-dark;
+
+        &:hover {
+          background-color: $background-color-normal;
+        }
+      }
+
+      p {
+        margin: 0;
+        text-align: center;
+        font-size: 15px;
+        color: $color-highlight;
       }
     }
   }
