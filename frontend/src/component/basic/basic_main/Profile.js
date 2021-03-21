@@ -20,7 +20,7 @@ function Profile(props) {
                     Accept: "application/json, text/plain, */*",
                     Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
                 },
-                data: {name: user["name"]}
+                data: {username: user["username"]}
             }).then((res) => {
                 setUserData(res.data);
             }).catch((error) => {
@@ -68,9 +68,9 @@ function Profile(props) {
 
         setUser(prevData => ({
             ...prevData,
-            name: userData.name
+            username: userData.username
         }))
-        window.sessionStorage.setItem("name", userData.name);
+        window.sessionStorage.setItem("username", userData.username);
     }
 
     const deleteAccount = () => {
@@ -94,7 +94,7 @@ function Profile(props) {
         fetchData()
             .then(() => {
                 window.sessionStorage.removeItem("token")
-                window.sessionStorage.removeItem("name")
+                window.sessionStorage.removeItem("username")
                 window.location.replace("/")
             });
 
@@ -134,13 +134,36 @@ function Profile(props) {
                 <div className="profile-data-container">
                     <div className="profile-data">
                         <div className="profile-data-row">
-                            <div className="profile-data-key">Name:</div>
+                            <div className="profile-data-key">First name:</div>
                             <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
-                                   placeholder="Name"
-                                   value={userData.name ? userData.name : ""}
+                                   placeholder="First name"
+                                   value={userData.first_name ? userData.first_name : ""}
                                    readOnly={!editableFields}
                                    onChange={(event) => {
-                                       handleInputChange(event, "name")
+                                       handleInputChange(event, "first_name")
+                                   }}/>
+                        </div>
+                        <div className="profile-data-row">
+                            <div className="profile-data-key">Last name:</div>
+                            <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
+                                   placeholder="Last name"
+                                   value={userData.last_name ? userData.last_name : ""}
+                                   readOnly={!editableFields}
+                                   onChange={(event) => {
+                                       handleInputChange(event, "last_name")
+                                   }}/>
+                        </div>
+
+
+
+                        <div className="profile-data-row">
+                            <div className="profile-data-key">Username:</div>
+                            <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
+                                   placeholder="Username"
+                                   value={userData.username ? userData.username : ""}
+                                   readOnly={!editableFields}
+                                   onChange={(event) => {
+                                       handleInputChange(event, "username")
                                    }}/>
                         </div>
                         <div className="profile-data-row">
