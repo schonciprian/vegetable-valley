@@ -174,7 +174,7 @@
 .profile-page-container .profile-page-important .delete-account h1 {
   margin: 0;
   text-align: center;
-  font-size: max(1.5vw, 22px);
+  font-size: min(1.5vw, 22px);
 }
 .profile-page-container .profile-page-important .delete-account button {
   width: 50%;
