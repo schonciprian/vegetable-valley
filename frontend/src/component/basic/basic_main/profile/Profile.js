@@ -4,6 +4,9 @@ import '../../../../stylesheet/basic/basic_main/Profile.css';
 import axios from "axios";
 import {environmentVariables} from "../../../../EnvironmentVariables";
 import {UserContext} from "../../../../context/User";
+import Password from "./Password";
+import ProfileData from "./ProfileData";
+import Delete from "./Delete";
 
 function Profile(props) {
     const [editableFields, setEditableFields] = useState(false);
@@ -52,13 +55,7 @@ function Profile(props) {
                 },
                 data: userData
             }).then((res) => {
-                // window.sessionStorage.setItem("name", res.data.name);
-
-                // setUser(prevData => ({
-                //     ...prevData,
-                //     name: res.data.name
-                // }))
-                // console.log("success")
+                console.log("success")
             }).catch((error) => {
                 console.log(error.response.data);
             })
@@ -71,39 +68,6 @@ function Profile(props) {
             username: userData.username
         }))
         window.sessionStorage.setItem("username", userData.username);
-    }
-
-    const deleteAccount = () => {
-        async function fetchData() {
-            await axios({
-                method: "delete",
-                url: `${environmentVariables.BACKEND_URL}/api/delete-user`,
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: "application/json, text/plain, */*",
-                    Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-                },
-                data: userData
-            }).then((res) => {
-                console.log("success")
-            }).catch((error) => {
-                console.log(error.response.data);
-            })
-        }
-
-        fetchData()
-            .then(() => {
-                window.sessionStorage.removeItem("token")
-                window.sessionStorage.removeItem("username")
-                window.location.replace("/")
-            });
-
-
-        // setUser(prevData => ({
-        //     ...prevData,
-        //     name: userData.name
-        // }))
-        // window.sessionStorage.setItem("name", userData.name);
     }
 
     // const createDate = () => {
@@ -122,8 +86,6 @@ function Profile(props) {
     //     return(year+'-' + month + '-'+dt);
     // }
 
-    console.log(userData);
-
     return (
         <div className="profile-page-container">
             <h1>Profile settings</h1>
@@ -132,57 +94,9 @@ function Profile(props) {
                     <img src={profile_picture} alt=""/>
                 </div>
                 <div className="profile-data-container">
-                    <div className="profile-data">
-                        <div className="profile-data-row">
-                            <div className="profile-data-key">First name:</div>
-                            <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
-                                   placeholder="First name"
-                                   value={userData.first_name ? userData.first_name : ""}
-                                   readOnly={!editableFields}
-                                   onChange={(event) => {
-                                       handleInputChange(event, "first_name")
-                                   }}/>
-                        </div>
-                        <div className="profile-data-row">
-                            <div className="profile-data-key">Last name:</div>
-                            <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
-                                   placeholder="Last name"
-                                   value={userData.last_name ? userData.last_name : ""}
-                                   readOnly={!editableFields}
-                                   onChange={(event) => {
-                                       handleInputChange(event, "last_name")
-                                   }}/>
-                        </div>
-
-
-
-                        <div className="profile-data-row">
-                            <div className="profile-data-key">Username:</div>
-                            <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
-                                   placeholder="Username"
-                                   value={userData.username ? userData.username : ""}
-                                   readOnly={!editableFields}
-                                   onChange={(event) => {
-                                       handleInputChange(event, "username")
-                                   }}/>
-                        </div>
-                        <div className="profile-data-row">
-                            <div className="profile-data-key">Email:</div>
-                            <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
-                                   placeholder="Email"
-                                   value={userData.email ? userData.email : ""}
-                                   readOnly={!editableFields}
-                                   onChange={(event) => {
-                                       handleInputChange(event, "email")
-                                   }}/>
-                        </div>
-                        <div className="profile-data-row">
-                            <div className="profile-data-key">Registration:</div>
-                            <input className="profile-data-value"
-                                   value={userData.created_at ? userData.created_at.split("T")[0] : ""}
-                                   readOnly={true}/>
-                        </div>
-                    </div>
+                    <ProfileData editableFields={editableFields}
+                                 userData={userData}
+                                 handleInputChange={handleInputChange}/>
 
                     <button onClick={updateUserData}>
                         {!editableFields ? "Edit" : "Save"}
@@ -191,48 +105,9 @@ function Profile(props) {
             </div>
 
             <div className="profile-page-important">
-                <div className="profile-page-password">
-                    <div className="profile-data-row">
-                        <div className="profile-data-key">Old password:</div>
-                        <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
-                               type="password"
-                               placeholder="Old password"
-                               onChange={(event) => {
-                                   console.log(event.target.value)
-                               }}/>
-                    </div>
-                    <div className="profile-data-row">
-                        <div className="profile-data-key">New password:</div>
-                        <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
-                               type="password"
-                               placeholder="New password"
-                               onChange={(event) => {
-                                   console.log(event.target.value)
-                               }}/>
-                    </div>
-                    <div className="profile-data-row">
-                        <div className="profile-data-key">New password again:</div>
-                        <input className={`profile-data-value ${editableFields ? "editableField" : undefined}`}
-                               type="password"
-                               placeholder="New password again"
-                               onChange={(event) => {
-                                   console.log(event.target.value)
-                               }}/>
-                    </div>
-                    <button className="change-password-button" onClick={(event) => {
-                        console.log("save password")
-                    }}>
-                        Save
-                    </button>
-                </div>
+                <Password />
 
-                <div className="delete-account">
-                    <h1>Delete Your Account</h1>
-                    <button onClick={deleteAccount}>
-                        Delete
-                    </button>
-                    <p>This action can not be reversed!</p>
-                </div>
+                <Delete userData={userData}/>
             </div>
 
         </div>
