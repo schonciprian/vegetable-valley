@@ -45,7 +45,7 @@ function Header() {
                 {user["token"] && <Link to="/weather-forecast">Weather Forecast</Link>}
                 {!user["token"] && <Link to="/register">Registration</Link>}
                 {!user["token"] && <Link to="/login">Login</Link>}
-                {user["token"] && <Link to="/profile">{user["name"]}</Link>}
+                {user["token"] && <Link to="/profile">{user["username"]}</Link>}
                 {user["token"] && <Link to="/logout" onClick={logoutRequest}>Logout</Link>}
             </div>
         </div>
