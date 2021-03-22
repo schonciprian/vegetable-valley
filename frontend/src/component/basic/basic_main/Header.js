@@ -29,6 +29,7 @@ function Header() {
                 window.location.replace("/");
             }, 1000);
             window.sessionStorage.removeItem("token");
+            window.sessionStorage.removeItem("username");
 
         }).catch((error) => {
             console.log(error.response.data)
@@ -45,8 +46,15 @@ function Header() {
                 {user["token"] && <Link to="/weather-forecast">Weather Forecast</Link>}
                 {!user["token"] && <Link to="/register">Registration</Link>}
                 {!user["token"] && <Link to="/login">Login</Link>}
-                {user["token"] && <Link to="/profile">{user["username"]}</Link>}
-                {user["token"] && <Link to="/logout" onClick={logoutRequest}>Logout</Link>}
+                {/*{user["token"] && <Link to="/profile">{user["username"]}</Link>}*/}
+                {/*{user["token"] && <Link to="/logout" onClick={logoutRequest}>Logout</Link>}*/}
+                {user["token"] && <div className="dropdown">
+                    <button className="dropdown-button">{user["username"]}</button>
+                    <div className="dropdown-content">
+                        <Link to="/profile">Settings</Link>
+                        <Link to="/logout" onClick={logoutRequest}>Logout</Link>
+                    </div>
+                </div>}
             </div>
         </div>
     );
