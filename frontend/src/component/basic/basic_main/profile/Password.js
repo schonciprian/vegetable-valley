@@ -11,6 +11,7 @@ function Password(props) {
         new_password: false,
         new_password_confirmation: false,
     });
+    const [passwordError, setPasswordError] = useState({})
 
     const handlePasswordShownChange = (key) => {
         setPasswordShown(prevData => ({
@@ -53,6 +54,7 @@ function Password(props) {
                 })
             }).catch((error) => {
                 console.log(error.response.data);
+                setPasswordError(error.response.data)
             })
         }
 
@@ -61,6 +63,7 @@ function Password(props) {
 
     return (
         <div className="profile-page-password">
+            {passwordError.message ? <div className="error-message error-message-authentication">{passwordError.message}</div> : ""}
             <div className="profile-data-row">
                 <div className="profile-data-key">Current password:</div>
                 <input id="current_password"
