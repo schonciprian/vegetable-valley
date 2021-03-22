@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from "moment";
 
 function ProfileData(props) {
     const editableFields = props.editableFields;
@@ -51,7 +52,9 @@ function ProfileData(props) {
             <div className="profile-data-row">
                 <div className="profile-data-key">Registration:</div>
                 <input className="profile-data-value"
-                       value={userData.created_at ? userData.created_at.split("T")[0] : ""}
+                       value={userData.created_at
+                           ? moment(userData.created_at).format('YYYY. MM. DD. dddd')
+                           : ""}
                        readOnly={true}/>
             </div>
         </div>
