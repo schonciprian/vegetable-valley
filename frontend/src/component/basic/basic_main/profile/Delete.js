@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import {environmentVariables} from "../../../../EnvironmentVariables";
+import Swal from "sweetalert2";
 
 function Delete(props) {
     const userData = props.userData;
@@ -17,6 +18,21 @@ function Delete(props) {
                 },
                 data: userData
             }).then((res) => {
+                window.sessionStorage.removeItem("token")
+                window.sessionStorage.removeItem("username")
+                Swal.fire({
+                    toast: true,
+                    icon: 'success',
+                    title: 'Account deleted successfully',
+                    animation: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 3000,
+                });
+
+                setTimeout(() => {
+                    window.location.replace("/")
+                }, 3000);
                 console.log("success")
             }).catch((error) => {
                 console.log(error.response.data);
@@ -24,11 +40,6 @@ function Delete(props) {
         }
 
         fetchData()
-            .then(() => {
-                window.sessionStorage.removeItem("token")
-                window.sessionStorage.removeItem("username")
-                window.location.replace("/")
-            });
     }
 
     return (
