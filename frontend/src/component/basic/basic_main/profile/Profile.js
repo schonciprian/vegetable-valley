@@ -57,7 +57,7 @@ function Profile(props) {
                 animation: true,
                 position: 'top-right',
                 showConfirmButton: false,
-                timer: 3000,
+                timer: 1500,
             });
 
             setUser(prevData => ({

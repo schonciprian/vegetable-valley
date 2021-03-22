@@ -28,7 +28,7 @@ function Delete(props) {
                 animation: true,
                 position: 'top-right',
                 showConfirmButton: false,
-                timer: 3000,
+                timer: 2000,
             });
 
             setTimeout(() => {
@@ -41,7 +41,7 @@ function Delete(props) {
                     "token": null,
                     "username": null,
                 });
-            }, 3000);
+            }, 2000);
 
         }).catch((error) => {
             console.log(error.response.data);
