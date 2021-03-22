@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import {environmentVariables} from "../../../../EnvironmentVariables";
+import * as Swal from "sweetalert2";
 
 function Password(props) {
     const [passwordData, setPasswordData] = useState({});
@@ -24,8 +25,19 @@ function Password(props) {
                 },
                 data: passwordData
             }).then((res) => {
-                console.log(res.data.message);
                 console.log("success")
+                document.getElementById("current_password").value = "";
+                document.getElementById("new_password").value = "";
+                document.getElementById("new_password_confirmation").value = "";
+                Swal.fire({
+                    toast: true,
+                    icon: 'success',
+                    title: 'Password changed successfully',
+                    animation: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 3000,
+                })
             }).catch((error) => {
                 console.log(error.response.data);
             })
