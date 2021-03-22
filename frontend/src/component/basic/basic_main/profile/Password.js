@@ -2,9 +2,22 @@ import React, {useState} from 'react';
 import axios from "axios";
 import {environmentVariables} from "../../../../EnvironmentVariables";
 import * as Swal from "sweetalert2";
+import {BiShow} from "react-icons/bi";
 
 function Password(props) {
     const [passwordData, setPasswordData] = useState({});
+    const [passwordShown, setPasswordShown] = useState({
+        current_password: false,
+        new_password: false,
+        new_password_confirmation: false,
+    });
+
+    const handlePasswordShownChange = (key) => {
+        setPasswordShown(prevData => ({
+            ...prevData,
+            [key]: !passwordShown[key]
+        }))
+    }
 
     const handleInputChange = (event, key) => {
         setPasswordData(prevData => ({
@@ -52,31 +65,39 @@ function Password(props) {
                 <div className="profile-data-key">Current password:</div>
                 <input id="current_password"
                        className="profile-data-value"
-                       type="password"
+                       type={passwordShown.current_password ? "text" : "password"}
                        placeholder="Current password"
                        onChange={(event) => {
                            handleInputChange(event, "current_password")
                        }}/>
+                <BiShow className="show-icon"
+                        onClick={() => handlePasswordShownChange("current_password")}/>
             </div>
+
             <div className="profile-data-row">
                 <div className="profile-data-key">New password:</div>
                 <input id="new_password"
                        className="profile-data-value"
-                       type="password"
+                       type={passwordShown.new_password ? "text" : "password"}
                        placeholder="New password"
                        onChange={(event) => {
                            handleInputChange(event, "new_password")
                        }}/>
+                <BiShow className="show-icon"
+                        onClick={() => handlePasswordShownChange("new_password")}/>
             </div>
+
             <div className="profile-data-row">
                 <div className="profile-data-key">New password again:</div>
                 <input id="new_password_confirmation"
                        className="profile-data-value"
-                       type="password"
+                       type={passwordShown.new_password_confirmation ? "text" : "password"}
                        placeholder="New password again"
                        onChange={(event) => {
                            handleInputChange(event, "new_password_confirmation")
                        }}/>
+                <BiShow className="show-icon"
+                        onClick={() => handlePasswordShownChange("new_password_confirmation")}/>
             </div>
 
             <button className="change-password-button" onClick={updateUserPassword}>
