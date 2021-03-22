@@ -212,4 +212,14 @@
   color: darkorange;
 }
 
+.swal2-popup.swal2-toast {
+  background-color: #4B5682 !important;
+  margin-top: 80px;
+}
+
+.swal2-title {
+  color: #eeeeee !important;
+  letter-spacing: 1px;
+}
+
 /*# sourceMappingURL=Profile.css.map */
