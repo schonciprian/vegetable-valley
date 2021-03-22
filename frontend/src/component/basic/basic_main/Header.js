@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { Link } from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 
@@ -12,7 +12,8 @@ import '../../../stylesheet/basic/basic_main/Header.css';
 //**************************************************//
 
 function Header() {
-    const [user] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
+    const history = useHistory();
 
     const logoutRequest = async () => {
         await axios({
@@ -25,11 +26,18 @@ function Header() {
             },
         }).then((res) => {
             swal("Logged out successfully", "You are redirected to the main page");
-            setTimeout(() => {
-                window.location.replace("/");
-            }, 1000);
+
             window.sessionStorage.removeItem("token");
             window.sessionStorage.removeItem("username");
+
+            setTimeout(() => {
+                history.push("/");
+                swal.close();
+                setUser({
+                    "token": null,
+                    "username": null,
+                });
+            }, 2000);
 
         }).catch((error) => {
             console.log(error.response.data)
