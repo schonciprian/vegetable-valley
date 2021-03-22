@@ -38,7 +38,7 @@ export default function Registration() {
             },
             data: userData
         }).then((res) => {
-            swal("Successfully registered", "You are redirected to the main page", "success");
+            swal("Successfully registered", "You are redirected to login page", "success");
             setTimeout(() => {
                 history.push("/login");
                 swal.close();
