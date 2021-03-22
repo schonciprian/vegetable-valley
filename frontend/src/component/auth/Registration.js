@@ -38,7 +38,7 @@ export default function Registration() {
         }).then((res) => {
             swal("Successfully registered", "You are redirected to the main page", "success");
             setTimeout(() => {
-                window.location.replace("/");
+                window.location.replace("/login");
             }, 2000);
 
         }).catch((error) => {
