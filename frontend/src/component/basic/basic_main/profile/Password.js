@@ -13,7 +13,7 @@ function Password(props) {
     });
     const [passwordError, setPasswordError] = useState({})
 
-    const handlePasswordShownChange = (key) => {
+    const handlePasswordShownChange = (event, key) => {
         setPasswordShown(prevData => ({
             ...prevData,
             [key]: !passwordShown[key]
@@ -21,6 +21,7 @@ function Password(props) {
     }
 
     const handleInputChange = (event, key) => {
+        setPasswordError({})
         setPasswordData(prevData => ({
             ...prevData,
             [key]: event.target.value
@@ -57,13 +58,14 @@ function Password(props) {
                 setPasswordError(error.response.data)
             })
         }
-
         fetchData();
     }
 
     return (
         <div className="profile-page-password">
-            {passwordError.message ? <div className="error-message error-message-authentication">{passwordError.message}</div> : ""}
+            {passwordError.message
+                ? <div className="error-message error-message-password">{passwordError.message}</div>
+                : <div className="error-message-password"></div>}
             <div className="profile-data-row">
                 <div className="profile-data-key">Current password:</div>
                 <input id="current_password"
@@ -73,8 +75,8 @@ function Password(props) {
                        onChange={(event) => {
                            handleInputChange(event, "current_password")
                        }}/>
-                <BiShow className="show-icon"
-                        onClick={() => handlePasswordShownChange("current_password")}/>
+                <BiShow className={`show-icon ${passwordShown.current_password ? "active" : undefined}`}
+                        onClick={(event) => handlePasswordShownChange(event,"current_password")}/>
             </div>
 
             <div className="profile-data-row">
@@ -86,8 +88,8 @@ function Password(props) {
                        onChange={(event) => {
                            handleInputChange(event, "new_password")
                        }}/>
-                <BiShow className="show-icon"
-                        onClick={() => handlePasswordShownChange("new_password")}/>
+                <BiShow className={`show-icon ${passwordShown.new_password ? "active" : undefined}`}
+                        onClick={(event) => handlePasswordShownChange(event,"new_password")}/>
             </div>
 
             <div className="profile-data-row">
@@ -99,8 +101,8 @@ function Password(props) {
                        onChange={(event) => {
                            handleInputChange(event, "new_password_confirmation")
                        }}/>
-                <BiShow className="show-icon"
-                        onClick={() => handlePasswordShownChange("new_password_confirmation")}/>
+                <BiShow className={`show-icon ${passwordShown.new_password_confirmation ? "active" : undefined}`}
+                        onClick={(event) => handlePasswordShownChange(event,"new_password_confirmation")}/>
             </div>
 
             <button className="change-password-button" onClick={updateUserPassword}>
