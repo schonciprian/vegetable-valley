@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import axios from "axios";
 import {environmentVariables} from "../../../../EnvironmentVariables";
 import Swal from "sweetalert2";
+import {useHistory} from "react-router-dom";
+import {UserContext} from "../../../../context/User";
 
 function Delete(props) {
     const userData = props.userData;
+    const history = useHistory();
+    const [, setUser] = useContext(UserContext);
 
     const deleteAccount = () => {
         axios({
@@ -17,9 +21,6 @@ function Delete(props) {
             },
             data: userData
         }).then((res) => {
-            window.sessionStorage.removeItem("token")
-            window.sessionStorage.removeItem("username")
-
             Swal.fire({
                 toast: true,
                 icon: 'success',
@@ -31,7 +32,15 @@ function Delete(props) {
             });
 
             setTimeout(() => {
-                window.location.replace("/")
+                history.push("/");
+
+                window.sessionStorage.removeItem("token")
+                window.sessionStorage.removeItem("username")
+
+                setUser({
+                    "token": null,
+                    "username": null,
+                });
             }, 3000);
 
         }).catch((error) => {
