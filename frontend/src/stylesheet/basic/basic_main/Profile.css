@@ -116,6 +116,7 @@
   width: 55%;
   padding-right: 30px;
   border-right: 5px solid darkorange;
+  user-select: none;
 }
 .profile-page-container .profile-page-important .profile-page-password .profile-data-row {
   width: 100%;
@@ -144,6 +145,11 @@
 }
 .profile-page-container .profile-page-important .profile-page-password .profile-data-row .profile-data-value::placeholder {
   visibility: hidden;
+}
+.profile-page-container .profile-page-important .profile-page-password .profile-data-row .show-icon {
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
 }
 .profile-page-container .profile-page-important .change-password-button {
   width: 100px;
