@@ -151,6 +151,9 @@
   height: 27px;
   cursor: pointer;
 }
+.profile-page-container .profile-page-important .profile-page-password .profile-data-row .active {
+  color: darkorange;
+}
 .profile-page-container .profile-page-important .change-password-button {
   width: 100px;
   margin: 0 auto;

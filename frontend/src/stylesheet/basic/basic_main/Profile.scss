@@ -181,6 +181,10 @@
           height: 27px;
           cursor: pointer;
         }
+
+        .active {
+          color: $color-highlight;
+        }
       }
     }
 
