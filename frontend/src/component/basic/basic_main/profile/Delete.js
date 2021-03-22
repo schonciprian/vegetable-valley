@@ -7,39 +7,36 @@ function Delete(props) {
     const userData = props.userData;
 
     const deleteAccount = () => {
-        async function fetchData() {
-            await axios({
-                method: "delete",
-                url: `${environmentVariables.BACKEND_URL}/api/delete-user`,
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: "application/json, text/plain, */*",
-                    Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-                },
-                data: userData
-            }).then((res) => {
-                window.sessionStorage.removeItem("token")
-                window.sessionStorage.removeItem("username")
-                Swal.fire({
-                    toast: true,
-                    icon: 'success',
-                    title: 'Account deleted successfully',
-                    animation: true,
-                    position: 'top-right',
-                    showConfirmButton: false,
-                    timer: 3000,
-                });
+        axios({
+            method: "delete",
+            url: `${environmentVariables.BACKEND_URL}/api/delete-user`,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json, text/plain, */*",
+                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+            },
+            data: userData
+        }).then((res) => {
+            window.sessionStorage.removeItem("token")
+            window.sessionStorage.removeItem("username")
 
-                setTimeout(() => {
-                    window.location.replace("/")
-                }, 3000);
-                console.log("success")
-            }).catch((error) => {
-                console.log(error.response.data);
-            })
-        }
+            Swal.fire({
+                toast: true,
+                icon: 'success',
+                title: 'Account deleted successfully',
+                animation: true,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 3000,
+            });
 
-        fetchData()
+            setTimeout(() => {
+                window.location.replace("/")
+            }, 3000);
+
+        }).catch((error) => {
+            console.log(error.response.data);
+        })
     }
 
     return (
