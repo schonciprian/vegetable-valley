@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 import swal from 'sweetalert';
 
@@ -13,6 +14,7 @@ import '../../stylesheet/error/Error.css';
 
 export default function Registration() {
     const [errorMessages, setErrorMessages] = useState({});
+    const history = useHistory();
 
     const getUserData = () => {
         return {
@@ -38,7 +40,7 @@ export default function Registration() {
         }).then((res) => {
             swal("Successfully registered", "You are redirected to the main page", "success");
             setTimeout(() => {
-                window.location.replace("/login");
+                history.push("/login");
             }, 2000);
 
         }).catch((error) => {
