@@ -41,6 +41,7 @@ export default function Registration() {
             swal("Successfully registered", "You are redirected to the main page", "success");
             setTimeout(() => {
                 history.push("/login");
+                swal.close();
             }, 2000);
 
         }).catch((error) => {
