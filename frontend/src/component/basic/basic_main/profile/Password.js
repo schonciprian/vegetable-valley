@@ -54,7 +54,6 @@ function Password() {
             })
 
         }).catch((error) => {
-            console.log(error.response.data);
             setPasswordError(error.response.data)
         })
     }

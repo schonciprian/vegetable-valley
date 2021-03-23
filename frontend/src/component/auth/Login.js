@@ -16,7 +16,7 @@ import '../../stylesheet/error/Error.css';
 
 export default function Login() {
     const [errorMessages, setErrorMessages] = useState({});
-    const [user, setUser] = useContext(UserContext);
+    const [, setUser] = useContext(UserContext);
     const history = useHistory();
 
     const getUserData = () => {

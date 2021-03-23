@@ -21,19 +21,6 @@ export default function GrowGuideCard() {
     const [selectedTypeList, setSelectedTypeList] = useContext(SelectedTypeListContext);
     const [loading, setLoading] = useContext(LoadingContext);
 
-
-    // Old check for bottom of the page
-    const isScrolling = () => {
-        if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
-            return;
-        }
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            setIsFetching(true)
-        }
-        setIsFetching(true)
-    }
-
-    // New check for bottom of the page
     const handleScroll = () => {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
         const body = document.body;
