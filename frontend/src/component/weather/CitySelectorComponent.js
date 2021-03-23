@@ -31,7 +31,9 @@ export default function CitySelectorComponent(props) {
             if (navigator.geolocation) {
                 setLoading(true);
                 navigator.geolocation.getCurrentPosition(getCoordinates, () => {
-                    alert("Your location is not available. ");})
+                    alert("Your location is not available. ");
+                    setLoading(false);
+                })
             } else {
                 alert("Your location is not available");
             }
