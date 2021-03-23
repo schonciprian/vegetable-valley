@@ -61,14 +61,13 @@ export default function GrowGuideCard() {
                 if (Vegetables[vegetable].types.some(type => selectedTypeList.includes(type))) {
                     result[vegetable] = Vegetables[vegetable]
                 }
-                setIsFetching(true);
                 return result;
             }, {}))
         } else {
             setVegetableData(Vegetables);
-            setIsFetching(true);
         }
         setDataEndIndex(Math.ceil((window.innerHeight - 355) / 360) * Math.floor(window.innerWidth * 0.8 / 255));
+        setIsFetching(true);
 
         setTimeout(() => {
             setLoading(false)
