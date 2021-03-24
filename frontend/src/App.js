@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 
 import Registration from "./component/auth/Registration";
 import Login from "./component/auth/Login";
@@ -15,6 +15,8 @@ import './stylesheet/App.css';
 import {SelectedTypeListProvider} from "./context/SelectedTypeListContext";
 import {LoadingProvider} from "./context/LoadingContext";
 import {UserProvider} from "./context/User";
+import PrivateRoute from "./component/redirects/PrivateRoute";
+import PublicRoute from "./component/redirects/PublicRoute";
 
 
 function App() {
@@ -24,20 +26,23 @@ function App() {
                 <div>
                     <Header/>
                     <div className="main-container">
+
                         <Route exact path="/" component={Home}/>
+                        <Route render={() => <Redirect to="/" />} />
+                        <PublicRoute path="/register/" component={Registration} />
+                        <PublicRoute path="/login/" component={Login} />
+                        <PrivateRoute path="/profile/" component={Profile} />
 
                         <LoadingProvider>
+
                             <SelectedTypeListProvider>
-                                <Route exact path="/grow-guides" component={GrowGuideCard}/>
-                                <Route path="/grow-guides/:vegetableName" component={VegetablePage}/>
+                                <PrivateRoute path="/grow-guides/" component={GrowGuideCard} />
+                                <PrivateRoute path="/grow-guides/:vegetableName/" component={VegetablePage} />
                             </SelectedTypeListProvider>
 
-                            <Route exact path="/weather-forecast" component={Weather}/>
-                        </LoadingProvider>
+                            <PrivateRoute path="/weather-forecast/" component={Weather} />
 
-                        <Route exact path="/profile" component={Profile}/>
-                        <Route exact path="/register" component={Registration}/>
-                        <Route exact path="/login" component={Login}/>
+                        </LoadingProvider>
                     </div>
                 </div>
             </UserProvider>
