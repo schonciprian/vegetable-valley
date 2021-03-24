@@ -17,7 +17,7 @@ function Profile(props) {
     useEffect(() => {
         axios({
             method: "get",
-            url: `${environmentVariables.BACKEND_URL}/api/get-user-data`,
+            url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/get-user-data`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*",
