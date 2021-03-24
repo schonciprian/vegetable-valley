@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 import swal from 'sweetalert';
 
@@ -13,10 +14,13 @@ import '../../stylesheet/error/Error.css';
 
 export default function Registration() {
     const [errorMessages, setErrorMessages] = useState({});
+    const history = useHistory();
 
     const getUserData = () => {
         return {
-            name: document.getElementById("name").value,
+            first_name: document.getElementById("first_name").value,
+            last_name: document.getElementById("last_name").value,
+            username: document.getElementById("username").value,
             email: document.getElementById("email").value,
             password: document.getElementById("password").value,
             confirm_password: document.getElementById("confirm_password").value,
@@ -34,9 +38,10 @@ export default function Registration() {
             },
             data: userData
         }).then((res) => {
-            swal("Successfully registered", "You are redirected to the main page", "success");
+            swal("Successfully registered", "You are redirected to login page", "success");
             setTimeout(() => {
-                window.location.replace("/");
+                history.push("/login");
+                swal.close();
             }, 2000);
 
         }).catch((error) => {
@@ -54,13 +59,33 @@ export default function Registration() {
         <div className="form-container">
             <h1>Registration</h1>
             <form className="form">
-                <label htmlFor="name">Name:</label><br/>
-                {errorMessages.name && <div className="error-message">{errorMessages.name}</div>}
-                <input id="name"
-                       className={errorMessages.name ? "error" : ""}
+                <label htmlFor="first_name">First name:</label><br/>
+                {errorMessages.first_name && <div className="error-message">{errorMessages.first_name}</div>}
+                <input id="first_name"
+                       className={errorMessages.first_name ? "error" : ""}
                        type="text"
-                       name="name"
-                       placeholder="Enter your name"
+                       name="first_name"
+                       placeholder="Enter your first name"
+                       onClick={(event) => removeError(event)}
+                       required/>
+
+                <label htmlFor="last_name">Last name:</label><br/>
+                {errorMessages.last_name && <div className="error-message">{errorMessages.last_name}</div>}
+                <input id="last_name"
+                       className={errorMessages.last_name ? "error" : ""}
+                       type="text"
+                       name="last_name"
+                       placeholder="Enter your last name"
+                       onClick={(event) => removeError(event)}
+                       required/>
+
+                <label htmlFor="username">Username:</label><br/>
+                {errorMessages.username && <div className="error-message">{errorMessages.username}</div>}
+                <input id="username"
+                       className={errorMessages.username ? "error" : ""}
+                       type="text"
+                       name="username"
+                       placeholder="Enter your username"
                        onClick={(event) => removeError(event)}
                        required/>
 

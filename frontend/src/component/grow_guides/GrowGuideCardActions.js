@@ -20,7 +20,13 @@ export const pinCard = (event, index, id) => {
     document.getElementById(`${index}`).classList.toggle('pin')
 }
 
-export const heartCard = (event, index) => {
+export const heartCard = (event, index, id) => {
     event.stopPropagation();
     document.getElementById(`heart-icon-${index}`).classList.toggle('active')
+
+    if(Vegetables[id].types.includes("Favorite")){
+        Vegetables[id].types.splice(Vegetables[id].types.indexOf("Favorite"), 1);
+        return;
+    }
+    Vegetables[id].types.push("Favorite");
 }

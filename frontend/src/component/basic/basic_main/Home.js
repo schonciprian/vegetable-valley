@@ -26,7 +26,7 @@ export function Home() {
     const futurePlans = [
         "More available vegetables",
         "Expand with fruits",
-        "Create you own garden",
+        "Create your own garden",
         "Charts for weather forecast",
         "Planning page to plan gardening tasks by month to month",
     ];

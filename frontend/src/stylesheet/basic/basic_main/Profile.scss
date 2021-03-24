@@ -1,0 +1,242 @@
+@import "../../Variables.scss";
+
+@mixin profile-data-value($width, $background-color) {
+  width: $width;
+
+  margin: 10px;
+  padding: 10px;
+
+  font-family: $font-family-text;
+  font-size: min(1.5vw, 22px);
+
+  background-color: $background-color;
+  border-radius: $border-radius-smaller;
+  color: $color-text;
+
+  outline: none;
+  border: none;
+  cursor: auto;
+
+  &::placeholder {
+    visibility: hidden;
+  }
+}
+
+@mixin button($width, $borderColor) {
+  width: $width;
+  //height: 40px;
+
+  margin: 0 auto;
+  padding: 5px;
+
+  font-family: $font-family-text;
+  font-size: min(1.5vw, 20px);
+
+  color: $color-text;
+  background-color: $focus-color-lighter;
+  border-radius: 10px;
+  border: 2px solid $borderColor;
+
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $focus-color-lighter-hover;
+  }
+}
+
+.profile-page-container {
+  @extend %display-flex-center;
+  flex-direction: column;
+  width: 80%;
+  max-width: 1100px;
+
+  margin: 50px auto 20px;
+  padding: 0 20px 30px;
+
+  font-family: $font-family-text;
+
+  background-color: $background-color-darker;
+  border-radius: $border-radius-container;
+
+  h1 {
+    font-size: $font-size-larger-vw;
+    color: $color-highlight;
+    margin: 30px;
+  }
+
+  .profile-page-personal {
+    @extend %display-flex-space-around;
+    width: 90%;
+    height: fit-content;
+
+    padding: 20px;
+
+    background-color: $background-color-dark;
+    border-radius: $border-radius-container;
+
+    .profile-image {
+      @extend %display-flex-center;
+      width: 30%;
+
+      img {
+        width: 220px;
+        height: 220px;
+
+        padding: 10px;
+
+        border: 3px solid $color-highlight;
+        border-radius: $border-radius-bigger;
+      }
+    }
+
+    .profile-data-container{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      width: 60%;
+      min-height: 250px;
+
+      border-radius: $border-radius-bigger;
+
+      .profile-data {
+
+        .profile-data-row {
+          @extend %display-flex-center;
+          width: 100%;
+          color: $color-text;
+          margin-bottom: 5px;
+
+          .profile-data-key {
+            width: 130px;
+            padding: 5px;
+            text-align: right;
+            font-size: min(1.5vw, 22px);
+
+            color: $color-highlight;
+          }
+
+          .profile-data-value {
+            @include profile-data-value(60%, $background-color-dark);
+          }
+
+          .editableField {
+            background-color: $focus-color-lighter;
+
+            &::placeholder {
+              visibility: visible;
+              color: $color-text;
+            }
+          }
+        }
+      }
+
+      button {
+        @include button(100px, $color-highlight);
+      }
+    }
+  }
+
+  .profile-page-important {
+    @extend %display-flex-space-around;
+
+    width: 90%;
+
+    margin-top: 50px;
+    padding: 20px;
+    background-color: $background-color-dark;
+    border-radius: $border-radius-container;
+
+    .profile-page-password {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      width: 55%;
+      padding-right: 30px;
+      border-right: 5px solid darkorange;
+      user-select: none;
+
+      .profile-data-row {
+        @extend %display-flex-center;
+        width: 100%;
+        color: $color-text;
+        margin-bottom: 5px;
+
+        .profile-data-key {
+          width: 240px;
+          padding: 5px;
+          text-align: right;
+          font-size: min(1.5vw, 20px);
+
+          color: $color-highlight;
+        }
+
+        .profile-data-value {
+          @include profile-data-value(50%, $focus-color-lighter);
+        }
+
+        .show-icon {
+          width: 27px;
+          height: 27px;
+          cursor: pointer;
+        }
+
+        .active {
+          color: $color-highlight;
+        }
+      }
+    }
+
+    .change-password-button {
+      @include button(100px, $color-highlight);
+    }
+
+    .delete-account {
+      @extend %display-flex-space-around;
+      flex-direction: column;
+      width: 30%;
+      height: 175px;
+
+      margin: 0 30px 0 50px;
+      padding: 10px 20px;
+      color: $color-text;
+      border: 5px solid #a70606;
+
+      border-radius: $border-radius-bigger;
+
+      h1 {
+        margin: 0;
+        text-align: center;
+        font-size: min(1.5vw, 22px);
+      }
+
+      button {
+        @include button(50%, #a70606);
+        background-color: $background-color-dark;
+
+        &:hover {
+          background-color: $background-color-normal;
+        }
+      }
+
+      p {
+        margin: 0;
+        text-align: center;
+        font-size: 15px;
+        color: $color-highlight;
+      }
+    }
+  }
+}
+
+
+.swal2-popup.swal2-toast {
+  background-color: #4B5682 !important;
+  margin-top: 80px;
+}
+
+.swal2-title {
+  color: #eeeeee !important;
+  letter-spacing: 1px;
+}

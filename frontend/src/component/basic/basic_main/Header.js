@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, {useContext} from 'react';
+import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 
 // Helpers
+import {UserContext} from "../../../context/User";
 import {environmentVariables} from "../../../EnvironmentVariables";
 
 // Stylesheets
@@ -11,6 +12,8 @@ import '../../../stylesheet/basic/basic_main/Header.css';
 //**************************************************//
 
 function Header() {
+    const [user, setUser] = useContext(UserContext);
+    const history = useHistory();
 
     const logoutRequest = async () => {
         await axios({
@@ -22,11 +25,19 @@ function Header() {
                 Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
             },
         }).then((res) => {
-            swal("Successfully logout", "You are redirected to the main page");
-            setTimeout(() => {
-                window.location.replace("/");
-            }, 1000);
+            swal("Logged out successfully", "You are redirected to the main page");
+
             window.sessionStorage.removeItem("token");
+            window.sessionStorage.removeItem("username");
+
+            setTimeout(() => {
+                history.push("/");
+                swal.close();
+                setUser({
+                    "token": null,
+                    "username": null,
+                });
+            }, 2000);
 
         }).catch((error) => {
             console.log(error.response.data)
@@ -39,11 +50,19 @@ function Header() {
                 <Link to="/">Vegetable Valley</Link>
             </div>
             <div className="navbar">
-                <Link to="/grow-guides">Grow Guides</Link>
-                <Link to="/weather-forecast">Weather Forecast</Link>
-                {!window.sessionStorage.getItem("token") && <Link to="/register">Registration</Link>}
-                {!window.sessionStorage.getItem("token") && <Link to="/login">Login</Link>}
-                {window.sessionStorage.getItem("token") && <Link to="/logout" onClick={logoutRequest}>Logout</Link>}
+                {user["token"] && <Link to="/grow-guides">Grow Guides</Link>}
+                {user["token"] && <Link to="/weather-forecast">Weather Forecast</Link>}
+                {!user["token"] && <Link to="/register">Registration</Link>}
+                {!user["token"] && <Link to="/login">Login</Link>}
+                {/*{user["token"] && <Link to="/profile">{user["username"]}</Link>}*/}
+                {/*{user["token"] && <Link to="/logout" onClick={logoutRequest}>Logout</Link>}*/}
+                {user["token"] && <div className="dropdown">
+                    <button className="dropdown-button">{user["username"]}</button>
+                    <div className="dropdown-content">
+                        <Link to="/profile">Settings</Link>
+                        <Link to="/logout" onClick={logoutRequest}>Logout</Link>
+                    </div>
+                </div>}
             </div>
         </div>
     );
