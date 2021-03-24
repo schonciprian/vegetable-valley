@@ -95,8 +95,8 @@ export default function GrowGuideCard() {
                             <div className="card-face card-face-back">
                                 <div className="card-content">
                                     <div id={`heart-icon-${index}`}
-                                         className="icon heart-icon"
-                                         onClick={(event) => heartCard(event, index)}>
+                                         className={`icon heart-icon ${Vegetables[veggie].types.includes("Favorite") ? "active" : ""}`}
+                                         onClick={(event) => heartCard(event, index, Vegetables[veggie].id)}>
                                         <FaHeart/>
                                     </div>
                                     <div id={`pin-icon-${index}`}
