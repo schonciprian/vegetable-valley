@@ -19,6 +19,7 @@ function SelectionBox() {
 
     const selectionTypes = {
         'All': {name: 'All plants', icon: BiSelectMultiple, selected: selectedTypeList.length === 0,},
+        'Favorite': {name: 'Favorites', icon: GiBananaBunch,},
         'Fruit': {name: 'Fruits', icon: GiBananaBunch,},
         'Vegetable': {name: 'Vegetables', icon: GiAubergine,},
         'Root': {name: 'Root veggies', icon: GiCarrot,},
