@@ -18,7 +18,7 @@ function Header() {
     const logoutRequest = async () => {
         await axios({
             method: "delete",
-            url: `${environmentVariables.BACKEND_URL}/api/logout`,
+            url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/logout`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*",
