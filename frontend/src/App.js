@@ -1,8 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 import Registration from "./component/auth/Registration";
 import Login from "./component/auth/Login";
+import Profile from "./component/basic/basic_main/profile/Profile";
 import {Home} from "./component/basic/basic_main/Home";
 import Header from "./component/basic/basic_main/Header";
 import GrowGuideCard from "./component/grow_guides/GrowGuideCard";
@@ -13,32 +14,35 @@ import Weather from "./component/weather/Weather";
 import './stylesheet/App.css';
 import {SelectedTypeListProvider} from "./context/SelectedTypeListContext";
 import {LoadingProvider} from "./context/LoadingContext";
-
+import {UserProvider} from "./context/User";
 
 
 function App() {
-  return (
-      <Router>
-          <div>
-            <Header />
-            <div className="main-container">
-                <Route exact path="/" component={Home}/>
+    return (
+        <Router>
+            <UserProvider>
+                <div>
+                    <Header/>
+                    <div className="main-container">
+                        <Route exact path="/" component={Home}/>
 
-                <LoadingProvider>
-                    <SelectedTypeListProvider>
-                        <Route exact path="/grow-guides" component={GrowGuideCard}/>
-                        <Route path="/grow-guides/:vegetableName" component={VegetablePage}/>
-                    </SelectedTypeListProvider>
+                        <LoadingProvider>
+                            <SelectedTypeListProvider>
+                                <Route exact path="/grow-guides" component={GrowGuideCard}/>
+                                <Route path="/grow-guides/:vegetableName" component={VegetablePage}/>
+                            </SelectedTypeListProvider>
 
-                    <Route exact path="/weather-forecast" component={Weather} />
-                </LoadingProvider>
+                            <Route exact path="/weather-forecast" component={Weather}/>
+                        </LoadingProvider>
 
-                <Route exact path="/register" component={Registration} />
-                <Route exact path="/login" component={Login} />
-            </div>
-          </div>
-      </Router>
-  );
+                        <Route exact path="/profile" component={Profile}/>
+                        <Route exact path="/register" component={Registration}/>
+                        <Route exact path="/login" component={Login}/>
+                    </div>
+                </div>
+            </UserProvider>
+        </Router>
+    );
 }
 
 export default App;

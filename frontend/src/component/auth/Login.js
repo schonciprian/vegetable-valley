@@ -1,6 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import swal from 'sweetalert';
+import {UserContext} from "../../context/User";
+
 
 // Helpers
 import {environmentVariables} from "../../EnvironmentVariables";
@@ -11,8 +14,10 @@ import '../../stylesheet/auth/Authentication.css';
 import '../../stylesheet/error/Error.css';
 //**************************************************//
 
-export default function Registration() {
+export default function Login() {
     const [errorMessages, setErrorMessages] = useState({});
+    const [, setUser] = useContext(UserContext);
+    const history = useHistory();
 
     const getUserData = () => {
         return {
@@ -33,9 +38,15 @@ export default function Registration() {
             data: userData
         }).then((res) => {
             window.sessionStorage.setItem("token", res.data.token);
+            window.sessionStorage.setItem("username", res.data.username);
+            setUser({
+                "token": res.data.token,
+                "username": res.data.username,
+            })
             swal("Successfully logged in", "Welcome back! You are redirected to the main page", "success");
             setTimeout(() => {
-                window.location.replace("/");
+                history.push("/");
+                swal.close()
             }, 2000);
 
         }).catch((error) => {
