@@ -42,7 +42,7 @@ function Profile(props) {
         setEditableFields(!editableFields)
         axios({
             method: "put",
-            url: `${environmentVariables.BACKEND_URL}/api/update-user-data`,
+            url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/update-user-data`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*",

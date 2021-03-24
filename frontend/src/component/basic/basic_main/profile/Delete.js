@@ -13,7 +13,7 @@ function Delete(props) {
     const deleteAccount = () => {
         axios({
             method: "delete",
-            url: `${environmentVariables.BACKEND_URL}/api/delete-user`,
+            url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/delete-user`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*",

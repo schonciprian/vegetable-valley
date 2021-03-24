@@ -31,7 +31,7 @@ function Password() {
     const updateUserPassword = () => {
         axios({
             method: "put",
-            url: `${environmentVariables.BACKEND_URL}/api/update-user-password`,
+            url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/update-user-password`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*",
