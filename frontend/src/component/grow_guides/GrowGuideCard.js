@@ -20,6 +20,7 @@ export default function GrowGuideCard() {
     const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 355) / 360) * Math.floor(window.innerWidth * 0.8 / 255) - 4);
     const [selectedTypeList, setSelectedTypeList] = useContext(SelectedTypeListContext);
     const [loading, setLoading] = useContext(LoadingContext);
+    const [favoriteLoading, setFavoriteLoading] = useState(false);
 
     const handleScroll = () => {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
@@ -68,12 +69,13 @@ export default function GrowGuideCard() {
         }
         setDataEndIndex(Math.ceil((window.innerHeight - 355) / 360) * Math.floor(window.innerWidth * 0.8 / 255));
         setIsFetching(true);
+        setFavoriteLoading(false)
 
         setTimeout(() => {
             setLoading(false)
         }, 1000);
 
-    }, [selectedTypeList, setLoading])
+    }, [selectedTypeList, setLoading, favoriteLoading])
 
     return (
         <div className="grow-guides-container">
@@ -96,7 +98,10 @@ export default function GrowGuideCard() {
                                 <div className="card-content">
                                     <div id={`heart-icon-${index}`}
                                          className={`icon heart-icon ${Vegetables[veggie].types.includes("Favorite") ? "active" : ""}`}
-                                         onClick={(event) => heartCard(event, index, Vegetables[veggie].id)}>
+                                         onClick={(event) => {
+                                             heartCard(event, index, Vegetables[veggie].id)
+                                             setFavoriteLoading(true)
+                                         }}>
                                         <FaHeart/>
                                     </div>
                                     <div id={`pin-icon-${index}`}
