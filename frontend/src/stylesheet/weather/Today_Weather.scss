@@ -115,3 +115,23 @@ $background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494
     }
   }
 }
+
+.charts {
+  @extend %display-flex-space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+}
+#chart {
+  @extend %display-flex-center;
+
+  //width: 100%;
+
+  margin-bottom: 50px;
+
+  .apexcharts-canvas {
+    border-radius: 20px;
+    background-color: $background-color-dark;
+    padding: 20px;
+  }
+}

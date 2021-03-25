@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+#chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.charts {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .today-weather-side .today-weather-extras-container .today-extras {
   display: flex;
   justify-content: space-between;
@@ -89,6 +101,21 @@
 }
 .today-weather-side .today-weather-container .weather-desc {
   margin: 0;
+}
+
+.charts {
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+}
+
+#chart {
+  margin-bottom: 50px;
+}
+#chart .apexcharts-canvas {
+  border-radius: 20px;
+  background-color: #151A30;
+  padding: 20px;
 }
 
 /*# sourceMappingURL=Today_Weather.css.map */
