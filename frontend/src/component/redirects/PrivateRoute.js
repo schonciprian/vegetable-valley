@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Redirect, Route } from 'react-router-dom'
+import {UserContext} from "../../context/User";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-    const isLoggedIn = window.sessionStorage.getItem("token");
+    const [user] = useContext(UserContext);
+    const isLoggedIn = user.username;
+
 
     return (
         <Route
