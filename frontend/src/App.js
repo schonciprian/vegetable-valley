@@ -29,18 +29,18 @@ function App() {
 
                         <Route exact path="/" component={Home}/>
                         <Route render={() => <Redirect to="/" />} />
-                        <PublicRoute path="/register/" component={Registration} />
-                        <PublicRoute path="/login/" component={Login} />
-                        <PrivateRoute path="/profile/" component={Profile} />
+                        <PublicRoute exact path="/register/" component={Registration} />
+                        <PublicRoute exact path="/login/" component={Login} />
+                        <PrivateRoute exact path="/profile/" component={Profile} />
 
                         <LoadingProvider>
 
                             <SelectedTypeListProvider>
-                                <PrivateRoute path="/grow-guides/" component={GrowGuideCard} />
-                                <PrivateRoute path="/grow-guides/:vegetableName/" component={VegetablePage} />
+                                <PrivateRoute exact path="/grow-guides/" component={GrowGuideCard} />
+                                <PrivateRoute exact path="/grow-guides/:vegetableName/" component={VegetablePage} />
                             </SelectedTypeListProvider>
 
-                            <PrivateRoute path="/weather-forecast/" component={Weather} />
+                            <PrivateRoute exact path="/weather-forecast/" component={Weather} />
 
                         </LoadingProvider>
                     </div>
