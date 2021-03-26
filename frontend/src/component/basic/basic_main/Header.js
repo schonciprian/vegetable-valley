@@ -68,6 +68,7 @@ function Header() {
                     <button className="dropdown-button">Weather</button>
                     <div className="dropdown-content">
                         <Link to="/weather-forecast">Weather Forecast</Link>
+                        <Link to="/temperature">Temperature</Link>
                     </div>
                 </div>}
 

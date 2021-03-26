@@ -15,6 +15,7 @@ import './stylesheet/App.css';
 import {SelectedTypeListProvider} from "./context/SelectedTypeListContext";
 import {LoadingProvider} from "./context/LoadingContext";
 import {UserProvider} from "./context/User";
+import TemperatureChart from "./component/weather-forecast/charts/TemperatureChart";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                             </SelectedTypeListProvider>
 
                             <Route exact path="/weather-forecast" component={Weather}/>
+                            <Route exact path="/temperature" component={TemperatureChart}/>
                         </LoadingProvider>
 
                         <Route exact path="/profile" component={Profile}/>
