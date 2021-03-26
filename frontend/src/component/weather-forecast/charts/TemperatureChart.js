@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Chart from "./Chart";
+import {WeatherForecastDataContext} from "../../../context/WeatherForecastData";
 
-function TemperatureChart(props) {
+function TemperatureChart() {
+    const [weatherForecastData] = useContext(WeatherForecastDataContext);
+
     return (
         <div className="charts">
-            <Chart data={[12.4, 14.6, 9.5, 12.0, 15.9, 15.8, 15.9]} title={'Daily average temperature'} color={"#ff8c00"}/>
-            <Chart data={[15.4, 18.6, 10.5, 16.0, 13.9, 18.8, 19.9]} title={'Daily max temperature'} color={"#d40505"}/>
-            <Chart data={[10.4, 9.6, 6.5, 8.0, 13.9, 11.8, 12.9]} title={'Daily min temperature'} color={"#00adfc"}/>
+            <Chart data={weatherForecastData.avgTemp} title={'Daily average temperature'} color={"#ff8c00"}/>
+            <Chart data={weatherForecastData.maxTemp} title={'Daily max temperature'} color={"#d40505"}/>
+            <Chart data={weatherForecastData.minTemp} title={'Daily min temperature'} color={"#00adfc"}/>
+            {/*<Chart data={weatherForecastData.wind} title={'Daily min temperature'} color={"#00adfc"}/>*/}
         </div>
     );
 }
