@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React  from "react";
 import Chart from "react-apexcharts";
 
 export default class Chartt extends React.Component {
@@ -13,6 +13,7 @@ export default class Chartt extends React.Component {
             }],
             options: {
                 chart: {
+                    background: '#1B223E',
                     height: 350,
                     type: 'line',
                     zoom: {
@@ -26,8 +27,11 @@ export default class Chartt extends React.Component {
                         blur: 10,
                         opacity: 0.2
                     },
+                    toolbar: {
+                        colors: "red",
+                    }
                 },
-                colors: ['darkorange'],
+                colors: [props.color],
 
                 dataLabels: {
                     enabled: true,
@@ -39,7 +43,7 @@ export default class Chartt extends React.Component {
                         fontSize: '14px',
                         fontFamily: 'Helvetica, Arial, sans-serif',
                         fontWeight: 'bold',
-                        colors: ['darkorange']
+                        colors: [props.color]
                     },
                     background: {
                         enabled: false,
@@ -71,6 +75,7 @@ export default class Chartt extends React.Component {
                         fontFamily:  'Montserrat, sans-serif',
                         color:  '#eee'
                     },
+                    margin: 20,
                 },
                 grid: {
                     strokeDashArray: 1,
@@ -83,10 +88,21 @@ export default class Chartt extends React.Component {
                     row: {
                         colors: ['transparent'], // takes an array which will be repeated on columns
                     },
+                    padding: {
+                        right: 30,
+                    },
+                },
+                markers: {
+                    size: 3,
+                    colors: props.color,
+                    hover: {
+                        size: 6,
+                    }
                 },
                 xaxis: {
                     categories: ['Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
                     labels: {
+                        rotateAlways: true,
                         style: {
                             colors: [
                                 '#eee', // Next day
@@ -105,12 +121,12 @@ export default class Chartt extends React.Component {
                         minHeight: 60,
                     },
                     axisBorder: {
-                        color: 'darkorange',
+                        color: '#eee',
                         offsetX: 0,
                         offsetY: 10,
                     },
                     axisTicks: {
-                        color: 'darkorange',
+                        color: '#eee',
                     },
                 },
                 yaxis: {
@@ -129,11 +145,11 @@ export default class Chartt extends React.Component {
                     },
                     axisBorder: {
                         show: true,
-                        color: 'darkorange',
+                        color: '#eee',
                     },
                     axisTicks: {
                         show: true,
-                        color: 'darkorange',
+                        color: '#eee',
                     },
                 }
             },
