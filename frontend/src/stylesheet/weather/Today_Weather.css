@@ -129,6 +129,9 @@
   color: darkorange;
 }
 
+.apexcharts-menu-icon {
+  margin: 5px 5px 0 0;
+}
 .apexcharts-menu-icon svg {
   fill: darkorange !important;
 }

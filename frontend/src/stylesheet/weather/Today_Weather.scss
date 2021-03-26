@@ -141,6 +141,7 @@ $background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494
   color: $color-text;
   min-width: 95px !important;
   border: 1px solid $color-highlight;
+
   .apexcharts-menu-item {
     &:hover {
       background-color: transparent !important;
@@ -149,6 +150,11 @@ $background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494
   }
 }
 
-.apexcharts-menu-icon svg {
-  fill: $color-highlight !important;
+
+.apexcharts-menu-icon {
+  margin: 5px 5px 0 0;
+
+  svg {
+    fill: $color-highlight !important;
+  }
 }
