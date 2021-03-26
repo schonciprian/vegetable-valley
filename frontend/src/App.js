@@ -16,7 +16,7 @@ import {SelectedTypeListProvider} from "./context/SelectedTypeListContext";
 import {LoadingProvider} from "./context/LoadingContext";
 import {UserProvider} from "./context/User";
 import TemperatureChart from "./component/weather-forecast/charts/TemperatureChart";
-import {WeatherForecastDataProvider} from "./context/WeatherForecastData";
+import {WeatherForecastDataProvider} from "./context/WeatherForecastDataContext";
 
 
 function App() {
