@@ -115,7 +115,22 @@
 #chart .apexcharts-canvas {
   border-radius: 20px;
   background-color: #151A30;
-  padding: 20px;
+  padding: 30px;
+}
+
+.apexcharts-menu {
+  background-color: #4B5682 !important;
+  color: #eeeeee;
+  min-width: 95px !important;
+  border: 1px solid darkorange;
+}
+.apexcharts-menu .apexcharts-menu-item:hover {
+  background-color: transparent !important;
+  color: darkorange;
+}
+
+.apexcharts-menu-icon svg {
+  fill: darkorange !important;
 }
 
 /*# sourceMappingURL=Today_Weather.css.map */

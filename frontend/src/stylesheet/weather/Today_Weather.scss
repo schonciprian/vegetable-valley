@@ -132,6 +132,23 @@ $background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494
   .apexcharts-canvas {
     border-radius: 20px;
     background-color: $background-color-dark;
-    padding: 20px;
+    padding: 30px;
   }
+}
+
+.apexcharts-menu  {
+  background-color: $focus-color-lighter !important;
+  color: $color-text;
+  min-width: 95px !important;
+  border: 1px solid $color-highlight;
+  .apexcharts-menu-item {
+    &:hover {
+      background-color: transparent !important;
+      color: $color-highlight;
+    }
+  }
+}
+
+.apexcharts-menu-icon svg {
+  fill: $color-highlight !important;
 }
