@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import axios from "axios";
 import {isSafari} from "react-device-detect";
 import {foreignCities,
@@ -8,8 +8,10 @@ import {Search} from "react-feather";
 import {FaSpinner} from "react-icons/fa";
 
 import '../../../stylesheet/error/Error.css';
+import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
 
 export default function CitySelectorComponent(props) {
+    const [, setWeatherForecastData] = useContext(WeatherForecastDataContext);
 
     const [loading, setLoading] = useState(false);
 
@@ -20,7 +22,10 @@ export default function CitySelectorComponent(props) {
                     `&lon=${(position.coords.longitude - longitudeCorrection)}` +
                     `&appid=f913779188ecd17807fa0473780a29fb`)
             .then(response => {
-                props.setCity(response.data.name);
+                setWeatherForecastData(prevData => ({
+                    ...prevData,
+                    city: response.data.name
+                }))
                 setLoading(false);
                 hideCitySelection()
             })
@@ -69,7 +74,10 @@ export default function CitySelectorComponent(props) {
     }
 
     const handleCityOnClick = (city) => {
-        props.setCity(city);
+        setWeatherForecastData(prevData => ({
+            ...prevData,
+            city: city
+        }))
         hideCitySelection();
     }
 
