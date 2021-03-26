@@ -3,11 +3,11 @@ import axios from "axios";
 import TodayWeatherComponent from "./TodayWeatherComponent";
 import WeatherForecastComponent from "./WeatherForecastComponent";
 import CitySelectorComponent from "./CitySelectorComponent";
-import '../../stylesheet/weather/Today_Weather.css';
-import '../../stylesheet/weather/Forecast_Weather.css';
-import '../../stylesheet/weather/City_Selector.css';
-import '../../stylesheet/weather/Weather_forecast.css';
-import Chart from "./charts/Chart";
+import '../../../stylesheet/weather/Today_Weather.css';
+import '../../../stylesheet/weather/Forecast_Weather.css';
+import '../../../stylesheet/weather/City_Selector.css';
+import '../../../stylesheet/weather/Weather_forecast.css';
+import Chart from "../charts/Chart";
 
 
 

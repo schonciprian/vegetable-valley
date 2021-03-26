@@ -7,7 +7,7 @@ import {foreignCities,
 import {Search} from "react-feather";
 import {FaSpinner} from "react-icons/fa";
 
-import '../../stylesheet/error/Error.css';
+import '../../../stylesheet/error/Error.css';
 
 export default function CitySelectorComponent(props) {
 
