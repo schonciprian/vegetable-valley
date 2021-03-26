@@ -14,11 +14,10 @@ import {getDateOfDailyForecast,
         getWindDailyForecast} from "./WeatherForecastGetterFunctions";
 import {showCitySelection} from "./CitySelectorHelperVariables";
 import {FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
-import {WeatherForecastDataContext} from "../../../context/WeatherForecastData";
 
 export default function WeatherForecastComponent(props) {
     const [indexOfDailyForecast, setIndexOfDailyForecast] = useState(0);
-    const [weatherForecastData, setWeatherForecastData] = useContext(WeatherForecastDataContext);
+    const [weatherForecastData, setWeatherForecastData] = useState([]);
 
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${props.coordinate.lat}&lon=${props.coordinate.lon}&units=metric&exclude=minutely,hourly&appid=f913779188ecd17807fa0473780a29fb`)
