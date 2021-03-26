@@ -90,7 +90,8 @@
   right: 15px;
   background-color: $background-color-dark;
   border-top: none;
-  min-width: 170px;
+  min-width: fit-content;
+  white-space: nowrap;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 0 0 20px 20px;
