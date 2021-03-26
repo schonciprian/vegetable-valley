@@ -16,6 +16,7 @@ import {SelectedTypeListProvider} from "./context/SelectedTypeListContext";
 import {LoadingProvider} from "./context/LoadingContext";
 import {UserProvider} from "./context/User";
 import TemperatureChart from "./component/weather-forecast/charts/TemperatureChart";
+import {WeatherForecastDataProvider} from "./context/WeatherForecastData";
 
 
 function App() {
@@ -33,8 +34,10 @@ function App() {
                                 <Route path="/grow-guides/:vegetableName" component={VegetablePage}/>
                             </SelectedTypeListProvider>
 
-                            <Route exact path="/weather-forecast" component={Weather}/>
-                            <Route exact path="/temperature" component={TemperatureChart}/>
+                            <WeatherForecastDataProvider>
+                                <Route exact path="/weather-forecast" component={Weather}/>
+                                <Route exact path="/temperature" component={TemperatureChart}/>
+                            </WeatherForecastDataProvider>
                         </LoadingProvider>
 
                         <Route exact path="/profile" component={Profile}/>

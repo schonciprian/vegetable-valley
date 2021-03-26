@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import {MapPin, Sunrise, Sunset} from "react-feather";
 import {calculateSunriseSunset, getDayName, getMonth} from "./TodayWeatherFunctions";
@@ -14,25 +14,25 @@ import {getDateOfDailyForecast,
         getWindDailyForecast} from "./WeatherForecastGetterFunctions";
 import {showCitySelection} from "./CitySelectorHelperVariables";
 import {FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
+import {WeatherForecastDataContext} from "../../../context/WeatherForecastData";
 
 export default function WeatherForecastComponent(props) {
-
-    const [weatherForecast, setWeatherForecast] = useState([]);
     const [indexOfDailyForecast, setIndexOfDailyForecast] = useState(0);
+    const [weatherForecastData, setWeatherForecastData] = useContext(WeatherForecastDataContext);
 
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${props.coordinate.lat}&lon=${props.coordinate.lon}&units=metric&exclude=minutely,hourly&appid=f913779188ecd17807fa0473780a29fb`)
-                .then(result => setWeatherForecast(result.data));
+                .then(result => setWeatherForecastData(result.data));
     }, [props.coordinate])
 
-    const {timezone_offset, daily} = weatherForecast;
+    const {timezone_offset, daily} = weatherForecastData;
     let dailyForecast = [];
 
     const [showDayFromIndex, setShowDayFromIndex] = useState(0);
     const [showDayToIndex, setShowDayToIndex] = useState(4);
     const [actualPageNumber, setActualPageNumber] = useState(1);
 
-    if (weatherForecast.length !== 0 ) {daily.forEach( (oneDay, index) => {
+    if (weatherForecastData.length !== 0 ) {daily.forEach( (oneDay, index) => {
         if (index > showDayFromIndex && index <= showDayToIndex) {
             let sunrise = new Date((oneDay.sunrise + timezone_offset - 3600) * 1000);
             let sunset = new Date((oneDay.sunset + timezone_offset - 3600) * 1000);
