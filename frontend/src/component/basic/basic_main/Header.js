@@ -15,8 +15,8 @@ function Header() {
     const [user, setUser] = useContext(UserContext);
     const history = useHistory();
 
-    const logoutRequest = async () => {
-        await axios({
+    const logoutRequest = () => {
+        axios({
             method: "delete",
             url: `${environmentVariables.BACKEND_URL}/api/logout`,
             headers: {
