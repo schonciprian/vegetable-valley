@@ -5,6 +5,7 @@ export const WeatherForecastDataContext = createContext([]);
 
 export const WeatherForecastDataProvider = (props) => {
     const [weatherForecastData, setWeatherForecastData] = useState({
+        city: "Budapest",
         avgTemp: [],
         maxTemp: [],
         minTemp: [],
