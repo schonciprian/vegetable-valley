@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Chart from "./Chart";
-import {WeatherForecastDataContext} from "../../../context/WeatherForecastData";
+import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
 
 function TemperatureChart() {
     const [weatherForecastData] = useContext(WeatherForecastDataContext);
