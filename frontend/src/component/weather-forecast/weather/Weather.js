@@ -16,7 +16,7 @@ export default function Weather() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios(`https://api.openweathermap.org/data/2.5/weather?q=${weatherForecastData.city}&appid=2f87d7c500d9f76007f8a61f4d3270b6`);
+                const response = await axios(`https://api.openweathermap.org/data/2.5/weather?q=${weatherForecastData.city}&appid=f913779188ecd17807fa0473780a29fb`);
                 setWeatherForecastData(prevData => ({
                     ...prevData,
                     lat: response.data.coord.lat,

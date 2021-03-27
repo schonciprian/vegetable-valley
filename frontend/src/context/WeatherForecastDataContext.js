@@ -14,14 +14,14 @@ export const WeatherForecastDataProvider = (props) => {
     });
 
     useEffect(() => {
-        axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherForecastData.lat}&lon=${weatherForecastData.long}&units=metric&exclude=minutely,hourly&appid=2f87d7c500d9f76007f8a61f4d3270b6`)
+        axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherForecastData.lat}&lon=${weatherForecastData.long}&units=metric&exclude=minutely,hourly&appid=f913779188ecd17807fa0473780a29fb`)
             .then(result => {
                 fillWeatherForecastDataWithTemperature(result)
             })
     })
 
     useEffect(() => {
-        axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherForecastData.lat}&lon=${weatherForecastData.long}&units=metric&exclude=minutely,hourly&appid=2f87d7c500d9f76007f8a61f4d3270b6`)
+        axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherForecastData.lat}&lon=${weatherForecastData.long}&units=metric&exclude=minutely,hourly&appid=f913779188ecd17807fa0473780a29fb`)
             .then(result => {
                 // Prevent stacking data need to empty the arrays
                 weatherForecastData.avgTemp.length = 0;
