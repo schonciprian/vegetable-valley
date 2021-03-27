@@ -51,7 +51,11 @@ export default function CitySelectorComponent(props) {
         try {
             const response = await axios(`https://api.openweathermap.org/data/2.5/weather?q=${cityInputField.value}&appid=f913779188ecd17807fa0473780a29fb`);
             if (response.status === 200) {
-                props.setCity(cityInputField.value)
+                setWeatherForecastData(prevData => ({
+                    ...prevData,
+                    city: cityInputField.value
+                }))
+                // props.setCity()
                 hideCitySelection()
             }
         } catch (error) {
