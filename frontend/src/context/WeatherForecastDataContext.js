@@ -22,7 +22,25 @@ export const WeatherForecastDataProvider = (props) => {
                     // weatherForecastData.wind.push(parseInt((dayData.wind_speed*3.6).toFixed(2)))
                 })
             })
-    }, [])
+    }, [weatherForecastData.avgTemp, weatherForecastData.maxTemp, weatherForecastData.minTemp])
+
+    useEffect(() => {
+        axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=47.498&lon=19.0399&units=metric&exclude=minutely,hourly&appid=2f87d7c500d9f76007f8a61f4d3270b6`)
+            .then(result => {
+                // Prevent stacking data need to empty the arrays
+                weatherForecastData.avgTemp = []
+                weatherForecastData.maxTemp = []
+                weatherForecastData.minTemp = []
+
+                result.data.daily.forEach((dayData) => {
+                    weatherForecastData.avgTemp.push(dayData.temp.day)
+                    weatherForecastData.maxTemp.push(dayData.temp.max)
+                    weatherForecastData.minTemp.push(dayData.temp.min)
+                    // weatherForecastData.wind.push(parseInt((dayData.wind_speed*3.6).toFixed(2)))
+                })
+
+            })
+    }, [weatherForecastData])
 
     console.log(weatherForecastData);
 
