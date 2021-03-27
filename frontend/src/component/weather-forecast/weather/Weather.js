@@ -12,7 +12,6 @@ import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataCo
 export default function Weather() {
     const [weather, setWeather] = useState([]);
     const [weatherForecastData, setWeatherForecastData] = useContext(WeatherForecastDataContext);
-    const [, setIsError] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,7 +25,6 @@ export default function Weather() {
 
                 setWeather(response.data);
             } catch (error) {
-                setIsError(true);
                 console.log(error.response)
             }
         };
