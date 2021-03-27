@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {MapPin, Sunrise, Sunset} from "react-feather";
 import {calculateSunriseSunset, getDayName, getMonth} from "./TodayWeatherFunctions";

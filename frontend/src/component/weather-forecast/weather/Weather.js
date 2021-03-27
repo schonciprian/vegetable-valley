@@ -11,8 +11,7 @@ import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataCo
 
 export default function Weather() {
     const [weather, setWeather] = useState([]);
-    const [city, setCity] = useState("Budapest");
-    const [weatherForecastData, setWeatherForecastData] = useContext(WeatherForecastDataContext);
+    const [weatherForecastData] = useContext(WeatherForecastDataContext);
     const [coordinate, setCoordinate] = useState({});
     const [, setIsError] = useState(false);
 
