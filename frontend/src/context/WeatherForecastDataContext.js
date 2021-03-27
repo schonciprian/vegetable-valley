@@ -11,18 +11,12 @@ export const WeatherForecastDataProvider = (props) => {
         avgTemp: [],
         maxTemp: [],
         minTemp: [],
-        // wind: [],
     });
 
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherForecastData.lat}&lon=${weatherForecastData.long}&units=metric&exclude=minutely,hourly&appid=2f87d7c500d9f76007f8a61f4d3270b6`)
             .then(result => {
-                result.data.daily.forEach((dayData) => {
-                    weatherForecastData.avgTemp.push(dayData.temp.day)
-                    weatherForecastData.maxTemp.push(dayData.temp.max)
-                    weatherForecastData.minTemp.push(dayData.temp.min)
-                    // weatherForecastData.wind.push(parseInt((dayData.wind_speed*3.6).toFixed(2)))
-                })
+                fillWeatherForecastDataWithTemperature(result)
             })
     }, [weatherForecastData.avgTemp, weatherForecastData.maxTemp, weatherForecastData.minTemp])
 
@@ -34,15 +28,17 @@ export const WeatherForecastDataProvider = (props) => {
                 weatherForecastData.maxTemp.length = 0;
                 weatherForecastData.minTemp.length = 0;
 
-                result.data.daily.forEach((dayData) => {
-                    weatherForecastData.avgTemp.push(dayData.temp.day)
-                    weatherForecastData.maxTemp.push(dayData.temp.max)
-                    weatherForecastData.minTemp.push(dayData.temp.min)
-                    // weatherForecastData.wind.push(parseInt((dayData.wind_speed*3.6).toFixed(2)))
-                })
-
+                fillWeatherForecastDataWithTemperature(result)
             })
     }, [weatherForecastData])
+
+    const fillWeatherForecastDataWithTemperature = (result) => {
+        result.data.daily.forEach((dayData) => {
+            weatherForecastData.avgTemp.push(dayData.temp.day)
+            weatherForecastData.maxTemp.push(dayData.temp.max)
+            weatherForecastData.minTemp.push(dayData.temp.min)
+        })
+    }
 
     console.log(weatherForecastData);
 
