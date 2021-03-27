@@ -18,7 +18,7 @@ export const WeatherForecastDataProvider = (props) => {
             .then(result => {
                 fillWeatherForecastDataWithTemperature(result)
             })
-    }, [weatherForecastData.avgTemp, weatherForecastData.maxTemp, weatherForecastData.minTemp])
+    })
 
     useEffect(() => {
         axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherForecastData.lat}&lon=${weatherForecastData.long}&units=metric&exclude=minutely,hourly&appid=2f87d7c500d9f76007f8a61f4d3270b6`)
@@ -30,7 +30,7 @@ export const WeatherForecastDataProvider = (props) => {
 
                 fillWeatherForecastDataWithTemperature(result)
             })
-    }, [weatherForecastData])
+    })
 
     const fillWeatherForecastDataWithTemperature = (result) => {
         result.data.daily.forEach((dayData) => {
