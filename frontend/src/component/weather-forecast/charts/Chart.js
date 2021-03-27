@@ -100,7 +100,7 @@ export default class Chartt extends React.Component {
                     }
                 },
                 xaxis: {
-                    categories: ['Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                    categories: ['Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', "Friday"],
                     labels: {
                         rotateAlways: true,
                         style: {
@@ -112,13 +112,14 @@ export default class Chartt extends React.Component {
                                 '#eee', // 5th day from now
                                 '#eee', // 6th day from now
                                 '#eee', // One week from now
+                                '#eee', // One week + 1
                             ],
                             fontSize: '15px',
                             fontFamily: 'Montserrat, sans-serif',
                             fontWeight: 400,
                         },
                         offsetY: 5,
-                        minHeight: 60,
+                        minHeight: 100,
                     },
                     axisBorder: {
                         color: '#eee',
