@@ -123,6 +123,20 @@ $background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494
   width: 100%;
   margin-top: 50px;
 
+  .chart {
+    position: relative;
+
+    .icons {
+      width: fit-content;
+      position: absolute;
+      top: 90px;
+      left: 100px;
+      z-index: 1;
+      img {
+        margin: 0 18px 0 0;
+      }
+    }
+  }
 }
 #chart {
   @extend %display-flex-center;
@@ -157,4 +171,8 @@ $background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494
   svg {
     fill: $color-highlight !important;
   }
+}
+
+.apexcharts-svg text {
+  margin-bottom: 150px !important;
 }

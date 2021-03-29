@@ -109,6 +109,19 @@
   width: 100%;
   margin-top: 50px;
 }
+.charts .chart {
+  position: relative;
+}
+.charts .chart .icons {
+  width: fit-content;
+  position: absolute;
+  top: 90px;
+  left: 100px;
+  z-index: 1;
+}
+.charts .chart .icons img {
+  margin: 0 18px 0 0;
+}
 
 #chart {
   margin-bottom: 50px;
@@ -135,6 +148,10 @@
 }
 .apexcharts-menu-icon svg {
   fill: darkorange !important;
+}
+
+.apexcharts-svg text {
+  margin-bottom: 150px !important;
 }
 
 /*# sourceMappingURL=Today_Weather.css.map */
