@@ -75,7 +75,7 @@ export default class Chartt extends React.Component {
                         fontFamily:  'Montserrat, sans-serif',
                         color:  '#eee'
                     },
-                    margin: 20,
+                    margin: 50,
                 },
                 grid: {
                     strokeDashArray: 1,
@@ -161,7 +161,7 @@ export default class Chartt extends React.Component {
     render() {
         return (
             <div id="chart">
-                <Chart options={this.state.options} series={this.state.series} type="line" height={350} width={600}/>
+                <Chart options={this.state.options} series={this.state.series} type="line" height={400} width={600}/>
             </div>)
     }
 }
