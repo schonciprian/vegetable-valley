@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import Chart from "./Chart";
+import ForecastChart from "./ForecastChart";
 import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
 import WeatherIcons from "./WeatherIcons";
 
@@ -11,17 +11,17 @@ function TemperatureChart() {
             ? <div className="charts">
                 <div className="chart">
                     <WeatherIcons />
-                    <Chart data={weatherForecastData.avgTemp} title={'Daily average temperature'} color={"#ff8c00"}/>
+                    <ForecastChart data={weatherForecastData.avgTemp} title={'Daily average temperature'} color={"#ff8c00"}/>
                 </div>
 
                 <div className="chart">
                     <WeatherIcons />
-                    <Chart data={weatherForecastData.maxTemp} title={'Daily max temperature'} color={"#d40505"}/>
+                    <ForecastChart data={weatherForecastData.maxTemp} title={'Daily max temperature'} color={"#d40505"}/>
                 </div>
 
                 <div className="chart">
                     <WeatherIcons />
-                    <Chart data={weatherForecastData.minTemp} title={'Daily min temperature'} color={"#00adfc"}/>
+                    <ForecastChart data={weatherForecastData.minTemp} title={'Daily min temperature'} color={"#00adfc"}/>
                 </div>
 
                 {/*<Chart data={weatherForecastData.wind} title={'Daily min temperature'} color={"#00adfc"}/>*/}
