@@ -127,9 +127,9 @@ export default function ForecastChart(props) {
                 },
             },
             yaxis: {
-                min: 5,
-                max: 20,
-                tickAmount: 3,
+                min: props.chartYAxisValues.min,
+                max: props.chartYAxisValues.max,
+                tickAmount: props.chartYAxisValues.tickAmount,
                 labels: {
                     style: {
                         colors: ['#eee'],
