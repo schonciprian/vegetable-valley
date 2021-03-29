@@ -11,6 +11,7 @@ export const WeatherForecastDataProvider = (props) => {
         avgTemp: [],
         maxTemp: [],
         minTemp: [],
+        weatherIcons: []
     });
 
     useEffect(() => {
@@ -27,7 +28,7 @@ export const WeatherForecastDataProvider = (props) => {
                 weatherForecastData.avgTemp.length = 0;
                 weatherForecastData.maxTemp.length = 0;
                 weatherForecastData.minTemp.length = 0;
-
+                weatherForecastData.weatherIcons.length = 0;
                 fillWeatherForecastDataWithTemperature(result)
             })
     })
@@ -37,6 +38,7 @@ export const WeatherForecastDataProvider = (props) => {
             weatherForecastData.avgTemp.push(dayData.temp.day)
             weatherForecastData.maxTemp.push(dayData.temp.max)
             weatherForecastData.minTemp.push(dayData.temp.min)
+            weatherForecastData.weatherIcons.push(dayData.weather[0].icon);
         })
     }
 

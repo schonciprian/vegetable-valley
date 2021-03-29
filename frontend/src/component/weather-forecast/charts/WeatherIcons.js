@@ -1,16 +1,14 @@
 import React from 'react';
 
 function WeatherIcons(props) {
+
+    const createIcons = (listIfIcons, index) => {
+        return listIfIcons.map((icon) => (<img key={index} src={`https://openweathermap.org/img/w/${icon}.png`} alt=""/>))
+    }
+
     return (
         <div className="icons">
-            <img src="https://openweathermap.org/img/w/01d.png" alt=""/>
-            <img src="https://openweathermap.org/img/w/02d.png" alt=""/>
-            <img src="https://openweathermap.org/img/w/02d.png" alt=""/>
-            <img src="https://openweathermap.org/img/w/04d.png" alt=""/>
-            <img src="https://openweathermap.org/img/w/03d.png" alt=""/>
-            <img src="https://openweathermap.org/img/w/01d.png" alt=""/>
-            <img src="https://openweathermap.org/img/w/02d.png" alt=""/>
-            <img src="https://openweathermap.org/img/w/03d.png" alt=""/>
+            {createIcons(props.weatherIcons)}
         </div>
     );
 }
