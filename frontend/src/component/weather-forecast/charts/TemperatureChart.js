@@ -12,11 +12,11 @@ function TemperatureChart() {
         let minTemps = [];
 
         weatherForecastData.maxTemp.forEach((number) => {
-            maxTemps.push(Math.ceil(number / dataSpacing) * dataSpacing + dataSpacing)
+            maxTemps.push(Math.round(number / dataSpacing) * dataSpacing + dataSpacing)
         });
 
         weatherForecastData.minTemp.forEach((number) => {
-            minTemps.push(Math.floor(number / dataSpacing) * dataSpacing - dataSpacing)
+            minTemps.push(Math.round(number / dataSpacing) * dataSpacing - dataSpacing)
         })
 
         let max = Math.max(...maxTemps);
