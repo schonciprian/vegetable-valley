@@ -24,7 +24,9 @@ export default function CitySelectorComponent(props) {
             .then(response => {
                 setWeatherForecastData(prevData => ({
                     ...prevData,
-                    city: response.data.name
+                    city: response.data.name,
+                    lat: response.data.coord.lat,
+                    long: response.data.coord.lon,
                 }))
                 setLoading(false);
                 hideCitySelection()
