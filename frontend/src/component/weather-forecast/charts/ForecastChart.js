@@ -2,12 +2,9 @@ import React from "react";
 import Chart from "react-apexcharts";
 
 export default function ForecastChart(props) {
-    const chartSettings = {
-        series: [{
-            name: "Temperature",
-            data: props.data,
-        }],
-        options: {
+
+    return <div className="chart">
+        <Chart options={{
             chart: {
                 background: '#1B223E',
                 height: 350,
@@ -149,12 +146,13 @@ export default function ForecastChart(props) {
                     color: '#eee',
                 },
             }
-        },
-    };
-
-    return (
-        <div id="chart">
-            <Chart options={chartSettings.options} series={chartSettings.series} type="line" height={400} width={600}/>
-        </div>
-    );
+        }}
+               series={[{
+                   name: "Temperature",
+                   data: props.data,
+               }]}
+               type="line"
+               height={400}
+               width={600}/>
+    </div>
 }
