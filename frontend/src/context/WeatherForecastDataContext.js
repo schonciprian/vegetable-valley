@@ -19,30 +19,29 @@ export const WeatherForecastDataProvider = (props) => {
             .then(result => {
                 fillWeatherForecastDataWithTemperature(result)
             })
-    })
-
-    useEffect(() => {
-        axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherForecastData.lat}&lon=${weatherForecastData.long}&units=metric&exclude=minutely,hourly&appid=f913779188ecd17807fa0473780a29fb`)
-            .then(result => {
-                // Prevent stacking data need to empty the arrays
-                weatherForecastData.avgTemp.length = 0;
-                weatherForecastData.maxTemp.length = 0;
-                weatherForecastData.minTemp.length = 0;
-                weatherForecastData.weatherIcons.length = 0;
-                fillWeatherForecastDataWithTemperature(result)
-            })
-    })
+    }, [weatherForecastData.lat, weatherForecastData.long])
 
     const fillWeatherForecastDataWithTemperature = (result) => {
-        result.data.daily.forEach((dayData) => {
-            weatherForecastData.avgTemp.push(dayData.temp.day)
-            weatherForecastData.maxTemp.push(dayData.temp.max)
-            weatherForecastData.minTemp.push(dayData.temp.min)
-            weatherForecastData.weatherIcons.push(dayData.weather[0].icon);
-        })
-    }
+        let avgTemp = []
+        let minTemp = []
+        let maxTemp = []
+        let weatherIcons = []
 
-    console.log(weatherForecastData);
+        result.data.daily.forEach((dayData) => {
+            avgTemp.push(dayData.temp.day)
+            maxTemp.push(dayData.temp.max)
+            minTemp.push(dayData.temp.min)
+            weatherIcons.push(dayData.weather[0].icon);
+        })
+
+        setWeatherForecastData(prevData => ({
+            ...prevData,
+            avgTemp: avgTemp,
+            maxTemp: maxTemp,
+            minTemp: minTemp,
+            weatherIcons: weatherIcons,
+        }))
+    }
 
     return (
         <WeatherForecastDataContext.Provider value={[weatherForecastData, setWeatherForecastData]}>
