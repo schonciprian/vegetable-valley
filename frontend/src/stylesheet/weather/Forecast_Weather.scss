@@ -10,7 +10,7 @@
   text-align: center;
 }
 
-@mixin gradientAnimation( $start, $end, $transTime ){
+@mixin gradientAnimation( $start, $end, $transTime ) {
   background-size: 100%;
   background-color: $background-color-dark;
 
@@ -22,7 +22,8 @@
     display: block;
     height: 100%;
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     opacity: 0;
     width: 100%;
     z-index: -1;
@@ -33,6 +34,50 @@
   &:hover {
     &:before {
       opacity: 1;
+    }
+  }
+}
+
+@mixin locationButton($width) {
+  .location-container {
+    width: 100%;
+    padding: 15px 35px;
+    margin: 0 0 40px;
+    --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
+    text-align: center;
+
+    .location-button {
+      outline: none;
+      width: $width;
+
+      padding: 10px;
+
+      border: none;
+      border-radius: $border-radius-smaller;
+
+      font: 600 18px $font-family-text;
+
+      background-image: var(--gradient);
+      color: $color-text;
+
+      -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+      transition: transform 200ms ease;
+
+      cursor: pointer;
+
+      &:hover {
+        -webkit-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+        transform: scale(0.95);
+      }
+
+      .location-icon {
+        display: inline-block;
+        height: 1em;
+        width: auto;
+        margin-right: 5px;
+      }
     }
   }
 }
@@ -236,42 +281,9 @@
     }
   }
 
-  .location-container {
-    width: 70%;
-    padding: 15px 35px;
-
-    .location-button {
-      outline: none;
-      width: 100%;
-
-      padding: 10px;
-
-      border: none;
-      border-radius: $border-radius-smaller;
-
-      font: 600 18px $font-family-text;
-
-      background-image: var(--gradient);
-      color: $color-text;
-
-      -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
-      box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
-      transition: transform 200ms ease;
-
-      cursor: pointer;
-
-      &:hover {
-        -webkit-transform: scale(0.95);
-        -ms-transform: scale(0.95);
-        transform: scale(0.95);
-      }
-
-      .location-icon {
-        display: inline-block;
-        height: 1em;
-        width: auto;
-        margin-right: 5px;
-      }
-    }
-  }
+  @include locationButton(70%)
 }
+
+@include locationButton(40%)
+
+
