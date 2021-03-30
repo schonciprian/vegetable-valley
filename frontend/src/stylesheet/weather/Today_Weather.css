@@ -154,4 +154,8 @@
   margin-bottom: 150px !important;
 }
 
+.apexcharts-toolbar {
+  z-index: 1 !important;
+}
+
 /*# sourceMappingURL=Today_Weather.css.map */

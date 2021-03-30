@@ -176,3 +176,7 @@ $background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494
 .apexcharts-svg text {
   margin-bottom: 150px !important;
 }
+
+.apexcharts-toolbar{
+  z-index: 1 !important;
+}
