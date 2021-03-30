@@ -11,25 +11,19 @@ import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataCo
 
 export default function Weather() {
     const [weather, setWeather] = useState([]);
-    const [weatherForecastData, setWeatherForecastData] = useContext(WeatherForecastDataContext);
+    const [weatherForecastData] = useContext(WeatherForecastDataContext);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios(`https://api.openweathermap.org/data/2.5/weather?q=${weatherForecastData.city}&appid=f913779188ecd17807fa0473780a29fb`);
-                setWeatherForecastData(prevData => ({
-                    ...prevData,
-                    lat: response.data.coord.lat,
-                    long: response.data.coord.lon
-                }))
-
                 setWeather(response.data);
             } catch (error) {
                 console.log(error.response)
             }
         };
         fetchData();
-    }, [weatherForecastData.city, setWeatherForecastData]);
+    }, [weatherForecastData.city]);
 
 
     if (weather.length === 0) {
