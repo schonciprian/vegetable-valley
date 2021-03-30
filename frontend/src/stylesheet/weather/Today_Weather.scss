@@ -138,7 +138,7 @@ $background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494
     }
   }
 }
-#chart {
+.chart {
   @extend %display-flex-center;
 
   margin-bottom: 50px;

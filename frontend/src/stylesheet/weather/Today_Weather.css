@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-#chart {
+.chart {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,10 +123,10 @@
   margin: 0 18px 0 0;
 }
 
-#chart {
+.chart {
   margin-bottom: 50px;
 }
-#chart .apexcharts-canvas {
+.chart .apexcharts-canvas {
   border-radius: 20px;
   background-color: #151A30;
   padding: 30px;
