@@ -21,6 +21,18 @@ export const WeatherForecastDataProvider = (props) => {
             })
     }, [weatherForecastData.lat, weatherForecastData.long])
 
+    useEffect(() => {
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${weatherForecastData.city}&appid=f913779188ecd17807fa0473780a29fb`)
+            .then(response => {
+                setWeatherForecastData(prevData => ({
+                    ...prevData,
+                    lat: response.data.coord.lat,
+                    long: response.data.coord.lon
+                }))
+            })
+
+    }, [weatherForecastData.city])
+
     const fillWeatherForecastDataWithTemperature = (result) => {
         let avgTemp = []
         let minTemp = []
