@@ -29,7 +29,7 @@ export default function Weather() {
             }
         };
         fetchData();
-    }, [weatherForecastData.city]);
+    }, [weatherForecastData.city, setWeatherForecastData]);
 
 
     if (weather.length === 0) {
