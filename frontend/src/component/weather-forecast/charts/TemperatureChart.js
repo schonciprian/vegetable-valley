@@ -5,6 +5,7 @@ import WeatherIcons from "./WeatherIcons";
 import {showCitySelection} from "../weather/CitySelectorHelperVariables";
 import {MapPin} from "react-feather";
 import CitySelectorComponent from "../weather/CitySelectorComponent";
+import '../../../stylesheet/weather/Forecast_Weather.css';
 
 function TemperatureChart() {
     const [weatherForecastData] = useContext(WeatherForecastDataContext);
