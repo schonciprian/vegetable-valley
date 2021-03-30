@@ -2,6 +2,9 @@ import React, {useContext} from 'react';
 import ForecastChart from "./ForecastChart";
 import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
 import WeatherIcons from "./WeatherIcons";
+import {showCitySelection} from "../weather/CitySelectorHelperVariables";
+import {MapPin} from "react-feather";
+import CitySelectorComponent from "../weather/CitySelectorComponent";
 
 function TemperatureChart() {
     const [weatherForecastData] = useContext(WeatherForecastDataContext);
@@ -33,6 +36,14 @@ function TemperatureChart() {
     return (
         weatherForecastData.avgTemp
             ? <div className="charts">
+                <div className="location-container">
+                    <button className="location-button"
+                            onClick={showCitySelection}>
+                        <MapPin className="location-icon"/>
+                        <span>Change location</span>
+                    </button>
+                </div>
+                <CitySelectorComponent/>
                 <div className="chart">
                     <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
                     <ForecastChart data={weatherForecastData.avgTemp}
