@@ -11,7 +11,8 @@ export const WeatherForecastDataProvider = (props) => {
         avgTemp: [],
         maxTemp: [],
         minTemp: [],
-        weatherIcons: []
+        weatherIcons: [],
+        wind: [],
     });
 
     useEffect(() => {
@@ -38,12 +39,14 @@ export const WeatherForecastDataProvider = (props) => {
         let minTemp = []
         let maxTemp = []
         let weatherIcons = []
+        let wind = []
 
         result.data.daily.forEach((dayData) => {
-            avgTemp.push(dayData.temp.day)
-            maxTemp.push(dayData.temp.max)
-            minTemp.push(dayData.temp.min)
+            avgTemp.push(dayData.temp.day);
+            maxTemp.push(dayData.temp.max);
+            minTemp.push(dayData.temp.min);
             weatherIcons.push(dayData.weather[0].icon);
+            wind.push((dayData.wind_speed * 3.6).toFixed(2));
         })
 
         setWeatherForecastData(prevData => ({
@@ -52,6 +55,7 @@ export const WeatherForecastDataProvider = (props) => {
             maxTemp: maxTemp,
             minTemp: minTemp,
             weatherIcons: weatherIcons,
+            wind: wind,
         }))
     }
 
