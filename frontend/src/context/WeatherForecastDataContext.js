@@ -15,6 +15,7 @@ export const WeatherForecastDataProvider = (props) => {
         weatherIcons: [],
         wind: [],
         dayNames: [],
+        rain: [],
     });
 
     useEffect(() => {
@@ -43,9 +44,9 @@ export const WeatherForecastDataProvider = (props) => {
         let weatherIcons = []
         let wind = []
         let dayNames = []
+        let rain = []
 
         result.data.daily.forEach((dayData) => {
-            console.log(dayData);
             avgTemp.push(dayData.temp.day);
             maxTemp.push(dayData.temp.max);
             minTemp.push(dayData.temp.min);
@@ -54,6 +55,8 @@ export const WeatherForecastDataProvider = (props) => {
 
             let sunrise = new Date((dayData.sunrise) * 1000);
             dayNames.push([`${getMonth(sunrise.getMonth())} ${sunrise.getDate()} - ${getDayName(sunrise.getDay()).substring(0,3)}`]);
+
+            rain.push(dayData.rain ?? 0);
         })
 
         setWeatherForecastData(prevData => ({
@@ -64,6 +67,7 @@ export const WeatherForecastDataProvider = (props) => {
             weatherIcons: weatherIcons,
             wind: wind,
             dayNames: dayNames,
+            rain: rain,
         }))
     }
 
