@@ -28,7 +28,7 @@ export default function WeatherForecastComponent(props) {
     }, [weatherForecastData])
 
 
-    const {timezone_offset, daily} = weatherForecast;
+    const {daily} = weatherForecast;
     let dailyForecast = [];
 
     const [showDayFromIndex, setShowDayFromIndex] = useState(0);
