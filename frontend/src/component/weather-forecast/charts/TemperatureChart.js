@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import ForecastChart from "./ForecastChart";
+import ChartComponent from "./ChartComponent";
 import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
 import WeatherIcons from "./WeatherIcons";
 import {showCitySelection} from "../weather/CitySelectorHelperVariables";
@@ -42,33 +42,34 @@ function TemperatureChart() {
                             onClick={showCitySelection}>
                         <MapPin className="location-icon"/>
                         <span>Change location</span>
+                        <span> from {weatherForecastData.city}</span>
                     </button>
                 </div>
                 <CitySelectorComponent/>
                 <div className="chart">
                     <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
-                    <ForecastChart data={weatherForecastData.avgTemp}
-                                   title={'Daily average temperature'}
-                                   color={"#ff8c00"}
-                                   chartYAxisValues={chartYAxisValues()}
+                    <ChartComponent data={weatherForecastData.avgTemp}
+                                    title={'Daily average temperature'}
+                                    color={"#ff8c00"}
+                                    chartYAxisValues={chartYAxisValues()}
                     />
                 </div>
 
                 <div className="chart">
                     <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
-                    <ForecastChart data={weatherForecastData.maxTemp}
-                                   title={'Daily max temperature'}
-                                   color={"#d40505"}
-                                   chartYAxisValues={chartYAxisValues()}
+                    <ChartComponent data={weatherForecastData.maxTemp}
+                                    title={'Daily max temperature'}
+                                    color={"#d40505"}
+                                    chartYAxisValues={chartYAxisValues()}
                     />
                 </div>
 
                 <div className="chart">
                     <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
-                    <ForecastChart data={weatherForecastData.minTemp}
-                                   title={'Daily min temperature'}
-                                   color={"#00adfc"}
-                                   chartYAxisValues={chartYAxisValues()}
+                    <ChartComponent data={weatherForecastData.minTemp}
+                                    title={'Daily min temperature'}
+                                    color={"#00adfc"}
+                                    chartYAxisValues={chartYAxisValues()}
                     />
                 </div>
 

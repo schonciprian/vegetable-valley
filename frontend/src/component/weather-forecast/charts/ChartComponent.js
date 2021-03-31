@@ -1,7 +1,7 @@
 import React from "react";
 import Chart from "react-apexcharts";
 
-export default function ForecastChart(props) {
+export default function ChartComponent(props) {
 
     return <div className="chart">
         <Chart options={{
