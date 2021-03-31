@@ -6,7 +6,7 @@
 }
 
 .charts-info-box {
-  width: 80%;
+  width: 60%;
   margin: 40px auto 0;
   padding: 20px 20px 0;
   font-family: "Montserrat", sans-serif;
@@ -14,13 +14,23 @@
   background-color: #151A30;
   border-radius: 20px;
 }
+.charts-info-box h1 {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 20px;
+  color: #eeeeee;
+}
+.charts-info-box h1 span {
+  color: darkorange;
+}
 .charts-info-box .chart-type-selection {
+  width: fit-content;
   margin: 0 auto;
-  background-color: #1B223E;
-  border-radius: 10px;
 }
 .charts-info-box .chart-type-selection ul {
+  flex-wrap: wrap;
   margin: 0;
+  padding: 0;
   list-style: none;
 }
 .charts-info-box .chart-type-selection ul li {
