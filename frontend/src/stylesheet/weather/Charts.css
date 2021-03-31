@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+.charts-info-box .chart-type-selection ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.charts-info-box {
+  width: 80%;
+  margin: 40px auto 0;
+  padding: 20px 20px 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  background-color: #151A30;
+  border-radius: 20px;
+}
+.charts-info-box .chart-type-selection {
+  margin: 0 auto;
+  background-color: #1B223E;
+  border-radius: 10px;
+}
+.charts-info-box .chart-type-selection ul {
+  margin: 0;
+  list-style: none;
+}
+.charts-info-box .chart-type-selection ul li {
+  background-color: #4B5682;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #eeeeee;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=Charts.css.map */

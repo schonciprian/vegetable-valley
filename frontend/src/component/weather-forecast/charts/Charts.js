@@ -5,6 +5,7 @@ import {showCitySelection} from "../CitySelectorHelperVariables";
 import {MapPin} from "react-feather";
 import CitySelectorComponent from "../CitySelectorComponent";
 import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
+import '../../../stylesheet/weather/Charts.css';
 
 function Charts(props) {
     const [weatherForecastData] = useContext(WeatherForecastDataContext);
