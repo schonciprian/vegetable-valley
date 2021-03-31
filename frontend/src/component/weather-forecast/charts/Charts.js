@@ -25,6 +25,8 @@ function Charts(props) {
     return (
         <div>
             <div className="charts-info-box">
+                <h1>Currently selected: <span>{weatherForecastData.city}</span></h1>
+
                 <div className="chart-type-selection">
                     <ul>
                         <li id="Temperature" onClick={event => {setSelectedChart(event.target.id); console.log(event.target.id)}}>Temperature</li>
@@ -44,7 +46,6 @@ function Charts(props) {
                             onClick={showCitySelection}>
                         <MapPin className="location-icon"/>
                         <span>Change location</span>
-                        <span> from {weatherForecastData.city}</span>
                     </button>
                 </div>
             </div>
