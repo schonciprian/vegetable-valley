@@ -43,5 +43,12 @@
   color: #eeeeee;
   cursor: pointer;
 }
+.charts-info-box .chart-type-selection ul li:hover {
+  transform: scale(0.95);
+  transition: transform 200ms ease;
+}
+.charts-info-box .chart-type-selection ul .active {
+  color: darkorange;
+}
 
 /*# sourceMappingURL=Charts.css.map */
