@@ -23,16 +23,29 @@ function Charts(props) {
 
     return (
         <div>
-            {/*********************/}
-            {/** Location button **/}
-            {/*********************/}
-            <div className="location-container">
-                <button className="location-button"
-                        onClick={showCitySelection}>
-                    <MapPin className="location-icon"/>
-                    <span>Change location</span>
-                    <span> from {weatherForecastData.city}</span>
-                </button>
+            <div className="charts-info-box">
+                <div className="chart-type-selection">
+                    <ul>
+                        <li id="Temperature" onClick={event => {setSelectedChart(event.target.id); console.log(event.target.id)}}>Temperature</li>
+                        <li id="Temperature" onClick={event => {setSelectedChart(event.target.id); console.log(event.target.id)}}>Temperature</li>
+                        <li id="Temperature" onClick={event => {setSelectedChart(event.target.id); console.log(event.target.id)}}>Temperature</li>
+                        <li id="Wind" onClick={event => setSelectedChart(event.target.id)}>Wind</li>
+                        <li id="Wind" onClick={event => setSelectedChart(event.target.id)}>Wind</li>
+                        <li id="Wind" onClick={event => setSelectedChart(event.target.id)}>Wind</li>
+                    </ul>
+                </div>
+
+                {/*********************/}
+                {/** Location button **/}
+                {/*********************/}
+                <div className="location-container">
+                    <button className="location-button"
+                            onClick={showCitySelection}>
+                        <MapPin className="location-icon"/>
+                        <span>Change location</span>
+                        <span> from {weatherForecastData.city}</span>
+                    </button>
+                </div>
             </div>
 
             {/************************/}
@@ -43,9 +56,6 @@ function Charts(props) {
             {/******************************/}
             {/** Rendered chart component **/}
             {/******************************/}
-            <button onClick={() => setSelectedChart(selectedChart === "Temperature" ? "Wind" : "Temperature")}>
-                Change charts
-            </button>
             {renderSelectedChartComponent()}
         </div>
     );
