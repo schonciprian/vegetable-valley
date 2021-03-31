@@ -60,6 +60,26 @@ function Charts() {
                             onClick={event => setSelectedChart(event.target.id)}>
                             Rain
                         </li>
+                        <li id="Cloudiness"
+                            className={selectedChart === "Cloudiness" ? "active" : undefined}
+                            onClick={event => setSelectedChart(event.target.id)}>
+                            Cloudiness
+                        </li>
+                        <li id="Humidity"
+                            className={selectedChart === "Humidity" ? "active" : undefined}
+                            onClick={event => setSelectedChart(event.target.id)}>
+                            Humidity
+                        </li>
+                        <li id="Pressure"
+                            className={selectedChart === "Pressure" ? "active" : undefined}
+                            onClick={event => setSelectedChart(event.target.id)}>
+                            Pressure
+                        </li>
+                        <li id="UVI"
+                            className={selectedChart === "UVI" ? "active" : undefined}
+                            onClick={event => setSelectedChart(event.target.id)}>
+                            UV Index
+                        </li>
                     </ul>
                 </div>
 
