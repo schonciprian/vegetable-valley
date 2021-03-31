@@ -23,6 +23,9 @@ function Charts(props) {
 
     return (
         <div>
+            {/*********************/}
+            {/** Location button **/}
+            {/*********************/}
             <div className="location-container">
                 <button className="location-button"
                         onClick={showCitySelection}>
@@ -31,8 +34,18 @@ function Charts(props) {
                     <span> from {weatherForecastData.city}</span>
                 </button>
             </div>
+
+            {/************************/}
+            {/** Locations (hidden) **/}
+            {/************************/}
             <CitySelectorComponent/>
-            <div style={{color: "darkorange"}} onClick={() => setSelectedChart(selectedChart === "Temperature" ? "Wind" : "Temperature")}>Click me</div>
+
+            {/******************************/}
+            {/** Rendered chart component **/}
+            {/******************************/}
+            <button onClick={() => setSelectedChart(selectedChart === "Temperature" ? "Wind" : "Temperature")}>
+                Change charts
+            </button>
             {renderSelectedChartComponent()}
         </div>
     );
