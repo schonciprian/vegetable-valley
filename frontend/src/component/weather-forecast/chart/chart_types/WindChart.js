@@ -33,7 +33,7 @@ function WindChart() {
                 <ChartComponent data={weatherForecastData.wind}
                                 seriesName={"Wind km/h"}
                                 title={'Daily average wind speed'}
-                                color={"#ff8c00"}
+                                color={"#e0d30b"}
                                 chartYAxisValues={chartYAxisValues()}
                                 xAxisCategories={weatherForecastData.dayNames}
                                 unitOfMeasure={' km/h'}
