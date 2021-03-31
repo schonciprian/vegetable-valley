@@ -49,7 +49,7 @@ export default function WeatherForecastComponent(props) {
                 dailyTemp: (oneDay.temp.day).toFixed(1),
                 dayTemp: oneDay.temp.day,
                 nightTemp: oneDay.temp.night,
-                wind: (oneDay.wind_speed).toFixed(1),
+                wind: (oneDay.wind_speed * 3.6).toFixed(1),
                 humidity: (oneDay.humidity).toFixed(0),
                 precipitation: (oneDay.pop * 100).toFixed(0),
                 rain: (oneDay.rain) ? (oneDay.rain).toFixed(1) : 0,
