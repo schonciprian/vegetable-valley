@@ -88,7 +88,8 @@
   display: none;
   position: absolute;
   right: 15px;
-  background-color: $background-color-dark;
+  background-color: $background-color-normal;
+  border: 1px solid $color-highlight;
   border-top: none;
   min-width: fit-content;
   white-space: nowrap;

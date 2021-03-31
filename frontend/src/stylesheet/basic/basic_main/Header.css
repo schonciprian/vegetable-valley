@@ -81,7 +81,8 @@
   display: none;
   position: absolute;
   right: 15px;
-  background-color: #151A30;
+  background-color: #1B223E;
+  border: 1px solid darkorange;
   border-top: none;
   min-width: fit-content;
   white-space: nowrap;
