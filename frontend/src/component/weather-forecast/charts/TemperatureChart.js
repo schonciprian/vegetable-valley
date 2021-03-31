@@ -1,8 +1,16 @@
 import React, {useContext} from 'react';
-import ChartComponent from "./ChartComponent";
+
+// Data context
 import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
+
+// Chart related
+import ChartComponent from "./ChartComponent";
 import WeatherIcons from "./WeatherIcons";
+
+// Stylesheets
 import '../../../stylesheet/weather/Forecast_Weather.css';
+
+//**************************************************//
 
 function TemperatureChart() {
     const [weatherForecastData] = useContext(WeatherForecastDataContext);
@@ -32,8 +40,7 @@ function TemperatureChart() {
     }
 
     return (
-        weatherForecastData.avgTemp
-            ? <div className="charts">
+            <div className="charts">
                 <div className="chart">
                     <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
                     <ChartComponent data={weatherForecastData.avgTemp}
@@ -68,7 +75,6 @@ function TemperatureChart() {
                 </div>
 
             </div>
-            : <React.Fragment/>
     );
 }
 
