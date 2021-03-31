@@ -7,9 +7,6 @@ import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataCo
 import ChartComponent from "./ChartComponent";
 import WeatherIcons from "./WeatherIcons";
 
-// Stylesheets
-import '../../../stylesheet/weather/Forecast_Weather.css';
-
 //**************************************************//
 
 function TemperatureChart() {
