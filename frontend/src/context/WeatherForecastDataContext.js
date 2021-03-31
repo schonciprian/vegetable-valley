@@ -46,7 +46,7 @@ export const WeatherForecastDataProvider = (props) => {
             maxTemp.push(dayData.temp.max);
             minTemp.push(dayData.temp.min);
             weatherIcons.push(dayData.weather[0].icon);
-            wind.push((dayData.wind_speed * 3.6).toFixed(2));
+            wind.push((dayData.wind_speed * 3.6).toFixed(0));
         })
 
         setWeatherForecastData(prevData => ({
