@@ -4,8 +4,8 @@ import React, {useContext, useState} from 'react';
 import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
 
 // Chart components by type
-import TemperatureChart from "./TemperatureChart";
-import WindChart from "./WindChart";
+import TemperatureChart from "./chart_types/TemperatureChart";
+import WindChart from "./chart_types/WindChart";
 
 // City selector related
 import CitySelectorComponent from "../CitySelectorComponent";

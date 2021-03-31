@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
 
 // Data context
-import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
+import {WeatherForecastDataContext} from "../../../../context/WeatherForecastDataContext";
 
 // Chart related
-import ChartComponent from "./ChartComponent";
-import WeatherIcons from "./WeatherIcons";
+import ChartComponent from "../ChartComponent";
+import WeatherIcons from "../WeatherIcons";
 
 //**************************************************//
 
