@@ -37,8 +37,8 @@ export default function WeatherForecastComponent(props) {
 
     if (weatherForecast.length !== 0 ) {daily.forEach( (oneDay, index) => {
         if (index > showDayFromIndex && index <= showDayToIndex) {
-            let sunrise = new Date((oneDay.sunrise + timezone_offset - 3600) * 1000);
-            let sunset = new Date((oneDay.sunset + timezone_offset - 3600) * 1000);
+            let sunrise = new Date((oneDay.sunrise) * 1000);
+            let sunset = new Date((oneDay.sunset) * 1000);
 
             dailyForecast.push({
                 month: sunrise.getMonth() + 1,
