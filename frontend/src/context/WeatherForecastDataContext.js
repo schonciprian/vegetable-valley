@@ -1,5 +1,6 @@
 import React, {useState, createContext, useEffect} from "react";
 import axios from "axios";
+import {getDayName} from "../component/weather-forecast/weather/TodayWeatherFunctions";
 
 export const WeatherForecastDataContext = createContext([]);
 
@@ -13,6 +14,7 @@ export const WeatherForecastDataProvider = (props) => {
         minTemp: [],
         weatherIcons: [],
         wind: [],
+        dayNames: [],
     });
 
     useEffect(() => {
@@ -40,6 +42,7 @@ export const WeatherForecastDataProvider = (props) => {
         let maxTemp = []
         let weatherIcons = []
         let wind = []
+        let dayNames = []
 
         result.data.daily.forEach((dayData) => {
             avgTemp.push(dayData.temp.day);
@@ -47,6 +50,9 @@ export const WeatherForecastDataProvider = (props) => {
             minTemp.push(dayData.temp.min);
             weatherIcons.push(dayData.weather[0].icon);
             wind.push((dayData.wind_speed * 3.6).toFixed(0));
+
+            let sunrise = new Date((dayData.sunrise) * 1000);
+            dayNames.push(getDayName(sunrise.getDay()));
         })
 
         setWeatherForecastData(prevData => ({
@@ -56,6 +62,7 @@ export const WeatherForecastDataProvider = (props) => {
             minTemp: minTemp,
             weatherIcons: weatherIcons,
             wind: wind,
+            dayNames: dayNames,
         }))
     }
 
