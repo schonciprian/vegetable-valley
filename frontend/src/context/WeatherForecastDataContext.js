@@ -1,6 +1,6 @@
 import React, {useState, createContext, useEffect} from "react";
 import axios from "axios";
-import {getDayName} from "../component/weather-forecast/weather/TodayWeatherFunctions";
+import {getDayName, getMonth} from "../component/weather-forecast/weather/TodayWeatherFunctions";
 
 export const WeatherForecastDataContext = createContext([]);
 
@@ -52,7 +52,7 @@ export const WeatherForecastDataProvider = (props) => {
             wind.push((dayData.wind_speed * 3.6).toFixed(0));
 
             let sunrise = new Date((dayData.sunrise) * 1000);
-            dayNames.push(getDayName(sunrise.getDay()));
+            dayNames.push([`${getMonth(sunrise.getMonth())} ${sunrise.getDate()} - ${getDayName(sunrise.getDay()).substring(0,3)}`]);
         })
 
         setWeatherForecastData(prevData => ({
