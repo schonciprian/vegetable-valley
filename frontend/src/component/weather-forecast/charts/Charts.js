@@ -1,9 +1,9 @@
 import React, {useContext, useState} from 'react';
 import TemperatureChart from "./TemperatureChart";
 import WindChart from "./WindChart";
-import {showCitySelection} from "../weather/CitySelectorHelperVariables";
+import {showCitySelection} from "../CitySelectorHelperVariables";
 import {MapPin} from "react-feather";
-import CitySelectorComponent from "../weather/CitySelectorComponent";
+import CitySelectorComponent from "../CitySelectorComponent";
 import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
 
 function Charts(props) {

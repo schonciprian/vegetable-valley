@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import TodayWeatherComponent from "./TodayWeatherComponent";
 import WeatherForecastComponent from "./WeatherForecastComponent";
-import CitySelectorComponent from "./CitySelectorComponent";
+import CitySelectorComponent from "../CitySelectorComponent";
 import '../../../stylesheet/weather/Today_Weather.css';
 import '../../../stylesheet/weather/Forecast_Weather.css';
 import '../../../stylesheet/weather/City_Selector.css';

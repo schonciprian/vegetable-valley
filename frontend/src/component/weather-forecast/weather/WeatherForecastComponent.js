@@ -12,7 +12,7 @@ import {getDateOfDailyForecast,
         getRainDailyForecast,
         getSnowDailyForecast,
         getWindDailyForecast} from "./WeatherForecastGetterFunctions";
-import {showCitySelection} from "./CitySelectorHelperVariables";
+import {showCitySelection} from "../CitySelectorHelperVariables";
 import {FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
 import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
 

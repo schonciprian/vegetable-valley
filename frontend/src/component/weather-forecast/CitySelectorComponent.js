@@ -7,8 +7,8 @@ import {foreignCities,
 import {Search} from "react-feather";
 import {FaSpinner} from "react-icons/fa";
 
-import '../../../stylesheet/error/Error.css';
-import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
+import '../../stylesheet/error/Error.css';
+import {WeatherForecastDataContext} from "../../context/WeatherForecastDataContext";
 
 export default function CitySelectorComponent(props) {
     const [, setWeatherForecastData] = useContext(WeatherForecastDataContext);
