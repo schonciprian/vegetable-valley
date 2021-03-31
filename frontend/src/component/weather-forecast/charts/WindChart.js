@@ -13,6 +13,7 @@ function WindChart(props) {
             <div className="chart">
                 <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
                 <ChartComponent data={weatherForecastData.wind}
+                                seriesName={"Wind km/h"}
                                 title={'Daily average wind speed'}
                                 color={"#ff8c00"}
                                 chartYAxisValues={{

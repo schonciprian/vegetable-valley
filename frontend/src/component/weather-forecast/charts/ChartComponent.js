@@ -148,7 +148,7 @@ export default function ChartComponent(props) {
             }
         }}
                series={[{
-                   name: "Temperature",
+                   name: props.seriesName,
                    data: props.data,
                }]}
                type="line"
