@@ -93,7 +93,7 @@ export default function ChartComponent(props) {
                 }
             },
             xaxis: {
-                categories: ['Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', "Friday"],
+                categories: props.xAxisCategories,
                 labels: {
                     rotateAlways: true,
                     style: {

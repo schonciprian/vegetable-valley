@@ -35,6 +35,7 @@ function WindChart() {
                                 title={'Daily average wind speed'}
                                 color={"#ff8c00"}
                                 chartYAxisValues={chartYAxisValues()}
+                                xAxisCategories={weatherForecastData.dayNames}
                                 unitOfMeasure={' km/h'}
                 />
             </div>
