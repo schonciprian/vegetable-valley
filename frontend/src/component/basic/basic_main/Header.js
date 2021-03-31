@@ -67,7 +67,7 @@ function Header() {
                 {user["token"] && <div className="dropdown">
                     <button className="dropdown-button">Weather</button>
                     <div className="dropdown-content">
-                        <Link to="/weather-forecast">Weather Forecast</Link>
+                        <Link to="/weather">Weather Summary</Link>
                         <Link to="/charts">Charts</Link>
                     </div>
                 </div>}

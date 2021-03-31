@@ -35,7 +35,7 @@ function App() {
                             </SelectedTypeListProvider>
 
                             <WeatherForecastDataProvider>
-                                <Route exact path="/weather-forecast" component={Weather}/>
+                                <Route exact path="/weather" component={Weather}/>
                                 <Route exact path="/charts" component={Charts}/>
                             </WeatherForecastDataProvider>
                         </LoadingProvider>
