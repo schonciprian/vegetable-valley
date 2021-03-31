@@ -189,7 +189,7 @@
 }
 .forecast-weather-side .location-container {
   width: 100%;
-  padding: 15px 35px;
+  padding: 15px 0;
   margin: 0;
   --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
   text-align: center;
@@ -222,7 +222,7 @@
 
 .location-container {
   width: 100%;
-  padding: 15px 35px;
+  padding: 15px 0;
   margin: 0;
   --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
   text-align: center;
