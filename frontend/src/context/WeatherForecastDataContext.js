@@ -16,6 +16,8 @@ export const WeatherForecastDataProvider = (props) => {
         wind: [],
         dayNames: [],
         rain: [],
+        clouds: [],
+        humidity: [],
     });
 
     useEffect(() => {
@@ -46,6 +48,7 @@ export const WeatherForecastDataProvider = (props) => {
         let dayNames = []
         let rain = []
         let clouds = []
+        let humidity = []
 
         result.data.daily.forEach((dayData) => {
             avgTemp.push(dayData.temp.day);
@@ -59,6 +62,7 @@ export const WeatherForecastDataProvider = (props) => {
 
             rain.push(dayData.rain ?? 0);
             clouds.push(dayData.clouds);
+            humidity.push(dayData.humidity);
         })
 
         setWeatherForecastData(prevData => ({
@@ -71,6 +75,7 @@ export const WeatherForecastDataProvider = (props) => {
             dayNames: dayNames,
             rain: rain,
             clouds: clouds,
+            humidity: humidity,
         }))
     }
 

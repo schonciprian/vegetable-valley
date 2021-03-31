@@ -8,6 +8,7 @@ import TemperatureChart from "./chart_types/TemperatureChart";
 import WindChart from "./chart_types/WindChart";
 import RainChart from "./chart_types/RainChart";
 import CloudsChart from "./chart_types/CloudsChart";
+import HumidityChart from "./chart_types/HumidityChart";
 
 // City selector related
 import CitySelectorComponent from "../CitySelectorComponent";
@@ -33,6 +34,8 @@ function Charts() {
                 return <RainChart/>;
             case "Cloudiness":
                 return <CloudsChart/>;
+            case "Humidity":
+                return <HumidityChart/>;
             default:
                 return <TemperatureChart/>;
         }
