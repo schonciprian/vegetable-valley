@@ -66,7 +66,7 @@ export default function ChartComponent(props) {
                     fontSize: '20px',
                     fontWeight: 'bold',
                     fontFamily: 'Montserrat, sans-serif',
-                    color: '#eee'
+                    color: '#ff8c00'
                 },
                 margin: 50,
             },
