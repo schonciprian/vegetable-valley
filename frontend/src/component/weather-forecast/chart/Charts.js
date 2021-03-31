@@ -7,6 +7,7 @@ import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataCo
 import TemperatureChart from "./chart_types/TemperatureChart";
 import WindChart from "./chart_types/WindChart";
 import RainChart from "./chart_types/RainChart";
+import CloudsChart from "./chart_types/CloudsChart";
 
 // City selector related
 import CitySelectorComponent from "../CitySelectorComponent";
@@ -30,6 +31,8 @@ function Charts() {
                 return <WindChart/>;
             case "Rain":
                 return <RainChart/>;
+            case "Cloudiness":
+                return <CloudsChart/>;
             default:
                 return <TemperatureChart/>;
         }
