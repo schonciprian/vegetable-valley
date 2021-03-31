@@ -34,9 +34,11 @@
   list-style: none;
 }
 .charts-info-box .chart-type-selection ul li {
+  width: 120px;
   background-color: #4B5682;
   margin: 10px;
   padding: 10px;
+  text-align: center;
   border-radius: 10px;
   color: #eeeeee;
   cursor: pointer;
