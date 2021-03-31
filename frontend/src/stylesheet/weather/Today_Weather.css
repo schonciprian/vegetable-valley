@@ -107,7 +107,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .charts .chart {
   position: relative;
@@ -124,7 +124,7 @@
 }
 
 .chart {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .chart .apexcharts-canvas {
   border-radius: 20px;

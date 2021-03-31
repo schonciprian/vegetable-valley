@@ -121,7 +121,7 @@ $background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494
   flex-wrap: wrap;
   flex-direction: row;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 20px;
 
   .chart {
     position: relative;
@@ -141,7 +141,7 @@ $background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494
 .chart {
   @extend %display-flex-center;
 
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 
   .apexcharts-canvas {
     border-radius: 20px;
