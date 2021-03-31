@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import TemperatureChart from "./TemperatureChart";
 import WindChart from "./WindChart";
 import {showCitySelection} from "../weather/CitySelectorHelperVariables";
@@ -15,7 +15,7 @@ function Charts(props) {
             case "Temperature":
                 return <TemperatureChart />;
             case "Wind":
-                return <div>Hello wind</div>;
+                return <WindChart/>;
             default:
                 return <TemperatureChart />;
         }
