@@ -45,9 +45,21 @@ function Charts() {
                 {/*****************/}
                 <div className="chart-type-selection">
                     <ul>
-                        <li id="Temperature" onClick={event => setSelectedChart(event.target.id)}>Temperature</li>
-                        <li id="Wind" onClick={event => setSelectedChart(event.target.id)}>Wind</li>
-                        <li id="Rain" onClick={event => setSelectedChart(event.target.id)}>Rain</li>
+                        <li id="Temperature"
+                            className={selectedChart === "Temperature" ? "active" : undefined}
+                            onClick={event => setSelectedChart(event.target.id)}>
+                            Temperature
+                        </li>
+                        <li id="Wind"
+                            className={selectedChart === "Wind" ? "active" : undefined}
+                            onClick={event => setSelectedChart(event.target.id)}>
+                            Wind
+                        </li>
+                        <li id="Rain"
+                            className={selectedChart === "Rain" ? "active" : undefined}
+                            onClick={event => setSelectedChart(event.target.id)}>
+                            Rain
+                        </li>
                     </ul>
                 </div>
 
