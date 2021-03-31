@@ -20,6 +20,7 @@ function WindChart(props) {
                                     min: 0,
                                     tickAmount: 6,
                                 }}
+                                unitOfMeasure={' km/h'}
                 />
             </div>
         </div>

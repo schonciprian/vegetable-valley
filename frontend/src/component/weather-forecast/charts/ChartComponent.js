@@ -30,7 +30,7 @@ export default function ChartComponent(props) {
                 enabled: true,
                 offsetY: -10,
                 formatter: function (value) {
-                    return value + '°C'
+                    return value + props.unitOfMeasure
                 },
                 style: {
                     fontSize: '14px',

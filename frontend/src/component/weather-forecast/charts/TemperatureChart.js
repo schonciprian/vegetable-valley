@@ -40,6 +40,7 @@ function TemperatureChart() {
                                     title={'Daily average temperature'}
                                     color={"#ff8c00"}
                                     chartYAxisValues={chartYAxisValues()}
+                                    unitOfMeasure={'°C'}
                     />
                 </div>
 
@@ -49,6 +50,7 @@ function TemperatureChart() {
                                     title={'Daily max temperature'}
                                     color={"#d40505"}
                                     chartYAxisValues={chartYAxisValues()}
+                                    unitOfMeasure={'°C'}
                     />
                 </div>
 
@@ -58,6 +60,7 @@ function TemperatureChart() {
                                     title={'Daily min temperature'}
                                     color={"#00adfc"}
                                     chartYAxisValues={chartYAxisValues()}
+                                    unitOfMeasure={'°C'}
                     />
                 </div>
 
