@@ -11,7 +11,7 @@ import WeatherIcons from "../WeatherIcons";
 
 function HumidityChart() {
     const [weatherForecastData] = useContext(WeatherForecastDataContext);
-    console.log(weatherForecastData.humidity);
+
     const chartYAxisValues = () => {
         const dataSpacing = 10; // Values on y axis will be divisible by this number. Eg.: 5 -> 25 20 15 10 5 0
 
