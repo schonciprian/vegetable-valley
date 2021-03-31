@@ -1,7 +1,7 @@
 @import "../Variables";
 
 .charts-info-box {
-  width: 60%;
+  width: 80%;
   margin: 40px auto 0;
   padding: 20px 20px 0;
 
@@ -27,7 +27,7 @@
     margin: 0 auto;
 
     ul {
-      @extend %display-flex-space-around;
+      @extend %display-flex-center;
       flex-wrap: wrap;
       margin: 0;
       padding: 0;
