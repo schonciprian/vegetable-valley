@@ -27,6 +27,9 @@ function Charts(props) {
             <div className="charts-info-box">
                 <h1>Currently selected: <span>{weatherForecastData.city}</span></h1>
 
+                {/*****************/}
+                {/** Chart types **/}
+                {/*****************/}
                 <div className="chart-type-selection">
                     <ul>
                         <li id="Temperature" onClick={event => {setSelectedChart(event.target.id); console.log(event.target.id)}}>Temperature</li>
@@ -50,9 +53,9 @@ function Charts(props) {
                 </div>
             </div>
 
-            {/************************/}
-            {/** Locations (hidden) **/}
-            {/************************/}
+            {/********************************/}
+            {/** Location selector (hidden) **/}
+            {/********************************/}
             <CitySelectorComponent/>
 
             {/******************************/}
