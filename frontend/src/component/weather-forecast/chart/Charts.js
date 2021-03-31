@@ -6,6 +6,7 @@ import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataCo
 // Chart components by type
 import TemperatureChart from "./chart_types/TemperatureChart";
 import WindChart from "./chart_types/WindChart";
+import RainChart from "./chart_types/RainChart";
 
 // City selector related
 import CitySelectorComponent from "../CitySelectorComponent";
@@ -27,6 +28,8 @@ function Charts() {
                 return <TemperatureChart/>;
             case "Wind":
                 return <WindChart/>;
+            case "Rain":
+                return <RainChart/>;
             default:
                 return <TemperatureChart/>;
         }
@@ -44,6 +47,7 @@ function Charts() {
                     <ul>
                         <li id="Temperature" onClick={event => setSelectedChart(event.target.id)}>Temperature</li>
                         <li id="Wind" onClick={event => setSelectedChart(event.target.id)}>Wind</li>
+                        <li id="Rain" onClick={event => setSelectedChart(event.target.id)}>Rain</li>
                     </ul>
                 </div>
 
