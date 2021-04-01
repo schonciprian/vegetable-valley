@@ -188,12 +188,15 @@
   float: right;
 }
 .forecast-weather-side .location-container {
-  width: 70%;
-  padding: 15px 35px;
+  width: 100%;
+  padding: 15px 0;
+  margin: 0;
+  --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
+  text-align: center;
 }
 .forecast-weather-side .location-container .location-button {
   outline: none;
-  width: 100%;
+  width: 70%;
   padding: 10px;
   border: none;
   border-radius: 10px;
@@ -211,6 +214,39 @@
   transform: scale(0.95);
 }
 .forecast-weather-side .location-container .location-button .location-icon {
+  display: inline-block;
+  height: 1em;
+  width: auto;
+  margin-right: 5px;
+}
+
+.location-container {
+  width: 100%;
+  padding: 15px 0;
+  margin: 0;
+  --gradient: linear-gradient( 135deg, #4B5682 10%, #7F8EC0 100%);
+  text-align: center;
+}
+.location-container .location-button {
+  outline: none;
+  width: 40%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font: 600 18px "Montserrat", sans-serif;
+  background-image: var(--gradient);
+  color: #eeeeee;
+  -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+  transition: transform 200ms ease;
+  cursor: pointer;
+}
+.location-container .location-button:hover {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+.location-container .location-button .location-icon {
   display: inline-block;
   height: 1em;
   width: auto;

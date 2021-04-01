@@ -8,7 +8,7 @@
   min-height: 100%;
   background-color: $background-color-darkest;
   opacity: 0.9;
-  z-index: 1;
+  z-index: 5;
 }
 
 .city-selector {
@@ -28,7 +28,7 @@
   box-shadow: 0 0 30px -5px rgba(200, 200, 200, 0.25);
 
   border-radius: $border-radius-container;
-  z-index: 2;
+  z-index: 6;
   opacity: 1;
 
   .city-input-container {

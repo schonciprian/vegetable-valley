@@ -88,11 +88,13 @@
   display: none;
   position: absolute;
   right: 15px;
-  background-color: $background-color-dark;
+  background-color: $background-color-normal;
+  border: 1px solid $color-highlight;
   border-top: none;
-  min-width: 170px;
+  min-width: fit-content;
+  white-space: nowrap;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 2;
   border-radius: 0 0 20px 20px;
 }
 

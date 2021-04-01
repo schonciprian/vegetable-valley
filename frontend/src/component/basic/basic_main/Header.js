@@ -15,8 +15,8 @@ function Header() {
     const [user, setUser] = useContext(UserContext);
     const history = useHistory();
 
-    const logoutRequest = async () => {
-        await axios({
+    const logoutRequest = () => {
+        axios({
             method: "delete",
             url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/logout`,
             headers: {
@@ -50,12 +50,31 @@ function Header() {
                 <Link to="/">Vegetable Valley</Link>
             </div>
             <div className="navbar">
-                {user["token"] && <Link to="/grow-guides">Grow Guides</Link>}
-                {user["token"] && <Link to="/weather-forecast">Weather Forecast</Link>}
+                {/********************/}
+                {/** Authentication **/}
+                {/********************/}
                 {!user["token"] && <Link to="/register">Registration</Link>}
                 {!user["token"] && <Link to="/login">Login</Link>}
-                {/*{user["token"] && <Link to="/profile">{user["username"]}</Link>}*/}
-                {/*{user["token"] && <Link to="/logout" onClick={logoutRequest}>Logout</Link>}*/}
+
+                {/***********************/}
+                {/** Vegetable related **/}
+                {/***********************/}
+                {user["token"] && <Link to="/grow-guides">Grow Guides</Link>}
+
+                {/*********************/}
+                {/** Weather related **/}
+                {/*********************/}
+                {user["token"] && <div className="dropdown">
+                    <button className="dropdown-button">Weather</button>
+                    <div className="dropdown-content">
+                        <Link to="/weather">Weather Summary</Link>
+                        <Link to="/charts">Charts</Link>
+                    </div>
+                </div>}
+
+                {/**********************/}
+                {/** Profile settings **/}
+                {/**********************/}
                 {user["token"] && <div className="dropdown">
                     <button className="dropdown-button">{user["username"]}</button>
                     <div className="dropdown-content">
