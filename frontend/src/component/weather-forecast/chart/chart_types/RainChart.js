@@ -33,7 +33,7 @@ function RainChart() {
                 <ChartComponent data={weatherForecastData.rain}
                                 seriesName={"Rain mm"}
                                 title={'Daily rain forecast'}
-                                color={"#667ae3"}
+                                color={"#3052f6"}
                                 chartYAxisValues={chartYAxisValues()}
                                 xAxisCategories={weatherForecastData.dayNames}
                                 unitOfMeasure={'mm'}

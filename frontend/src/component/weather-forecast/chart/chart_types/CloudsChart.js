@@ -33,7 +33,7 @@ function CloudsChart() {
                 <ChartComponent data={weatherForecastData.clouds}
                                 seriesName={"Clouds %"}
                                 title={'Daily cloudiness forecast'}
-                                color={"#94a2ea"}
+                                color={"#4de3b9"}
                                 chartYAxisValues={chartYAxisValues()}
                                 xAxisCategories={weatherForecastData.dayNames}
                                 unitOfMeasure={'%'}
