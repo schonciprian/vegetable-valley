@@ -16,8 +16,11 @@ export const WeatherForecastDataProvider = (props) => {
         wind: [],
         dayNames: [],
         rain: [],
+        pop: [],
         clouds: [],
         humidity: [],
+        pressure: [],
+        uvi: [],
     });
 
     useEffect(() => {
@@ -41,19 +44,19 @@ export const WeatherForecastDataProvider = (props) => {
 
     const fillWeatherForecastData = (result) => {
         let avgTemp = []
-        let minTemp = []
         let maxTemp = []
+        let minTemp = []
         let weatherIcons = []
         let wind = []
         let dayNames = []
         let rain = []
+        let pop = [] // Probability of precipitation
         let clouds = []
         let humidity = []
         let pressure = []
         let uvi = []
 
         result.data.daily.forEach((dayData) => {
-            console.log(dayData);
             avgTemp.push(dayData.temp.day);
             maxTemp.push(dayData.temp.max);
             minTemp.push(dayData.temp.min);
@@ -64,6 +67,7 @@ export const WeatherForecastDataProvider = (props) => {
             dayNames.push([`${getMonth(sunrise.getMonth())} ${sunrise.getDate()} - ${getDayName(sunrise.getDay()).substring(0,3)}`]);
 
             rain.push(dayData.rain ?? 0);
+            pop.push((dayData.pop * 100).toFixed(0));
             clouds.push(dayData.clouds);
             humidity.push(dayData.humidity);
             pressure.push(dayData.pressure);
@@ -79,6 +83,7 @@ export const WeatherForecastDataProvider = (props) => {
             wind: wind,
             dayNames: dayNames,
             rain: rain,
+            pop: pop,
             clouds: clouds,
             humidity: humidity,
             pressure: pressure,
