@@ -115,7 +115,7 @@
 .charts .chart .icons {
   width: fit-content;
   position: absolute;
-  top: 70px;
+  top: 75px;
   left: 100px;
   z-index: 1;
 }
