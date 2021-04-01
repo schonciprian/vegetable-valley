@@ -24,10 +24,12 @@ export default function CitySelectorComponent(props) {
             .then(response => {
                 setWeatherForecastData(prevData => ({
                     ...prevData,
-                    city: response.data.name,
                     lat: response.data.coord.lat,
                     long: response.data.coord.lon,
                 }))
+
+                setWeatherCity(response.data.name)
+
                 setLoading(false);
                 hideCitySelection()
             })
@@ -53,10 +55,8 @@ export default function CitySelectorComponent(props) {
         try {
             const response = await axios(`https://api.openweathermap.org/data/2.5/weather?q=${cityInputField.value}&appid=f913779188ecd17807fa0473780a29fb`);
             if (response.status === 200) {
-                setWeatherForecastData(prevData => ({
-                    ...prevData,
-                    city: cityInputField.value
-                }))
+                setWeatherCity(cityInputField.value)
+
                 // props.setCity()
                 hideCitySelection()
             }
@@ -80,10 +80,7 @@ export default function CitySelectorComponent(props) {
     }
 
     const handleCityOnClick = (city) => {
-        setWeatherForecastData(prevData => ({
-            ...prevData,
-            city: city
-        }))
+        setWeatherCity(city)
         hideCitySelection();
     }
 
@@ -92,6 +89,14 @@ export default function CitySelectorComponent(props) {
             <li key={index} onClick={() => {handleCityOnClick(city)}}>
                 {city}
             </li>))
+    }
+
+    const setWeatherCity = (city) => {
+        setWeatherForecastData(prevData => ({
+            ...prevData,
+            city: city
+        }))
+        window.sessionStorage.setItem("city", city);
     }
 
     return (
