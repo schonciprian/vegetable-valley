@@ -25,6 +25,7 @@ import '../../../stylesheet/weather/Charts.css';
 function Charts() {
     const [weatherForecastData] = useContext(WeatherForecastDataContext);
     const [selectedChart, setSelectedChart] = useState("Temperature");
+    const types = ["Temperature", "Wind", "Rain", "Cloudiness", "Humidity", "Pressure", "UVI",]
 
     const renderSelectedChartComponent = () => {
         switch (selectedChart) {
@@ -57,41 +58,16 @@ function Charts() {
                 {/*****************/}
                 <div className="chart-type-selection">
                     <ul>
-                        <li id="Temperature"
-                            className={selectedChart === "Temperature" ? "active" : undefined}
-                            onClick={event => setSelectedChart(event.target.id)}>
-                            Temperature
-                        </li>
-                        <li id="Wind"
-                            className={selectedChart === "Wind" ? "active" : undefined}
-                            onClick={event => setSelectedChart(event.target.id)}>
-                            Wind
-                        </li>
-                        <li id="Rain"
-                            className={selectedChart === "Rain" ? "active" : undefined}
-                            onClick={event => setSelectedChart(event.target.id)}>
-                            Rain
-                        </li>
-                        <li id="Cloudiness"
-                            className={selectedChart === "Cloudiness" ? "active" : undefined}
-                            onClick={event => setSelectedChart(event.target.id)}>
-                            Cloudiness
-                        </li>
-                        <li id="Humidity"
-                            className={selectedChart === "Humidity" ? "active" : undefined}
-                            onClick={event => setSelectedChart(event.target.id)}>
-                            Humidity
-                        </li>
-                        <li id="Pressure"
-                            className={selectedChart === "Pressure" ? "active" : undefined}
-                            onClick={event => setSelectedChart(event.target.id)}>
-                            Pressure
-                        </li>
-                        <li id="UVI"
-                            className={selectedChart === "UVI" ? "active" : undefined}
-                            onClick={event => setSelectedChart(event.target.id)}>
-                            UV Index
-                        </li>
+                        {types.map((type, index) => {
+                            return (
+                                <li key={index}
+                                    id={type}
+                                    className={selectedChart === type ? "active" : undefined}
+                                    onClick={event => setSelectedChart(event.target.id)}>
+                                    {type}
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
 
