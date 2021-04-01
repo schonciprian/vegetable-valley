@@ -20,18 +20,24 @@ export default function GrowGuideCard() {
     const [dataEndIndex, setDataEndIndex] = useState(Math.ceil((window.innerHeight - 355) / 360) * Math.floor(window.innerWidth * 0.8 / 255) - 4);
     const [selectedTypeList, setSelectedTypeList] = useContext(SelectedTypeListContext);
     const [loading, setLoading] = useContext(LoadingContext);
+    const [favoriteLoading, setFavoriteLoading] = useState(false);
 
-    const isScrolling = () => {
-        if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
-            return;
+    const handleScroll = () => {
+        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+        const body = document.body;
+        const html = document.documentElement;
+        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+        const windowBottom = windowHeight + window.pageYOffset;
+
+        if (windowBottom + 50 >= docHeight) {
+            setIsFetching(true)
         }
-        setIsFetching(true)
     }
 
     useEffect(() => {
-        window.addEventListener("scroll", isScrolling);
+        window.addEventListener("scroll", handleScroll);
         return (() => {
-            window.removeEventListener("scroll", isScrolling);
+            window.removeEventListener("scroll", handleScroll);
             setSelectedTypeList([]);
         })
     }, [setSelectedTypeList])
@@ -56,20 +62,20 @@ export default function GrowGuideCard() {
                 if (Vegetables[vegetable].types.some(type => selectedTypeList.includes(type))) {
                     result[vegetable] = Vegetables[vegetable]
                 }
-                setIsFetching(true);
                 return result;
             }, {}))
         } else {
             setVegetableData(Vegetables);
-            setIsFetching(true);
         }
         setDataEndIndex(Math.ceil((window.innerHeight - 355) / 360) * Math.floor(window.innerWidth * 0.8 / 255));
+        setIsFetching(true);
+        setFavoriteLoading(false)
 
         setTimeout(() => {
             setLoading(false)
         }, 1000);
 
-    }, [selectedTypeList, setLoading])
+    }, [selectedTypeList, setLoading, favoriteLoading])
 
     return (
         <div className="grow-guides-container">
@@ -91,8 +97,11 @@ export default function GrowGuideCard() {
                             <div className="card-face card-face-back">
                                 <div className="card-content">
                                     <div id={`heart-icon-${index}`}
-                                         className="icon heart-icon"
-                                         onClick={(event) => heartCard(event, index)}>
+                                         className={`icon heart-icon ${Vegetables[veggie].types.includes("Favorite") ? "active" : ""}`}
+                                         onClick={(event) => {
+                                             heartCard(event, index, Vegetables[veggie].id)
+                                             setFavoriteLoading(true)
+                                         }}>
                                         <FaHeart/>
                                     </div>
                                     <div id={`pin-icon-${index}`}
@@ -107,15 +116,15 @@ export default function GrowGuideCard() {
                                     <div className="card-body">
                                         <p>
                                             <span>Sowing depth: </span>
-                                            <span>{Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : 0}</span>
+                                            <span>{Vegetables[veggie].sow_depth ? Vegetables[veggie].sow_depth : "-"}</span>
                                         </p>
                                         <p>
                                             <span>Line spacing:</span>
-                                            <span>{Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : 0}</span>
+                                            <span>{Vegetables[veggie].spacing_between_rows ? Vegetables[veggie].spacing_between_rows : "-"}</span>
                                         </p>
                                         <p>
                                             <span>Inline spacing: </span>
-                                            <span>{Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : 0}</span>
+                                            <span>{Vegetables[veggie].spacing_along_row ? Vegetables[veggie].spacing_along_row : "-"}</span>
                                         </p>
                                         <div className="buttons" onClick={(event) => event.stopPropagation()}>
                                             <Link className="more-info" to={`/grow-guides/${Vegetables[veggie].id}`}>More

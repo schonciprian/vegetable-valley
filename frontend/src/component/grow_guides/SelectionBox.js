@@ -11,6 +11,7 @@ import {
     GiPeas, GiPumpkin, GiThreeLeaves,
     GiTomato
 } from "react-icons/gi";
+import {FaHeart} from "react-icons/fa";
 import {LoadingContext} from "../../context/LoadingContext";
 
 function SelectionBox() {
@@ -19,6 +20,7 @@ function SelectionBox() {
 
     const selectionTypes = {
         'All': {name: 'All plants', icon: BiSelectMultiple, selected: selectedTypeList.length === 0,},
+        'Favorite': {name: 'Favorites', icon: FaHeart,},
         'Fruit': {name: 'Fruits', icon: GiBananaBunch,},
         'Vegetable': {name: 'Vegetables', icon: GiAubergine,},
         'Root': {name: 'Root veggies', icon: GiCarrot,},
@@ -60,6 +62,7 @@ function SelectionBox() {
     return (
         <div className="plant-type-selection-container">
             <h2>Selection Box</h2>
+            <p>The result will be always the union not the intersection of selected types!</p>
             <ul className="plant-types">
                 {Object.keys(selectionTypes).map((selectionType, index) => {
                     const TagName = selectionTypes[selectionType].icon;

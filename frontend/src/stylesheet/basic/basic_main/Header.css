@@ -14,7 +14,7 @@
 .header {
   width: 100%;
   height: fit-content;
-  padding: 5px 0;
+  padding: 5px 0 0;
   background-color: #0F1329;
 }
 .header .title {
@@ -55,6 +55,62 @@
   color: #eeeeee;
 }
 .header .navbar a:hover {
+  color: #7F8EC0;
+}
+
+/* Style The Dropdown Button */
+.dropdown-button {
+  background-color: #0F1329;
+  color: #eeeeee;
+  margin: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.8vw;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 15px;
+  background-color: #1B223E;
+  border: 1px solid darkorange;
+  border-top: none;
+  min-width: fit-content;
+  white-space: nowrap;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  color: #7F8EC0;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
   color: #7F8EC0;
 }
 
