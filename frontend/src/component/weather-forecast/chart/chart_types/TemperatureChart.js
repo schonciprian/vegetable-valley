@@ -54,7 +54,7 @@ function TemperatureChart() {
                     <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
                     <ChartComponent data={weatherForecastData.maxTemp}
                                     seriesName={"Temperature °C"}
-                                    title={'Daily max temperature'}
+                                    title={'Daily maximum temperature'}
                                     color={"#d40505"}
                                     chartYAxisValues={chartYAxisValues()}
                                     xAxisCategories={weatherForecastData.dayNames}
@@ -66,7 +66,7 @@ function TemperatureChart() {
                     <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
                     <ChartComponent data={weatherForecastData.minTemp}
                                     seriesName={"Temperature °C"}
-                                    title={'Daily min temperature'}
+                                    title={'Daily minimum temperature'}
                                     color={"#00adfc"}
                                     chartYAxisValues={chartYAxisValues()}
                                     xAxisCategories={weatherForecastData.dayNames}

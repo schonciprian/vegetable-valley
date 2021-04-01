@@ -31,12 +31,12 @@ function PressureChart() {
             <div className="chart">
                 <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
                 <ChartComponent data={weatherForecastData.pressure}
-                                seriesName={"Humidity %"}
-                                title={'Daily humidity forecast'}
+                                seriesName={"Pressure hPa"}
+                                title={'Daily atmospheric pressure on sea level'}
                                 color={"#a8dd52"}
                                 chartYAxisValues={chartYAxisValues()}
                                 xAxisCategories={weatherForecastData.dayNames}
-                                unitOfMeasure={'%'}
+                                unitOfMeasure={' hPa'}
                 />
             </div>
         </div>

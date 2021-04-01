@@ -31,12 +31,12 @@ function UviChart() {
             <div className="chart">
                 <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
                 <ChartComponent data={weatherForecastData.uvi}
-                                seriesName={"UVI %"}
+                                seriesName={"UVI"}
                                 title={'Maximum value of UV index'}
                                 color={"#b93fee"}
                                 chartYAxisValues={chartYAxisValues()}
                                 xAxisCategories={weatherForecastData.dayNames}
-                                unitOfMeasure={'%'}
+                                unitOfMeasure={''}
                 />
             </div>
         </div>

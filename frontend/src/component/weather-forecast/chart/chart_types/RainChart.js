@@ -46,7 +46,7 @@ function RainChart() {
                 <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
                 <ChartComponent data={weatherForecastData.rain}
                                 seriesName={"Rain mm"}
-                                title={'Daily rain forecast'}
+                                title={'Daily precipitation volume'}
                                 color={"#6780f6"}
                                 chartYAxisValues={chartYAxisValuesForRain()}
                                 xAxisCategories={weatherForecastData.dayNames}

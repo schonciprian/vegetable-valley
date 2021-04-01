@@ -32,7 +32,7 @@ function HumidityChart() {
                 <WeatherIcons weatherIcons={weatherForecastData.weatherIcons}/>
                 <ChartComponent data={weatherForecastData.humidity}
                                 seriesName={"Humidity %"}
-                                title={'Daily humidity forecast'}
+                                title={'Daily humidity'}
                                 color={"#f5d714"}
                                 chartYAxisValues={chartYAxisValues()}
                                 xAxisCategories={weatherForecastData.dayNames}
