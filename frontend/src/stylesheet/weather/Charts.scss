@@ -1,0 +1,58 @@
+@import "../Variables";
+
+.charts-info-box {
+  width: 80%;
+  margin: 40px auto 0;
+  padding: 20px 20px 0;
+
+  font-family: $font-family-text;
+  font-weight: bold;
+
+  background-color: $background-color-dark;
+  border-radius: $border-radius-bigger;
+
+  h1 {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 20px;
+    color: $color-text;
+
+    span {
+      color: $color-highlight;
+      text-transform: capitalize;
+    }
+  }
+
+  .chart-type-selection {
+    width: fit-content;
+    margin: 0 auto;
+
+    ul {
+      @extend %display-flex-center;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        width: 120px;
+        background-color: #4B5682;
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        border-radius: $border-radius-smaller;
+        color: $color-text;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(0.95);
+          transition: transform 200ms ease;
+        }
+      }
+
+      .active {
+        color: $color-highlight;
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ import {Home} from "./component/basic/basic_main/Home";
 import Header from "./component/basic/basic_main/Header";
 import GrowGuideCard from "./component/grow_guides/GrowGuideCard";
 import VegetablePage from "./component/grow_guides/vegetable_page/VegetablePage";
-import Weather from "./component/weather/Weather";
+import Weather from "./component/weather-forecast/weather/Weather";
 
 
 import './stylesheet/App.css';
@@ -17,6 +17,8 @@ import {LoadingProvider} from "./context/LoadingContext";
 import {UserProvider} from "./context/User";
 import PrivateRoute from "./component/redirects/PrivateRoute";
 import PublicRoute from "./component/redirects/PublicRoute";
+import {WeatherForecastDataProvider} from "./context/WeatherForecastDataContext";
+import Charts from "./component/weather-forecast/chart/Charts";
 
 
 function App() {
@@ -40,8 +42,10 @@ function App() {
                                 <PrivateRoute exact path="/grow-guides/:vegetableName/" component={VegetablePage} />
                             </SelectedTypeListProvider>
 
-                            <PrivateRoute exact path="/weather-forecast/" component={Weather} />
-
+                            <WeatherForecastDataProvider>
+                                <PrivateRoute exact path="/weather" component={Weather}/>
+                                <PrivateRoute exact path="/charts" component={Charts}/>
+                            </WeatherForecastDataProvider>
                         </LoadingProvider>
                     </div>
                 </div>

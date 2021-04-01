@@ -19,7 +19,7 @@
   min-height: 100%;
   background-color: #040617;
   opacity: 0.9;
-  z-index: 1;
+  z-index: 5;
 }
 
 .city-selector {
@@ -35,7 +35,7 @@
   background-image: var(--gradient);
   box-shadow: 0 0 30px -5px rgba(200, 200, 200, 0.25);
   border-radius: 25px;
-  z-index: 2;
+  z-index: 6;
   opacity: 1;
 }
 .city-selector .city-input-container {

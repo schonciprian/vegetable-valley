@@ -81,11 +81,13 @@
   display: none;
   position: absolute;
   right: 15px;
-  background-color: #151A30;
+  background-color: #1B223E;
+  border: 1px solid darkorange;
   border-top: none;
-  min-width: 170px;
+  min-width: fit-content;
+  white-space: nowrap;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 2;
   border-radius: 0 0 20px 20px;
 }
 

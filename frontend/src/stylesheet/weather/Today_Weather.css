@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+.chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.charts {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .today-weather-side .today-weather-extras-container .today-extras {
   display: flex;
   justify-content: space-between;
@@ -89,6 +101,66 @@
 }
 .today-weather-side .today-weather-container .weather-desc {
   margin: 0;
+}
+
+.charts {
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 20px;
+}
+.charts .chart {
+  position: relative;
+}
+.charts .chart .icons {
+  width: fit-content;
+  position: absolute;
+  top: 75px;
+  left: 100px;
+  z-index: 1;
+}
+.charts .chart .icons img {
+  margin: 0 18px 0 0;
+}
+
+.chart {
+  margin-bottom: 20px;
+}
+.chart .apexcharts-canvas {
+  border-radius: 20px;
+  background-color: #151A30;
+  padding: 30px;
+}
+
+.apexcharts-menu {
+  background-color: #4B5682 !important;
+  color: #eeeeee;
+  min-width: 95px !important;
+  border: 1px solid darkorange;
+}
+.apexcharts-menu .apexcharts-menu-item:hover {
+  background-color: transparent !important;
+  color: darkorange;
+}
+
+.apexcharts-menu-icon {
+  margin: 5px 5px 0 0;
+}
+.apexcharts-menu-icon svg {
+  fill: darkorange !important;
+}
+
+.apexcharts-svg text {
+  margin-bottom: 150px !important;
+}
+
+.apexcharts-svg {
+  width: 610px !important;
+  margin-left: -5px !important;
+}
+
+.apexcharts-toolbar {
+  z-index: 1 !important;
 }
 
 /*# sourceMappingURL=Today_Weather.css.map */

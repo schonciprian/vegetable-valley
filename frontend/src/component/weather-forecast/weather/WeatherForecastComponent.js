@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import {MapPin, Sunrise, Sunset} from "react-feather";
 import {calculateSunriseSunset, getDayName, getMonth} from "./TodayWeatherFunctions";
@@ -12,20 +12,23 @@ import {getDateOfDailyForecast,
         getRainDailyForecast,
         getSnowDailyForecast,
         getWindDailyForecast} from "./WeatherForecastGetterFunctions";
-import {showCitySelection} from "./CitySelectorHelperVariables";
+import {showCitySelection} from "../CitySelectorHelperVariables";
 import {FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
+import {WeatherForecastDataContext} from "../../../context/WeatherForecastDataContext";
 
 export default function WeatherForecastComponent(props) {
-
-    const [weatherForecast, setWeatherForecast] = useState([]);
     const [indexOfDailyForecast, setIndexOfDailyForecast] = useState(0);
+    const [weatherForecast, setWeatherForecast] = useState([]);
+    const [weatherForecastData] = useContext(WeatherForecastDataContext);
+
 
     useEffect(() => {
-        axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${props.coordinate.lat}&lon=${props.coordinate.lon}&units=metric&exclude=minutely,hourly&appid=f913779188ecd17807fa0473780a29fb`)
+        axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherForecastData.lat}&lon=${weatherForecastData.long}&units=metric&exclude=minutely,hourly&appid=f913779188ecd17807fa0473780a29fb`)
                 .then(result => setWeatherForecast(result.data));
-    }, [props.coordinate])
+    }, [weatherForecastData])
 
-    const {timezone_offset, daily} = weatherForecast;
+
+    const {daily} = weatherForecast;
     let dailyForecast = [];
 
     const [showDayFromIndex, setShowDayFromIndex] = useState(0);
@@ -34,8 +37,8 @@ export default function WeatherForecastComponent(props) {
 
     if (weatherForecast.length !== 0 ) {daily.forEach( (oneDay, index) => {
         if (index > showDayFromIndex && index <= showDayToIndex) {
-            let sunrise = new Date((oneDay.sunrise + timezone_offset - 3600) * 1000);
-            let sunset = new Date((oneDay.sunset + timezone_offset - 3600) * 1000);
+            let sunrise = new Date((oneDay.sunrise) * 1000);
+            let sunset = new Date((oneDay.sunset) * 1000);
 
             dailyForecast.push({
                 month: sunrise.getMonth() + 1,
@@ -46,7 +49,7 @@ export default function WeatherForecastComponent(props) {
                 dailyTemp: (oneDay.temp.day).toFixed(1),
                 dayTemp: oneDay.temp.day,
                 nightTemp: oneDay.temp.night,
-                wind: (oneDay.wind_speed).toFixed(1),
+                wind: (oneDay.wind_speed * 3.6).toFixed(1),
                 humidity: (oneDay.humidity).toFixed(0),
                 precipitation: (oneDay.pop * 100).toFixed(0),
                 rain: (oneDay.rain) ? (oneDay.rain).toFixed(1) : 0,
@@ -116,7 +119,7 @@ export default function WeatherForecastComponent(props) {
                 <ul className="week-list">
                     {dailyForecast.map((oneDayForecast, index) => (
                         <li key={index}
-                            className={(index === indexOfDailyForecast) ? "daily-weather-forecast active" : "daily-weather-forecast"}
+                            className={(index === indexOfDailyForecast) ? "daily-weather-forecast-forecast active" : "daily-weather-forecast-forecast"}
                             onClick={() => setIndexOfDailyForecast(index)}>
                             <span className="forecast-date">{getMonth(oneDayForecast.month-1)}. {oneDayForecast.date}.</span>
                             <span className="forecast-day">{getDayName(oneDayForecast.day)}</span>
