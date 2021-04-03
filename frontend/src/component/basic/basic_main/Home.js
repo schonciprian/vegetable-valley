@@ -58,7 +58,7 @@ export function Home() {
                     }
                 </ul>
                 <p>Vegetable Valley also helps you to search for
-                    <Link className="highlight" to="/weather-forecast"> weather forecast </Link>
+                    <Link className="highlight" to="/weather"> weather forecast </Link>
                     according to a chosen settlement. Knowing the following weather conditions would help a
                     lot for you to plan your tasks in the garden for the next days.</p>
             </div>
