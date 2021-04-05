@@ -13,6 +13,19 @@ import dirt from "../../image/garden/dirt.jpeg";
 
 
 function GardenPlanner() {
+
+    const [garden] = useState([
+        {id: 0, name: '', pictureURL: dirt},
+        {id: 1, name: '', pictureURL: dirt},
+        {id: 2, name: '', pictureURL: dirt},
+        {id: 3, name: '', pictureURL: dirt},
+        {id: 4, name: '', pictureURL: dirt},
+        {id: 5, name: '', pictureURL: dirt},
+        {id: 6, name: '', pictureURL: dirt},
+        {id: 7, name: '', pictureURL: dirt},
+        {id: 8, name: '', pictureURL: dirt},
+    ]);
+
     const [vegetables, setVegetables] = useState([
         {id: 0, name: 'Aubergine', pictureURL: aubergine},
         {id: 1, name: 'Beans', pictureURL: beans},
@@ -24,20 +37,17 @@ function GardenPlanner() {
         {id: 7, name: 'Celeriac', pictureURL: celeriac},
     ]);
 
+
     return (
         <div className="garden-planner">
             <div className="garden-container">
                 <h1>Your garden</h1>
                 <div className="garden">
-                    <div className="cell"><img src={dirt} alt=""/></div>
-                    <div className="cell"><img src={dirt} alt=""/></div>
-                    <div className="cell"><img src={dirt} alt=""/></div>
-                    <div className="cell"><img src={dirt} alt=""/></div>
-                    <div className="cell"><img src={dirt} alt=""/></div>
-                    <div className="cell"><img src={dirt} alt=""/></div>
-                    <div className="cell"><img src={dirt} alt=""/></div>
-                    <div className="cell"><img src={dirt} alt=""/></div>
-                    <div className="cell"><img src={dirt} alt=""/></div>
+                    {garden.map(cell =>
+                        <div key={cell.id} className="cell">
+                            <img src={cell.pictureURL} alt=""/>
+                        </div>
+                    )}
                 </div>
             </div>
 
