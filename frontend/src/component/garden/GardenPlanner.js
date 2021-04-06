@@ -14,17 +14,46 @@ function GardenPlanner() {
     const [draggedVegetable, setDraggedVegetable] = useState({})
 
     useEffect(() => {
-        // Create garden state
-        let garden = [];
-        const cellNumber = 30
-        for (let i = 0; i < cellNumber; i++) {
-            garden.push({id: i, name: '', pictureURL: dirt})
-        }
-        setGarden(garden)
+        axios({
+            method: "get",
+            url: `${environmentVariables.BACKEND_URL}/api/garden`,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json, text/plain, */*",
+                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+            },
+        }).then((res) => {
+            let garden = [];
+            let insertDone = false;
+            const cellNumber = 30
+
+            for (let i = 0; i < cellNumber; i++) {
+                insertDone=false
+
+                res.data[0].forEach((cell) => {
+                    if (cell.cell_id === i) {
+                        garden.push({
+                            id: cell.cell_id,
+                            name: cell.cell_name,
+                            pictureURL: cell.cell_picture_url,
+                        })
+                        insertDone = true;
+                        // i++
+                    }
+                })
+                if (!insertDone) {
+                    garden.push({id: i, name: '', pictureURL: dirt})
+                }
+            }
+            setGarden(garden)
+
+        }).catch((error) => {
+            console.log(error.response.data)
+        })
 
         // Create available vegetables state
         let vegetables = [];
-        Object.keys(Vegetables).forEach((vegetable)=>{
+        Object.keys(Vegetables).forEach((vegetable) => {
             vegetables.push({
                 id: Vegetables[vegetable].id,
                 name: Vegetables[vegetable].name,
