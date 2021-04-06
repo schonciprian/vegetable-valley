@@ -42,9 +42,9 @@
   width: 100%;
 }
 .garden-planner .garden-container .garden .cell {
-  width: 30%;
-  max-width: 150px;
-  max-height: 150px;
+  width: 13%;
+  max-width: 70px;
+  max-height: 70px;
   margin: 5px;
 }
 .garden-planner .garden-container .garden .cell img {
