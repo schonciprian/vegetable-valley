@@ -26,25 +26,49 @@ function GardenPlanner() {
         {id: 6, name: 'Carrot', pictureURL: carrot},
         {id: 7, name: 'Celeriac', pictureURL: celeriac},
     ]);
+    const [draggedVegetable, setDraggedVegetable] = useState({})
 
     useEffect(() => {
+        // Create garden state
         let garden = [];
         const cellNumber = 30
         for (let i = 0; i < cellNumber; i++) {
             garden.push({id: i, name: '', pictureURL: dirt})
         }
         setGarden(garden)
-    })
+    }, [])
 
+    const onDrag = (event, vegetable) => {
+        event.preventDefault();
+        setDraggedVegetable(vegetable)
+    }
+
+    const onDragOver = (event) => {
+        event.preventDefault();
+    }
+
+    const onDrop = (event) => {
+        setDraggedVegetable({})
+        const destinationId = parseInt(event.target.parentElement.dataset.id)
+        garden.forEach(cell => {
+            // Cell id equals the destination id
+            if (cell.id === destinationId) {
+                cell.name = draggedVegetable.name;
+                cell.pictureURL = draggedVegetable.pictureURL;
+            }
+        })
+    }
 
     return (
         <div className="garden-planner">
             <div className="garden-container">
                 <h1>Your garden</h1>
-                <div className="garden">
+                <div className="garden"
+                     onDrop={(event) => onDrop(event)}
+                     onDragOver={(event => onDragOver(event))}>
                     {garden.map(cell =>
-                        <div key={cell.id} className="cell">
-                            <img src={cell.pictureURL} alt=""/>
+                        <div key={cell.id} className="cell" data-id={cell.id}>
+                            <img draggable={false} src={cell.pictureURL} alt=""/>
                         </div>
                     )}
                 </div>
@@ -54,9 +78,13 @@ function GardenPlanner() {
                 <h1>Available vegetables</h1>
                 <div className="vegetable-list">
                     {vegetables.map(vegetable =>
-                        <div key={vegetable.id} id={vegetable.id} className="vegetable-container">
+                        <div key={vegetable.name}
+                             id={vegetable.id}
+                             className="vegetable-container draggable"
+                             draggable
+                             onDrag={(event) => onDrag(event, vegetable)}>
                             <div className="vegetable-name">{vegetable.name}</div>
-                            <img src={vegetable.pictureURL} alt=""/>
+                            <img draggable={false} src={vegetable.pictureURL} alt=""/>
                         </div>
                     )}
                 </div>
