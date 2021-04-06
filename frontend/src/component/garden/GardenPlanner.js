@@ -5,13 +5,11 @@ import {Vegetables} from "../grow_guides/Descriptions";
 import axios from "axios";
 import {environmentVariables} from "../../EnvironmentVariables";
 
-
 function GardenPlanner() {
-
     const [garden, setGarden] = useState([]);
-
     const [vegetables, setVegetables] = useState([]);
     const [draggedVegetable, setDraggedVegetable] = useState({})
+    const [refresh, setRefresh] = useState(false)
 
     useEffect(() => {
         let source = axios.CancelToken.source();
@@ -56,7 +54,9 @@ function GardenPlanner() {
             console.log(error.response.data)
         })
 
-        // Create available vegetables state
+        ///////////////////////////////////////
+        // Create available vegetables state //
+        ///////////////////////////////////////
         let vegetables = [];
         Object.keys(Vegetables).forEach((vegetable) => {
             vegetables.push({
@@ -66,6 +66,7 @@ function GardenPlanner() {
             })
         })
         setVegetables(vegetables)
+        setRefresh(false)
 
         //////////////////////////////////
         // On unmount cancel axios call //
@@ -73,7 +74,7 @@ function GardenPlanner() {
         return () => {
             source.cancel();
         }
-    }, [])
+    }, [refresh])
 
     const onDrag = (event, vegetable) => {
         event.preventDefault();
@@ -101,7 +102,7 @@ function GardenPlanner() {
                 cell_picture_url: draggedVegetable.pictureURL,
             }
         }).then((res) => {
-            console.log("Successfully saved");
+            // console.log("Successfully saved");
 
         }).catch((error) => {
             console.log(error.response.data)
@@ -117,6 +118,27 @@ function GardenPlanner() {
         setDraggedVegetable({})
     }
 
+    const removeVegetableFromCell = (cellId) => {
+        axios({
+            method: "delete",
+            url: `${environmentVariables.BACKEND_URL}/api/garden`,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json, text/plain, */*",
+                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+            },
+            data: {
+                cell_id: cellId,
+            }
+        }).then((res) => {
+            // console.log("Successfully deleted");
+            setRefresh(true);
+
+        }).catch((error) => {
+            console.log(error.response.data)
+        })
+    }
+
     return (
         <div className="garden-planner">
             <div className="garden-container">
@@ -126,6 +148,7 @@ function GardenPlanner() {
                      onDragOver={(event => onDragOver(event))}>
                     {garden.map(cell =>
                         <div key={cell.id} className="cell" data-id={cell.id}>
+                            {cell.name.length !== 0 ? <div className="remove" onClick={() => removeVegetableFromCell(cell.id)}>X</div> : ""}
                             <img draggable={false} src={cell.pictureURL} alt=""/>
                         </div>
                     )}
