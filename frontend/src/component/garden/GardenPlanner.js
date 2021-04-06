@@ -14,6 +14,11 @@ function GardenPlanner() {
     const [draggedVegetable, setDraggedVegetable] = useState({})
 
     useEffect(() => {
+        let source = axios.CancelToken.source();
+
+        ///////////////////////////////////////////////
+        // Fill garden state with data from database //
+        ///////////////////////////////////////////////
         axios({
             method: "get",
             url: `${environmentVariables.BACKEND_URL}/api/garden`,
@@ -22,7 +27,7 @@ function GardenPlanner() {
                 Accept: "application/json, text/plain, */*",
                 Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
             },
-        }).then((res) => {
+        }, {cancelToken: source.token}).then((res) => {
             let garden = [];
             let insertDone = false;
             const cellNumber = 30
@@ -61,6 +66,13 @@ function GardenPlanner() {
             })
         })
         setVegetables(vegetables)
+
+        //////////////////////////////////
+        // On unmount cancel axios call //
+        //////////////////////////////////
+        return () => {
+            source.cancel();
+        }
     }, [])
 
     const onDrag = (event, vegetable) => {
