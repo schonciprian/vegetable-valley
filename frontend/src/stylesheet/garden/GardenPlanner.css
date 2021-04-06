@@ -24,7 +24,6 @@
   width: 80%;
   max-width: 1300px;
   margin: 30px auto;
-  padding-bottom: 20px;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color: #eeeeee;
@@ -102,6 +101,7 @@
   background-color: #4B5682;
   border-radius: 10px;
   margin: 5px;
+  z-index: 1;
 }
 .garden-planner .vegetable-list-container .vegetable-list .vegetable-container .vegetable-name {
   font-size: 1vw;
