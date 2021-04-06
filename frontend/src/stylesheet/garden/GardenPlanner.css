@@ -59,6 +59,14 @@
   margin: 5px;
   border: 2px solid #1B223E;
   border-radius: 10px;
+  position: relative;
+}
+.garden-planner .garden-container .garden .cell .remove {
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  color: darkorange;
+  cursor: pointer;
 }
 .garden-planner .garden-container .garden .cell img {
   width: 100%;

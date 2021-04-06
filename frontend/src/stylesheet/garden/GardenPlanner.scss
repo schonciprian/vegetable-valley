@@ -67,6 +67,16 @@
         border: 2px solid $background-color-normal;
         border-radius: $border-radius-smaller;
 
+        position: relative;
+
+        .remove {
+          position: absolute;
+          top: -10px;
+          right: -5px;
+          color: darkorange;
+          cursor: pointer;
+        }
+
         img {
           width: 100%;
 
