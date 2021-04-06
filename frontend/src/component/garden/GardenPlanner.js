@@ -1,31 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import '../../stylesheet/garden/GardenPlanner.css'
-
-import aubergine from "../../image/vegetables/eggplant.png";
-import beans from "../../image/vegetables/beans.png";
-import beetroot from "../../image/vegetables/beetroot.png";
-import brussels_sprouts from "../../image/vegetables/brussels_sprouts.png";
-import cabbage from "../../image/vegetables/cabbage.png";
-import purple_cabbage from "../../image/vegetables/purple_cabbage.png";
-import carrot from "../../image/vegetables/carrot.png";
-import celeriac from "../../image/vegetables/celeriac.png";
 import dirt from "../../image/garden/dirt.jpeg";
+import {Vegetables} from "../grow_guides/Descriptions";
 
 
 function GardenPlanner() {
 
     const [garden, setGarden] = useState([]);
 
-    const [vegetables, setVegetables] = useState([
-        {id: 0, name: 'Aubergine', pictureURL: aubergine},
-        {id: 1, name: 'Beans', pictureURL: beans},
-        {id: 2, name: 'Beetroot', pictureURL: beetroot},
-        {id: 3, name: 'Brussels sprouts', pictureURL: brussels_sprouts},
-        {id: 4, name: 'Cabbage', pictureURL: cabbage},
-        {id: 5, name: 'Purple cabbage', pictureURL: purple_cabbage},
-        {id: 6, name: 'Carrot', pictureURL: carrot},
-        {id: 7, name: 'Celeriac', pictureURL: celeriac},
-    ]);
+    const [vegetables, setVegetables] = useState([]);
     const [draggedVegetable, setDraggedVegetable] = useState({})
 
     useEffect(() => {
@@ -36,6 +19,17 @@ function GardenPlanner() {
             garden.push({id: i, name: '', pictureURL: dirt})
         }
         setGarden(garden)
+
+        // Create available vegetables state
+        let vegetables = [];
+        Object.keys(Vegetables).forEach((vegetable)=>{
+            vegetables.push({
+                id: Vegetables[vegetable].id,
+                name: Vegetables[vegetable].name,
+                pictureURL: Vegetables[vegetable].pictureURL,
+            })
+        })
+        setVegetables(vegetables)
     }, [])
 
     const onDrag = (event, vegetable) => {
