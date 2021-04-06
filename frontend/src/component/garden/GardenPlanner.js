@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../stylesheet/garden/GardenPlanner.css'
 
 import aubergine from "../../image/vegetables/eggplant.png";
@@ -14,17 +14,7 @@ import dirt from "../../image/garden/dirt.jpeg";
 
 function GardenPlanner() {
 
-    const [garden] = useState([
-        {id: 0, name: '', pictureURL: dirt},
-        {id: 1, name: '', pictureURL: dirt},
-        {id: 2, name: '', pictureURL: dirt},
-        {id: 3, name: '', pictureURL: dirt},
-        {id: 4, name: '', pictureURL: dirt},
-        {id: 5, name: '', pictureURL: dirt},
-        {id: 6, name: '', pictureURL: dirt},
-        {id: 7, name: '', pictureURL: dirt},
-        {id: 8, name: '', pictureURL: dirt},
-    ]);
+    const [garden, setGarden] = useState([]);
 
     const [vegetables, setVegetables] = useState([
         {id: 0, name: 'Aubergine', pictureURL: aubergine},
@@ -36,6 +26,15 @@ function GardenPlanner() {
         {id: 6, name: 'Carrot', pictureURL: carrot},
         {id: 7, name: 'Celeriac', pictureURL: celeriac},
     ]);
+
+    useEffect(() => {
+        let garden = [];
+        const cellNumber = 30
+        for (let i = 0; i < cellNumber; i++) {
+            garden.push({id: i, name: '', pictureURL: dirt})
+        }
+        setGarden(garden)
+    })
 
 
     return (
