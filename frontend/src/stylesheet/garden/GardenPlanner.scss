@@ -30,6 +30,17 @@
 
     padding: 20px;
     margin: 0 auto;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 3px;
+      right: 0;
+      height: 100%;
+      background: linear-gradient(130deg, #0F1329, $color-highlight 50%, #0F1329 100%);
+    }
 
     h1 {
       @extend %title;
