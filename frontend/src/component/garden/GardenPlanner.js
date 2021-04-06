@@ -27,26 +27,20 @@ function GardenPlanner() {
             },
         }, {cancelToken: source.token}).then((res) => {
             let garden = [];
-            let insertDone = false;
             const cellNumber = 30
 
             for (let i = 0; i < cellNumber; i++) {
-                insertDone=false
+                let vegetable = res.data[0].find(cell => cell.cell_id === i) ?? {
+                    cell_id: i,
+                    cell_name: '',
+                    cell_picture_url: dirt
+                };
 
-                res.data[0].forEach((cell) => {
-                    if (cell.cell_id === i) {
-                        garden.push({
-                            id: cell.cell_id,
-                            name: cell.cell_name,
-                            pictureURL: cell.cell_picture_url,
-                        })
-                        insertDone = true;
-                        // i++
-                    }
+                garden.push({
+                    id: vegetable.cell_id,
+                    name: vegetable.cell_name,
+                    pictureURL: vegetable.cell_picture_url,
                 })
-                if (!insertDone) {
-                    garden.push({id: i, name: '', pictureURL: dirt})
-                }
             }
             setGarden(garden)
 
