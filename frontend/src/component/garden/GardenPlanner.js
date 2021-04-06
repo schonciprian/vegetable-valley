@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import '../../stylesheet/garden/GardenPlanner.css'
 import dirt from "../../image/garden/dirt.jpeg";
 import {Vegetables} from "../grow_guides/Descriptions";
+import axios from "axios";
+import {environmentVariables} from "../../EnvironmentVariables";
 
 
 function GardenPlanner() {
@@ -42,8 +44,28 @@ function GardenPlanner() {
     }
 
     const onDrop = (event) => {
-        setDraggedVegetable({})
         const destinationId = parseInt(event.target.parentElement.dataset.id)
+
+        axios({
+            method: "post",
+            url: `${environmentVariables.BACKEND_URL}/api/garden`,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json, text/plain, */*",
+                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+            },
+            data: {
+                cell_id: destinationId,
+                cell_name: draggedVegetable.name,
+                cell_picture_url: draggedVegetable.pictureURL,
+            }
+        }).then((res) => {
+            console.log("Successfully saved");
+
+        }).catch((error) => {
+            console.log(error.response.data)
+        })
+
         garden.forEach(cell => {
             // Cell id equals the destination id
             if (cell.id === destinationId) {
@@ -51,6 +73,7 @@ function GardenPlanner() {
                 cell.pictureURL = draggedVegetable.pictureURL;
             }
         })
+        setDraggedVegetable({})
     }
 
     return (
