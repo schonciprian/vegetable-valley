@@ -140,6 +140,14 @@
           margin-bottom: 10px;
         }
       }
+
+      .draggable {
+         cursor: grab;
+       }
+
+      .draggable:active {
+        cursor: grabbing;
+      }
     }
   }
 }
