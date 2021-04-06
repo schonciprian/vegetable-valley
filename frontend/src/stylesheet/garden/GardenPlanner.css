@@ -32,7 +32,7 @@
 }
 .garden-planner .garden-container {
   width: 50%;
-  max-width: 500px;
+  height: 100%;
   padding: 20px;
   margin: 0 auto;
   position: relative;
@@ -51,9 +51,10 @@
   width: 100%;
 }
 .garden-planner .garden-container .garden .cell {
-  width: 4.8vw;
-  height: 4.8vw;
-  max-width: 70px;
+  width: 4.5vw;
+  min-width: 40px;
+  max-width: 75px;
+  height: 4.5vw;
   max-height: 70px;
   margin: 5px;
   border: 2px solid #1B223E;
@@ -66,14 +67,15 @@
 .garden-planner .vegetable-list-container {
   width: 50%;
   max-width: 750px;
-  height: 460px;
+  height: 40vw;
+  max-height: 500px;
   padding: 20px;
 }
 .garden-planner .vegetable-list-container .vegetable-list {
-  height: 90%;
+  height: calc(100% - 105px);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
-  grid-gap: 0 0;
+  grid-gap: 10px 10px;
   justify-content: center;
   overflow-y: auto;
   overflow-x: hidden;
