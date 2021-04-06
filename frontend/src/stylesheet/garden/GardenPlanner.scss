@@ -53,16 +53,18 @@
       width: 100%;
 
       .cell {
-        width: 13%;
+        @extend %display-flex-center;
+        width: 4.8vw;
+        height: 4.8vw;
         max-width: 70px;
         max-height: 70px;
 
         margin: 5px;
+        border: 2px solid $background-color-normal;
+        border-radius: $border-radius-smaller;
 
         img {
           width: 100%;
-          max-width: 150px;
-          max-height: 150px;
 
           border-radius: $border-radius-smaller;
         }
