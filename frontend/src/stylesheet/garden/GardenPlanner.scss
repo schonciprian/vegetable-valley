@@ -15,7 +15,6 @@
   max-width: 1300px;
 
   margin: 30px auto;
-  padding-bottom: 20px;
 
   font-family: $font-family-text;
   font-weight: bold;
@@ -75,7 +74,7 @@
   .vegetable-list-container {
     width: 50%;
     max-width: 750px;
-    height: 500px;
+    height: 460px;
 
     padding: 20px;
 
@@ -87,7 +86,7 @@
       height: 90%;
 
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, max-content));
+      grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
       grid-gap: 0 0;
       justify-content: center;
 
@@ -119,21 +118,22 @@
       .vegetable-container {
         @extend %display-flex-space-between;
         flex-direction: column;
-        max-width: 150px;
-        height: 150px;
+        width: 130px;
+        height: 130px;
 
         background-color: $focus-color-lighter;
         border-radius: $border-radius-smaller;
         margin: 5px;
 
         .vegetable-name {
+          font-size: 1vw;
           margin: 5px 10px;
           text-align: center;
         }
 
         img {
           @extend %display-flex-space-between;
-          width: 70%;
+          width: 60%;
 
           margin-bottom: 10px;
         }

@@ -67,17 +67,18 @@
 .garden-planner .vegetable-list-container {
   width: 50%;
   max-width: 750px;
-  height: 500px;
+  height: 460px;
   padding: 20px;
 }
 .garden-planner .vegetable-list-container .vegetable-list {
   height: 90%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
   grid-gap: 0 0;
   justify-content: center;
   overflow-y: auto;
   overflow-x: hidden;
+  /* (Optional) Apply a "closed-hand" cursor during drag operation. */
 }
 .garden-planner .vegetable-list-container .vegetable-list::-webkit-scrollbar {
   width: 20px;
@@ -96,18 +97,19 @@
 }
 .garden-planner .vegetable-list-container .vegetable-list .vegetable-container {
   flex-direction: column;
-  max-width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   background-color: #4B5682;
   border-radius: 10px;
   margin: 5px;
 }
 .garden-planner .vegetable-list-container .vegetable-list .vegetable-container .vegetable-name {
+  font-size: 1vw;
   margin: 5px 10px;
   text-align: center;
 }
 .garden-planner .vegetable-list-container .vegetable-list .vegetable-container img {
-  width: 70%;
+  width: 60%;
   margin-bottom: 10px;
 }
 
