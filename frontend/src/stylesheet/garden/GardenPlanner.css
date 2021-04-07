@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.garden-planner .garden-container .garden .cell, .garden-planner .garden-container .garden {
+.garden-planner .garden-container .garden .row .cell, .garden-planner .garden-container .garden .row, .garden-planner .garden-container .garden {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +50,10 @@
   flex-wrap: wrap;
   width: 100%;
 }
-.garden-planner .garden-container .garden .cell {
+.garden-planner .garden-container .garden .row {
+  flex-direction: row;
+}
+.garden-planner .garden-container .garden .row .cell {
   width: 4.5vw;
   min-width: 40px;
   max-width: 75px;
@@ -61,14 +64,14 @@
   border-radius: 10px;
   position: relative;
 }
-.garden-planner .garden-container .garden .cell .remove {
+.garden-planner .garden-container .garden .row .cell .remove {
   position: absolute;
   top: -10px;
   right: -5px;
   color: darkorange;
   cursor: pointer;
 }
-.garden-planner .garden-container .garden .cell img {
+.garden-planner .garden-container .garden .row .cell img {
   width: 100%;
   border-radius: 10px;
 }

@@ -54,35 +54,42 @@
 
       width: 100%;
 
-      .cell {
+      .row {
         @extend %display-flex-center;
-        width: 4.5vw;
-        min-width: 40px;
-        max-width: 75px;
+        flex-direction: row;
 
-        height: 4.5vw;
-        max-height: 70px;
+        .cell {
+          @extend %display-flex-center;
+          width: 4.5vw;
+          min-width: 40px;
+          max-width: 75px;
 
-        margin: 5px;
-        border: 2px solid $background-color-normal;
-        border-radius: $border-radius-smaller;
+          height: 4.5vw;
+          max-height: 70px;
 
-        position: relative;
-
-        .remove {
-          position: absolute;
-          top: -10px;
-          right: -5px;
-          color: darkorange;
-          cursor: pointer;
-        }
-
-        img {
-          width: 100%;
-
+          margin: 5px;
+          border: 2px solid $background-color-normal;
           border-radius: $border-radius-smaller;
+
+          position: relative;
+
+          .remove {
+            position: absolute;
+            top: -10px;
+            right: -5px;
+            color: darkorange;
+            cursor: pointer;
+          }
+
+          img {
+            width: 100%;
+
+            border-radius: $border-radius-smaller;
+          }
         }
       }
+
+
     }
   }
 
