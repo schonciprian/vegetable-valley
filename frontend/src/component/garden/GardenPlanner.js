@@ -31,6 +31,7 @@ function GardenPlanner() {
             const columns = 6;
 
             for (let i = 0; i < rows; i++) {
+                let row = [];
                 for (let j = 0; j < columns; j++) {
                     let vegetable = res.data[0].find(cell => cell.cell_row === i && cell.cell_column === j)
                         ?? {
@@ -39,12 +40,13 @@ function GardenPlanner() {
                             cell_name: '',
                             cell_picture_url: dirt
                         };
-                    garden.push({
+                    row.push({
                         id: `${vegetable.cell_row}-${vegetable.cell_column}`,
                         name: vegetable.cell_name,
                         pictureURL: vegetable.cell_picture_url,
                     })
                 }
+                garden.push(row)
             }
             setGarden(garden)
 
@@ -73,6 +75,7 @@ function GardenPlanner() {
             source.cancel();
         }
     }, [refresh])
+
 
     const onDrag = (event, vegetable) => {
         event.preventDefault();
@@ -112,9 +115,16 @@ function GardenPlanner() {
     }
 
     const changeCellToVegetable = (destination) => {
-        const cell = garden.find(cell => cell.id === destination)
-        cell.name = draggedVegetable.name;
-        cell.pictureURL = draggedVegetable.pictureURL;
+        let destinationCell = {};
+        garden.forEach((row) =>
+            row.forEach((cell) => {
+                if (cell.id === destination) {
+                    destinationCell = cell;
+                }
+            }));
+
+        destinationCell.name = draggedVegetable.name;
+        destinationCell.pictureURL = draggedVegetable.pictureURL;
     }
 
     const removeVegetableFromCell = (cellId) => {
@@ -145,11 +155,16 @@ function GardenPlanner() {
                 <div className="garden"
                      onDrop={(event) => onDrop(event)}
                      onDragOver={(event => onDragOver(event))}>
-                    {garden.map(cell =>
-                        <div key={cell.id} className="cell" data-id={cell.id}>
-                            {cell.name.length !== 0 ?
-                                <div className="remove" onClick={() => removeVegetableFromCell(cell.id)}>X</div> : ""}
-                            <img draggable={false} src={cell.pictureURL} alt=""/>
+                    {garden.map((row, index) =>
+                        <div className="row" key={index}>
+                            {row.map(cell =>
+                                <div key={cell.id} className="cell" data-id={cell.id}>
+                                    {cell.name.length !== 0 ?
+                                        <div className="remove"
+                                             onClick={() => removeVegetableFromCell(cell.id)}>X</div> : ""}
+                                    <img draggable={false} src={cell.pictureURL} alt=""/>
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
