@@ -102,7 +102,7 @@
       height: calc(100% - 105px);
 
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
+      grid-template-columns: repeat(auto-fit, minmax(7vw, max-content));
       grid-gap: 10px 10px;
       justify-content: center;
 
@@ -134,8 +134,8 @@
       .vegetable-container {
         @extend %display-flex-space-between;
         flex-direction: column;
-        width: 130px;
-        height: 130px;
+        width: 7vw;
+        height: 7vw;
 
         background-color: $focus-color-lighter;
         border-radius: $border-radius-smaller;
@@ -144,7 +144,7 @@
         z-index: 1;
 
         .vegetable-name {
-          font-size: 1vw;
+          font-size: 0.8vw;
           margin: 5px 10px;
           text-align: center;
         }

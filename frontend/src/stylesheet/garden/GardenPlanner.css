@@ -82,7 +82,7 @@
 .garden-planner .vegetable-list-container .vegetable-list {
   height: calc(100% - 105px);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(7vw, max-content));
   grid-gap: 10px 10px;
   justify-content: center;
   overflow-y: auto;
@@ -105,15 +105,15 @@
 }
 .garden-planner .vegetable-list-container .vegetable-list .vegetable-container {
   flex-direction: column;
-  width: 130px;
-  height: 130px;
+  width: 7vw;
+  height: 7vw;
   background-color: #4B5682;
   border-radius: 10px;
   margin: 5px;
   z-index: 1;
 }
 .garden-planner .vegetable-list-container .vegetable-list .vegetable-container .vegetable-name {
-  font-size: 1vw;
+  font-size: 0.8vw;
   margin: 5px 10px;
   text-align: center;
 }
