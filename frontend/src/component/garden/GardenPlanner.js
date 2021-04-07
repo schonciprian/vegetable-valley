@@ -27,20 +27,24 @@ function GardenPlanner() {
             },
         }, {cancelToken: source.token}).then((res) => {
             let garden = [];
-            const cellNumber = 30
+            const rows = 5;
+            const columns = 6;
 
-            for (let i = 0; i < cellNumber; i++) {
-                let vegetable = res.data[0].find(cell => cell.cell_id === i) ?? {
-                    cell_id: i,
-                    cell_name: '',
-                    cell_picture_url: dirt
-                };
-
-                garden.push({
-                    id: vegetable.cell_id,
-                    name: vegetable.cell_name,
-                    pictureURL: vegetable.cell_picture_url,
-                })
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < columns; j++) {
+                    let vegetable = res.data[0].find(cell => cell.cell_row === i && cell.cell_column === j)
+                        ?? {
+                            cell_row: i,
+                            cell_column: j,
+                            cell_name: '',
+                            cell_picture_url: dirt
+                        };
+                    garden.push({
+                        id: `${vegetable.cell_row}-${vegetable.cell_column}`,
+                        name: vegetable.cell_name,
+                        pictureURL: vegetable.cell_picture_url,
+                    })
+                }
             }
             setGarden(garden)
 
@@ -80,36 +84,37 @@ function GardenPlanner() {
     }
 
     const onDrop = (event) => {
-        const destinationId = parseInt(event.target.parentElement.dataset.id)
+        const destination = event.target.parentElement.dataset.id ?? null;
 
-        axios({
-            method: "post",
-            url: `${environmentVariables.BACKEND_URL}/api/garden`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*",
-                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-            data: {
-                cell_id: destinationId,
-                cell_name: draggedVegetable.name,
-                cell_picture_url: draggedVegetable.pictureURL,
-            }
-        }).then((res) => {
-            // console.log("Successfully saved");
+        if (destination !== null) {
+            axios({
+                method: "post",
+                url: `${environmentVariables.BACKEND_URL}/api/garden`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: "application/json, text/plain, */*",
+                    Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+                },
+                data: {
+                    cell_row: destination.split("-")[0],
+                    cell_column: destination.split("-")[1],
+                    cell_name: draggedVegetable.name,
+                    cell_picture_url: draggedVegetable.pictureURL,
+                }
+            }).then((res) => {
+                // console.log(res.data);
+            }).catch((error) => {
+                console.log(error.response.data)
+            })
+        }
+        changeCellToVegetable(destination);
+        setDraggedVegetable({});
+    }
 
-        }).catch((error) => {
-            console.log(error.response.data)
-        })
-
-        garden.forEach(cell => {
-            // Cell id equals the destination id
-            if (cell.id === destinationId) {
-                cell.name = draggedVegetable.name;
-                cell.pictureURL = draggedVegetable.pictureURL;
-            }
-        })
-        setDraggedVegetable({})
+    const changeCellToVegetable = (destination) => {
+        const cell = garden.find(cell => cell.id === destination)
+        cell.name = draggedVegetable.name;
+        cell.pictureURL = draggedVegetable.pictureURL;
     }
 
     const removeVegetableFromCell = (cellId) => {
@@ -122,10 +127,10 @@ function GardenPlanner() {
                 Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
             },
             data: {
-                cell_id: cellId,
+                cell_row: cellId.split("-")[0],
+                cell_column: cellId.split("-")[1],
             }
         }).then((res) => {
-            // console.log("Successfully deleted");
             setRefresh(true);
 
         }).catch((error) => {
@@ -142,7 +147,8 @@ function GardenPlanner() {
                      onDragOver={(event => onDragOver(event))}>
                     {garden.map(cell =>
                         <div key={cell.id} className="cell" data-id={cell.id}>
-                            {cell.name.length !== 0 ? <div className="remove" onClick={() => removeVegetableFromCell(cell.id)}>X</div> : ""}
+                            {cell.name.length !== 0 ?
+                                <div className="remove" onClick={() => removeVegetableFromCell(cell.id)}>X</div> : ""}
                             <img draggable={false} src={cell.pictureURL} alt=""/>
                         </div>
                     )}
