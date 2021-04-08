@@ -5,6 +5,8 @@ import {Vegetables} from "../grow_guides/Descriptions";
 import axios from "axios";
 import {environmentVariables} from "../../EnvironmentVariables";
 import html2canvas from "html2canvas";
+import {BsFillPlusCircleFill} from "react-icons/bs";
+import {FaCloudDownloadAlt} from "react-icons/fa";
 
 function GardenPlanner() {
     const [garden, setGarden] = useState([]);
@@ -172,9 +174,15 @@ function GardenPlanner() {
             <div className="garden-container">
                 <h1>Your garden</h1>
                 <div className="option-container">
-                    <button className="option" onClick={() => download()}>Download screenshot</button>
-                    <button className="option" onClick={() => setRows(rows + 1)}>Add row</button>
-                    <button className="option" onClick={() => setColumns(columns + 1)}>Add column</button>
+                    <button className="option" onClick={() => download()}>
+                        <FaCloudDownloadAlt/>Download screenshot
+                    </button>
+                    <button className="option" onClick={() => setRows(rows + 1)}>
+                        <BsFillPlusCircleFill/>Add row
+                    </button>
+                    <button className="option" onClick={() => setColumns(columns + 1)}>
+                        <BsFillPlusCircleFill/>Add column
+                    </button>
                 </div>
                 <div id="garden"
                      className="garden"
