@@ -1,0 +1,234 @@
+@import "../Variables";
+
+%title {
+  width: 100%;
+  color: $color-highlight;
+  text-align: center;
+  font-size: $font-size-normal-vw;
+}
+
+.garden-planner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  width: 80%;
+  max-width: 1300px;
+  height: border-box;
+  max-height: 620px;
+
+  margin: 30px auto;
+
+  font-family: $font-family-text;
+  font-weight: bold;
+
+  color: $color-text;
+  background-color: $background-color-darker;
+  border-radius: $border-radius-container;
+
+  .garden-container {
+    width: 50%;
+    height: 100%;
+
+    padding: 0 10px 20px;
+    margin: 0;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 3px;
+      right: 0;
+      height: 100%;
+      background: linear-gradient(130deg, #0F1329, $color-highlight 50%, #0F1329 100%);
+    }
+
+    h1 {
+      @extend %title;
+    }
+
+    .garden {
+      overflow: auto;
+      width: border-box;
+      max-height: 435px;
+
+      ////////////////////////
+      // Scrollbar specific //
+
+      &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        display: block;
+      }
+
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $focus-color-lighter;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: $focus-color-lighter-hover;
+      }
+
+      &::-webkit-scrollbar-corner {
+        background: rgba(0,0,0,0);
+      }
+
+      .row {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+
+        .cell {
+          @extend %display-flex-center;
+          width: 5vw;
+          min-width: 40px;
+          max-width: 75px;
+
+          height: 5vw;
+          min-height: 40px;
+          max-height: 75px;
+
+          margin: 5px;
+          border: 2px solid $background-color-normal;
+          border-radius: $border-radius-smaller;
+
+          position: relative;
+
+          .remove {
+            position: absolute;
+            top: -10px;
+            right: -5px;
+            color: darkorange;
+            cursor: pointer;
+          }
+
+          img {
+            width: 100%;
+            border-radius: $border-radius-smaller;
+          }
+        }
+      }
+    }
+  }
+
+  .vegetable-list-container {
+    width: 50%;
+    max-width: 750px;
+    height: 100%;
+    padding: 0 10px 20px;
+
+    h1 {
+      @extend %title;
+    }
+
+    .vegetable-list {
+      height: 100%;
+      max-height: 430px;
+
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(7.5vw, max-content));
+      grid-gap: 10px 10px;
+      justify-content: center;
+
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      ////////////////////////
+      // Scrollbar specific //
+
+      &::-webkit-scrollbar {
+        width: 10px;
+        display: block;
+      }
+
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $focus-color-lighter;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: $focus-color-lighter-hover;
+      }
+
+      .vegetable-container {
+        @extend %display-flex-space-between;
+        flex-direction: column;
+        width: 7vw;
+        height: 7vw;
+
+        background-color: $focus-color-lighter;
+        border-radius: $border-radius-smaller;
+        margin: 5px;
+
+        z-index: 1;
+
+        .vegetable-name {
+          font-size: 0.8vw;
+          margin: 5px 10px;
+          text-align: center;
+        }
+
+        img {
+          @extend %display-flex-space-between;
+          width: 60%;
+
+          margin-bottom: 10px;
+        }
+      }
+
+      .draggable {
+        cursor: grab;
+      }
+
+      .draggable:active {
+        cursor: grabbing;
+      }
+    }
+  }
+}
+
+.option-container {
+  @extend %display-flex-space-around;
+
+  .option {
+    @extend %display-flex-center;
+
+    padding: 10px;
+    margin: 0 5px 20px;
+
+    font-size: $font-size-smaller-vw;
+    font-weight: bold;
+
+    color: $color-text;
+    background-color: $focus-color-lighter;
+    border-radius: $border-radius-smaller;
+    border: none;
+
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.95);
+      transition: transform 200ms ease;
+    }
+
+    svg {
+      color: $color-highlight;
+      margin-right: 5px;
+      font-size: 17px;
+    }
+  }
+}
