@@ -11,8 +11,8 @@ function GardenPlanner() {
     const [vegetables, setVegetables] = useState([]);
     const [draggedVegetable, setDraggedVegetable] = useState({})
     const [refresh, setRefresh] = useState(false)
-    const [rows] = useState(15);
-    const [columns] = useState(16);
+    const [rows, setRows] = useState(5);
+    const [columns, setColumns] = useState(6);
 
     useEffect(() => {
         let source = axios.CancelToken.source();
@@ -75,7 +75,7 @@ function GardenPlanner() {
         return () => {
             source.cancel();
         }
-    }, [refresh])
+    }, [refresh, rows, columns])
 
 
     const onDrag = (event, vegetable) => {
@@ -170,7 +170,12 @@ function GardenPlanner() {
     return (
         <div className="garden-planner">
             <div className="garden-container">
-                <h1>Your garden <button onClick={() => download()}>Download screenshot</button></h1>
+                <h1>Your garden</h1>
+                <div className="option-container">
+                    <button className="option" onClick={() => download()}>Download screenshot</button>
+                    <button className="option" onClick={() => setRows(rows + 1)}>Add row</button>
+                    <button className="option" onClick={() => setColumns(columns + 1)}>Add column</button>
+                </div>
                 <div id="garden"
                      className="garden"
                      onDrop={(event) => onDrop(event)}
