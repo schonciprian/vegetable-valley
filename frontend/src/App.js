@@ -20,6 +20,7 @@ import PublicRoute from "./component/redirects/PublicRoute";
 import {WeatherForecastDataProvider} from "./context/WeatherForecastDataContext";
 import Charts from "./component/weather-forecast/chart/Charts";
 import GardenPlanner from "./component/garden/GardenPlanner";
+import {GardenSizeProvider} from "./component/garden/GardenSizeContext";
 
 
 function App() {
@@ -41,7 +42,9 @@ function App() {
                             <SelectedTypeListProvider>
                                 <PrivateRoute exact path="/grow-guides/" component={GrowGuideCard} />
                                 <PrivateRoute exact path="/grow-guides/:vegetableName/" component={VegetablePage} />
-                                <Route exact path="/garden" component={GardenPlanner} />
+                                <GardenSizeProvider>
+                                    <Route exact path="/garden" component={GardenPlanner} />
+                                </GardenSizeProvider>
                             </SelectedTypeListProvider>
 
                             <WeatherForecastDataProvider>
