@@ -153,6 +153,7 @@ function GardenPlanner() {
 
     const download = ({name = "img", extension = "jpg"} = {}) => {
         document.querySelector("#garden").style.overflow = "visible"
+        window.scrollTo(0, 0)
         html2canvas(document.querySelector("#garden"), {
             width: columns * 79,
             height: rows * 79,
