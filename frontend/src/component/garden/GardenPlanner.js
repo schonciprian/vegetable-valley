@@ -152,6 +152,9 @@ function GardenPlanner() {
     }
 
     const download = ({name = "img", extension = "jpg"} = {}) => {
+        const removeButtons = document.querySelectorAll(".remove")
+        removeButtons.forEach((button) => button.style.visibility = "hidden")
+
         document.querySelector("#garden").style.overflow = "visible"
         window.scrollTo(0, 0)
         html2canvas(document.querySelector("#garden"), {
@@ -167,6 +170,7 @@ function GardenPlanner() {
             a.click();
             document.body.removeChild(a);
         })
+        removeButtons.forEach((button) => button.style.visibility = "visible")
         document.querySelector("#garden").style.overflow = "scroll"
     };
 
