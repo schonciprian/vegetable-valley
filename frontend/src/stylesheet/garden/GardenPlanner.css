@@ -58,7 +58,7 @@
 .garden-planner .garden-container .garden {
   overflow: auto;
   width: border-box;
-  max-height: 395px;
+  max-height: 405px;
 }
 .garden-planner .garden-container .garden::-webkit-scrollbar {
   width: 10px;
@@ -115,7 +115,7 @@
 }
 .garden-planner .vegetable-list-container .vegetable-list {
   height: 100%;
-  max-height: 395px;
+  max-height: 400px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(7.5vw, max-content));
   grid-gap: 10px 10px;
