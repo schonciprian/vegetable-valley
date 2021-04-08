@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import '../../stylesheet/garden/GardenPlanner.css'
 import dirt from "../../image/garden/dirt.jpeg";
 import {Vegetables} from "../grow_guides/Descriptions";
@@ -7,14 +7,16 @@ import {environmentVariables} from "../../EnvironmentVariables";
 import html2canvas from "html2canvas";
 import {BsFillPlusCircleFill} from "react-icons/bs";
 import {FaCloudDownloadAlt} from "react-icons/fa";
+import {GardenSizeContext} from "./GardenSizeContext";
 
 function GardenPlanner() {
     const [garden, setGarden] = useState([]);
     const [vegetables, setVegetables] = useState([]);
     const [draggedVegetable, setDraggedVegetable] = useState({})
     const [refresh, setRefresh] = useState(false)
-    const [rows, setRows] = useState(5);
-    const [columns, setColumns] = useState(6);
+    const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
+    const [rows, setRows] = useState(gardenSize.rows);
+    const [columns, setColumns] = useState(gardenSize.columns);
 
     useEffect(() => {
         let source = axios.CancelToken.source();
@@ -77,7 +79,7 @@ function GardenPlanner() {
         return () => {
             source.cancel();
         }
-    }, [refresh, rows, columns])
+    }, [refresh, rows, columns, gardenSize])
 
 
     const onDrag = (event, vegetable) => {
@@ -151,9 +153,9 @@ function GardenPlanner() {
         })
     }
 
-    const download = ({name = "img", extension = "jpg"} = {}) => {
+    const download = () => {
         const imageWidth = columns <= 6 ? columns * 95 : columns * 79;
-        const imageHeight = columns * 79
+        const imageHeight = rows * 79
 
         const removeButtons = document.querySelectorAll(".remove")
         removeButtons.forEach((button) => button.style.visibility = "hidden")
@@ -185,10 +187,22 @@ function GardenPlanner() {
                     <button className="option" onClick={() => download()}>
                         <FaCloudDownloadAlt/>Download screenshot
                     </button>
-                    <button className="option" onClick={() => setRows(rows + 1)}>
+                    <button className="option" onClick={() => {
+                        setGardenSize(prevData => ({
+                            ...prevData,
+                            rows: rows + 1,
+                        }))
+                        setRows(rows + 1)
+                    }}>
                         <BsFillPlusCircleFill/>Add row
                     </button>
-                    <button className="option" onClick={() => setColumns(columns + 1)}>
+                    <button className="option" onClick={() => {
+                        setGardenSize(prevData => ({
+                            ...prevData,
+                            columns: columns + 1,
+                        }))
+                        setColumns(columns + 1)
+                    }}>
                         <BsFillPlusCircleFill/>Add column
                     </button>
                 </div>
