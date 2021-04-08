@@ -45,11 +45,35 @@
       @extend %title;
     }
 
+    .option-container {
+      @extend %display-flex-center;
+
+      .option {
+        padding: 10px;
+        margin: 0 20px 20px;
+
+        font-size: $font-size-smaller-vw;
+        font-weight: bold;
+
+        color: $color-text;
+        background-color: $focus-color-lighter;
+        border-radius: $border-radius-smaller;
+        border: none;
+
+        outline: none;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(0.95);
+          transition: transform 200ms ease;
+        }
+      }
+    }
+
     .garden {
       overflow: auto;
       width: border-box;
-      max-height: 400px;
-      padding: 20px;
+      max-height: 420px;
 
       ////////////////////////
       // Scrollbar specific //
