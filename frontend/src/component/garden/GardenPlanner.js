@@ -148,8 +148,8 @@ function GardenPlanner() {
     }
 
     const download = () => {
-        const imageWidth = columns <= 6 ? columns * 95 : columns * 79;
-        const imageHeight = rows * 79
+        const imageWidth = columns <= 6 ? columns * 86 + 40 : columns * 86;
+        const imageHeight = rows * 86
 
         const removeButtons = document.querySelectorAll(".remove")
         removeButtons.forEach((button) => button.style.visibility = "hidden")
