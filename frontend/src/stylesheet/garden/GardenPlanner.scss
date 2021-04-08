@@ -4,6 +4,7 @@
   width: 100%;
   color: $color-highlight;
   text-align: center;
+  font-size: $font-size-normal-vw;
 }
 
 .garden-planner {
@@ -13,6 +14,8 @@
 
   width: 80%;
   max-width: 1300px;
+  height: border-box;
+  max-height: 620px;
 
   margin: 30px auto;
 
@@ -27,7 +30,7 @@
     width: 50%;
     height: 100%;
 
-    padding: 10px;
+    padding: 0 10px 20px;
     margin: 0;
     position: relative;
 
@@ -45,35 +48,10 @@
       @extend %title;
     }
 
-    .option-container {
-      @extend %display-flex-center;
-
-      .option {
-        padding: 10px;
-        margin: 0 20px 20px;
-
-        font-size: $font-size-smaller-vw;
-        font-weight: bold;
-
-        color: $color-text;
-        background-color: $focus-color-lighter;
-        border-radius: $border-radius-smaller;
-        border: none;
-
-        outline: none;
-        cursor: pointer;
-
-        &:hover {
-          transform: scale(0.95);
-          transition: transform 200ms ease;
-        }
-      }
-    }
-
     .garden {
       overflow: auto;
       width: border-box;
-      max-height: 420px;
+      max-height: 450px;
 
       ////////////////////////
       // Scrollbar specific //
@@ -143,17 +121,16 @@
   .vegetable-list-container {
     width: 50%;
     max-width: 750px;
-    height: 40vw;
-    max-height: 500px;
-
-    padding: 20px;
+    height: 100%;
+    padding: 0 10px 20px;
 
     h1 {
       @extend %title;
     }
 
     .vegetable-list {
-      height: calc(100% - 105px);
+      height: 100%;
+      max-height: 450px;
 
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(7vw, max-content));
@@ -218,6 +195,39 @@
       .draggable:active {
         cursor: grabbing;
       }
+    }
+  }
+}
+
+.option-container {
+  @extend %display-flex-space-around;
+
+  .option {
+    @extend %display-flex-center;
+
+    padding: 10px;
+    margin: 0 5px 20px;
+
+    font-size: $font-size-smaller-vw;
+    font-weight: bold;
+
+    color: $color-text;
+    background-color: $focus-color-lighter;
+    border-radius: $border-radius-smaller;
+    border: none;
+
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.95);
+      transition: transform 200ms ease;
+    }
+
+    svg {
+      color: $color-highlight;
+      margin-right: 5px;
+      font-size: 17px;
     }
   }
 }
