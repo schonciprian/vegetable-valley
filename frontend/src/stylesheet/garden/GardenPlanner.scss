@@ -88,10 +88,11 @@
 
         .cell {
           @extend %display-flex-center;
-          width: 4.5vw;
+          width: 5vw;
           min-width: 40px;
           max-width: 75px;
 
+          height: 5vw;
           min-height: 40px;
           max-height: 75px;
 

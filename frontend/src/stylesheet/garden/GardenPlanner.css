@@ -86,9 +86,10 @@
   margin: 0 auto;
 }
 .garden-planner .garden-container .garden .row .cell {
-  width: 4.5vw;
+  width: 5vw;
   min-width: 40px;
   max-width: 75px;
+  height: 5vw;
   min-height: 40px;
   max-height: 75px;
   margin: 5px;
