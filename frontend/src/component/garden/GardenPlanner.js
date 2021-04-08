@@ -120,13 +120,7 @@ function GardenPlanner() {
     }
 
     const changeCellToVegetable = (destination) => {
-        let destinationCell = {};
-        garden.forEach((row) =>
-            row.forEach((cell) => {
-                if (cell.id === destination) {
-                    destinationCell = cell;
-                }
-            }));
+        const destinationCell = garden.flat().find(cell => cell.id === destination)
 
         destinationCell.name = draggedVegetable.name;
         destinationCell.pictureURL = draggedVegetable.pictureURL;
