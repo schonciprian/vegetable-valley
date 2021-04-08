@@ -206,6 +206,11 @@ function GardenPlanner() {
 
             <div className="vegetable-list-container">
                 <h1>Available vegetables</h1>
+                <div className="option-container" style={{visibility: "hidden"}}>
+                    <button className="option" onClick={() => download()}>
+                        <FaCloudDownloadAlt/>Download screenshot
+                    </button>
+                </div>
                 <div className="vegetable-list">
                     {vegetables.map(vegetable =>
                         <div key={vegetable.name}
