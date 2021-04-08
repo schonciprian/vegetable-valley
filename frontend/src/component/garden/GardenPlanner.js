@@ -154,8 +154,8 @@ function GardenPlanner() {
     const download = ({name = "img", extension = "jpg"} = {}) => {
         document.querySelector("#garden").style.overflow = "visible"
         html2canvas(document.querySelector("#garden"), {
-            width: columns * 79 + 40,
-            height: rows * 79 + 40,
+            width: columns * 79,
+            height: rows * 79,
             backgroundColor: "#0F1329"
         }).then(canvas => {
             let url = canvas.toDataURL("img/png");
