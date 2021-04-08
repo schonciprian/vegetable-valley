@@ -10,6 +10,8 @@ function GardenPlanner() {
     const [vegetables, setVegetables] = useState([]);
     const [draggedVegetable, setDraggedVegetable] = useState({})
     const [refresh, setRefresh] = useState(false)
+    const [rows] = useState(15);
+    const [columns] = useState(16);
 
     useEffect(() => {
         let source = axios.CancelToken.source();
@@ -27,8 +29,6 @@ function GardenPlanner() {
             },
         }, {cancelToken: source.token}).then((res) => {
             let garden = [];
-            const rows = 5;
-            const columns = 6;
 
             for (let i = 0; i < rows; i++) {
                 let row = [];
