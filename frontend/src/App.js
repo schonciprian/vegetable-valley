@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, /*Redirect*/} from "react-router-dom";
 
 import Registration from "./component/auth/Registration";
 import Login from "./component/auth/Login";
@@ -31,7 +31,7 @@ function App() {
                     <div className="main-container">
 
                         <Route exact path="/" component={Home}/>
-                        <Route render={() => <Redirect to="/" />} />
+                        {/*<Route render={() => <Redirect to="/" />} />*/}
                         <PublicRoute exact path="/register/" component={Registration} />
                         <PublicRoute exact path="/login/" component={Login} />
                         <PrivateRoute exact path="/profile/" component={Profile} />
