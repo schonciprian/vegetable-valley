@@ -152,14 +152,17 @@ function GardenPlanner() {
     }
 
     const download = ({name = "img", extension = "jpg"} = {}) => {
+        const imageWidth = columns <= 6 ? columns * 95 : columns * 79;
+        const imageHeight = columns * 79
+
         const removeButtons = document.querySelectorAll(".remove")
         removeButtons.forEach((button) => button.style.visibility = "hidden")
 
         document.querySelector("#garden").style.overflow = "visible"
         window.scrollTo(0, 0)
         html2canvas(document.querySelector("#garden"), {
-            width: columns * 79,
-            height: rows * 79,
+            width: imageWidth,
+            height: imageHeight,
             backgroundColor: "#0F1329"
         }).then(canvas => {
             let url = canvas.toDataURL("img/png");
@@ -171,7 +174,7 @@ function GardenPlanner() {
             document.body.removeChild(a);
         })
         removeButtons.forEach((button) => button.style.visibility = "visible")
-        document.querySelector("#garden").style.overflow = "scroll"
+        document.querySelector("#garden").style.overflow = "auto"
     };
 
     return (
