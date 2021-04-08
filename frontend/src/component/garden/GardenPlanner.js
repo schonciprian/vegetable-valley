@@ -4,6 +4,7 @@ import dirt from "../../image/garden/dirt.jpeg";
 import {Vegetables} from "../grow_guides/Descriptions";
 import axios from "axios";
 import {environmentVariables} from "../../EnvironmentVariables";
+import html2canvas from "html2canvas";
 
 function GardenPlanner() {
     const [garden, setGarden] = useState([]);
@@ -148,11 +149,30 @@ function GardenPlanner() {
         })
     }
 
+    const download = ({name = "img", extension = "jpg"} = {}) => {
+        document.querySelector("#garden").style.overflow = "visible"
+        html2canvas(document.querySelector("#garden"), {
+            width: columns * 79 + 40,
+            height: rows * 79 + 40,
+            backgroundColor: "#0F1329"
+        }).then(canvas => {
+            let url = canvas.toDataURL("img/png");
+            let a = document.createElement("a");
+            a.href = url;
+            a.download = "screenshot.png";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        })
+        document.querySelector("#garden").style.overflow = "scroll"
+    };
+
     return (
         <div className="garden-planner">
             <div className="garden-container">
-                <h1>Your garden</h1>
-                <div className="garden"
+                <h1>Your garden <button onClick={() => download()}>Download screenshot</button></h1>
+                <div id="garden"
+                     className="garden"
                      onDrop={(event) => onDrop(event)}
                      onDragOver={(event => onDragOver(event))}>
                     {garden.map((row, index) =>
