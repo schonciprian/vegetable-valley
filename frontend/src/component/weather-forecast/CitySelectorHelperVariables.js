@@ -1,6 +1,6 @@
-export const hungarianCities = ['Budapest', 'Bekescsaba', 'Debrecen', 'Eger', 'Gyor', 'Kaposvar', 'Kecskemet',
-    'Miskolc', 'Nyiregyhaza', 'Pecs', 'Salgotarjan', 'Szeged', 'Szekszard', 'Szekesfehervar',
-    'Szolnok', 'Szombathely', 'Tatabanya', 'Veszprem', 'Zalaegerszeg'];
+export const hungarianCities = ['Budapest', 'Békéscsaba', 'Debrecen', 'Eger', 'Győr', 'Kaposvár', 'Kecskemét',
+    'Miskolc', 'Nyíregyháza', 'Pécs', 'Salgótarján', 'Szeged', 'Szekszárd', 'Székesfehérvár',
+    'Szolnok', 'Szombathely', 'Tatabánya', 'Veszprém', 'Zalaegerszeg'];
 export const foreignCities = ['Amsterdam', 'Berlin', 'Bratislava', 'Copenhagen', 'Lisbon', 'London', 'Madrid', 'Paris', 'Rome', 'Wien']
 
 export function hideCitySelection() {
