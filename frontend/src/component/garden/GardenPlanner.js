@@ -19,8 +19,6 @@ function GardenPlanner() {
     const [columns, setColumns] = useState(gardenSize.columns);
 
     useEffect(() => {
-        let source = axios.CancelToken.source();
-
         ///////////////////////////////////////////////
         // Fill garden state with data from database //
         ///////////////////////////////////////////////
@@ -32,7 +30,7 @@ function GardenPlanner() {
                 Accept: "application/json, text/plain, */*",
                 Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
             },
-        }, {cancelToken: source.token}).then((res) => {
+        }).then((res) => {
             let garden = [];
 
             for (let i = 0; i < rows; i++) {
@@ -73,12 +71,6 @@ function GardenPlanner() {
         setVegetables(vegetables)
         setRefresh(false)
 
-        //////////////////////////////////
-        // On unmount cancel axios call //
-        //////////////////////////////////
-        return () => {
-            source.cancel();
-        }
     }, [refresh, rows, columns, gardenSize])
 
 
