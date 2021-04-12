@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import '../../stylesheet/garden/GardenPlanner.css'
 import dirt from "../../image/garden/dirt.jpeg";
 import {Vegetables} from "../grow_guides/Descriptions";
@@ -17,6 +17,8 @@ function GardenPlanner() {
     const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
     const [rows, setRows] = useState(gardenSize.rows);
     const [columns, setColumns] = useState(gardenSize.columns);
+
+    const gardenRef = useRef(null);
 
     useEffect(() => {
         ///////////////////////////////////////////////
@@ -145,8 +147,7 @@ function GardenPlanner() {
 
         const removeButtons = document.querySelectorAll(".remove")
         removeButtons.forEach((button) => button.style.visibility = "hidden")
-
-        document.querySelector("#garden").style.overflow = "visible"
+        gardenRef.current.style.overflow = "visible"
         window.scrollTo(0, 0)
         html2canvas(document.querySelector("#garden"), {
             width: imageWidth,
@@ -162,7 +163,7 @@ function GardenPlanner() {
             document.body.removeChild(a);
         })
         removeButtons.forEach((button) => button.style.visibility = "visible")
-        document.querySelector("#garden").style.overflow = "auto"
+        gardenRef.current.style.overflow = "auto"
     };
 
     return (
@@ -194,6 +195,7 @@ function GardenPlanner() {
                 </div>
                 <div id="garden"
                      className="garden"
+                     ref={gardenRef}
                      onDrop={(event) => onDrop(event)}
                      onDragOver={(event => onDragOver(event))}>
                     {garden.map((row, index) =>
