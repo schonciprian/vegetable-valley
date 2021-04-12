@@ -13,33 +13,35 @@ function GardenPlanner() {
     const [columns, setColumns] = useState(gardenSize.columns);
     const gardenRef = useRef(null);
 
+    const modifyRows = () => {
+        setGardenSize(prevData => ({
+            ...prevData,
+            rows: rows + 1,
+        }))
+        setRows(rows + 1)
+    }
+
+    const modifyColumns = () => {
+        setGardenSize(prevData => ({
+            ...prevData,
+            columns: columns + 1,
+        }))
+        setColumns(columns + 1)
+    }
+
     return (
         <div className="garden-planner">
             <div className="garden-container">
                 <h1>Your garden</h1>
                 <div className="option-selection">
 
-                    <DownloadGarden gardenRef={gardenRef}
-                                    rows={rows}
-                                    columns={columns}/>
+                    <DownloadGarden gardenRef={gardenRef} rows={rows} columns={columns}/>
 
-                    <button className="option" onClick={() => {
-                        setGardenSize(prevData => ({
-                            ...prevData,
-                            rows: rows + 1,
-                        }))
-                        setRows(rows + 1)
-                    }}>
+                    <button className="option" onClick={() => modifyRows()}>
                         <BsFillPlusCircleFill/>Add row
                     </button>
 
-                    <button className="option" onClick={() => {
-                        setGardenSize(prevData => ({
-                            ...prevData,
-                            columns: columns + 1,
-                        }))
-                        setColumns(columns + 1)
-                    }}>
+                    <button className="option" onClick={() => modifyColumns()}>
                         <BsFillPlusCircleFill/>Add column
                     </button>
 
