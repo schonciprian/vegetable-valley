@@ -1,17 +1,16 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import '../../stylesheet/garden/GardenPlanner.css'
 import dirt from "../../image/garden/dirt.jpeg";
-import {Vegetables} from "../grow_guides/Descriptions";
 import axios from "axios";
 import {environmentVariables} from "../../EnvironmentVariables";
 import html2canvas from "html2canvas";
 import {BsFillPlusCircleFill} from "react-icons/bs";
 import {FaCloudDownloadAlt} from "react-icons/fa";
 import {GardenSizeContext} from "./GardenSizeContext";
+import OptionVegetableList from "./OptionVegetableList";
 
 function GardenPlanner() {
     const [garden, setGarden] = useState([]);
-    const [vegetables, setVegetables] = useState([]);
     const [draggedVegetable, setDraggedVegetable] = useState({})
     const [refresh, setRefresh] = useState(false)
     const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
@@ -59,27 +58,9 @@ function GardenPlanner() {
             console.log(error.response.data)
         })
 
-        ///////////////////////////////////////
-        // Create available vegetables state //
-        ///////////////////////////////////////
-        let vegetables = [];
-        Object.keys(Vegetables).forEach((vegetable) => {
-            vegetables.push({
-                id: Vegetables[vegetable].id,
-                name: Vegetables[vegetable].name,
-                pictureURL: Vegetables[vegetable].pictureURL,
-            })
-        })
-        setVegetables(vegetables)
         setRefresh(false)
 
     }, [refresh, rows, columns, gardenSize])
-
-
-    const onDrag = (event, vegetable) => {
-        event.preventDefault();
-        setDraggedVegetable(vegetable)
-    }
 
     const onDragOver = (event) => {
         event.preventDefault();
@@ -220,18 +201,8 @@ function GardenPlanner() {
                         <FaCloudDownloadAlt/>Download screenshot
                     </button>
                 </div>
-                <div className="vegetable-list">
-                    {vegetables.map(vegetable =>
-                        <div key={vegetable.name}
-                             id={vegetable.id}
-                             className="vegetable-container draggable"
-                             draggable
-                             onDrag={(event) => onDrag(event, vegetable)}>
-                            <div className="vegetable-name">{vegetable.name}</div>
-                            <img draggable={false} src={vegetable.pictureURL} alt=""/>
-                        </div>
-                    )}
-                </div>
+
+                <OptionVegetableList setDraggedVegetable={setDraggedVegetable}/>
             </div>
         </div>
     );
