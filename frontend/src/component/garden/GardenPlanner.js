@@ -1,11 +1,10 @@
 import React, {useContext, useRef, useState} from 'react';
 import '../../stylesheet/garden/GardenPlanner.css'
-import html2canvas from "html2canvas";
 import {BsFillPlusCircleFill} from "react-icons/bs";
-import {FaCloudDownloadAlt} from "react-icons/fa";
 import {GardenSizeContext} from "./GardenSizeContext";
 import OptionVegetableList from "./OptionVegetableList";
 import Garden from "./Garden";
+import DownloadGarden from "./DownloadGarden";
 
 function GardenPlanner() {
     const [draggedVegetable, setDraggedVegetable] = useState({})
@@ -14,39 +13,16 @@ function GardenPlanner() {
     const [columns, setColumns] = useState(gardenSize.columns);
     const gardenRef = useRef(null);
 
-    const download = () => {
-        const imageWidth = columns <= 6 ? columns * 95 : columns * 86;
-        const imageHeight = rows * 86
-
-        const removeButtons = document.querySelectorAll(".remove")
-        removeButtons.forEach((button) => button.style.visibility = "hidden")
-        gardenRef.current.style.overflow = "visible"
-        window.scrollTo(0, 0)
-        html2canvas(document.querySelector("#garden"), {
-            width: imageWidth,
-            height: imageHeight,
-            backgroundColor: "#0F1329"
-        }).then(canvas => {
-            let url = canvas.toDataURL("img/png");
-            let a = document.createElement("a");
-            a.href = url;
-            a.download = "screenshot.png";
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        })
-        removeButtons.forEach((button) => button.style.visibility = "visible")
-        gardenRef.current.style.overflow = "auto"
-    };
-
     return (
         <div className="garden-planner">
             <div className="garden-container">
                 <h1>Your garden</h1>
                 <div className="option-selection">
-                    <button className="option" onClick={() => download()}>
-                        <FaCloudDownloadAlt/>Download screenshot
-                    </button>
+
+                    <DownloadGarden gardenRef={gardenRef}
+                                    rows={rows}
+                                    columns={columns}/>
+
                     <button className="option" onClick={() => {
                         setGardenSize(prevData => ({
                             ...prevData,
@@ -56,6 +32,7 @@ function GardenPlanner() {
                     }}>
                         <BsFillPlusCircleFill/>Add row
                     </button>
+
                     <button className="option" onClick={() => {
                         setGardenSize(prevData => ({
                             ...prevData,
@@ -65,10 +42,10 @@ function GardenPlanner() {
                     }}>
                         <BsFillPlusCircleFill/>Add column
                     </button>
+
                 </div>
 
-                <Garden
-                        gardenRef={gardenRef}
+                <Garden gardenRef={gardenRef}
                         draggedVegetable={draggedVegetable}
                         setDraggedVegetable={setDraggedVegetable}
                         rows={rows}
@@ -78,8 +55,8 @@ function GardenPlanner() {
             <div className="options-container">
                 <h1>Available vegetables</h1>
                 <div className="option-selection" style={{visibility: "hidden"}}>
-                    <button className="option" onClick={() => download()}>
-                        <FaCloudDownloadAlt/>Download screenshot
+                    <button className="option">
+                        Download screenshot
                     </button>
                 </div>
 
