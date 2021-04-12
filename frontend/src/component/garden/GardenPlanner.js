@@ -169,7 +169,7 @@ function GardenPlanner() {
         <div className="garden-planner">
             <div className="garden-container">
                 <h1>Your garden</h1>
-                <div className="option-container">
+                <div className="option-selection">
                     <button className="option" onClick={() => download()}>
                         <FaCloudDownloadAlt/>Download screenshot
                     </button>
@@ -211,9 +211,9 @@ function GardenPlanner() {
                 </div>
             </div>
 
-            <div className="vegetable-list-container">
+            <div className="options-container">
                 <h1>Available vegetables</h1>
-                <div className="option-container" style={{visibility: "hidden"}}>
+                <div className="option-selection" style={{visibility: "hidden"}}>
                     <button className="option" onClick={() => download()}>
                         <FaCloudDownloadAlt/>Download screenshot
                     </button>

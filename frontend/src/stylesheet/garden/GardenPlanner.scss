@@ -119,7 +119,7 @@
     }
   }
 
-  .vegetable-list-container {
+  .options-container {
     width: 50%;
     max-width: 750px;
     height: 100%;
@@ -200,7 +200,7 @@
   }
 }
 
-.option-container {
+.option-selection {
   @extend %display-flex-space-around;
 
   .option {
