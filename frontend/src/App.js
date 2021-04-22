@@ -43,7 +43,7 @@ function App() {
                                 <PrivateRoute exact path="/grow-guides/" component={GrowGuideCard} />
                                 <PrivateRoute exact path="/grow-guides/:vegetableName/" component={VegetablePage} />
                                 <GardenSizeProvider>
-                                    <Route exact path="/garden" component={GardenPlanner} />
+                                    <PrivateRoute exact path="/garden" component={GardenPlanner} />
                                 </GardenSizeProvider>
                             </SelectedTypeListProvider>
 
