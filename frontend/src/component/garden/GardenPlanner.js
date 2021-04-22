@@ -14,7 +14,7 @@ function GardenPlanner() {
     const [draggedVegetable, setDraggedVegetable] = useState({})
     const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
     const gardenRef = useRef(null);
-    const [selectedOptionList, setSelectedOptionList] = useState("Blocks")
+    const [selectedOptionList, setSelectedOptionList] = useState("Vegetables")
 
     useEffect(() => {
         if(!window.sessionStorage.getItem("token")) return
@@ -82,7 +82,7 @@ function GardenPlanner() {
             case "Vegetables":
                 return <OptionVegetableList setDraggedVegetable={setDraggedVegetable}/>;
             default:
-                return <OptionBlockList setDraggedVegetable={setDraggedVegetable}/>;
+                return <OptionVegetableList setDraggedVegetable={setDraggedVegetable}/>;
         }
     }
 
@@ -112,12 +112,13 @@ function GardenPlanner() {
             <div className="options-container">
                 <h1>Available {selectedOptionList.toLowerCase()}</h1>
                 <div className="option-selection">
-                    <button className="option" onClick={() => setSelectedOptionList("Blocks")}>
-                        Blocks
-                    </button>
-                    <button className="option" onClick={() => setSelectedOptionList("Vegetables")}>
+                    <button className={selectedOptionList === "Vegetables" ? "option active-type" : "option"} onClick={() => setSelectedOptionList("Vegetables")}>
                         Vegetables
                     </button>
+                    <button className={selectedOptionList === "Blocks" ? "option active-type" : "option"} onClick={() => setSelectedOptionList("Blocks")}>
+                        Blocks
+                    </button>
+
                 </div>
 
                 {renderSelectedOptionListComponent()}
