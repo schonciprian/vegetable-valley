@@ -185,5 +185,8 @@
   margin-right: 5px;
   font-size: 17px;
 }
+.option-selection .active-type {
+  color: darkorange;
+}
 
 /*# sourceMappingURL=GardenPlanner.css.map */
