@@ -3,11 +3,8 @@ import {Vegetables} from "./Descriptions";
 export const toggleCard = (cardIndex) => {
     const card = document.getElementById(`${cardIndex}`);
     card.classList.toggle('is-flipped');
-    console.log(card);
 
     const isFlippedCards = Array.prototype.slice.call(document.querySelectorAll('.is-flipped'));
-    console.log(isFlippedCards);
-    console.log(cardIndex);
 
     isFlippedCards.forEach((isFlippedCard) => {
         if ((isFlippedCard.id) !== cardIndex && !isFlippedCard.classList.contains('pin')) {

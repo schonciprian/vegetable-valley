@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.card-face-back .card-content .card-body .buttons, .card-face-back .card-content .icon, .card-face-front {
+.card-face-back .card-content .card-body .buttons, .card-face-back .card-content .icon, .grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner .card-face-front {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,6 +56,10 @@
   transform-style: preserve-3d;
   --gradient: linear-gradient(135deg, #151A30, #4B5682);
 }
+.grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner .card-face-front {
+  flex-direction: column;
+  background-image: var(--gradient);
+}
 .grow-guides-container .grow-guides-card .grow-guide-card-outer .grow-guide-card-inner .card-face-front img {
   max-width: 85%;
   object-fit: contain;
@@ -65,6 +69,7 @@
   position: absolute;
   top: 0;
   margin: 25px auto;
+  backface-visibility: hidden;
   text-transform: uppercase;
   text-align: center;
   font-size: 18px;
@@ -81,15 +86,6 @@
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
-}
-
-.card-face-front {
-  flex-direction: column;
-  background-image: var(--gradient);
-}
-.card-face-front h2 {
-  color: #eeeeee;
-  font-size: 32px;
 }
 
 .card-face-back {

@@ -21,7 +21,7 @@ export default function GrowGuideCard() {
     const [selectedTypeList, setSelectedTypeList] = useContext(SelectedTypeListContext);
     const [loading, setLoading] = useContext(LoadingContext);
     const [favoriteLoading, setFavoriteLoading] = useState(false);
-    // console.log(vegetableData);
+
     const handleScroll = () => {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
         const body = document.body;
