@@ -104,10 +104,10 @@ export default function GrowGuideCard() {
                                          className={`icon heart-icon ${Vegetables[veggie].types.includes("Favorite") ? "active" : ""}`}
                                          onClick={(event) => {
                                              heartCard(event, index, Vegetables[veggie].id)
-                                             {if (selectedTypeList.includes("Favorite") && selectedTypeList.length === 1) {
+                                             if (selectedTypeList.includes("Favorite") && selectedTypeList.length === 1) {
                                                  setFavoriteLoading(true)
                                                  document.getElementById(veggie).classList.remove('is-flipped')
-                                             }}
+                                             }
                                          }}>
                                         <FaHeart/>
                                     </div>
