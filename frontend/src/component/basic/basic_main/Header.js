@@ -56,6 +56,8 @@ function Header() {
                 {!user["token"] && <Link to="/register">Registration</Link>}
                 {!user["token"] && <Link to="/login">Login</Link>}
 
+                {user["token"] && <Link to="/garden">Garden</Link>}
+
                 {/***********************/}
                 {/** Vegetable related **/}
                 {/***********************/}

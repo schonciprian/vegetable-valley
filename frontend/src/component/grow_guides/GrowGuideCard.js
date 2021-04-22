@@ -83,11 +83,13 @@ export default function GrowGuideCard() {
 
             {loading ? <FaSpinner className="type-loading-spinner"/> : <React.Fragment/>}
             <div className={`grow-guides-card ${loading ? "hidden" : ""}`}>
+
                 {Object.keys(data).length === 0 ?
                     <div style={{color: 'darkorange', fontSize: '30px', marginTop: "20px"}}>No result</div> : ""}
+
                 {Object.keys(data).map((veggie, index) => (
-                    <div key={index} className="grow-guide-card-outer" onClick={() => toggleCard(index)}>
-                        <div id={index}
+                    <div key={index} className="grow-guide-card-outer" onClick={() => toggleCard(veggie)}>
+                        <div id={veggie}
                              className={`grow-guide-card-inner ${Vegetables[veggie].is_pinned ? "is-flipped pin" : ""}`}
                              key={index}>
                             <div className="card-face card-face-front">
@@ -96,23 +98,32 @@ export default function GrowGuideCard() {
                             </div>
                             <div className="card-face card-face-back">
                                 <div className="card-content">
+
+
                                     <div id={`heart-icon-${index}`}
                                          className={`icon heart-icon ${Vegetables[veggie].types.includes("Favorite") ? "active" : ""}`}
                                          onClick={(event) => {
                                              heartCard(event, index, Vegetables[veggie].id)
-                                             setFavoriteLoading(true)
+                                             {if (selectedTypeList.includes("Favorite") && selectedTypeList.length === 1) {
+                                                 setFavoriteLoading(true)
+                                                 document.getElementById(veggie).classList.remove('is-flipped')
+                                             }}
                                          }}>
                                         <FaHeart/>
                                     </div>
-                                    <div id={`pin-icon-${index}`}
+                                    <div id={`pin-icon-${veggie}`}
                                          className={`icon pin-icon ${Vegetables[veggie].is_pinned ? "active" : ""}`}
                                          onClick={(event) => pinCard(event, index, Vegetables[veggie].id)}>
                                         <GiPin style={{width: "20px", height: "20px"}}/>
                                     </div>
+
+
                                     <div className="card-header">
                                         <h2>{Vegetables[veggie].name}</h2>
                                         <img className="vegetable-picture" src={Vegetables[veggie].pictureURL} alt=""/>
                                     </div>
+
+
                                     <div className="card-body">
                                         <p>
                                             <span>Sowing depth: </span>
