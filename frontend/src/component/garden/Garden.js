@@ -1,15 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import {environmentVariables} from "../../EnvironmentVariables";
-import dirt from "../../image/garden/dirt.jpeg";
+// import dirt from "../../image/garden/dirt.jpeg";
+import dirt from "../../image/garden/dirt_2.png";
+import {GardenSizeContext} from "./GardenSizeContext";
 
 function Garden(props) {
     const [refresh, setRefresh] = useState(false)
     const gardenRef = props.gardenRef;
     const draggedVegetable = props.draggedVegetable;
     const setDraggedVegetable = props.setDraggedVegetable;
-    const rows = props.rows;
-    const columns = props.columns;
+    const [gardenSize] = useContext(GardenSizeContext);
+    const rows = gardenSize.rows;
+    const columns = gardenSize.columns;
     const [garden, setGarden] = useState([]);
 
     useEffect(() => {
@@ -52,7 +55,7 @@ function Garden(props) {
         })
         setRefresh(false)
 
-    }, [refresh, rows, columns])
+    }, [refresh, rows, columns, gardenSize])
 
     const onDragOver = (event) => {
         event.preventDefault();
