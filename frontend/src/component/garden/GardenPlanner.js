@@ -3,6 +3,8 @@ import '../../stylesheet/garden/GardenPlanner.css'
 import {BsFillPlusCircleFill} from "react-icons/bs";
 import {GardenSizeContext} from "./GardenSizeContext";
 import OptionVegetableList from "./OptionVegetableList";
+import OptionBlockList from "./OptionBlockList";
+
 import Garden from "./Garden";
 import DownloadGarden from "./DownloadGarden";
 import axios from "axios";
@@ -35,7 +37,7 @@ function GardenPlanner() {
             console.log(error.response.data)
         })
 
-    }, [])
+    }, [setGardenSize])
 
     const saveSizeChangesToDatabase = (rows, columns) => {
         axios({
@@ -73,6 +75,17 @@ function GardenPlanner() {
         saveSizeChangesToDatabase(gardenSize.rows, gardenSize.columns + 1)
     }
 
+    const renderSelectedOptionListComponent = () => {
+        switch (selectedOptionList) {
+            case "Blocks":
+                return <OptionBlockList setDraggedVegetable={setDraggedVegetable}/>;
+            case "Vegetables":
+                return <OptionVegetableList setDraggedVegetable={setDraggedVegetable}/>;
+            default:
+                return <OptionBlockList setDraggedVegetable={setDraggedVegetable}/>;
+        }
+    }
+
     return (
         <div className="garden-planner">
             <div className="garden-container">
@@ -97,14 +110,17 @@ function GardenPlanner() {
             </div>
 
             <div className="options-container">
-                <h1>Available vegetables</h1>
-                <div className="option-selection" style={{visibility: "hidden"}}>
-                    <button className="option">
-                        Download screenshot
+                <h1>Available {selectedOptionList.toLowerCase()}</h1>
+                <div className="option-selection">
+                    <button className="option" onClick={() => setSelectedOptionList("Blocks")}>
+                        Blocks
+                    </button>
+                    <button className="option" onClick={() => setSelectedOptionList("Vegetables")}>
+                        Vegetables
                     </button>
                 </div>
 
-                <OptionVegetableList setDraggedVegetable={setDraggedVegetable}/>
+                {renderSelectedOptionListComponent()}
             </div>
         </div>
     );

@@ -80,7 +80,7 @@ function Garden(props) {
                     cell_picture_url: draggedVegetable.pictureURL,
                 }
             }).then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
             }).catch((error) => {
                 console.log(error.response.data)
             })
@@ -90,6 +90,7 @@ function Garden(props) {
     }
 
     const changeCellToVegetable = (destination) => {
+        if (destination === null) return
         const destinationCell = garden.flat().find(cell => cell.id === destination)
 
         destinationCell.name = draggedVegetable.name;
