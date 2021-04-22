@@ -21,7 +21,7 @@ function GardenPlanner() {
 
         axios({
             method: "get",
-            url: `${environmentVariables.BACKEND_URL}/api/get-garden-size`,
+            url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/get-garden-size`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*",
@@ -42,7 +42,7 @@ function GardenPlanner() {
     const saveSizeChangesToDatabase = (rows, columns) => {
         axios({
             method: "put",
-            url: `${environmentVariables.BACKEND_URL}/api/update-garden-size`,
+            url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/update-garden-size`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*",

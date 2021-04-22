@@ -21,7 +21,7 @@ function Garden(props) {
         ///////////////////////////////////////////////
         axios({
             method: "get",
-            url: `${environmentVariables.BACKEND_URL}/api/garden`,
+            url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/garden`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*",
@@ -67,7 +67,7 @@ function Garden(props) {
         if (destination !== null) {
             axios({
                 method: "post",
-                url: `${environmentVariables.BACKEND_URL}/api/garden`,
+                url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/garden`,
                 headers: {
                     'Content-Type': 'application/json',
                     Accept: "application/json, text/plain, */*",
@@ -100,7 +100,7 @@ function Garden(props) {
     const removeVegetableFromCell = (cellId) => {
         axios({
             method: "delete",
-            url: `${environmentVariables.BACKEND_URL}/api/garden`,
+            url: `${environmentVariables.BACKEND_DEPLOY_URL}/api/garden`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: "application/json, text/plain, */*",
