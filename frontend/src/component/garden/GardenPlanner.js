@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import '../../stylesheet/garden/GardenPlanner.css'
 import {BsFillPlusCircleFill} from "react-icons/bs";
 import {GardenSizeContext} from "./GardenSizeContext";
