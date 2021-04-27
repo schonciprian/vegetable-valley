@@ -9,15 +9,22 @@ import Garden from "./Garden";
 import DownloadGarden from "./DownloadGarden";
 import axios from "axios";
 import {environmentVariables} from "../../EnvironmentVariables";
+import {FaArrowAltCircleLeft, FaArrowAltCircleRight, FaPencilAlt} from "react-icons/fa";
 
 function GardenPlanner() {
+    const gardenRef = useRef(null);
+    const gardenTitleRef = useRef();
+
     const [draggedVegetable, setDraggedVegetable] = useState({})
     const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
-    const gardenRef = useRef(null);
     const [selectedOptionList, setSelectedOptionList] = useState("Vegetables")
+    const [editableTitle, setEditableTitle] = useState(false)
+    const [gardenName, setGardenName] = useState("Your garden")
+    const [inputError, setInputError] = useState(false)
+    const [gardenTemporaryName, setGardenTemporaryName] = useState(gardenName)
 
     useEffect(() => {
-        if(!window.sessionStorage.getItem("token")) return
+        if (!window.sessionStorage.getItem("token")) return
 
         axios({
             method: "get",
@@ -37,7 +44,25 @@ function GardenPlanner() {
             console.log(error.response.data)
         })
 
-    }, [setGardenSize])
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+
+    }, [setGardenSize, gardenName])
+
+    const handleClickOutside = (e) => {
+        if (gardenTitleRef.current && gardenTitleRef.current.contains(e.target)) {
+            // inside click
+            setEditableTitle(true);
+            return;
+        }
+        // outside click
+        setEditableTitle(false);
+        setGardenTemporaryName(gardenName) // Change back temp value to original garden name
+        setInputError(false)
+    };
 
     const saveSizeChangesToDatabase = (rows, columns) => {
         axios({
@@ -86,10 +111,45 @@ function GardenPlanner() {
         }
     }
 
+    const handleGardenNameChange = (event) => {
+        setGardenTemporaryName(event.target.value)
+    }
+
+    const handleKeyPress = (event) => {
+        const gardenNewName = event.target.value;
+
+        if (event.key === "Enter") {
+            if (gardenNewName.length > 0) {
+                setGardenName(gardenNewName)
+                setGardenTemporaryName(gardenNewName)
+                setEditableTitle(false)
+                setInputError(false)
+            } else {
+                setInputError(true)
+            }
+        }
+    }
+
     return (
         <div className="garden-planner">
             <div className="garden-container">
-                <h1>Your garden</h1>
+                <div className='garden-selection'>
+                    <FaArrowAltCircleLeft className="arrow"/>
+                    <input
+                        className={`profile-data-value ${editableTitle ? "editableField" : ""} ${inputError ? "error" : ""}`}
+                        placeholder="Your garden's name"
+                        value={editableTitle ? gardenTemporaryName : gardenName}
+                        maxLength={18}
+                        ref={gardenTitleRef}
+                        readOnly={!editableTitle}
+                        onKeyDown={event => handleKeyPress(event)}
+                        onChange={(event) => {
+                            handleGardenNameChange(event)
+                        }}
+                    />
+                    <FaPencilAlt className="edit-title" onClick={() => setEditableTitle(!editableTitle)}/>
+                    <FaArrowAltCircleRight className="arrow"/>
+                </div>
                 <div className="option-selection">
 
                     <DownloadGarden gardenRef={gardenRef} rows={gardenSize.rows} columns={gardenSize.columns}/>
@@ -112,10 +172,12 @@ function GardenPlanner() {
             <div className="options-container">
                 <h1>Available {selectedOptionList.toLowerCase()}</h1>
                 <div className="option-selection">
-                    <button className={selectedOptionList === "Vegetables" ? "option active-type" : "option"} onClick={() => setSelectedOptionList("Vegetables")}>
+                    <button className={selectedOptionList === "Vegetables" ? "option active-type" : "option"}
+                            onClick={() => setSelectedOptionList("Vegetables")}>
                         Vegetables
                     </button>
-                    <button className={selectedOptionList === "Blocks" ? "option active-type" : "option"} onClick={() => setSelectedOptionList("Blocks")}>
+                    <button className={selectedOptionList === "Blocks" ? "option active-type" : "option"}
+                            onClick={() => setSelectedOptionList("Blocks")}>
                         Blocks
                     </button>
 
