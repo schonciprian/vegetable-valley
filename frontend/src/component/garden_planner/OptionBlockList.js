@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Blocks} from "./Blocks";
+import {Blocks} from "./block_connected/Blocks";
 
 function OptionBlockList(props) {
     const [blocks, setBlocks] = useState([])
