@@ -44,9 +44,64 @@
       background: linear-gradient(130deg, #0F1329, $color-highlight 50%, #0F1329 100%);
     }
 
-    h1 {
-      @extend %title;
+    .garden-selection {
+      @extend %display-flex-center;
+      justify-content: center;
+
+      .arrow {
+        margin: 0 20px;
+      }
+
+      h1 {
+        @extend %title;
+        width: fit-content;
+        //margin: auto 20px;
+      }
+
+      input {
+        width: 40%;
+
+        margin: 10px;
+        padding: 10px;
+
+        text-align: center;
+        font-family: $font-family-text;
+        font-size: min(1.5vw, 22px);
+
+        background-color: transparent;
+        border-radius: $border-radius-smaller;
+        color: $color-text;
+
+        outline: none;
+        border: none;
+        cursor: text;
+        caret-color: darkorange;
+
+        &::placeholder {
+          visibility: hidden;
+        }
+      }
+
+      .error {
+        border: 1px solid darkred;
+      }
+
+      .edit-title {
+        width: 10px;
+        color: darkorange;
+      }
+
+      .editableField {
+        background-color: $focus-color-lighter;
+        cursor: text;
+
+        &::placeholder {
+          visibility: visible;
+          color: $color-text;
+        }
+      }
     }
+
 
     .garden {
       overflow: auto;

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.option-selection .option, .garden-planner .garden-container .garden .row .cell {
+.option-selection .option, .garden-planner .garden-container .garden .row .cell, .garden-planner .garden-container .garden-selection {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@
   align-items: center;
 }
 
-.garden-planner .options-container h1, .garden-planner .garden-container h1 {
+.garden-planner .options-container h1, .garden-planner .garden-container .garden-selection h1 {
   width: 100%;
   color: darkorange;
   text-align: center;
@@ -54,6 +54,48 @@
   right: 0;
   height: 100%;
   background: linear-gradient(130deg, #0F1329, darkorange 50%, #0F1329 100%);
+}
+.garden-planner .garden-container .garden-selection {
+  justify-content: center;
+}
+.garden-planner .garden-container .garden-selection .arrow {
+  margin: 0 20px;
+}
+.garden-planner .garden-container .garden-selection h1 {
+  width: fit-content;
+}
+.garden-planner .garden-container .garden-selection input {
+  width: 40%;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: min(1.5vw, 22px);
+  background-color: transparent;
+  border-radius: 10px;
+  color: #eeeeee;
+  outline: none;
+  border: none;
+  cursor: text;
+  caret-color: darkorange;
+}
+.garden-planner .garden-container .garden-selection input::placeholder {
+  visibility: hidden;
+}
+.garden-planner .garden-container .garden-selection .error {
+  border: 1px solid darkred;
+}
+.garden-planner .garden-container .garden-selection .edit-title {
+  width: 10px;
+  color: darkorange;
+}
+.garden-planner .garden-container .garden-selection .editableField {
+  background-color: #4B5682;
+  cursor: text;
+}
+.garden-planner .garden-container .garden-selection .editableField::placeholder {
+  visibility: visible;
+  color: #eeeeee;
 }
 .garden-planner .garden-container .garden {
   overflow: auto;
