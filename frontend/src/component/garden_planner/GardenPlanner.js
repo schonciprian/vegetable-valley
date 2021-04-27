@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import '../../stylesheet/garden/GardenPlanner.css'
 import {BsFillPlusCircleFill} from "react-icons/bs";
-import {GardenSizeContext} from "./GardenSizeContext";
-import OptionVegetableList from "./OptionVegetableList";
-import OptionBlockList from "./OptionBlockList";
+import {GardenSizeContext} from "./garden_connected/garden_settings/GardenSizeContext";
+import OptionVegetableList from "./block_connected/OptionVegetableList";
+import OptionBlockList from "./block_connected/OptionBlockList";
 
-import Garden from "./Garden";
-import DownloadGarden from "./DownloadGarden";
+import Garden from "./garden_connected/Garden";
+import DownloadGarden from "./garden_connected/garden_settings/DownloadGarden";
 import axios from "axios";
 import {environmentVariables} from "../../EnvironmentVariables";
 import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";

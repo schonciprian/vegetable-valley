@@ -20,7 +20,7 @@ import PublicRoute from "./component/redirects/PublicRoute";
 import {WeatherForecastDataProvider} from "./context/WeatherForecastDataContext";
 import Charts from "./component/weather-forecast/chart/Charts";
 import GardenPlanner from "./component/garden_planner/GardenPlanner";
-import {GardenSizeProvider} from "./component/garden_planner/GardenSizeContext";
+import {GardenSizeProvider} from "./component/garden_planner/garden_connected/garden_settings/GardenSizeContext";
 
 
 function App() {

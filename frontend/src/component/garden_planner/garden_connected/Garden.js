@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
-import {environmentVariables} from "../../EnvironmentVariables";
+import {environmentVariables} from "../../../EnvironmentVariables";
 // import dirt from "../../image/garden/dirt.jpeg";
-import dirt from "../../image/garden/dirt_2.png";
-import {GardenSizeContext} from "./GardenSizeContext";
+import dirt from "../../../image/garden/dirt_2.png";
+import {GardenSizeContext} from "./garden_settings/GardenSizeContext";
 
 function Garden(props) {
     const [refresh, setRefresh] = useState(false)
