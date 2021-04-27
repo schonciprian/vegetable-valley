@@ -13,7 +13,6 @@ import GardenSelection from "./garden_connected/garden_settings/GardenSelection"
 
 function GardenPlanner() {
     const gardenRef = useRef(null);
-    const gardenTitleRef = useRef();
 
     const [draggedVegetable, setDraggedVegetable] = useState({})
     const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
@@ -91,7 +90,7 @@ function GardenPlanner() {
     return (
         <div className="garden-planner">
             <div className="garden-container">
-                <GardenSelection gardenTitleRef={gardenTitleRef}/>
+                <GardenSelection/>
 
                 <div className="option-selection">
 

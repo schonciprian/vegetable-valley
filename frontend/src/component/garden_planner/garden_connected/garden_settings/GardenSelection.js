@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
 
 function GardenSelection(props) {
-    const gardenTitleRef = props.gardenTitleRef;
+    const gardenTitleRef = useRef();
 
     const [editableTitle, setEditableTitle] = useState(false)
     const [gardenName, setGardenName] = useState("Your garden")
