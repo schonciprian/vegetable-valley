@@ -209,13 +209,24 @@
 .garden-option-selection,
 .option-selection {
   flex-wrap: wrap;
+  height: 60px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.garden-option-selection:before,
+.option-selection:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(130deg, #0F1329, darkorange 50%, #0F1329 100%);
 }
 .garden-option-selection .option,
 .option-selection .option {
   width: 20%;
   height: 35px;
   padding: 10px;
-  margin: 0 5px 20px;
   font-size: 1vw;
   font-weight: bold;
   white-space: nowrap;
