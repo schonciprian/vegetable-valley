@@ -73,7 +73,8 @@ function DownloadGarden(props) {
 
     return (
         <button className="option" onClick={() => download()}>
-            <FaCloudDownloadAlt/>Download screenshot
+            <FaCloudDownloadAlt/>
+            <span>Download</span>
         </button>
     );
 }

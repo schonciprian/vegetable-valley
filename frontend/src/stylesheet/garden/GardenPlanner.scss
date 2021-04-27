@@ -12,10 +12,7 @@
   justify-content: space-between;
   align-items: flex-start;
 
-  width: 80%;
-  max-width: 1300px;
-  height: border-box;
-  max-height: 620px;
+  width: 95%;
 
   margin: 30px auto;
 
@@ -177,11 +174,14 @@
 
     h1 {
       @extend %title;
+      width: fit-content;
+      margin: 10px auto;
+      padding: 10px;
     }
 
     .vegetable-list {
       height: 100%;
-      max-height: 430px;
+      max-height: 425px;
 
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(7.5vw, max-content));
@@ -250,17 +250,24 @@
   }
 }
 
-.option-selection {
+.garden-option-selection,
+.option-selection{
   @extend %display-flex-space-around;
+  flex-wrap: wrap;
 
   .option {
     @extend %display-flex-center;
+
+    width: 20%;
+    height: 35px;
 
     padding: 10px;
     margin: 0 5px 20px;
 
     font-size: $font-size-smaller-vw;
     font-weight: bold;
+    white-space:nowrap;
+
 
     color: $color-text;
     background-color: $focus-color-lighter;
@@ -278,7 +285,8 @@
     svg {
       color: $color-highlight;
       margin-right: 5px;
-      font-size: 17px;
+      width: 15px;
+      height: 15px;
     }
   }
 

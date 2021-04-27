@@ -92,16 +92,23 @@ function GardenPlanner() {
             <div className="garden-container">
                 <GardenSelection/>
 
-                <div className="option-selection">
+                <div className="garden-option-selection">
 
                     <DownloadGarden gardenRef={gardenRef} rows={gardenSize.rows} columns={gardenSize.columns}/>
 
                     <button className="option" onClick={() => modifyRows()}>
-                        <BsFillPlusCircleFill/>Add row
+                        <BsFillPlusCircleFill/>
+                        <span>Add row</span>
                     </button>
 
                     <button className="option" onClick={() => modifyColumns()}>
-                        <BsFillPlusCircleFill/>Add column
+                        <BsFillPlusCircleFill/>
+                        <span>Add column</span>
+                    </button>
+
+                    <button className="option" onClick={() => console.log("add garden")}>
+                        <BsFillPlusCircleFill/>
+                        <span>New garden</span>
                     </button>
 
                 </div>

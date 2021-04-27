@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+.garden-option-selection .option,
 .option-selection .option, .garden-planner .garden-container .garden .row .cell, .garden-planner .garden-container .garden-selection {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.garden-option-selection,
 .option-selection {
   display: flex;
   justify-content: space-around;
@@ -28,10 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 80%;
-  max-width: 1300px;
-  height: border-box;
-  max-height: 620px;
+  width: 95%;
   margin: 30px auto;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -152,9 +151,14 @@
   height: 100%;
   padding: 0 10px 20px;
 }
+.garden-planner .options-container h1 {
+  width: fit-content;
+  margin: 10px auto;
+  padding: 10px;
+}
 .garden-planner .options-container .vegetable-list {
   height: 100%;
-  max-height: 430px;
+  max-height: 425px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(7.5vw, max-content));
   grid-gap: 10px 10px;
@@ -202,11 +206,19 @@
   cursor: grabbing;
 }
 
+.garden-option-selection,
+.option-selection {
+  flex-wrap: wrap;
+}
+.garden-option-selection .option,
 .option-selection .option {
+  width: 20%;
+  height: 35px;
   padding: 10px;
   margin: 0 5px 20px;
   font-size: 1vw;
   font-weight: bold;
+  white-space: nowrap;
   color: #eeeeee;
   background-color: #4B5682;
   border-radius: 10px;
@@ -214,15 +226,19 @@
   outline: none;
   cursor: pointer;
 }
+.garden-option-selection .option:hover,
 .option-selection .option:hover {
   transform: scale(0.95);
   transition: transform 200ms ease;
 }
+.garden-option-selection .option svg,
 .option-selection .option svg {
   color: darkorange;
   margin-right: 5px;
-  font-size: 17px;
+  width: 15px;
+  height: 15px;
 }
+.garden-option-selection .active-type,
 .option-selection .active-type {
   color: darkorange;
 }
