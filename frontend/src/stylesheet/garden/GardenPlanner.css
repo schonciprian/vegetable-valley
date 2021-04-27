@@ -85,10 +85,6 @@
 .garden-planner .garden-container .garden-selection .error {
   border: 1px solid darkred;
 }
-.garden-planner .garden-container .garden-selection .edit-title {
-  width: 10px;
-  color: darkorange;
-}
 .garden-planner .garden-container .garden-selection .editableField {
   background-color: #4B5682;
   cursor: text;

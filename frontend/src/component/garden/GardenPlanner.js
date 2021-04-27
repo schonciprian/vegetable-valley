@@ -9,7 +9,7 @@ import Garden from "./Garden";
 import DownloadGarden from "./DownloadGarden";
 import axios from "axios";
 import {environmentVariables} from "../../EnvironmentVariables";
-import {FaArrowAltCircleLeft, FaArrowAltCircleRight, FaPencilAlt} from "react-icons/fa";
+import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
 
 function GardenPlanner() {
     const gardenRef = useRef(null);
@@ -147,7 +147,6 @@ function GardenPlanner() {
                             handleGardenNameChange(event)
                         }}
                     />
-                    <FaPencilAlt className="edit-title" onClick={() => setEditableTitle(!editableTitle)}/>
                     <FaArrowAltCircleRight className="arrow"/>
                 </div>
                 <div className="option-selection">
