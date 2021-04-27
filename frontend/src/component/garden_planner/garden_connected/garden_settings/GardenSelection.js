@@ -4,10 +4,11 @@ import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
 function GardenSelection(props) {
     const gardenTitleRef = useRef();
 
-    const [editableTitle, setEditableTitle] = useState(false)
     const [gardenName, setGardenName] = useState("Your garden")
-    const [inputError, setInputError] = useState(false)
     const [gardenTemporaryName, setGardenTemporaryName] = useState(gardenName)
+
+    const [editableTitle, setEditableTitle] = useState(false)
+    const [inputError, setInputError] = useState(false)
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
@@ -19,11 +20,11 @@ function GardenSelection(props) {
 
     const handleClickOutside = (e) => {
         if (gardenTitleRef.current && gardenTitleRef.current.contains(e.target)) {
-            // inside click
+            // Clicking inside the garden's title
             setEditableTitle(true);
             return;
         }
-        // outside click
+        // Clicking outside the garden's title
         setEditableTitle(false);
         setGardenTemporaryName(gardenName) // Change back temp value to original garden name
         setInputError(false)
@@ -49,7 +50,7 @@ function GardenSelection(props) {
     }
     return (
         <div className='garden-selection'>
-            <FaArrowAltCircleLeft className="arrow"/>
+            {/*<FaArrowAltCircleLeft className="arrow"/>*/}
             <input
                 className={`profile-data-value ${editableTitle ? "editableField" : ""} ${inputError ? "error" : ""}`}
                 placeholder="Your garden's name"
@@ -62,7 +63,7 @@ function GardenSelection(props) {
                     handleGardenNameChange(event)
                 }}
             />
-            <FaArrowAltCircleRight className="arrow"/>
+            {/*<FaArrowAltCircleRight className="arrow"/>*/}
         </div>);
 }
 
