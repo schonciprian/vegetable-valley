@@ -21,6 +21,7 @@ import {WeatherForecastDataProvider} from "./context/WeatherForecastDataContext"
 import Charts from "./component/weather-forecast/chart/Charts";
 import GardenPlanner from "./component/garden_planner/GardenPlanner";
 import {GardenSizeProvider} from "./component/garden_planner/garden_connected/garden_settings/GardenSizeContext";
+import {ActualGardenIdProvider} from "./component/garden_planner/garden_connected/ActualGardenId";
 
 
 function App() {
@@ -42,9 +43,13 @@ function App() {
                             <SelectedTypeListProvider>
                                 <PrivateRoute exact path="/grow-guides/" component={GrowGuideCard} />
                                 <PrivateRoute exact path="/grow-guides/:vegetableName/" component={VegetablePage} />
+
                                 <GardenSizeProvider>
-                                    <PrivateRoute exact path="/garden-planner" component={GardenPlanner} />
+                                    <ActualGardenIdProvider>
+                                        <PrivateRoute exact path="/garden-planner" component={GardenPlanner} />
+                                    </ActualGardenIdProvider>
                                 </GardenSizeProvider>
+
                             </SelectedTypeListProvider>
 
                             <WeatherForecastDataProvider>

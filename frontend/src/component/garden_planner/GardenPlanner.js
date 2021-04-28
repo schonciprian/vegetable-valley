@@ -10,14 +10,19 @@ import DownloadGarden from "./garden_connected/garden_settings/DownloadGarden";
 import axios from "axios";
 import {environmentVariables} from "../../EnvironmentVariables";
 import GardenSelection from "./garden_connected/garden_settings/GardenSelection";
+import {ActualGardenIdContext} from "./garden_connected/ActualGardenId";
 
 function GardenPlanner() {
+    // Refs
     const gardenRef = useRef(null);
-
+    // States
     const [draggedVegetable, setDraggedVegetable] = useState({})
-    const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
     const [selectedOptionList, setSelectedOptionList] = useState("Vegetables")
+    // Contexts
+    const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
+    const [actualGardenId, setActualGardenId] = useContext(ActualGardenIdContext)
 
+    console.log(actualGardenId);
     useEffect(() => {
         if (!window.sessionStorage.getItem("token")) return
 
@@ -106,7 +111,7 @@ function GardenPlanner() {
                         <span>Add column</span>
                     </button>
 
-                    <button className="option" onClick={() => console.log("add garden")}>
+                    <button className="option" onClick={() => setActualGardenId(actualGardenId + 1)}>
                         <BsFillPlusCircleFill/>
                         <span>New garden</span>
                     </button>
