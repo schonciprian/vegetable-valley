@@ -50,6 +50,14 @@ export default function Login() {
             }, 2000);
 
         }).catch((error) => {
+            if (error.response === undefined) {
+                swal("Service unavailable", "Try again later", "error");
+                setTimeout(() => {
+                    swal.close();
+                }, 5000);
+                return;
+            }
+
             // Store the errors in errorMessages to represent them for the user
             setErrorMessages(error.response.data);
 
