@@ -57,6 +57,7 @@ function GardenPlanner() {
                 Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
             },
             data: {
+                garden_id: actualGardenId,
                 row_count: rows,
                 column_count: columns,
             },
