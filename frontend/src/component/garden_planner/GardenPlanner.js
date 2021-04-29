@@ -22,7 +22,6 @@ function GardenPlanner() {
     const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
     const [actualGardenId, setActualGardenId] = useContext(ActualGardenIdContext)
 
-    console.log(actualGardenId);
     useEffect(() => {
         if (!window.sessionStorage.getItem("token") || actualGardenId === null) return
 
@@ -38,7 +37,6 @@ function GardenPlanner() {
                 garden_id: actualGardenId,
             },
         }).then((res) => {
-            console.log(res.data);
             setGardenSize(prevData => ({
                 ...prevData,
                 rows: parseInt(res.data[0].row_count),
