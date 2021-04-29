@@ -26,6 +26,20 @@ function GardenPlanner() {
     useEffect(() => {
         if (!window.sessionStorage.getItem("token")) return
 
+        // axios({
+        //     method: "get",
+        //     url: `${environmentVariables.BACKEND_URL}/api/get-user-gardens`,
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         Accept: "application/json, text/plain, */*",
+        //         Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+        //     },
+        // }).then((res) => {
+        //     setActualGardenId(res.data[0].id)
+        // }).catch((error) => {
+        //     console.log(error.response.data)
+        // })
+
         axios({
             method: "get",
             url: `${environmentVariables.BACKEND_URL}/api/get-garden-size`,
@@ -34,7 +48,11 @@ function GardenPlanner() {
                 Accept: "application/json, text/plain, */*",
                 Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
             },
+            params: {
+                garden_id: actualGardenId,
+            },
         }).then((res) => {
+            console.log(res.data);
             setGardenSize(prevData => ({
                 ...prevData,
                 rows: parseInt(res.data[0].row_count),
@@ -43,7 +61,7 @@ function GardenPlanner() {
         }).catch((error) => {
             console.log(error.response.data)
         })
-    }, [setGardenSize])
+    }, [setGardenSize, actualGardenId])
 
     const saveSizeChangesToDatabase = (rows, columns) => {
         axios({

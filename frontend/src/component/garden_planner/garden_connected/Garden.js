@@ -4,6 +4,7 @@ import {environmentVariables} from "../../../EnvironmentVariables";
 // import dirt from "../../image/garden/dirt.jpeg";
 import dirt from "../../../image/garden/dirt_2.png";
 import {GardenSizeContext} from "./garden_settings/GardenSizeContext";
+import {ActualGardenIdContext} from "./ActualGardenId";
 
 function Garden(props) {
     const [refresh, setRefresh] = useState(false)
@@ -14,6 +15,8 @@ function Garden(props) {
     const rows = gardenSize.rows;
     const columns = gardenSize.columns;
     const [garden, setGarden] = useState([]);
+    const [actualGardenId] = useContext(ActualGardenIdContext)
+
 
     useEffect(() => {
         ///////////////////////////////////////////////
@@ -27,6 +30,9 @@ function Garden(props) {
                 Accept: "application/json, text/plain, */*",
                 Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
             },
+            params: {
+                garden_id: actualGardenId,
+            }
         }).then((res) => {
             let garden = [];
 
@@ -74,6 +80,7 @@ function Garden(props) {
                     Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
                 },
                 data: {
+                    garden_id: actualGardenId,
                     cell_row: destination.split("-")[0],
                     cell_column: destination.split("-")[1],
                     cell_name: draggedVegetable.name,
@@ -107,6 +114,7 @@ function Garden(props) {
                 Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
             },
             data: {
+                garden_id: actualGardenId,
                 cell_row: cellId.split("-")[0],
                 cell_column: cellId.split("-")[1],
             }
