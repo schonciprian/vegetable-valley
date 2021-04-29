@@ -94,6 +94,25 @@ function GardenPlanner() {
         }
     }
 
+    const addNewGarden = () => {
+        console.log("add new garden");
+    //     Axios to create new garden to DB
+        axios({
+            method: "post",
+            url: `${environmentVariables.BACKEND_URL}/api/add-new-garden`,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json, text/plain, */*",
+                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+            },
+        }).then((res) => {
+            console.log(res.data);
+            setActualGardenId(res.data.id)
+        }).catch((error) => {
+            console.log(error.response.data)
+        })
+    }
+
     return (
         <div className="garden-planner">
             <div className="garden-container">
@@ -113,7 +132,7 @@ function GardenPlanner() {
                         <span>Add column</span>
                     </button>
 
-                    <button className="option" onClick={() => setActualGardenId(actualGardenId + 1)}>
+                    <button className="option" onClick={() => addNewGarden()}>
                         <BsFillPlusCircleFill/>
                         <span>New garden</span>
                     </button>
