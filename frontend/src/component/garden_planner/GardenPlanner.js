@@ -24,21 +24,7 @@ function GardenPlanner() {
 
     console.log(actualGardenId);
     useEffect(() => {
-        if (!window.sessionStorage.getItem("token")) return
-
-        // axios({
-        //     method: "get",
-        //     url: `${environmentVariables.BACKEND_URL}/api/get-user-gardens`,
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         Accept: "application/json, text/plain, */*",
-        //         Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-        //     },
-        // }).then((res) => {
-        //     setActualGardenId(res.data[0].id)
-        // }).catch((error) => {
-        //     console.log(error.response.data)
-        // })
+        if (!window.sessionStorage.getItem("token") || actualGardenId === null) return
 
         axios({
             method: "get",
