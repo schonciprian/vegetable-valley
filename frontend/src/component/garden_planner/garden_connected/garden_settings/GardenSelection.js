@@ -1,5 +1,8 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-// import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
+import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
+import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
+import axios from "axios";
+import {environmentVariables} from "../../../../EnvironmentVariables";
+import {ActualGardenIdContext} from "../ActualGardenId";
 
 function GardenSelection(props) {
     const gardenTitleRef = useRef();
@@ -20,6 +23,8 @@ function GardenSelection(props) {
         setGardenTemporaryName(gardenName) // Change back temp value to original garden name
         setInputError(false)
     }, [setEditableTitle, setGardenTemporaryName, setInputError, gardenName]);
+    const [actualGardenId, setActualGardenId] = useContext(ActualGardenIdContext)
+
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
@@ -49,9 +54,32 @@ function GardenSelection(props) {
             }
         }
     }
+
+    const switchGarden = (type) => {
+        let gardenIds = []
+        axios({
+            method: "get",
+            url: `${environmentVariables.BACKEND_URL}/api/get-user-gardens`,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json, text/plain, */*",
+                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+            },
+        }).then((res) => {
+            gardenIds = res.data.map(garden => garden.id)
+            const index = gardenIds.findIndex(id => id === actualGardenId)
+
+            if (type === 'left' && !gardenIds[index-1]) {return setActualGardenId(gardenIds[gardenIds.length - 1])}
+            if (type === 'right' && !gardenIds[index+1]) {return setActualGardenId(gardenIds[0])}
+            setActualGardenId(gardenIds[type === 'left' ? index - 1 : index + 1])
+        }).catch((error) => {
+            console.log(error.response.data)
+        })
+    }
+
     return (
         <div className='garden-selection'>
-            {/*<FaArrowAltCircleLeft className="arrow"/>*/}
+            <FaArrowAltCircleLeft className="arrow" onClick={() => switchGarden('left')}/>
             <input
                 className={`profile-data-value ${editableTitle ? "editableField" : ""} ${inputError ? "error" : ""}`}
                 placeholder="Your garden's name"
@@ -64,7 +92,7 @@ function GardenSelection(props) {
                     handleGardenNameChange(event)
                 }}
             />
-            {/*<FaArrowAltCircleRight className="arrow"/>*/}
+            <FaArrowAltCircleRight className="arrow" onClick={() => switchGarden('right')}/>
         </div>);
 }
 
