@@ -61,7 +61,7 @@ function Garden(props) {
         })
         setRefresh(false)
 
-    }, [refresh, rows, columns, gardenSize])
+    }, [refresh, rows, columns, gardenSize, actualGardenId])
 
     const onDragOver = (event) => {
         event.preventDefault();

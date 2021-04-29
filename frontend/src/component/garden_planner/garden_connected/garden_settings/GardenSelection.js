@@ -1,5 +1,5 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+// import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
 
 function GardenSelection(props) {
     const gardenTitleRef = useRef();
@@ -9,16 +9,7 @@ function GardenSelection(props) {
 
     const [editableTitle, setEditableTitle] = useState(false)
     const [inputError, setInputError] = useState(false)
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [gardenName])
-
-    const handleClickOutside = (e) => {
+    const handleClickOutside = useCallback((e) => {
         if (gardenTitleRef.current && gardenTitleRef.current.contains(e.target)) {
             // Clicking inside the garden's title
             setEditableTitle(true);
@@ -28,7 +19,17 @@ function GardenSelection(props) {
         setEditableTitle(false);
         setGardenTemporaryName(gardenName) // Change back temp value to original garden name
         setInputError(false)
-    };
+    }, [setEditableTitle, setGardenTemporaryName, setInputError, gardenName]);
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [gardenName, handleClickOutside])
+
+
 
     const handleGardenNameChange = (event) => {
         setGardenTemporaryName(event.target.value)
