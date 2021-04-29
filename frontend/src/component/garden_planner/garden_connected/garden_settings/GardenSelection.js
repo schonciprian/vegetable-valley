@@ -7,7 +7,7 @@ import {ActualGardenIdContext} from "../ActualGardenId";
 function GardenSelection(props) {
     const gardenTitleRef = useRef();
 
-    const [gardenName, setGardenName] = useState("Your garden")
+    const [gardenName, setGardenName] = useState('')
     const [gardenTemporaryName, setGardenTemporaryName] = useState(gardenName)
 
     const [editableTitle, setEditableTitle] = useState(false)
@@ -27,12 +27,31 @@ function GardenSelection(props) {
 
 
     useEffect(() => {
+        if (actualGardenId === null) return
+        axios({
+            method: "get",
+            url: `${environmentVariables.BACKEND_URL}/api/get-garden-name`,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json, text/plain, */*",
+                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+            },
+            params: {
+                garden_id: actualGardenId,
+            },
+        }).then((res) => {
+            setGardenName(res.data[0].garden_name)
+            setGardenTemporaryName(res.data[0].garden_name)
+        }).catch((error) => {
+            console.log(error.response.data)
+        })
+
         document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [gardenName, handleClickOutside])
+    }, [gardenName, handleClickOutside, actualGardenId])
 
 
 
