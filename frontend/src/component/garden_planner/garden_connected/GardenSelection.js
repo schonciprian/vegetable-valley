@@ -1,6 +1,6 @@
 import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
-import {ActualGardenIdContext} from "./ActualGardenIdContext";
+import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
 import {sweetalertSidePopup} from "../../additionals/SweetAlert";
 import {getRequest, putRequest} from "../../additionals/Requests";
 

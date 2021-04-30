@@ -1,6 +1,6 @@
 import React, {useState, createContext, useEffect} from "react";
 import axios from "axios";
-import {environmentVariables} from "../../../EnvironmentVariables";
+import {environmentVariables} from "../../../../EnvironmentVariables";
 
 export const ActualGardenIdContext = createContext(1);
 

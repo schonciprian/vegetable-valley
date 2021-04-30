@@ -3,8 +3,8 @@ import axios from "axios";
 import {environmentVariables} from "../../../EnvironmentVariables";
 // import dirt from "../../image/garden/dirt.jpeg";
 import dirt from "../../../image/garden/dirt_2.png";
-import {GardenSizeContext} from "./garden_settings/GardenSizeContext";
-import {ActualGardenIdContext} from "./ActualGardenIdContext";
+import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
+import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
 
 function Garden(props) {
     const [refresh, setRefresh] = useState(false)

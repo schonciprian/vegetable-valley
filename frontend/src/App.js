@@ -20,8 +20,8 @@ import PublicRoute from "./component/redirects/PublicRoute";
 import {WeatherForecastDataProvider} from "./context/WeatherForecastDataContext";
 import Charts from "./component/weather-forecast/chart/Charts";
 import GardenPlanner from "./component/garden_planner/GardenPlanner";
-import {GardenSizeProvider} from "./component/garden_planner/garden_connected/garden_settings/GardenSizeContext";
-import {ActualGardenIdProvider} from "./component/garden_planner/garden_connected/ActualGardenIdContext";
+import {GardenSizeProvider} from "./component/garden_planner/garden_connected/garden_connected_context/GardenSizeContext";
+import {ActualGardenIdProvider} from "./component/garden_planner/garden_connected/garden_connected_context/ActualGardenIdContext";
 
 
 function App() {

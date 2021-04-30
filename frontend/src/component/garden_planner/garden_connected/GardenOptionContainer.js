@@ -2,8 +2,8 @@ import React, {useContext, useEffect} from 'react';
 import DownloadGarden from "./garden_settings/DownloadGarden";
 import {BsFillPlusCircleFill} from "react-icons/bs";
 import {getRequest, putRequest} from "../../additionals/Requests";
-import {ActualGardenIdContext} from "./ActualGardenIdContext";
-import {GardenSizeContext} from "./garden_settings/GardenSizeContext";
+import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
+import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
 import axios from "axios";
 import {environmentVariables} from "../../../EnvironmentVariables";
 
