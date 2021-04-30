@@ -9,8 +9,8 @@ import Garden from "./garden_connected/Garden";
 import DownloadGarden from "./garden_connected/garden_settings/DownloadGarden";
 import axios from "axios";
 import {environmentVariables} from "../../EnvironmentVariables";
-import GardenSelection from "./garden_connected/garden_settings/GardenSelection";
-import {ActualGardenIdContext} from "./garden_connected/ActualGardenId";
+import GardenSelection from "./garden_connected/GardenSelection";
+import {ActualGardenIdContext} from "./garden_connected/ActualGardenIdContext";
 import {getRequest, putRequest} from "../additionals/Requests";
 
 function GardenPlanner() {

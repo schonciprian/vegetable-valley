@@ -21,7 +21,7 @@ import {WeatherForecastDataProvider} from "./context/WeatherForecastDataContext"
 import Charts from "./component/weather-forecast/chart/Charts";
 import GardenPlanner from "./component/garden_planner/GardenPlanner";
 import {GardenSizeProvider} from "./component/garden_planner/garden_connected/garden_settings/GardenSizeContext";
-import {ActualGardenIdProvider} from "./component/garden_planner/garden_connected/ActualGardenId";
+import {ActualGardenIdProvider} from "./component/garden_planner/garden_connected/ActualGardenIdContext";
 
 
 function App() {

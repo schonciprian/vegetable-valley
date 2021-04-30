@@ -4,7 +4,7 @@ import {environmentVariables} from "../../../EnvironmentVariables";
 // import dirt from "../../image/garden/dirt.jpeg";
 import dirt from "../../../image/garden/dirt_2.png";
 import {GardenSizeContext} from "./garden_settings/GardenSizeContext";
-import {ActualGardenIdContext} from "./ActualGardenId";
+import {ActualGardenIdContext} from "./ActualGardenIdContext";
 
 function Garden(props) {
     const [refresh, setRefresh] = useState(false)

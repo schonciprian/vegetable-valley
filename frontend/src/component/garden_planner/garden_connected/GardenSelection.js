@@ -1,8 +1,8 @@
 import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
-import {ActualGardenIdContext} from "../ActualGardenId";
-import {sweetalertSidePopup} from "../../../additionals/SweetAlert";
-import {getRequest, putRequest} from "../../../additionals/Requests";
+import {ActualGardenIdContext} from "./ActualGardenIdContext";
+import {sweetalertSidePopup} from "../../additionals/SweetAlert";
+import {getRequest, putRequest} from "../../additionals/Requests";
 
 function GardenSelection(props) {
     // Refs
