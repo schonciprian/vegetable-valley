@@ -1,11 +1,16 @@
 import React, {useContext, useEffect} from 'react';
-import DownloadGarden from "./garden_settings/DownloadGarden";
-import {BsFillPlusCircleFill} from "react-icons/bs";
-import {getRequest, putRequest} from "../../additionals/Requests";
-import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
-import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
 import axios from "axios";
 import {environmentVariables} from "../../../EnvironmentVariables";
+// Components
+import DownloadGarden from "./garden_settings/DownloadGarden";
+// Contexts
+import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
+import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
+// Icons
+import {BsFillPlusCircleFill} from "react-icons/bs";
+// Methods
+import {getRequest, putRequest} from "../../additionals/Requests";
+
 
 function GardenOptionContainer(props) {
     const gardenRef = props.gardenRef;
