@@ -7,6 +7,8 @@ export const ActualGardenIdProvider = (props) => {
     const [actualGardenId, setActualGardenId] = useState(null);
 
     useEffect(() => {
+        if (!window.sessionStorage.getItem("token")) return
+
         getRequest('/api/get-user-gardens', {},
             (response) => setActualGardenId(response.data[0].id),
             () => {})
