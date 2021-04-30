@@ -1,11 +1,14 @@
 import React, { useRef, useState} from 'react';
-import '../../stylesheet/garden/GardenPlanner.css'
-import OptionVegetableList from "./block_connected/OptionVegetableList";
-import OptionBlockList from "./block_connected/OptionBlockList";
-
+// Components
 import Garden from "./garden_connected/Garden";
 import GardenSelection from "./garden_connected/GardenSelection";
 import GardenOptionContainer from "./garden_connected/GardenOptionContainer";
+// OptionLists
+import OptionVegetableList from "./block_connected/OptionVegetableList";
+import OptionBlockList from "./block_connected/OptionBlockList";
+// Stylesheets
+import '../../stylesheet/garden/GardenPlanner.css'
+
 
 function GardenPlanner() {
     // Refs
@@ -48,7 +51,6 @@ function GardenPlanner() {
                             onClick={() => setSelectedOptionList("Blocks")}>
                         Blocks
                     </button>
-
                 </div>
 
                 {renderSelectedOptionListComponent()}
