@@ -100,7 +100,7 @@ function GardenPlanner() {
             <div className="garden-container">
                 <GardenSelection/>
 
-                <div className="garden-option-selection">
+                <div className="garden-option-container">
 
                     <DownloadGarden gardenRef={gardenRef} rows={gardenSize.rows} columns={gardenSize.columns}/>
 

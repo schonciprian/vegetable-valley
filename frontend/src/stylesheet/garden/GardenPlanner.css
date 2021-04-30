@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.garden-option-selection .option,
+.garden-option-container .option,
 .option-selection .option, .garden-planner .garden-container .garden .row .cell, .garden-planner .garden-container .garden-selection {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.garden-option-selection,
+.garden-option-container,
 .option-selection {
   display: flex;
   justify-content: space-around;
@@ -210,14 +210,14 @@
   cursor: grabbing;
 }
 
-.garden-option-selection,
+.garden-option-container,
 .option-selection {
   flex-wrap: wrap;
   height: 60px;
   margin-bottom: 20px;
   position: relative;
 }
-.garden-option-selection:before,
+.garden-option-container:before,
 .option-selection:before {
   content: "";
   position: absolute;
@@ -226,7 +226,7 @@
   height: 3px;
   background: linear-gradient(130deg, #0F1329, darkorange 50%, #0F1329 100%);
 }
-.garden-option-selection .option,
+.garden-option-container .option,
 .option-selection .option {
   width: 20%;
   height: 35px;
@@ -241,19 +241,19 @@
   outline: none;
   cursor: pointer;
 }
-.garden-option-selection .option:hover,
+.garden-option-container .option:hover,
 .option-selection .option:hover {
   transform: scale(0.95);
   transition: transform 200ms ease;
 }
-.garden-option-selection .option svg,
+.garden-option-container .option svg,
 .option-selection .option svg {
   color: darkorange;
   margin-right: 5px;
   width: 15px;
   height: 15px;
 }
-.garden-option-selection .active-type,
+.garden-option-container .active-type,
 .option-selection .active-type {
   color: darkorange;
 }
