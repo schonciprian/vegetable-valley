@@ -99,7 +99,8 @@
   overflow: auto;
   width: 95%;
   max-height: 440px;
-  padding: 0 10px 20px;
+  padding: 0 0 10px;
+  margin: 0 20px 20px;
 }
 .garden-planner .garden-container .garden::-webkit-scrollbar {
   width: 10px;
@@ -124,7 +125,7 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10px 0 0;
 }
 .garden-planner .garden-container .garden .row .cell {
   width: 5vw;
