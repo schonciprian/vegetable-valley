@@ -3,6 +3,7 @@ import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
 import axios from "axios";
 import {environmentVariables} from "../../../../EnvironmentVariables";
 import {ActualGardenIdContext} from "../ActualGardenId";
+import Swal from "sweetalert2";
 
 function GardenSelection(props) {
     const gardenTitleRef = useRef();
@@ -64,14 +65,42 @@ function GardenSelection(props) {
 
         if (event.key === "Enter") {
             if (gardenNewName.length > 0) {
-                setGardenName(gardenNewName)
-                setGardenTemporaryName(gardenNewName)
-                setEditableTitle(false)
-                setInputError(false)
+                saveNewGardenNameToDB(gardenNewName)
             } else {
                 setInputError(true)
             }
         }
+    }
+    const saveNewGardenNameToDB = (gardenNewName) => {
+        axios({
+            method: "put",
+            url: `${environmentVariables.BACKEND_URL}/api/update-garden-name`,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json, text/plain, */*",
+                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+            },
+            data: {
+                garden_id: actualGardenId,
+                new_garden_name: gardenNewName,
+            }
+        }).then((res) => {
+            setGardenName(gardenNewName)
+            setGardenTemporaryName(gardenNewName)
+            setEditableTitle(false)
+            setInputError(false)
+            Swal.fire({
+                toast: true,
+                icon: 'success',
+                title: "Garden's name successfully changed",
+                animation: true,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }).catch((error) => {
+            setInputError(true)
+        })
     }
 
     const switchGarden = (type) => {
