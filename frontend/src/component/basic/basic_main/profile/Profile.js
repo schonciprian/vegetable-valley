@@ -7,7 +7,7 @@ import {UserContext} from "../../../../context/User";
 import Password from "./Password";
 import ProfileData from "./ProfileData";
 import Delete from "./Delete";
-import Swal from "sweetalert2";
+import {sweetalertSidePopup} from "../../../additionals/SweetAlert";
 
 function Profile(props) {
     const [editableFields, setEditableFields] = useState(false);
@@ -50,15 +50,7 @@ function Profile(props) {
             },
             data: userData
         }).then((res) => {
-            Swal.fire({
-                toast: true,
-                icon: 'success',
-                title: 'Personal data changed successfully',
-                animation: true,
-                position: 'top-right',
-                showConfirmButton: false,
-                timer: 1500,
-            });
+            sweetalertSidePopup("Personal data changed successfully", 1500)
 
             setUser(prevData => ({
                 ...prevData,
