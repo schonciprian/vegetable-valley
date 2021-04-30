@@ -11,6 +11,7 @@ import axios from "axios";
 import {environmentVariables} from "../../EnvironmentVariables";
 import GardenSelection from "./garden_connected/garden_settings/GardenSelection";
 import {ActualGardenIdContext} from "./garden_connected/ActualGardenId";
+import {getRequest, putRequest} from "../additionals/Requests";
 
 function GardenPlanner() {
     // Refs
@@ -25,47 +26,27 @@ function GardenPlanner() {
     useEffect(() => {
         if (!window.sessionStorage.getItem("token") || actualGardenId === null) return
 
-        axios({
-            method: "get",
-            url: `${environmentVariables.BACKEND_URL}/api/get-garden-size`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*",
-                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-            params: {
-                garden_id: actualGardenId,
-            },
-        }).then((res) => {
+        const params = {garden_id: actualGardenId};
+        // Parameters: url, params, callbackSuccess, callbackError
+        getRequest('/api/get-garden-size', params, (response) => {
             setGardenSize(prevData => ({
                 ...prevData,
-                rows: parseInt(res.data[0].row_count),
-                columns: parseInt(res.data[0].column_count),
+                rows: parseInt(response.data[0].row_count),
+                columns: parseInt(response.data[0].column_count),
             }))
-        }).catch((error) => {
+        }, (error) => {
             console.log(error.response.data)
         })
     }, [setGardenSize, actualGardenId])
 
     const saveSizeChangesToDatabase = (rows, columns) => {
-        axios({
-            method: "put",
-            url: `${environmentVariables.BACKEND_URL}/api/update-garden-size`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*",
-                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-            data: {
-                garden_id: actualGardenId,
-                row_count: rows,
-                column_count: columns,
-            },
-        }).then((res) => {
-            // console.log(res.data);
-        }).catch((error) => {
-            console.log(error.response.data)
-        })
+        const data = {
+            garden_id: actualGardenId,
+            row_count: rows,
+            column_count: columns,
+        }
+        // Parameters: url, data, callbackSuccess, callbackError
+        putRequest('/api/update-garden-size', data, () => {}, () => {})
     }
 
     const modifyRows = () => {
