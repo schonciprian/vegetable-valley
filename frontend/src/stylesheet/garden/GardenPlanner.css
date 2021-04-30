@@ -41,7 +41,6 @@
 .garden-planner .garden-container {
   width: 50%;
   height: 100%;
-  padding: 0 10px 20px;
   margin: 0;
   position: relative;
 }
@@ -59,6 +58,10 @@
 }
 .garden-planner .garden-container .garden-selection .arrow {
   margin: 0 20px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: #1B223E;
+  padding: 10px;
 }
 .garden-planner .garden-container .garden-selection h1 {
   width: fit-content;
@@ -94,8 +97,9 @@
 }
 .garden-planner .garden-container .garden {
   overflow: auto;
-  width: border-box;
-  max-height: 435px;
+  width: 95%;
+  max-height: 440px;
+  padding: 0 10px 20px;
 }
 .garden-planner .garden-container .garden::-webkit-scrollbar {
   width: 10px;
@@ -103,7 +107,6 @@
   display: block;
 }
 .garden-planner .garden-container .garden::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
 .garden-planner .garden-container .garden::-webkit-scrollbar-thumb {
@@ -121,6 +124,7 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
+  padding: 0 20px;
 }
 .garden-planner .garden-container .garden .row .cell {
   width: 5vw;
@@ -149,7 +153,6 @@
   width: 50%;
   max-width: 750px;
   height: 100%;
-  padding: 0 10px 20px;
 }
 .garden-planner .options-container h1 {
   width: fit-content;
@@ -159,6 +162,7 @@
 .garden-planner .options-container .vegetable-list {
   height: 100%;
   max-height: 425px;
+  margin-right: 10px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(7.5vw, max-content));
   grid-gap: 10px 10px;
@@ -171,7 +175,6 @@
   display: block;
 }
 .garden-planner .options-container .vegetable-list::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
 .garden-planner .options-container .vegetable-list::-webkit-scrollbar-thumb {
