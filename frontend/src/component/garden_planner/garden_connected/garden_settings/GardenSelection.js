@@ -3,7 +3,7 @@ import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
 import axios from "axios";
 import {environmentVariables} from "../../../../EnvironmentVariables";
 import {ActualGardenIdContext} from "../ActualGardenId";
-import Swal from "sweetalert2";
+import {sweetalertSidePopup} from "../../../additionals/SweetAlert";
 
 function GardenSelection(props) {
     const gardenTitleRef = useRef();
@@ -89,15 +89,7 @@ function GardenSelection(props) {
             setGardenTemporaryName(gardenNewName)
             setEditableTitle(false)
             setInputError(false)
-            Swal.fire({
-                toast: true,
-                icon: 'success',
-                title: "Garden's name successfully changed",
-                animation: true,
-                position: 'top-right',
-                showConfirmButton: false,
-                timer: 1500,
-            });
+            sweetalertSidePopup("Garden's name successfully changed", 2000)
         }).catch((error) => {
             setInputError(true)
         })
