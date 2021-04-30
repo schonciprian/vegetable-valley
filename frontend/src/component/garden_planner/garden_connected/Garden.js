@@ -1,71 +1,60 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import {environmentVariables} from "../../../EnvironmentVariables";
-// import dirt from "../../image/garden/dirt.jpeg";
-import dirt from "../../../image/garden/dirt_2.png";
+// Contexts
 import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
 import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
+// Images
+import dirt from "../../../image/garden/dirt_2.png";
+import {getRequest} from "../../additionals/Requests";
 
 function Garden(props) {
-    const [refresh, setRefresh] = useState(false)
+    // Refs
     const gardenRef = props.gardenRef;
+    // States
+    const [garden, setGarden] = useState([]);
+    const [refresh, setRefresh] = useState(false)
+    // Contexts
+    const [gardenSize] = useContext(GardenSizeContext);
+    const [actualGardenId] = useContext(ActualGardenIdContext)
+    // props
     const draggedVegetable = props.draggedVegetable;
     const setDraggedVegetable = props.setDraggedVegetable;
-    const [gardenSize] = useContext(GardenSizeContext);
     const rows = gardenSize.rows;
     const columns = gardenSize.columns;
-    const [garden, setGarden] = useState([]);
-    const [actualGardenId] = useContext(ActualGardenIdContext)
+    // Callbacks
+    const fillGardenCells = useCallback((response) => {
+        let garden = [];
 
+        for (let i = 0; i < rows; i++) {
+            let row = [];
+            for (let j = 0; j < columns; j++) {
+                let vegetable = response.data[0].find(cell => cell.cell_row === i && cell.cell_column === j)
+                    ?? {
+                        cell_row: i,
+                        cell_column: j,
+                        cell_name: '',
+                        cell_picture_url: dirt
+                    };
+                row.push({
+                    id: `${vegetable.cell_row}-${vegetable.cell_column}`,
+                    name: vegetable.cell_name,
+                    pictureURL: vegetable.cell_picture_url,
+                })
+            }
+            garden.push(row)
+        }
+        setGarden(garden)
+    }, [columns, rows, setGarden])
 
     useEffect(() => {
-        ///////////////////////////////////////////////
-        // Fill garden state with data from database //
-        ///////////////////////////////////////////////
-        axios({
-            method: "get",
-            url: `${environmentVariables.BACKEND_URL}/api/garden`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*",
-                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-            params: {
-                garden_id: actualGardenId,
-            }
-        }).then((res) => {
-            let garden = [];
-
-            for (let i = 0; i < rows; i++) {
-                let row = [];
-                for (let j = 0; j < columns; j++) {
-                    let vegetable = res.data[0].find(cell => cell.cell_row === i && cell.cell_column === j)
-                        ?? {
-                            cell_row: i,
-                            cell_column: j,
-                            cell_name: '',
-                            cell_picture_url: dirt
-                        };
-                    row.push({
-                        id: `${vegetable.cell_row}-${vegetable.cell_column}`,
-                        name: vegetable.cell_name,
-                        pictureURL: vegetable.cell_picture_url,
-                    })
-                }
-                garden.push(row)
-            }
-            setGarden(garden)
-
-        }).catch((error) => {
-            console.log(error.response.data)
-        })
+        const params = {garden_id: actualGardenId};
+        getRequest('/api/garden', params,
+            (response) => fillGardenCells(response),
+            (error) => console.log(error.response.data))
         setRefresh(false)
 
-    }, [refresh, rows, columns, gardenSize, actualGardenId])
-
-    const onDragOver = (event) => {
-        event.preventDefault();
-    }
+    }, [refresh, rows, columns, gardenSize, actualGardenId, fillGardenCells])
 
     const onDrop = (event) => {
         const destination = event.target.parentElement.dataset.id ?? null;
@@ -131,7 +120,7 @@ function Garden(props) {
              className="garden"
              ref={gardenRef}
              onDrop={(event) => onDrop(event)}
-             onDragOver={(event => onDragOver(event))}>
+             onDragOver={(event => event.preventDefault())}>
             {garden.map((row, index) =>
                 <div className="row" key={index}>
                     {row.map(cell =>
