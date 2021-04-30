@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 // Helpers
 import {removeError, handleShakingError} from "./AuthenticationHelper";
 import {postRequest} from "../additionals/Requests";
-import {registrationFeedback} from "../additionals/SweetAlert";
+import {authenticationFeedback} from "../additionals/SweetAlert";
 
 // Stylesheets
 import '../../stylesheet/auth/Authentication.css';
@@ -30,11 +30,11 @@ export default function Registration() {
         const userData = getUserData();
         postRequest('/api/register', userData,
             () => {
-                registrationFeedback("Successfully registered", "You are redirected to login page", "success", 2000, history)
+                authenticationFeedback("Successfully registered", "You are redirected to login page", "success", 2000, history, '/login')
             },
             (error) => {
                 if (error.response === undefined) {
-                    registrationFeedback("Service unavailable", "Try again later", "error", 5000, history)
+                    authenticationFeedback("Service unavailable", "Try again later", "error", 5000, history)
                     return;
                 }
 

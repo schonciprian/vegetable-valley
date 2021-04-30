@@ -2,10 +2,10 @@ import Swal from "sweetalert2";
 import swal from "sweetalert";
 
 
-export const registrationFeedback = (title, message, type, timeout, history) => {
+export const authenticationFeedback = (title, message, type, timeout, history, redirect = '/') => {
     swal(title, message, type);
     setTimeout(() => {
-        if (type === "success") {history.push("/login")};
+        if (type === "success") {history.push(redirect)};
         swal.close();
     }, timeout);
 }
