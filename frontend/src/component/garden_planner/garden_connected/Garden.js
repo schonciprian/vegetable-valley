@@ -1,12 +1,10 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react';
-import axios from "axios";
-import {environmentVariables} from "../../../EnvironmentVariables";
 // Contexts
 import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
 import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
 // Images
 import dirt from "../../../image/garden/dirt_2.png";
-import {getRequest} from "../../additionals/Requests";
+import {deleteRequest, getRequest, postRequest} from "../../additionals/Requests";
 
 function Garden(props) {
     // Refs
@@ -49,85 +47,56 @@ function Garden(props) {
 
     useEffect(() => {
         const params = {garden_id: actualGardenId};
-        getRequest('/api/garden', params,
-            (response) => fillGardenCells(response),
-            (error) => console.log(error.response.data))
+        getRequest('/api/garden', params, (response) => fillGardenCells(response), () => {})
         setRefresh(false)
 
     }, [refresh, rows, columns, gardenSize, actualGardenId, fillGardenCells])
 
-    const onDrop = (event) => {
+    const saveVegetableToCell = (event) => {
         const destination = event.target.parentElement.dataset.id ?? null;
 
         if (destination !== null) {
-            axios({
-                method: "post",
-                url: `${environmentVariables.BACKEND_URL}/api/garden`,
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: "application/json, text/plain, */*",
-                    Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-                },
-                data: {
-                    garden_id: actualGardenId,
-                    cell_row: destination.split("-")[0],
-                    cell_column: destination.split("-")[1],
-                    cell_name: draggedVegetable.name,
-                    cell_picture_url: draggedVegetable.pictureURL,
-                }
-            }).then((res) => {
-                // console.log(res.data);
-            }).catch((error) => {
-                console.log(error.response.data)
-            })
+            const data = {
+                garden_id: actualGardenId,
+                cell_row: destination.split("-")[0],
+                cell_column: destination.split("-")[1],
+                cell_name: draggedVegetable.name,
+                cell_picture_url: draggedVegetable.pictureURL,
+            }
+            postRequest('/api/garden', data,
+                () => {
+                    changeCellToVegetable(destination);
+                    setDraggedVegetable({});
+                }, () => {})
         }
-        changeCellToVegetable(destination);
-        setDraggedVegetable({});
     }
 
     const changeCellToVegetable = (destination) => {
-        if (destination === null) return
         const destinationCell = garden.flat().find(cell => cell.id === destination)
-
         destinationCell.name = draggedVegetable.name;
         destinationCell.pictureURL = draggedVegetable.pictureURL;
     }
 
     const removeVegetableFromCell = (cellId) => {
-        axios({
-            method: "delete",
-            url: `${environmentVariables.BACKEND_URL}/api/garden`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*",
-                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-            data: {
-                garden_id: actualGardenId,
-                cell_row: cellId.split("-")[0],
-                cell_column: cellId.split("-")[1],
-            }
-        }).then((res) => {
-            setRefresh(true);
-
-        }).catch((error) => {
-            console.log(error.response.data)
-        })
+        const data = {
+            garden_id: actualGardenId,
+            cell_row: cellId.split("-")[0],
+            cell_column: cellId.split("-")[1],
+        }
+        deleteRequest('/api/garden', data, () => setRefresh(true), () => {})
     }
 
     return (
-        <div id="garden"
-             className="garden"
-             ref={gardenRef}
-             onDrop={(event) => onDrop(event)}
+        <div id="garden" className="garden" ref={gardenRef}
+             onDrop={(event) => saveVegetableToCell(event)}
              onDragOver={(event => event.preventDefault())}>
             {garden.map((row, index) =>
                 <div className="row" key={index}>
                     {row.map(cell =>
                         <div key={cell.id} className="cell" data-id={cell.id}>
-                            {cell.name.length !== 0 ?
-                                <div className="remove"
-                                     onClick={() => removeVegetableFromCell(cell.id)}>X</div> : ""}
+                            {cell.name.length !== 0
+                                ? <div className="remove" onClick={() => removeVegetableFromCell(cell.id)}>X</div>
+                                : ""}
                             <img draggable={false} src={cell.pictureURL} alt=""/>
                         </div>
                     )}
