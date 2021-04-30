@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
 import {Link, useHistory} from "react-router-dom";
-import axios from "axios";
-import {environmentVariables} from "../../EnvironmentVariables";
-import swal from "sweetalert";
+// Context
 import {UserContext} from "../../context/User";
+// Helpers
+import {deleteRequest} from "../additionals/Requests";
+import {authenticationFeedback} from "../additionals/SweetAlert";
 
 
 function Logout(props) {
@@ -11,31 +12,16 @@ function Logout(props) {
     const history = useHistory();
 
     const logoutRequest = () => {
-        axios({
-            method: "delete",
-            url: `${environmentVariables.BACKEND_URL}/api/logout`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*",
-                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-        }).then((res) => {
-            swal("Logged out successfully", "You are redirected to the main page");
-
-            window.sessionStorage.removeItem("token");
-            window.sessionStorage.removeItem("username");
-
-            setTimeout(() => {
-                history.push("/");
-                swal.close();
+        deleteRequest('/api/logout', {},
+            () => {
+                window.sessionStorage.removeItem("token");
+                window.sessionStorage.removeItem("username");
                 setUser({
                     "token": null,
                     "username": null,
                 });
-            }, 2000);
-
-        }).catch((error) => {
-            console.log(error.response.data)
+                authenticationFeedback("Logged out successfully", "You are redirected to the main page", "success", 2000, history, '/')
+            }, () => {
         })
     }
 
