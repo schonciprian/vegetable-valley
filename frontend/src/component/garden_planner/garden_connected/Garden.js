@@ -5,8 +5,11 @@ import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdCo
 // Images
 import dirt from "../../../image/garden/dirt_2.png";
 import {deleteRequest, getRequest, postRequest} from "../../additionals/Requests";
+import {authenticationFeedback} from "../../additionals/SweetAlert";
+import {useHistory} from "react-router-dom";
 
 function Garden(props) {
+    const history = useHistory()
     // Refs
     const gardenRef = props.gardenRef;
     // States
@@ -47,7 +50,14 @@ function Garden(props) {
 
     useEffect(() => {
         const params = {garden_id: actualGardenId};
-        getRequest('/api/garden', params, (response) => fillGardenCells(response), () => {})
+        getRequest('/api/garden', params,
+            (response) => fillGardenCells(response),
+            (error) => {
+                if (error.response === undefined) {
+                    authenticationFeedback("Service unavailable", "Try again later, you are redirected to main page", "error", 4000, history)
+                    setTimeout(() => {history.push('/')}, 4000)
+                }
+            })
         setRefresh(false)
 
     }, [refresh, rows, columns, gardenSize, actualGardenId, fillGardenCells])
