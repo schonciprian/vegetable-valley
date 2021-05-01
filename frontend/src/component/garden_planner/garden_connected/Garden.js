@@ -60,7 +60,7 @@ function Garden(props) {
             })
         setRefresh(false)
 
-    }, [refresh, rows, columns, gardenSize, actualGardenId, fillGardenCells])
+    }, [refresh, rows, columns, gardenSize, actualGardenId, fillGardenCells, history])
 
     const saveVegetableToCell = (event) => {
         const destination = event.target.parentElement.dataset.id ?? null;

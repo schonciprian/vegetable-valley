@@ -21,7 +21,7 @@ export const ActualGardenIdProvider = (props) => {
             }
         }, 4000)
         return () => clearInterval(intervalId);
-    }, [])
+    }, [actualGardenId, history.location.pathname])
 
     return (
         <ActualGardenIdContext.Provider value={[actualGardenId, setActualGardenId]}>
