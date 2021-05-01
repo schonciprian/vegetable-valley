@@ -27,6 +27,7 @@ function GardenSelection(props) {
         setInputError(false)
     }, [setEditableTitle, setGardenTemporaryName, setInputError, gardenName]);
 
+    console.log(inputError);
     useEffect(() => {
         if (actualGardenId === null) return;
 
@@ -81,7 +82,7 @@ function GardenSelection(props) {
 
         if (event.key === "Enter") {
             if (gardenNewName.length > 0) {saveNewGardenNameToDB(gardenNewName)}
-            setInputError(true)
+            else setInputError(true)
         }
     }
 
