@@ -29,7 +29,7 @@ function Profile(props) {
                 authenticationFeedback("Service unavailable", "Try again later, you are redirected to main page", "error", 4000, history)
                 setTimeout(() => {history.push('/')}, 4000)
             }})
-    }, [user])
+    }, [user, history])
 
     const handleInputChange = (event, key) => {
         setUserData(prevData => ({
