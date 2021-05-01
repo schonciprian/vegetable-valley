@@ -9,7 +9,8 @@ import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
 // Icons
 import {BsFillPlusCircleFill} from "react-icons/bs";
 // Methods
-import {getRequest, putRequest} from "../../additionals/Requests";
+import {getRequest, postRequest, putRequest} from "../../additionals/Requests";
+import {authenticationFeedback} from "../../additionals/SweetAlert";
 
 
 function GardenOptionContainer(props) {
@@ -60,21 +61,13 @@ function GardenOptionContainer(props) {
     }
 
     const addNewGarden = () => {
-        // Axios to create new garden to DB
-        axios({
-            method: "post",
-            url: `${environmentVariables.BACKEND_URL}/api/add-new-garden`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*",
-                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-        }).then((res) => {
-            console.log(res.data);
-            setActualGardenId(res.data.id)
-        }).catch((error) => {
-            console.log(error.response.data)
-        })
+        postRequest('/api/add-new-garden', {},
+            (response) => setActualGardenId(response.data.id),
+            (error) => {
+                if (error.response === undefined) {
+                    authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
+                }
+            })
     }
 
     return (
