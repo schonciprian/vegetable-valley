@@ -27,7 +27,6 @@ function GardenSelection(props) {
         setInputError(false)
     }, [setEditableTitle, setGardenTemporaryName, setInputError, gardenName]);
 
-    console.log(inputError);
     useEffect(() => {
         if (actualGardenId === null) return;
 
