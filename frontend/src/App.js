@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Route, /*Redirect*/} from "react-router-dom";
+import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 
 import Registration from "./component/auth/Registration";
 import Login from "./component/auth/Login";
@@ -22,6 +22,7 @@ import Charts from "./component/weather-forecast/chart/Charts";
 import GardenPlanner from "./component/garden_planner/GardenPlanner";
 import {GardenSizeProvider} from "./component/garden_planner/garden_connected/garden_connected_context/GardenSizeContext";
 import {ActualGardenIdProvider} from "./component/garden_planner/garden_connected/garden_connected_context/ActualGardenIdContext";
+import PageNotFound from "./PageNotFound";
 
 
 function App() {
@@ -33,7 +34,6 @@ function App() {
                     <div className="main-container">
 
                         <Route exact path="/" component={Home}/>
-                        {/*<Route render={() => <Redirect to="/" />} />*/}
                         <PublicRoute exact path="/register/" component={Registration} />
                         <PublicRoute exact path="/login/" component={Login} />
                         <PrivateRoute exact path="/profile/" component={Profile} />
@@ -57,6 +57,8 @@ function App() {
                                 <PrivateRoute exact path="/charts" component={Charts}/>
                             </WeatherForecastDataProvider>
                         </LoadingProvider>
+
+                        <Route exact path="*" component={PageNotFound} />
                     </div>
                 </div>
             </UserProvider>
