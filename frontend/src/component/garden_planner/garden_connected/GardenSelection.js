@@ -1,7 +1,7 @@
 import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
 import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
-import {sweetalertSidePopup} from "../../additionals/SweetAlert";
+import {authenticationFeedback, sweetalertSidePopup} from "../../additionals/SweetAlert";
 import {getRequest, putRequest} from "../../additionals/Requests";
 
 function GardenSelection(props) {
@@ -35,7 +35,11 @@ function GardenSelection(props) {
         getRequest('/api/get-garden-name', params, (response) => {
             setGardenName(response.data[0].garden_name)
             setGardenTemporaryName(response.data[0].garden_name)
-        }, (error) => console.log(error.response.data))
+        }, (error) => {
+            if (error.response === undefined) {
+                authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
+            }
+        })
 
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
@@ -65,7 +69,11 @@ function GardenSelection(props) {
             if (type === 'left' && !gardenIds[index-1]) {return setActualGardenId(gardenIds[gardenIds.length - 1])}
             if (type === 'right' && !gardenIds[index+1]) {return setActualGardenId(gardenIds[0])}
             setActualGardenId(gardenIds[type === 'left' ? index - 1 : index + 1])
-        }, (error) => console.log(error.response.data))
+        }, (error) => {
+            if (error.response === undefined) {
+                authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
+            }
+        })
     }
 
     const handleKeyPress = (event) => {

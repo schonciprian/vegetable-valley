@@ -1,6 +1,4 @@
 import React, {useContext, useEffect} from 'react';
-import axios from "axios";
-import {environmentVariables} from "../../../EnvironmentVariables";
 // Components
 import DownloadGarden from "./garden_settings/DownloadGarden";
 // Contexts
@@ -30,7 +28,9 @@ function GardenOptionContainer(props) {
                 columns: parseInt(response.data[0].column_count),
             }))
         }, (error) => {
-            console.log(error.response.data)
+            if (error.response === undefined) {
+                authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
+            }
         })
     }, [setGardenSize, actualGardenId])
 
@@ -40,24 +40,34 @@ function GardenOptionContainer(props) {
             row_count: rows,
             column_count: columns,
         }
-        // Parameters: url, data, callbackSuccess, callbackError
-        putRequest('/api/update-garden-size', data, () => {}, () => {})
+        putRequest('/api/update-garden-size', data,
+            () => {
+                return true
+            },
+            (error) => {
+                if (error.response === undefined) {
+                    authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
+                }
+            }
+        )
     }
 
     const modifyRows = () => {
-        setGardenSize(prevData => ({
-            ...prevData,
-            rows: gardenSize.rows + 1,
-        }))
-        saveSizeChangesToDatabase(gardenSize.rows + 1, gardenSize.columns)
+        if (saveSizeChangesToDatabase(gardenSize.rows + 1, gardenSize.columns)) {
+            setGardenSize(prevData => ({
+                ...prevData,
+                rows: gardenSize.rows + 1,
+            }))
+        }
     }
 
     const modifyColumns = () => {
-        setGardenSize(prevData => ({
-            ...prevData,
-            columns: gardenSize.columns + 1,
-        }))
-        saveSizeChangesToDatabase(gardenSize.rows, gardenSize.columns + 1)
+        if (saveSizeChangesToDatabase(gardenSize.rows, gardenSize.columns + 1)) {
+            setGardenSize(prevData => ({
+                ...prevData,
+                columns: gardenSize.columns + 1,
+            }))
+        }
     }
 
     const addNewGarden = () => {
