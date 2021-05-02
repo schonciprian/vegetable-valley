@@ -8,7 +8,7 @@ export const ActualGardenIdContext = createContext(1);
 
 export const ActualGardenIdProvider = (props) => {
     const [actualGardenId, setActualGardenId] = useState(null);
-    const [loading, setLoading] = useContext(LoadingContext)
+    const [, setLoading] = useContext(LoadingContext)
     const history = useHistory()
 
     useEffect(() => {
