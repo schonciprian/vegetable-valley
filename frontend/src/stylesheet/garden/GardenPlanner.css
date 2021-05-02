@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.garden-option-container .option,
+.loading div, .garden-option-container .option,
 .option-selection .option, .garden-planner .garden-container .garden .row .cell, .garden-planner .garden-container .garden-selection {
   display: flex;
   justify-content: center;
@@ -256,6 +256,19 @@
 .garden-option-container .active-type,
 .option-selection .active-type {
   color: darkorange;
+}
+
+.loading {
+  height: 440px;
+  position: relative;
+}
+.loading div {
+  position: absolute;
+  top: 50px;
+}
+.loading .loading-spinner {
+  margin: 20px;
+  font-size: 60px;
 }
 
 /*# sourceMappingURL=GardenPlanner.css.map */

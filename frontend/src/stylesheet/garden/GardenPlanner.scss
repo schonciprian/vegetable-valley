@@ -313,3 +313,20 @@
     color: $color-highlight;
   }
 }
+
+.loading {
+  height: 440px;
+  position: relative;
+
+  div {
+    position: absolute;
+    top: 50px;
+    @extend %display-flex-center;
+  }
+
+  .loading-spinner {
+    margin: 20px;
+    font-size: 60px;
+  }
+}
+
