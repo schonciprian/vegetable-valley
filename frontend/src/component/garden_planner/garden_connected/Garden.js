@@ -72,7 +72,7 @@ function Garden(props) {
             })
         setRefresh(false)
 
-    }, [refresh, rows, columns, gardenSize, actualGardenId, fillGardenCells, history, setLoading])
+    }, [refresh, actualGardenId, fillGardenCells, history, setLoading])
 
     const saveVegetableToCell = (event) => {
         const destination = event.target.parentElement.dataset.id ?? null;
@@ -112,7 +112,7 @@ function Garden(props) {
     if (loading) return <div className="loading">
         <div>
             <FaSpinner className="loading-spinner"/>
-            Loading data from server...
+            Loading...
         </div>
     </div>
 

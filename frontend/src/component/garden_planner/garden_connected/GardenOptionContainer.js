@@ -34,7 +34,7 @@ function GardenOptionContainer(props) {
         })
     }, [setGardenSize, actualGardenId])
 
-    const saveSizeChangesToDatabase = (rows, columns) => {
+    const modifyGardenSize = (rows, columns) => {
         const data = {
             garden_id: actualGardenId,
             row_count: rows,
@@ -42,7 +42,11 @@ function GardenOptionContainer(props) {
         }
         putRequest('/api/update-garden-size', data,
             () => {
-                return true
+                setGardenSize(prevData => ({
+                    ...prevData,
+                    rows: rows,
+                    columns: columns,
+                }))
             },
             (error) => {
                 if (error.response === undefined) {
@@ -50,24 +54,6 @@ function GardenOptionContainer(props) {
                 }
             }
         )
-    }
-
-    const modifyRows = () => {
-        if (saveSizeChangesToDatabase(gardenSize.rows + 1, gardenSize.columns)) {
-            setGardenSize(prevData => ({
-                ...prevData,
-                rows: gardenSize.rows + 1,
-            }))
-        }
-    }
-
-    const modifyColumns = () => {
-        if (saveSizeChangesToDatabase(gardenSize.rows, gardenSize.columns + 1)) {
-            setGardenSize(prevData => ({
-                ...prevData,
-                columns: gardenSize.columns + 1,
-            }))
-        }
     }
 
     const addNewGarden = () => {
@@ -85,12 +71,12 @@ function GardenOptionContainer(props) {
 
             <DownloadGarden gardenRef={gardenRef} rows={gardenSize.rows} columns={gardenSize.columns}/>
 
-            <button className="option" onClick={() => modifyRows()}>
+            <button className="option" onClick={() => modifyGardenSize(gardenSize.rows + 1, gardenSize.columns)}>
                 <BsFillPlusCircleFill/>
                 <span>Add row</span>
             </button>
 
-            <button className="option" onClick={() => modifyColumns()}>
+            <button className="option" onClick={() => modifyGardenSize(gardenSize.rows, gardenSize.columns + 1)}>
                 <BsFillPlusCircleFill/>
                 <span>Add column</span>
             </button>
