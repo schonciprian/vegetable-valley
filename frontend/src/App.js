@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import Registration from "./component/auth/Registration";
 import Login from "./component/auth/Login";
@@ -29,38 +29,60 @@ function App() {
     return (
         <Router>
             <UserProvider>
-                <div>
-                    <Header/>
-                    <div className="main-container">
-
-                        <Route exact path="/" component={Home}/>
-                        <PublicRoute exact path="/register/" component={Registration} />
-                        <PublicRoute exact path="/login/" component={Login} />
-                        <PrivateRoute exact path="/profile/" component={Profile} />
-
-                        <LoadingProvider>
-
-                            <SelectedTypeListProvider>
-                                <PrivateRoute exact path="/grow-guides/" component={GrowGuideCard} />
-                                <PrivateRoute exact path="/grow-guides/:vegetableName/" component={VegetablePage} />
-
-                                <GardenSizeProvider>
-                                    <ActualGardenIdProvider>
-                                        <PrivateRoute exact path="/garden-planner" component={GardenPlanner} />
-                                    </ActualGardenIdProvider>
-                                </GardenSizeProvider>
-
-                            </SelectedTypeListProvider>
-
+                <LoadingProvider>
+                    <SelectedTypeListProvider>
+                        <GardenSizeProvider>
                             <WeatherForecastDataProvider>
-                                <PrivateRoute exact path="/weather" component={Weather}/>
-                                <PrivateRoute exact path="/charts" component={Charts}/>
-                            </WeatherForecastDataProvider>
-                        </LoadingProvider>
+                                <ActualGardenIdProvider>
 
-                        <Route exact path="*" component={PageNotFound} />
-                    </div>
-                </div>
+                                    <div>
+                                        <Header/>
+                                        <div className="main-container">
+                                            <Switch>
+
+                                                <Route exact path="/" component={Home}/>
+                                                <PublicRoute exact path="/register/" component={Registration}/>
+                                                <PublicRoute exact path="/login/" component={Login}/>
+                                                <PrivateRoute exact path="/profile/" component={Profile}/>
+
+                                                {/*<LoadingProvider>*/}
+
+                                                    {/*<SelectedTypeListProvider>*/}
+                                                        <PrivateRoute exact path="/grow-guides/"
+                                                                      component={GrowGuideCard}/>
+                                                        <PrivateRoute exact path="/grow-guides/:vegetableName/"
+                                                                      component={VegetablePage}/>
+
+                                                        {/*<GardenSizeProvider>*/}
+                                                        {/*    <ActualGardenIdProvider>*/}
+                                                                <PrivateRoute exact path="/garden-planner"
+                                                                              component={GardenPlanner}/>
+                                                            {/*</ActualGardenIdProvider>*/}
+                                                        {/*</GardenSizeProvider>*/}
+
+                                                    {/*</SelectedTypeListProvider>*/}
+
+                                                    {/*<WeatherForecastDataProvider>*/}
+                                                        <PrivateRoute exact path="/weather" component={Weather}/>
+                                                        <PrivateRoute exact path="/charts" component={Charts}/>
+                                                    {/*</WeatherForecastDataProvider>*/}
+                                                {/*</LoadingProvider>*/}
+
+                                                <Route exact path="*" component={PageNotFound}/>
+
+                                            </Switch>
+                                        </div>
+                                    </div>
+                                </ActualGardenIdProvider>
+
+                            </WeatherForecastDataProvider>
+
+                        </GardenSizeProvider>
+
+                    </SelectedTypeListProvider>
+
+                </LoadingProvider>
+
             </UserProvider>
         </Router>
     );
