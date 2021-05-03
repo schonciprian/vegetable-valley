@@ -141,6 +141,52 @@
         margin: 0 auto;
         padding: 0 10px 0 0;
 
+        .remove-empty-space {
+          width: 30px;
+        }
+
+        .remove-row {
+          @extend %display-flex-center;
+          width: 30px;
+          //min-width: 30px;
+          //max-width: 35px;
+
+          height: 5vw;
+          min-height: 40px;
+          max-height: 75px;
+
+          color: darkorange;
+
+          &:hover {
+            color: red;
+            cursor: pointer;
+          }
+        }
+
+        //.remove-bar {
+        //  position: sticky;
+        //  top: 0;
+        //}
+        .remove-column {
+
+          @extend %display-flex-center;
+          width: 5vw;
+          min-width: 40px;
+          max-width: 75px;
+
+          height: 30px;
+          //min-height: 40px;
+          //max-height: 75px;
+
+          margin: 0 7px;
+          color: darkorange;
+
+          &:hover {
+            color: red;
+            cursor: pointer;
+          }
+        }
+
         .cell {
           @extend %display-flex-center;
           width: 5vw;

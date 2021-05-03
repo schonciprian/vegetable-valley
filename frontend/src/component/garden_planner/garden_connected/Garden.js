@@ -7,9 +7,10 @@ import {LoadingContext} from "../../../context/LoadingContext";
 // Images
 import dirt from "../../../image/garden/dirt_2.png";
 // Helpers
-import {deleteRequest, getRequest, postRequest} from "../../additionals/Requests";
+import {deleteRequest, getRequest, postRequest, putRequest} from "../../additionals/Requests";
 import {authenticationFeedback} from "../../additionals/SweetAlert";
 import {FaSpinner} from "react-icons/fa";
+import {AiFillDelete} from "react-icons/ai";
 
 function Garden(props) {
     const history = useHistory()
@@ -17,10 +18,10 @@ function Garden(props) {
     const gardenRef = props.gardenRef;
     // States
     const [garden, setGarden] = useState([]);
-    const [refresh, setRefresh] = useState(false)
+    const [, setRefresh] = useState(false)
     // Contexts
     const [loading, setLoading] = useContext(LoadingContext)
-    const [gardenSize] = useContext(GardenSizeContext);
+    const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
     const [actualGardenId] = useContext(ActualGardenIdContext)
     // props
     const draggedVegetable = props.draggedVegetable;
@@ -52,10 +53,7 @@ function Garden(props) {
         setGarden(garden)
     }, [columns, rows, setGarden])
 
-    useEffect(() => {
-        setLoading(true)
-        if (actualGardenId === null) return
-
+    const refreshGarden = useCallback((response) => {
         const params = {garden_id: actualGardenId};
         getRequest('/api/garden', params,
             (response) => {
@@ -70,9 +68,13 @@ function Garden(props) {
                     }, 4000)
                 }
             })
-        setRefresh(false)
+    }, [actualGardenId, fillGardenCells, setLoading, history])
 
-    }, [refresh, actualGardenId, fillGardenCells, history, setLoading])
+    useEffect(() => {
+        setLoading(true)
+        if (actualGardenId === null) return
+        refreshGarden()
+    }, [actualGardenId, setLoading, refreshGarden])
 
     const saveVegetableToCell = (event) => {
         const destination = event.target.parentElement.dataset.id ?? null;
@@ -109,6 +111,25 @@ function Garden(props) {
         deleteRequest('/api/garden', data, () => setRefresh(true), () => {
         })
     }
+
+    const removeColumnFromGarden = (index) => {
+        const data = {
+            garden_id: actualGardenId,
+            column_index: index,
+        }
+
+        putRequest('/api/remove-column', data,
+            () => {
+                setGardenSize(prevData => ({
+                    ...prevData,
+                    rows: gardenSize.rows,
+                    columns: gardenSize.columns - 1,
+                }))
+                refreshGarden()
+            },
+            (error) => console.log(error.data))
+    }
+
     if (loading) return <div className="loading">
         <div>
             <FaSpinner className="loading-spinner"/>
@@ -120,8 +141,17 @@ function Garden(props) {
         <div id="garden" className="garden" ref={gardenRef}
              onDrop={(event) => saveVegetableToCell(event)}
              onDragOver={(event => event.preventDefault())}>
+            <div className="row remove-bar">
+                <div className="remove-empty-space"/>
+                {garden.map((row, rowindex) =>
+                    row.map((cell, index) => rowindex < 1
+                        ? <div key={index} className="remove-column" data-column={index} onClick={() => removeColumnFromGarden(index)}><AiFillDelete/></div>
+                        : <React.Fragment key={index}/>)
+                )}
+            </div>
             {garden.map((row, index) =>
                 <div className="row" key={index}>
+                    <div className="remove-row" data-row={index}><AiFillDelete/></div>
                     {row.map(cell =>
                         <div key={cell.id} className="cell" data-id={cell.id}>
                             {cell.name.length !== 0
