@@ -91,7 +91,10 @@ function Garden(props) {
                 () => {
                     changeCellToVegetable(destination);
                     setDraggedVegetable({});
-                }, () => {
+                }, (error) => {
+                    if (error.response === undefined) {
+                        authenticationFeedback("Service unavailable", "Try again later", "error", 4000)
+                    }
                 })
         }
     }
@@ -127,7 +130,11 @@ function Garden(props) {
                 }))
                 refreshGarden()
             },
-            (error) => console.log(error.data))
+            (error) => {
+                if (error.response === undefined) {
+                    authenticationFeedback("Service unavailable", "Try again later", "error", 4000)
+                }
+            })
     }
 
     const removeRowFromGarden = (index) => {
@@ -145,7 +152,11 @@ function Garden(props) {
                 }))
                 refreshGarden()
             },
-            (error) => console.log(error.data))
+            (error) => {
+                if (error.response === undefined) {
+                    authenticationFeedback("Service unavailable", "Try again later", "error", 4000)
+                }
+            })
     }
 
     if (loading) return <div className="loading">
