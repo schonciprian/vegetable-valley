@@ -22,3 +22,28 @@ export const sweetalertSidePopup = (title, timer) => {
         timer: timer,
     });
 }
+
+export const sweetalertErrorPopup = (title, message, type, timeout) => {
+    swal(title, message, type);
+    setTimeout(() => {
+        swal.close();
+    }, timeout);
+}
+
+export const requestFeedbackError = (error, redirect, history) => {
+    switch (true) {
+        case error === undefined && redirect:
+            sweetalertErrorPopup("Service unavailable", "Try again later, you are redirected to main page", "error", 4000)
+            setTimeout(() => {
+                history.push('/')
+            }, 4000);
+            break;
+
+        case error === undefined && !redirect:
+            sweetalertErrorPopup("Service unavailable", "Try again later", "error", 4000)
+            break;
+
+        default:
+            sweetalertErrorPopup("Service unavailable", "Try again later", "error", 4000)
+    }
+}

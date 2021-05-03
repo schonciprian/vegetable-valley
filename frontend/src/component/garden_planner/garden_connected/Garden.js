@@ -8,9 +8,9 @@ import {LoadingContext} from "../../../context/LoadingContext";
 import dirt from "../../../image/garden/dirt_2.png";
 // Helpers
 import {deleteRequest, getRequest, postRequest, putRequest} from "../../additionals/Requests";
-import {authenticationFeedback} from "../../additionals/SweetAlert";
-import {FaSpinner} from "react-icons/fa";
+import {requestFeedbackError} from "../../additionals/SweetAlert";
 import {AiFillDelete} from "react-icons/ai";
+import Loading from "./garden_settings/Loading";
 
 function Garden(props) {
     const history = useHistory()
@@ -18,7 +18,6 @@ function Garden(props) {
     const gardenRef = props.gardenRef;
     // States
     const [garden, setGarden] = useState([]);
-    const [, setRefresh] = useState(false)
     // Contexts
     const [loading, setLoading] = useContext(LoadingContext)
     const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
@@ -26,15 +25,13 @@ function Garden(props) {
     // props
     const draggedVegetable = props.draggedVegetable;
     const setDraggedVegetable = props.setDraggedVegetable;
-    const rows = gardenSize.rows;
-    const columns = gardenSize.columns;
+
     // Callbacks
     const fillGardenCells = useCallback((response) => {
         let garden = [];
-
-        for (let i = 0; i < rows; i++) {
+        for (let i = 0; i < gardenSize.rows; i++) {
             let row = [];
-            for (let j = 0; j < columns; j++) {
+            for (let j = 0; j < gardenSize.columns; j++) {
                 let vegetable = response.data[0].find(cell => cell.cell_row === i && cell.cell_column === j)
                     ?? {
                         cell_row: i,
@@ -51,7 +48,7 @@ function Garden(props) {
             garden.push(row)
         }
         setGarden(garden)
-    }, [columns, rows, setGarden])
+    }, [setGarden, gardenSize])
 
     const refreshGarden = useCallback((response) => {
         const params = {garden_id: actualGardenId};
@@ -60,14 +57,7 @@ function Garden(props) {
                 fillGardenCells(response);
                 setLoading(false);
             },
-            (error) => {
-                if (error.response === undefined) {
-                    authenticationFeedback("Service unavailable", "Try again later, you are redirected to main page", "error", 4000, history)
-                    setTimeout(() => {
-                        history.push('/')
-                    }, 4000)
-                }
-            })
+            (error) => requestFeedbackError(error.response, true, history))
     }, [actualGardenId, fillGardenCells, setLoading, history])
 
     useEffect(() => {
@@ -91,11 +81,7 @@ function Garden(props) {
                 () => {
                     changeCellToVegetable(destination);
                     setDraggedVegetable({});
-                }, (error) => {
-                    if (error.response === undefined) {
-                        authenticationFeedback("Service unavailable", "Try again later", "error", 4000)
-                    }
-                })
+                }, (error) => requestFeedbackError(error.response, false, history))
         }
     }
 
@@ -111,8 +97,9 @@ function Garden(props) {
             cell_row: cellId.split("-")[0],
             cell_column: cellId.split("-")[1],
         }
-        deleteRequest('/api/garden', data, () => setRefresh(true), () => {
-        })
+        deleteRequest('/api/garden', data,
+            () => refreshGarden(),
+            (error) => requestFeedbackError(error.response, false, history))
     }
 
     const removeColumnFromGarden = (index) => {
@@ -130,11 +117,7 @@ function Garden(props) {
                 }))
                 refreshGarden()
             },
-            (error) => {
-                if (error.response === undefined) {
-                    authenticationFeedback("Service unavailable", "Try again later", "error", 4000)
-                }
-            })
+            (error) => requestFeedbackError(error.response, false, history))
     }
 
     const removeRowFromGarden = (index) => {
@@ -153,18 +136,11 @@ function Garden(props) {
                 refreshGarden()
             },
             (error) => {
-                if (error.response === undefined) {
-                    authenticationFeedback("Service unavailable", "Try again later", "error", 4000)
-                }
+                requestFeedbackError(error.response, false, history)
             })
     }
 
-    if (loading) return <div className="loading">
-        <div>
-            <FaSpinner className="loading-spinner"/>
-            Loading...
-        </div>
-    </div>
+    if (loading) return <Loading/>
 
     return (
         <div id="garden" className="garden" ref={gardenRef}
