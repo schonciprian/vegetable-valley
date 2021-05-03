@@ -62,7 +62,11 @@ function GardenSelection(props) {
             setEditableTitle(false)
             setInputError(false)
             sweetalertSidePopup("Garden's name successfully changed", 2000)
-        }, () => setInputError(true))
+        }, (error) => {
+            if (error.response === undefined) {
+                authenticationFeedback("Service unavailable", "Try again later", "error", 4000)
+            }
+        })
     }
 
     const switchGarden = (type) => {
