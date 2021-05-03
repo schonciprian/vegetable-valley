@@ -12,6 +12,7 @@ function GardenSelection(props) {
     const [gardenTemporaryName, setGardenTemporaryName] = useState(gardenName)
     const [editableTitle, setEditableTitle] = useState(false)
     const [inputError, setInputError] = useState(false)
+    const [userHasMoreGardens, setUserHasMoreGardens] = useState(false)
     // Contexts
     const [actualGardenId, setActualGardenId] = useContext(ActualGardenIdContext)
     // Callbacks
@@ -40,6 +41,10 @@ function GardenSelection(props) {
                 authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
             }
         })
+
+        getRequest('/api/get-user-gardens', {},
+            (response) => {if (response.data.length !== 1) setUserHasMoreGardens(true)},
+            () => {})
 
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
@@ -87,7 +92,7 @@ function GardenSelection(props) {
 
     return (
         <div className='garden-selection'>
-            <FaArrowAltCircleLeft className="arrow" onClick={() => switchGarden('left')}/>
+            {userHasMoreGardens ? <FaArrowAltCircleLeft className="arrow" onClick={() => switchGarden('left')}/> : ""}
             <input
                 className={`profile-data-value ${editableTitle ? "editableField" : ""} ${inputError ? "error" : ""}`}
                 placeholder="Your garden's name"
@@ -98,7 +103,7 @@ function GardenSelection(props) {
                 onKeyDown={event => handleKeyPress(event)}
                 onChange={(event) => {setGardenTemporaryName(event.target.value)}}
             />
-            <FaArrowAltCircleRight className="arrow" onClick={() => switchGarden('right')}/>
+            {userHasMoreGardens ? <FaArrowAltCircleRight className="arrow" onClick={() => switchGarden('right')}/> : ""}
         </div>);
 }
 
