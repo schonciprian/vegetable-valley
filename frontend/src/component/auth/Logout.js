@@ -26,7 +26,7 @@ function Logout(props) {
     }
 
     return (
-        <Link to="/logout" onClick={logoutRequest}>Logout</Link>
+        <Link to="/" onClick={logoutRequest}>Logout</Link>
     );
 }
 
