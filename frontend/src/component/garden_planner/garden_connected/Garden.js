@@ -7,10 +7,11 @@ import {LoadingContext} from "../../../context/LoadingContext";
 // Images
 import dirt from "../../../image/garden/dirt_2.png";
 // Helpers
-import {deleteRequest, getRequest, postRequest, putRequest} from "../../additionals/Requests";
+import {getRequest, postRequest, putRequest} from "../../additionals/Requests";
 import {requestFeedbackError} from "../../additionals/SweetAlert";
 import {AiFillDelete} from "react-icons/ai";
 import Loading from "./garden_settings/Loading";
+import Cell from "./Cell";
 
 function Garden(props) {
     const history = useHistory()
@@ -85,17 +86,6 @@ function Garden(props) {
         }
     }
 
-    const removeVegetableFromCell = (cellId) => {
-        const data = {
-            garden_id: actualGardenId,
-            cell_row: cellId.split("-")[0],
-            cell_column: cellId.split("-")[1],
-        }
-        deleteRequest('/api/garden', data,
-            () => refreshGarden(),
-            (error) => requestFeedbackError(error.response, false, history))
-    }
-
     const removeColumnFromGarden = (index) => {
         const data = {
             garden_id: actualGardenId,
@@ -151,14 +141,7 @@ function Garden(props) {
             {garden.map((row, index) =>
                 <div className="row" key={index}>
                     <div className="remove-row" data-row={index} onClick={() => removeRowFromGarden(index)}><AiFillDelete/></div>
-                    {row.map(cell =>
-                        <div key={cell.id} className="cell" data-id={cell.id}>
-                            {cell.name.length !== 0
-                                ? <div className="remove" onClick={() => removeVegetableFromCell(cell.id)}>X</div>
-                                : ""}
-                            <img draggable={false} src={cell.pictureURL} alt=""/>
-                        </div>
-                    )}
+                    {row.map(cell => <Cell key={cell.id} cell={cell} refreshGarden={refreshGarden}/>)}
                 </div>
             )}
         </div>
