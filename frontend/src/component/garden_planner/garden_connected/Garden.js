@@ -130,6 +130,24 @@ function Garden(props) {
             (error) => console.log(error.data))
     }
 
+    const removeRowFromGarden = (index) => {
+        const data = {
+            garden_id: actualGardenId,
+            row_index: index,
+        }
+
+        putRequest('/api/remove-row', data,
+            () => {
+                setGardenSize(prevData => ({
+                    ...prevData,
+                    rows: gardenSize.rows - 1,
+                    columns: gardenSize.columns,
+                }))
+                refreshGarden()
+            },
+            (error) => console.log(error.data))
+    }
+
     if (loading) return <div className="loading">
         <div>
             <FaSpinner className="loading-spinner"/>
@@ -151,7 +169,7 @@ function Garden(props) {
             </div>
             {garden.map((row, index) =>
                 <div className="row" key={index}>
-                    <div className="remove-row" data-row={index}><AiFillDelete/></div>
+                    <div className="remove-row" data-row={index} onClick={() => removeRowFromGarden(index)}><AiFillDelete/></div>
                     {row.map(cell =>
                         <div key={cell.id} className="cell" data-id={cell.id}>
                             {cell.name.length !== 0
