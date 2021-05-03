@@ -44,15 +44,6 @@
   margin: 0;
   position: relative;
 }
-.garden-planner .garden-container:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 3px;
-  right: 0;
-  height: 100%;
-  background: linear-gradient(130deg, #0F1329, darkorange 50%, #0F1329 100%);
-}
 .garden-planner .garden-container .garden-selection {
   justify-content: center;
 }
@@ -98,7 +89,7 @@
 .garden-planner .garden-container .garden {
   overflow: auto;
   width: 95%;
-  max-height: 440px;
+  max-height: 460px;
   padding: 0 0 10px;
   margin: 0 20px 20px;
 }
@@ -180,6 +171,17 @@
   width: 50%;
   max-width: 750px;
   height: 100%;
+  position: relative;
+  margin-bottom: 40px;
+}
+.garden-planner .options-container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 3px;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(130deg, #0F1329, darkorange 50%, #0F1329 100%);
 }
 .garden-planner .options-container h1 {
   width: fit-content;
@@ -188,7 +190,7 @@
 }
 .garden-planner .options-container .vegetable-list {
   height: 100%;
-  max-height: 425px;
+  max-height: 450px;
   margin-right: 10px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(7.5vw, max-content));
@@ -285,7 +287,7 @@
 }
 
 .loading {
-  height: 440px;
+  height: 460px;
   position: relative;
 }
 .loading div {
