@@ -79,16 +79,10 @@ function Garden(props) {
             }
             postRequest('/api/garden', data,
                 () => {
-                    changeCellToVegetable(destination);
                     setDraggedVegetable({});
+                    refreshGarden()
                 }, (error) => requestFeedbackError(error.response, false, history))
         }
-    }
-
-    const changeCellToVegetable = (destination) => {
-        const destinationCell = garden.flat().find(cell => cell.id === destination)
-        destinationCell.name = draggedVegetable.name;
-        destinationCell.pictureURL = draggedVegetable.pictureURL;
     }
 
     const removeVegetableFromCell = (cellId) => {
