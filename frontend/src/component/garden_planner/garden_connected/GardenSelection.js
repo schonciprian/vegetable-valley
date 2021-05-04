@@ -3,6 +3,7 @@ import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from "react-icons/fa";
 import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
 import {authenticationFeedback, sweetalertSidePopup} from "../../additionals/SweetAlert";
 import {getRequest, putRequest} from "../../additionals/Requests";
+import {LoadingContext} from "../../../context/LoadingContext";
 
 function GardenSelection(props) {
     // Refs
@@ -15,6 +16,7 @@ function GardenSelection(props) {
     const [userHasMoreGardens, setUserHasMoreGardens] = useState(false)
     // Contexts
     const [actualGardenId, setActualGardenId] = useContext(ActualGardenIdContext)
+    const [loading] = useContext(LoadingContext)
     // Callbacks
     const handleClickOutside = useCallback((e) => {
         if (gardenTitleRef.current && gardenTitleRef.current.contains(e.target)) {
@@ -96,18 +98,18 @@ function GardenSelection(props) {
 
     return (
         <div className='garden-selection'>
-            {userHasMoreGardens ? <FaArrowAltCircleLeft className="arrow" onClick={() => switchGarden('left')}/> : ""}
+            {userHasMoreGardens && !loading ? <FaArrowAltCircleLeft className="arrow" onClick={() => switchGarden('left')}/> : ""}
             <input
                 className={`profile-data-value ${editableTitle ? "editableField" : ""} ${inputError ? "error" : ""}`}
                 placeholder="Your garden's name"
-                value={editableTitle ? gardenTemporaryName : gardenName}
+                value={loading ? "" : editableTitle ? gardenTemporaryName : gardenName}
                 maxLength={18}
                 ref={gardenTitleRef}
                 readOnly={!editableTitle}
                 onKeyDown={event => handleKeyPress(event)}
                 onChange={(event) => {setGardenTemporaryName(event.target.value)}}
             />
-            {userHasMoreGardens ? <FaArrowAltCircleRight className="arrow" onClick={() => switchGarden('right')}/> : ""}
+            {userHasMoreGardens && !loading ? <FaArrowAltCircleRight className="arrow" onClick={() => switchGarden('right')}/> : ""}
         </div>);
 }
 

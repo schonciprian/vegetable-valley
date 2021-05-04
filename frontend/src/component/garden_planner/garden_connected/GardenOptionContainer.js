@@ -7,8 +7,9 @@ import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
 // Icons
 import {BsFillPlusCircleFill} from "react-icons/bs";
 // Methods
-import {getRequest, postRequest, putRequest} from "../../additionals/Requests";
+import {deleteRequest, getRequest, postRequest, putRequest} from "../../additionals/Requests";
 import {authenticationFeedback} from "../../additionals/SweetAlert";
+import {AiFillDelete} from "react-icons/ai";
 
 
 function GardenOptionContainer(props) {
@@ -66,6 +67,16 @@ function GardenOptionContainer(props) {
             })
     }
 
+    const removeGarden = () => {
+        deleteRequest('/api/remove-garden', {garden_id: actualGardenId},
+            (response) => setActualGardenId(null),
+            (error) => {
+                if (error.response === undefined) {
+                    authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
+                }
+            })
+    }
+
     return (
         <div className="garden-option-container">
 
@@ -85,6 +96,11 @@ function GardenOptionContainer(props) {
                 <BsFillPlusCircleFill/>
                 <span>New garden</span>
             </button>
+
+            <div className="delete-option" onClick={() => removeGarden()}>
+                <AiFillDelete/>
+                <span className="tooltip-text">Remove currently selected garden</span>
+            </div>
 
         </div>
     );

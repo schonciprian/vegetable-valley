@@ -21,12 +21,15 @@ function Logout(props) {
                     "username": null,
                 });
                 authenticationFeedback("Logged out successfully", "You are redirected to the main page", "success", 2000, history, '/')
-            }, () => {
+            }, (error) => {
+                if (error.response === undefined) {
+                    authenticationFeedback("Service unavailable", "Try again later", "error", 4000)
+                }
         })
     }
 
     return (
-        <Link to="/" onClick={logoutRequest}>Logout</Link>
+        <Link onClick={logoutRequest}>Logout</Link>
     );
 }
 
