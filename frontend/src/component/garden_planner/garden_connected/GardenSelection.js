@@ -45,7 +45,7 @@ function GardenSelection(props) {
         })
 
         getRequest('/api/get-user-gardens', {},
-            (response) => {if (response.data.length !== 1) setUserHasMoreGardens(true)},
+            (response) => setUserHasMoreGardens(response.data.length !== 1),
             () => {})
 
         document.addEventListener('mousedown', handleClickOutside);
