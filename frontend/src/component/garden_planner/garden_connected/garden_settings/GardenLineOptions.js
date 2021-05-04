@@ -20,36 +20,18 @@ export function GardenLineOptionsColumn(props) {
     const [actualGardenId] = useContext(ActualGardenIdContext)
     const history = useHistory()
 
-    const removeColumnFromGarden = (index) => {
+    const editColumnInGarden = (index, type) => {
         const data = {
             garden_id: actualGardenId,
             column_index: index,
         }
-
-        putRequest('/api/remove-column', data,
+        const url = type === "remove" ? '/api/remove-column' : '/api/add-column';
+        const columnsValue = type === "remove" ? gardenSize.columns - 1 : gardenSize.columns + 1;
+        putRequest(url, data,
             () => {
                 setGardenSize(prevData => ({
                     ...prevData,
-                    rows: gardenSize.rows,
-                    columns: gardenSize.columns - 1,
-                }))
-                refreshGarden()
-            },
-            (error) => requestFeedbackError(error.response, false, history))
-    }
-
-    const addColumnToGarden = (index) => {
-        const data = {
-            garden_id: actualGardenId,
-            column_index: index,
-        }
-
-        putRequest('/api/add-column', data,
-            () => {
-                setGardenSize(prevData => ({
-                    ...prevData,
-                    rows: gardenSize.rows,
-                    columns: gardenSize.columns + 1,
+                    columns: columnsValue,
                 }))
                 refreshGarden()
             },
@@ -58,8 +40,8 @@ export function GardenLineOptionsColumn(props) {
 
     return (
         <div className="options options-column" data-column={index}>
-            <GoDiffAdded onClick={() => addColumnToGarden(index)}/>
-            <AiFillDelete onClick={() => removeColumnFromGarden(index)}/>
+            <GoDiffAdded onClick={() => editColumnInGarden(index, 'add')}/>
+            <AiFillDelete onClick={() => editColumnInGarden(index, 'remove')}/>
         </div>
     );
 }
