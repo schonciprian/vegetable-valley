@@ -44,11 +44,13 @@ function DownloadGarden(props) {
 
         // Image height
         const cellHeightWithBoxModel = calculateCellSize();
-        const imageHeight = rows * cellHeightWithBoxModel + deleteIconWidth; // FULL IMAGE HEIGHT
+        const imageHeight = rows * cellHeightWithBoxModel + 2 * deleteIconWidth; // FULL IMAGE HEIGHT
 
         // Prepare image for screenshot
         const removeButtons = document.querySelectorAll(".remove")
+        const optionButtons = document.querySelectorAll(".options")
         removeButtons.forEach((button) => button.style.visibility = "hidden")
+        optionButtons.forEach((button) => button.style.visibility = "hidden")
         gardenRef.current.style.overflow = "visible"
         window.scrollTo(0, 0)
 
@@ -69,6 +71,7 @@ function DownloadGarden(props) {
 
         // Set back default values
         removeButtons.forEach((button) => button.style.visibility = "visible")
+        optionButtons.forEach((button) => button.style.visibility = "visible")
         gardenRef.current.style.overflow = "auto"
     };
 
