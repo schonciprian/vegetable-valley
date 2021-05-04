@@ -34,9 +34,27 @@ export function GardenLineOptionsColumn(props) {
             (error) => requestFeedbackError(error.response, false, history))
     }
 
+    const addColumnToGarden = (index) => {
+        const data = {
+            garden_id: actualGardenId,
+            column_index: index,
+        }
+
+        putRequest('/api/add-column', data,
+            () => {
+                setGardenSize(prevData => ({
+                    ...prevData,
+                    rows: gardenSize.rows,
+                    columns: gardenSize.columns + 1,
+                }))
+                refreshGarden()
+            },
+            (error) => requestFeedbackError(error.response, false, history))
+    }
+
     return (
         <div className="options options-column" data-column={index}>
-            <GoDiffAdded onClick={() => console.log("adds")}/>
+            <GoDiffAdded onClick={() => addColumnToGarden(index)}/>
             <AiFillDelete onClick={() => removeColumnFromGarden(index)}/>
         </div>
     );
@@ -71,9 +89,29 @@ export function GardenLineOptionsRow(props) {
             })
     }
 
+    const addRowToGarden = (index) => {
+        const data = {
+            garden_id: actualGardenId,
+            row_index: index,
+        }
+
+        putRequest('/api/add-row', data,
+            () => {
+                setGardenSize(prevData => ({
+                    ...prevData,
+                    rows: gardenSize.rows + 1,
+                    columns: gardenSize.columns,
+                }))
+                refreshGarden()
+            },
+            (error) => {
+                requestFeedbackError(error.response, false, history)
+            })
+    }
+
     return (
         <div className="options options-row" data-row={index}>
-            <GoDiffAdded onClick={() => console.log("add")}/>
+            <GoDiffAdded onClick={() => addRowToGarden(index)}/>
             <AiFillDelete onClick={() => removeRowFromGarden(index)}/>
         </div>
     );
