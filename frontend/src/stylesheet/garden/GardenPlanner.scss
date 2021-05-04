@@ -12,10 +12,7 @@
   justify-content: space-between;
   align-items: flex-start;
 
-  width: 80%;
-  max-width: 1300px;
-  height: border-box;
-  max-height: 620px;
+  width: 95%;
 
   margin: 30px auto;
 
@@ -30,28 +27,74 @@
     width: 50%;
     height: 100%;
 
-    padding: 0 10px 20px;
+    //padding: 0 10px 20px;
     margin: 0;
     position: relative;
 
-    &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 3px;
-      right: 0;
-      height: 100%;
-      background: linear-gradient(130deg, #0F1329, $color-highlight 50%, #0F1329 100%);
+    .garden-selection {
+      @extend %display-flex-center;
+      justify-content: center;
+
+      .arrow {
+        margin: 0 20px;
+        width: 50px;
+        border-radius: 10px;
+        background-color: #1B223E;
+        padding: 10px;
+      }
+
+      h1 {
+        @extend %title;
+        width: fit-content;
+      }
+
+      input {
+        width: 40%;
+
+        margin: 10px;
+        padding: 10px;
+
+        text-align: center;
+        font-family: $font-family-text;
+        font-size: min(1.5vw, 22px);
+
+        background-color: transparent;
+        border-radius: $border-radius-smaller;
+        color: $color-text;
+
+        outline: none;
+        border: none;
+        cursor: text;
+        caret-color: darkorange;
+
+        &::placeholder {
+          visibility: hidden;
+        }
+      }
+
+      .error {
+        border: 1px solid darkred;
+      }
+
+      .editableField {
+        background-color: $focus-color-lighter;
+        cursor: text;
+
+        &::placeholder {
+          visibility: visible;
+          color: $color-text;
+        }
+      }
     }
 
-    h1 {
-      @extend %title;
-    }
 
     .garden {
       overflow: auto;
-      width: border-box;
-      max-height: 435px;
+      width: 95%;
+      max-height: 460px;
+      padding: 0 0 10px;
+      margin: 0 20px 20px;
+
 
       ////////////////////////
       // Scrollbar specific //
@@ -63,7 +106,7 @@
       }
 
       &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px grey;
+        //box-shadow: inset 0 0 5px grey;
         border-radius: 10px;
       }
 
@@ -85,6 +128,7 @@
         display: flex;
         align-items: center;
         margin: 0 auto;
+        padding: 0 10px 0 0;
 
         .cell {
           @extend %display-flex-center;
@@ -123,15 +167,31 @@
     width: 50%;
     max-width: 750px;
     height: 100%;
-    padding: 0 10px 20px;
+    //padding: 0 10px 20px;
+    position: relative;
+    margin-bottom: 40px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 3px;
+      left: 0;
+      height: 100%;
+      background: linear-gradient(130deg, #0F1329, $color-highlight 50%, #0F1329 100%);
+    }
 
     h1 {
       @extend %title;
+      width: fit-content;
+      margin: 10px auto;
+      padding: 10px;
     }
 
     .vegetable-list {
       height: 100%;
-      max-height: 430px;
+      max-height: 450px;
+      margin-right: 10px;
 
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(7.5vw, max-content));
@@ -150,7 +210,7 @@
       }
 
       &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px grey;
+        //box-shadow: inset 0 0 5px grey;
         border-radius: 10px;
       }
 
@@ -200,17 +260,34 @@
   }
 }
 
-.option-selection {
+.garden-option-container,
+.option-selection{
   @extend %display-flex-space-around;
+  flex-wrap: wrap;
+  height: 60px;
+  margin-bottom: 20px;
+  position: relative;
 
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 3px;
+    background: linear-gradient(130deg, #0F1329, $color-highlight 50%, #0F1329 100%);
+  }
   .option {
     @extend %display-flex-center;
 
+    width: 20%;
+    height: 35px;
+
     padding: 10px;
-    margin: 0 5px 20px;
 
     font-size: $font-size-smaller-vw;
     font-weight: bold;
+    white-space:nowrap;
+
 
     color: $color-text;
     background-color: $focus-color-lighter;
@@ -228,7 +305,8 @@
     svg {
       color: $color-highlight;
       margin-right: 5px;
-      font-size: 17px;
+      width: 15px;
+      height: 15px;
     }
   }
 
@@ -236,3 +314,20 @@
     color: $color-highlight;
   }
 }
+
+.loading {
+  height: 460px;
+  position: relative;
+
+  div {
+    position: absolute;
+    top: 50px;
+    @extend %display-flex-center;
+  }
+
+  .loading-spinner {
+    margin: 20px;
+    font-size: 60px;
+  }
+}
+

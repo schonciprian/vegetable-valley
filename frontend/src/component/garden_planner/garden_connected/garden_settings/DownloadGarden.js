@@ -6,6 +6,7 @@ function DownloadGarden(props) {
     const gardenRef = props.gardenRef;
     const rows = props.rows;
     const columns = props.columns;
+    const deleteIconWidth = 30;
 
     const calculateCellSize = () => {
         const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -34,7 +35,7 @@ function DownloadGarden(props) {
         marginRight = marginRight > 0 ? marginRight : 0;
         const fixImageRightPadding = columns <= 6 ? columns : 0;
 
-        return rowWidth + marginLeft + marginRight + fixImageRightPadding;
+        return rowWidth + marginLeft + marginRight + fixImageRightPadding + deleteIconWidth;
     }
 
     const download = () => {
@@ -43,7 +44,7 @@ function DownloadGarden(props) {
 
         // Image height
         const cellHeightWithBoxModel = calculateCellSize();
-        const imageHeight = rows * cellHeightWithBoxModel; // FULL IMAGE HEIGHT
+        const imageHeight = rows * cellHeightWithBoxModel + deleteIconWidth; // FULL IMAGE HEIGHT
 
         // Prepare image for screenshot
         const removeButtons = document.querySelectorAll(".remove")
@@ -73,7 +74,8 @@ function DownloadGarden(props) {
 
     return (
         <button className="option" onClick={() => download()}>
-            <FaCloudDownloadAlt/>Download screenshot
+            <FaCloudDownloadAlt/>
+            <span>Download</span>
         </button>
     );
 }
