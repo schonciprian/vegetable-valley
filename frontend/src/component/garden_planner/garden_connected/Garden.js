@@ -7,12 +7,12 @@ import {LoadingContext} from "../../../context/LoadingContext";
 // Images
 import dirt from "../../../image/garden/dirt_2.png";
 // Helpers
-import {getRequest, postRequest, putRequest} from "../../additionals/Requests";
+import {getRequest, postRequest} from "../../additionals/Requests";
 import {requestFeedbackError} from "../../additionals/SweetAlert";
-import {AiFillDelete} from "react-icons/ai";
 import Loading from "./garden_settings/Loading";
 import Cell from "./Cell";
-import {GoDiffAdded} from "react-icons/go";
+import {GardenLineOptionsColumn} from "./garden_settings/GardenLineOptions";
+import {GardenLineOptionsRow} from "./garden_settings/GardenLineOptions";
 
 function Garden(props) {
     const history = useHistory()
@@ -22,7 +22,7 @@ function Garden(props) {
     const [garden, setGarden] = useState([]);
     // Contexts
     const [loading, setLoading] = useContext(LoadingContext)
-    const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
+    const [gardenSize] = useContext(GardenSizeContext);
     const [actualGardenId] = useContext(ActualGardenIdContext)
     // props
     const draggedVegetable = props.draggedVegetable;
@@ -87,44 +87,6 @@ function Garden(props) {
         }
     }
 
-    const removeColumnFromGarden = (index) => {
-        const data = {
-            garden_id: actualGardenId,
-            column_index: index,
-        }
-
-        putRequest('/api/remove-column', data,
-            () => {
-                setGardenSize(prevData => ({
-                    ...prevData,
-                    rows: gardenSize.rows,
-                    columns: gardenSize.columns - 1,
-                }))
-                refreshGarden()
-            },
-            (error) => requestFeedbackError(error.response, false, history))
-    }
-
-    const removeRowFromGarden = (index) => {
-        const data = {
-            garden_id: actualGardenId,
-            row_index: index,
-        }
-
-        putRequest('/api/remove-row', data,
-            () => {
-                setGardenSize(prevData => ({
-                    ...prevData,
-                    rows: gardenSize.rows - 1,
-                    columns: gardenSize.columns,
-                }))
-                refreshGarden()
-            },
-            (error) => {
-                requestFeedbackError(error.response, false, history)
-            })
-    }
-
     if (loading) return <Loading/>
 
     return (
@@ -135,19 +97,13 @@ function Garden(props) {
                 <div className="line-option-empty-space"/>
                 {garden.map((row, rowindex) =>
                     row.map((cell, index) => rowindex < 1
-                        ? <div key={index} className="options options-column" data-column={index}>
-                            <GoDiffAdded onClick={() => removeColumnFromGarden(index)}/>
-                            <AiFillDelete onClick={() => removeColumnFromGarden(index)}/>
-                        </div>
+                        ? <GardenLineOptionsColumn key={index} index={index} refreshGarden={refreshGarden}/>
                         : <React.Fragment key={index}/>)
                 )}
             </div>
             {garden.map((row, index) =>
                 <div className="row" key={index}>
-                    <div className="options options-row" data-row={index}>
-                        <GoDiffAdded onClick={() => removeColumnFromGarden(index)}/>
-                        <AiFillDelete onClick={() => removeRowFromGarden(index)}/>
-                    </div>
+                    <GardenLineOptionsRow index={index} refreshGarden={refreshGarden}/>
                     {row.map(cell => <Cell key={cell.id} cell={cell} refreshGarden={refreshGarden}/>)}
                 </div>
             )}
