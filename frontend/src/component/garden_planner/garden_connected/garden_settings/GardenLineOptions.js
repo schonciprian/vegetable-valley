@@ -15,7 +15,6 @@ import {requestFeedbackError} from "../../../additionals/SweetAlert";
                 ///////////////////
 export function GardenLineOptionsColumn(props) {
     const index = props.index;
-    const refreshGarden = props.refreshGarden;
     const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
     const [actualGardenId] = useContext(ActualGardenIdContext)
     const history = useHistory()
@@ -33,7 +32,6 @@ export function GardenLineOptionsColumn(props) {
                     ...prevData,
                     columns: columnsValue,
                 }))
-                refreshGarden()
             },
             (error) => requestFeedbackError(error.response, false, history))
     }
@@ -51,7 +49,6 @@ export function GardenLineOptionsColumn(props) {
                 ////////////////
 export function GardenLineOptionsRow(props) {
     const index = props.index;
-    const refreshGarden = props.refreshGarden;
     const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
     const [actualGardenId] = useContext(ActualGardenIdContext)
     const history = useHistory()
@@ -70,7 +67,6 @@ export function GardenLineOptionsRow(props) {
                     ...prevData,
                     rows: rowsValue,
                 }))
-                refreshGarden()
             },
             (error) => {
                 requestFeedbackError(error.response, false, history)

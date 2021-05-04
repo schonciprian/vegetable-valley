@@ -66,7 +66,7 @@ function Garden(props) {
         setLoading(true)
         if (actualGardenId === null) return
         refreshGarden()
-    }, [actualGardenId, setLoading, refreshGarden])
+    }, [actualGardenId, setLoading, refreshGarden, gardenSize])
 
     const saveVegetableToCell = (event) => {
         const destination = event.target.parentElement.dataset.id ?? null;
