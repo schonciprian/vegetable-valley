@@ -7,7 +7,7 @@
 }
 
 .garden-option-container,
-.option-selection, .garden-planner .garden-container .garden .row .remove-column, .garden-planner .garden-container .garden .row .remove-row {
+.option-selection {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -117,41 +117,6 @@
   align-items: center;
   margin: 0 auto;
   padding: 0 10px 0 0;
-}
-.garden-planner .garden-container .garden .row .additional-empty-space {
-  width: 30px;
-}
-.garden-planner .garden-container .garden .row .remove-row {
-  flex-direction: column;
-  width: 30px;
-  height: 5vw;
-  min-height: 40px;
-  max-height: 75px;
-  color: darkorange;
-}
-.garden-planner .garden-container .garden .row .remove-row svg:nth-of-type(1):hover {
-  color: forestgreen;
-  cursor: pointer;
-}
-.garden-planner .garden-container .garden .row .remove-row svg:nth-of-type(2):hover {
-  color: red;
-  cursor: pointer;
-}
-.garden-planner .garden-container .garden .row .remove-column {
-  width: 5vw;
-  min-width: 40px;
-  max-width: 75px;
-  height: 30px;
-  margin: 0 7px;
-  color: darkorange;
-}
-.garden-planner .garden-container .garden .row .remove-column svg:nth-of-type(1):hover {
-  color: forestgreen;
-  cursor: pointer;
-}
-.garden-planner .garden-container .garden .row .remove-column svg:nth-of-type(2):hover {
-  color: red;
-  cursor: pointer;
 }
 .garden-planner .garden-container .garden .row .cell {
   width: 5vw;

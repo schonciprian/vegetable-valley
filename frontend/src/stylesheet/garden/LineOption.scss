@@ -1,0 +1,44 @@
+@import "../Variables";
+
+.line-option-empty-space {
+  width: 30px;
+}
+
+.options {
+  @extend %display-flex-space-around;
+  color: darkorange;
+
+  svg:nth-of-type(1) {
+    &:hover {
+      color: forestgreen;
+      cursor: pointer;
+    }
+  }
+
+  svg:nth-of-type(2) {
+    &:hover {
+      color: red;
+      cursor: pointer;
+    }
+  }
+}
+
+.options-row {
+  flex-direction: column;
+  width: 30px;
+
+  height: 5vw;
+  min-height: 40px;
+  max-height: 75px;
+
+}
+
+.options-column {
+  width: 5vw;
+  min-width: 40px;
+  max-width: 75px;
+
+  height: 30px;
+
+  margin: 0 7px;
+}

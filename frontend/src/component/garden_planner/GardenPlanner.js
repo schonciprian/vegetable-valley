@@ -8,6 +8,7 @@ import OptionVegetableList from "./block_connected/OptionVegetableList";
 import OptionBlockList from "./block_connected/OptionBlockList";
 // Stylesheets
 import '../../stylesheet/garden/GardenPlanner.css'
+import '../../stylesheet/garden/LineOption.css'
 
 
 function GardenPlanner() {

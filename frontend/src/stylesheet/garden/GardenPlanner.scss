@@ -130,68 +130,6 @@
         margin: 0 auto;
         padding: 0 10px 0 0;
 
-        .additional-empty-space {
-          width: 30px;
-        }
-
-        .remove-row {
-          @extend %display-flex-space-around;
-          flex-direction: column;
-          width: 30px;
-          //min-width: 30px;
-          //max-width: 35px;
-
-          height: 5vw;
-          min-height: 40px;
-          max-height: 75px;
-
-          color: darkorange;
-
-          svg:nth-of-type(1) {
-            &:hover {
-              color: forestgreen;
-              cursor: pointer;
-            }
-          }
-
-          svg:nth-of-type(2) {
-            &:hover {
-              color: red;
-              cursor: pointer;
-            }
-          }
-        }
-
-        .remove-column {
-
-          @extend %display-flex-space-around;
-          width: 5vw;
-          min-width: 40px;
-          max-width: 75px;
-
-          height: 30px;
-          //min-height: 40px;
-          //max-height: 75px;
-
-          margin: 0 7px;
-          color: darkorange;
-
-          svg:nth-of-type(1) {
-            &:hover {
-              color: forestgreen;
-              cursor: pointer;
-            }
-          }
-
-          svg:nth-of-type(2) {
-            &:hover {
-              color: red;
-              cursor: pointer;
-            }
-          }
-
-        }
-
         .cell {
           @extend %display-flex-center;
           width: 5vw;

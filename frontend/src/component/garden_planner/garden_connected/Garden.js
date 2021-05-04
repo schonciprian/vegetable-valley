@@ -132,10 +132,10 @@ function Garden(props) {
              onDrop={(event) => saveVegetableToCell(event)}
              onDragOver={(event => event.preventDefault())}>
             <div className="row">
-                <div className="additional-empty-space"/>
+                <div className="line-option-empty-space"/>
                 {garden.map((row, rowindex) =>
                     row.map((cell, index) => rowindex < 1
-                        ? <div key={index} className="remove-column" data-column={index}>
+                        ? <div key={index} className="options options-column" data-column={index}>
                             <GoDiffAdded onClick={() => removeColumnFromGarden(index)}/>
                             <AiFillDelete onClick={() => removeColumnFromGarden(index)}/>
                         </div>
@@ -144,7 +144,7 @@ function Garden(props) {
             </div>
             {garden.map((row, index) =>
                 <div className="row" key={index}>
-                    <div className="remove-row" data-row={index}>
+                    <div className="options options-row" data-row={index}>
                         <GoDiffAdded onClick={() => removeColumnFromGarden(index)}/>
                         <AiFillDelete onClick={() => removeRowFromGarden(index)}/>
                     </div>
