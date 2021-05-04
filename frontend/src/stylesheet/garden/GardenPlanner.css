@@ -53,6 +53,7 @@
   border-radius: 10px;
   background-color: #1B223E;
   padding: 10px;
+  cursor: pointer;
 }
 .garden-planner .garden-container .garden-selection h1 {
   width: fit-content;
