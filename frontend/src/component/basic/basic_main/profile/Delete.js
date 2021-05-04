@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
-import axios from "axios";
-import {environmentVariables} from "../../../../EnvironmentVariables";
-import Swal from "sweetalert2";
 import {useHistory} from "react-router-dom";
+// Contexts
 import {UserContext} from "../../../../context/User";
+// Helpers
+import {deleteRequest} from "../../../additionals/Requests";
+import {authenticationFeedback, sweetalertSidePopup} from "../../../additionals/SweetAlert";
 
 function Delete(props) {
     const userData = props.userData;
@@ -11,40 +12,18 @@ function Delete(props) {
     const [, setUser] = useContext(UserContext);
 
     const deleteAccount = () => {
-        axios({
-            method: "delete",
-            url: `${environmentVariables.BACKEND_URL}/api/delete-user`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*",
-                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-            data: userData
-        }).then((res) => {
-            Swal.fire({
-                toast: true,
-                icon: 'success',
-                title: 'Account deleted successfully',
-                animation: true,
-                position: 'top-right',
-                showConfirmButton: false,
-                timer: 2000,
-            });
-
+        deleteRequest('/api/delete-user', userData, () => {
+            sweetalertSidePopup('Account deleted successfully', 2000)
             setTimeout(() => {
                 history.push("/");
-
                 window.sessionStorage.removeItem("token")
                 window.sessionStorage.removeItem("username")
-
-                setUser({
-                    "token": null,
-                    "username": null,
-                });
+                setUser({"token": null, "username": null});
             }, 2000);
-
-        }).catch((error) => {
-            console.log(error.response.data);
+        }, (error) => {
+            if (error.response === undefined) {
+                authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
+            }
         })
     }
 

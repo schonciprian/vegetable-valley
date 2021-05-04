@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Vegetables} from "../grow_guides/Descriptions";
+import {Vegetables} from "../../grow_guides/Descriptions";
 
 function OptionVegetableList(props) {
     const [vegetables, setVegetables] = useState([]);

@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import axios from "axios";
-import {environmentVariables} from "../../../../EnvironmentVariables";
-import * as Swal from "sweetalert2";
 import {BiShow} from "react-icons/bi";
+import {authenticationFeedback, sweetalertSidePopup} from "../../../additionals/SweetAlert";
+import {putRequest} from "../../../additionals/Requests";
 
 function Password() {
     const [passwordData, setPasswordData] = useState({});
@@ -29,33 +28,23 @@ function Password() {
     }
 
     const updateUserPassword = () => {
-        axios({
-            method: "put",
-            url: `${environmentVariables.BACKEND_URL}/api/update-user-password`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*",
-                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-            data: passwordData
-        }).then((res) => {
-            document.getElementById("current_password").value = "";
-            document.getElementById("new_password").value = "";
-            document.getElementById("new_password_confirmation").value = "";
-
-            Swal.fire({
-                toast: true,
-                icon: 'success',
-                title: 'Password changed successfully',
-                animation: true,
-                position: 'top-right',
-                showConfirmButton: false,
-                timer: 3000,
+        if (!passwordData.new_password || !passwordData.new_password_confirmation) {
+            setPasswordError({message: 'Fill in all fields'});
+            return
+        }
+        putRequest('/api/update-user-password', passwordData,
+            () => {
+                document.getElementById("current_password").value = "";
+                document.getElementById("new_password").value = "";
+                document.getElementById("new_password_confirmation").value = "";
+                sweetalertSidePopup('Password changed successfully', 3000)
+            }, (error) => {
+                if (error.response === undefined) {
+                    authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
+                    return
+                }
+                setPasswordError(error.response.data)
             })
-
-        }).catch((error) => {
-            setPasswordError(error.response.data)
-        })
     }
 
     return (
