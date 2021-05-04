@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
 .loading div, .garden-option-container .option,
-.option-selection .option, .garden-planner .garden-container .garden .row .cell, .garden-planner .garden-container .garden .row .remove-column, .garden-planner .garden-container .garden .row .remove-row, .garden-planner .garden-container .garden-selection {
+.option-selection .option, .garden-planner .garden-container .garden .row .cell, .garden-planner .garden-container .garden-selection {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .garden-option-container,
-.option-selection {
+.option-selection, .garden-planner .garden-container .garden .row .remove-column, .garden-planner .garden-container .garden .row .remove-row {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -118,17 +118,22 @@
   margin: 0 auto;
   padding: 0 10px 0 0;
 }
-.garden-planner .garden-container .garden .row .remove-empty-space {
+.garden-planner .garden-container .garden .row .additional-empty-space {
   width: 30px;
 }
 .garden-planner .garden-container .garden .row .remove-row {
+  flex-direction: column;
   width: 30px;
   height: 5vw;
   min-height: 40px;
   max-height: 75px;
   color: darkorange;
 }
-.garden-planner .garden-container .garden .row .remove-row:hover {
+.garden-planner .garden-container .garden .row .remove-row svg:nth-of-type(1):hover {
+  color: forestgreen;
+  cursor: pointer;
+}
+.garden-planner .garden-container .garden .row .remove-row svg:nth-of-type(2):hover {
   color: red;
   cursor: pointer;
 }
@@ -140,7 +145,11 @@
   margin: 0 7px;
   color: darkorange;
 }
-.garden-planner .garden-container .garden .row .remove-column:hover {
+.garden-planner .garden-container .garden .row .remove-column svg:nth-of-type(1):hover {
+  color: forestgreen;
+  cursor: pointer;
+}
+.garden-planner .garden-container .garden .row .remove-column svg:nth-of-type(2):hover {
   color: red;
   cursor: pointer;
 }

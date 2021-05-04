@@ -12,6 +12,7 @@ import {requestFeedbackError} from "../../additionals/SweetAlert";
 import {AiFillDelete} from "react-icons/ai";
 import Loading from "./garden_settings/Loading";
 import Cell from "./Cell";
+import {GoDiffAdded} from "react-icons/go";
 
 function Garden(props) {
     const history = useHistory()
@@ -130,17 +131,23 @@ function Garden(props) {
         <div id="garden" className="garden" ref={gardenRef}
              onDrop={(event) => saveVegetableToCell(event)}
              onDragOver={(event => event.preventDefault())}>
-            <div className="row remove-bar">
-                <div className="remove-empty-space"/>
+            <div className="row">
+                <div className="additional-empty-space"/>
                 {garden.map((row, rowindex) =>
                     row.map((cell, index) => rowindex < 1
-                        ? <div key={index} className="remove-column" data-column={index} onClick={() => removeColumnFromGarden(index)}><AiFillDelete/></div>
+                        ? <div key={index} className="remove-column" data-column={index}>
+                            <GoDiffAdded onClick={() => removeColumnFromGarden(index)}/>
+                            <AiFillDelete onClick={() => removeColumnFromGarden(index)}/>
+                        </div>
                         : <React.Fragment key={index}/>)
                 )}
             </div>
             {garden.map((row, index) =>
                 <div className="row" key={index}>
-                    <div className="remove-row" data-row={index} onClick={() => removeRowFromGarden(index)}><AiFillDelete/></div>
+                    <div className="remove-row" data-row={index}>
+                        <GoDiffAdded onClick={() => removeColumnFromGarden(index)}/>
+                        <AiFillDelete onClick={() => removeRowFromGarden(index)}/>
+                    </div>
                     {row.map(cell => <Cell key={cell.id} cell={cell} refreshGarden={refreshGarden}/>)}
                 </div>
             )}

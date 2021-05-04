@@ -130,12 +130,13 @@
         margin: 0 auto;
         padding: 0 10px 0 0;
 
-        .remove-empty-space {
+        .additional-empty-space {
           width: 30px;
         }
 
         .remove-row {
-          @extend %display-flex-center;
+          @extend %display-flex-space-around;
+          flex-direction: column;
           width: 30px;
           //min-width: 30px;
           //max-width: 35px;
@@ -146,19 +147,24 @@
 
           color: darkorange;
 
-          &:hover {
-            color: red;
-            cursor: pointer;
+          svg:nth-of-type(1) {
+            &:hover {
+              color: forestgreen;
+              cursor: pointer;
+            }
+          }
+
+          svg:nth-of-type(2) {
+            &:hover {
+              color: red;
+              cursor: pointer;
+            }
           }
         }
 
-        //.remove-bar {
-        //  position: sticky;
-        //  top: 0;
-        //}
         .remove-column {
 
-          @extend %display-flex-center;
+          @extend %display-flex-space-around;
           width: 5vw;
           min-width: 40px;
           max-width: 75px;
@@ -170,10 +176,20 @@
           margin: 0 7px;
           color: darkorange;
 
-          &:hover {
-            color: red;
-            cursor: pointer;
+          svg:nth-of-type(1) {
+            &:hover {
+              color: forestgreen;
+              cursor: pointer;
+            }
           }
+
+          svg:nth-of-type(2) {
+            &:hover {
+              color: red;
+              cursor: pointer;
+            }
+          }
+
         }
 
         .cell {
