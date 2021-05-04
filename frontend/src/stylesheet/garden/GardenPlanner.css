@@ -1,23 +1,25 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.option-container .option, .garden-planner .garden-container .garden .row .cell {
+.loading div, .garden-option-container .option,
+.option-selection .option, .garden-planner .garden-container .garden .row .cell, .garden-planner .garden-container .garden-selection {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.option-container {
+.garden-option-container,
+.option-selection {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.garden-planner .vegetable-list-container .vegetable-list .vegetable-container img, .garden-planner .vegetable-list-container .vegetable-list .vegetable-container {
+.garden-planner .options-container .vegetable-list .vegetable-container img, .garden-planner .options-container .vegetable-list .vegetable-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.garden-planner .vegetable-list-container h1, .garden-planner .garden-container h1 {
+.garden-planner .options-container h1, .garden-planner .garden-container .garden-selection h1 {
   width: 100%;
   color: darkorange;
   text-align: center;
@@ -28,10 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 80%;
-  max-width: 1300px;
-  height: border-box;
-  max-height: 620px;
+  width: 95%;
   margin: 30px auto;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -42,23 +41,57 @@
 .garden-planner .garden-container {
   width: 50%;
   height: 100%;
-  padding: 0 10px 20px;
   margin: 0;
   position: relative;
 }
-.garden-planner .garden-container:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 3px;
-  right: 0;
-  height: 100%;
-  background: linear-gradient(130deg, #0F1329, darkorange 50%, #0F1329 100%);
+.garden-planner .garden-container .garden-selection {
+  justify-content: center;
+}
+.garden-planner .garden-container .garden-selection .arrow {
+  margin: 0 20px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: #1B223E;
+  padding: 10px;
+}
+.garden-planner .garden-container .garden-selection h1 {
+  width: fit-content;
+}
+.garden-planner .garden-container .garden-selection input {
+  width: 40%;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: min(1.5vw, 22px);
+  background-color: transparent;
+  border-radius: 10px;
+  color: #eeeeee;
+  outline: none;
+  border: none;
+  cursor: text;
+  caret-color: darkorange;
+}
+.garden-planner .garden-container .garden-selection input::placeholder {
+  visibility: hidden;
+}
+.garden-planner .garden-container .garden-selection .error {
+  border: 1px solid darkred;
+}
+.garden-planner .garden-container .garden-selection .editableField {
+  background-color: #4B5682;
+  cursor: text;
+}
+.garden-planner .garden-container .garden-selection .editableField::placeholder {
+  visibility: visible;
+  color: #eeeeee;
 }
 .garden-planner .garden-container .garden {
   overflow: auto;
-  width: border-box;
-  max-height: 435px;
+  width: 95%;
+  max-height: 460px;
+  padding: 0 0 10px;
+  margin: 0 20px 20px;
 }
 .garden-planner .garden-container .garden::-webkit-scrollbar {
   width: 10px;
@@ -66,7 +99,6 @@
   display: block;
 }
 .garden-planner .garden-container .garden::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
 .garden-planner .garden-container .garden::-webkit-scrollbar-thumb {
@@ -84,6 +116,7 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
+  padding: 0 10px 0 0;
 }
 .garden-planner .garden-container .garden .row .cell {
   width: 5vw;
@@ -108,15 +141,31 @@
   width: 100%;
   border-radius: 10px;
 }
-.garden-planner .vegetable-list-container {
+.garden-planner .options-container {
   width: 50%;
   max-width: 750px;
   height: 100%;
-  padding: 0 10px 20px;
+  position: relative;
+  margin-bottom: 40px;
 }
-.garden-planner .vegetable-list-container .vegetable-list {
+.garden-planner .options-container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 3px;
+  left: 0;
   height: 100%;
-  max-height: 430px;
+  background: linear-gradient(130deg, #0F1329, darkorange 50%, #0F1329 100%);
+}
+.garden-planner .options-container h1 {
+  width: fit-content;
+  margin: 10px auto;
+  padding: 10px;
+}
+.garden-planner .options-container .vegetable-list {
+  height: 100%;
+  max-height: 450px;
+  margin-right: 10px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(7.5vw, max-content));
   grid-gap: 10px 10px;
@@ -124,22 +173,21 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
-.garden-planner .vegetable-list-container .vegetable-list::-webkit-scrollbar {
+.garden-planner .options-container .vegetable-list::-webkit-scrollbar {
   width: 10px;
   display: block;
 }
-.garden-planner .vegetable-list-container .vegetable-list::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
+.garden-planner .options-container .vegetable-list::-webkit-scrollbar-track {
   border-radius: 10px;
 }
-.garden-planner .vegetable-list-container .vegetable-list::-webkit-scrollbar-thumb {
+.garden-planner .options-container .vegetable-list::-webkit-scrollbar-thumb {
   background: #4B5682;
   border-radius: 10px;
 }
-.garden-planner .vegetable-list-container .vegetable-list::-webkit-scrollbar-thumb:hover {
+.garden-planner .options-container .vegetable-list::-webkit-scrollbar-thumb:hover {
   background: #7F8EC0;
 }
-.garden-planner .vegetable-list-container .vegetable-list .vegetable-container {
+.garden-planner .options-container .vegetable-list .vegetable-container {
   flex-direction: column;
   width: 7vw;
   height: 7vw;
@@ -148,27 +196,46 @@
   margin: 5px;
   z-index: 1;
 }
-.garden-planner .vegetable-list-container .vegetable-list .vegetable-container .vegetable-name {
+.garden-planner .options-container .vegetable-list .vegetable-container .vegetable-name {
   font-size: 0.8vw;
   margin: 5px 10px;
   text-align: center;
 }
-.garden-planner .vegetable-list-container .vegetable-list .vegetable-container img {
+.garden-planner .options-container .vegetable-list .vegetable-container img {
   width: 60%;
   margin-bottom: 10px;
 }
-.garden-planner .vegetable-list-container .vegetable-list .draggable {
+.garden-planner .options-container .vegetable-list .draggable {
   cursor: grab;
 }
-.garden-planner .vegetable-list-container .vegetable-list .draggable:active {
+.garden-planner .options-container .vegetable-list .draggable:active {
   cursor: grabbing;
 }
 
-.option-container .option {
+.garden-option-container,
+.option-selection {
+  flex-wrap: wrap;
+  height: 60px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.garden-option-container:before,
+.option-selection:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(130deg, #0F1329, darkorange 50%, #0F1329 100%);
+}
+.garden-option-container .option,
+.option-selection .option {
+  width: 20%;
+  height: 35px;
   padding: 10px;
-  margin: 0 5px 20px;
   font-size: 1vw;
   font-weight: bold;
+  white-space: nowrap;
   color: #eeeeee;
   background-color: #4B5682;
   border-radius: 10px;
@@ -176,14 +243,34 @@
   outline: none;
   cursor: pointer;
 }
-.option-container .option:hover {
+.garden-option-container .option:hover,
+.option-selection .option:hover {
   transform: scale(0.95);
   transition: transform 200ms ease;
 }
-.option-container .option svg {
+.garden-option-container .option svg,
+.option-selection .option svg {
   color: darkorange;
   margin-right: 5px;
-  font-size: 17px;
+  width: 15px;
+  height: 15px;
+}
+.garden-option-container .active-type,
+.option-selection .active-type {
+  color: darkorange;
+}
+
+.loading {
+  height: 460px;
+  position: relative;
+}
+.loading div {
+  position: absolute;
+  top: 50px;
+}
+.loading .loading-spinner {
+  margin: 20px;
+  font-size: 60px;
 }
 
 /*# sourceMappingURL=GardenPlanner.css.map */

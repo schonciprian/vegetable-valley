@@ -1,35 +1,35 @@
 import React, {useContext, useEffect, useState} from 'react';
-import profile_picture from "../../../../image/profile_picture/base_man.png";
-import '../../../../stylesheet/basic/basic_main/Profile.css';
-import axios from "axios";
-import {environmentVariables} from "../../../../EnvironmentVariables";
-import {UserContext} from "../../../../context/User";
-import Password from "./Password";
+import { useHistory } from "react-router-dom";
+// Components
 import ProfileData from "./ProfileData";
+import Password from "./Password";
 import Delete from "./Delete";
-import Swal from "sweetalert2";
+// Contexts
+import {UserContext} from "../../../../context/User";
+// Helpers
+import {authenticationFeedback, sweetalertSidePopup} from "../../../additionals/SweetAlert";
+import {getRequest, putRequest} from "../../../additionals/Requests";
+// Others
+import profile_picture from "../../../../image/profile_picture/base_man.png";
+// Stylesheets
+import '../../../../stylesheet/basic/basic_main/Profile.css';
 
 function Profile(props) {
     const [editableFields, setEditableFields] = useState(false);
-    const [user, setUser] = useContext(UserContext);
     const [userData, setUserData] = useState({});
+    const [user, setUser] = useContext(UserContext);
+    const history = useHistory()
 
     useEffect(() => {
-        axios({
-            method: "get",
-            url: `${environmentVariables.BACKEND_URL}/api/get-user-data`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*",
-                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-            data: {username: user["username"]}
-        }).then((res) => {
-            setUserData(res.data);
-        }).catch((error) => {
-            console.log(error.response.data);
-        })
-    }, [user])
+        const params = { username: user["username"] }
+        getRequest('/api/get-user-data', params,
+            (response) => setUserData(response.data),
+            (error) => {
+            if (error.response === undefined) {
+                authenticationFeedback("Service unavailable", "Try again later, you are redirected to main page", "error", 4000, history)
+                setTimeout(() => {history.push('/')}, 4000)
+            }})
+    }, [user, history])
 
     const handleInputChange = (event, key) => {
         setUserData(prevData => ({
@@ -40,35 +40,14 @@ function Profile(props) {
 
     const updateUserData = () => {
         setEditableFields(!editableFields)
-        axios({
-            method: "put",
-            url: `${environmentVariables.BACKEND_URL}/api/update-user-data`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*",
-                Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-            data: userData
-        }).then((res) => {
-            Swal.fire({
-                toast: true,
-                icon: 'success',
-                title: 'Personal data changed successfully',
-                animation: true,
-                position: 'top-right',
-                showConfirmButton: false,
-                timer: 1500,
-            });
-
-            setUser(prevData => ({
-                ...prevData,
-                username: userData.username
-            }));
-
+        putRequest('/api/update-user-data', userData, () => {
+            sweetalertSidePopup("Personal data changed successfully", 1500)
+            setUser(prevData => ({...prevData, username: userData.username}));
             window.sessionStorage.setItem("username", userData.username);
-        }).catch((error) => {
-            console.log(error.response.data);
-        })
+        }, (error) => {
+            if (error.response === undefined) {
+                authenticationFeedback("Service unavailable", "Try again later", "error", 3000, history)
+            }})
     }
 
     return (

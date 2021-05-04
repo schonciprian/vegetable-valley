@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import {useHistory} from "react-router-dom";
-import axios from "axios";
-import swal from 'sweetalert';
 
 // Helpers
-import {environmentVariables} from "../../EnvironmentVariables";
 import {removeError, handleShakingError} from "./AuthenticationHelper";
+import {postRequest} from "../additionals/Requests";
+import {authenticationFeedback} from "../additionals/SweetAlert";
 
 // Stylesheets
 import '../../stylesheet/auth/Authentication.css';
@@ -27,32 +26,23 @@ export default function Registration() {
         }
     }
 
-    const registrationRequest = async () => {
+    const registrationRequest = () => {
         const userData = getUserData();
-        await axios({
-            method: "post",
-            url: `${environmentVariables.BACKEND_URL}/api/register`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*"
+        postRequest('/api/register', userData,
+            () => {
+                authenticationFeedback("Successfully registered", "You are redirected to login page", "success", 2000, history, '/login')
             },
-            data: userData
-        }).then((res) => {
-            swal("Successfully registered", "You are redirected to login page", "success");
-            setTimeout(() => {
-                history.push("/login");
-                swal.close();
-            }, 2000);
+            (error) => {
+                if (error.response === undefined) {
+                    authenticationFeedback("Service unavailable", "Try again later", "error", 5000, history)
+                    return;
+                }
 
-        }).catch((error) => {
-            // Store the errors in errorMessages to represent them for the user
-            setErrorMessages(error.response.data);
-
-            // Toggle shaking style from the input field
-            Object.keys(error.response.data).forEach(error => {
-                handleShakingError(error)
+                setErrorMessages(error.response.data);
+                Object.keys(error.response.data).forEach(error => {
+                    handleShakingError(error)
+                })
             })
-        })
     }
 
     return (

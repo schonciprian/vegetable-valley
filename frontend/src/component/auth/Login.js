@@ -1,14 +1,10 @@
 import React, {useContext, useState} from 'react';
 import { useHistory } from "react-router-dom";
-import axios from "axios";
-import swal from 'sweetalert';
 import {UserContext} from "../../context/User";
-
-
 // Helpers
-import {environmentVariables} from "../../EnvironmentVariables";
 import {removeError, handleShakingError} from "./AuthenticationHelper";
-
+import {postRequest} from "../additionals/Requests";
+import {authenticationFeedback} from "../additionals/SweetAlert";
 // Stylesheets
 import '../../stylesheet/auth/Authentication.css';
 import '../../stylesheet/error/Error.css';
@@ -28,41 +24,24 @@ export default function Login() {
 
     const loginRequest = async () => {
         const userData = getUserData();
-        await axios({
-            method: "post",
-            url: `${environmentVariables.BACKEND_URL}/api/login`,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: "application/json, text/plain, */*"
-            },
-            data: userData
-        }).then((res) => {
-            window.sessionStorage.setItem("token", res.data.token);
-            window.sessionStorage.setItem("username", res.data.username);
+        postRequest('/api/login', userData,
+            (response) => {
+            window.sessionStorage.setItem("token", response.data.token);
+            window.sessionStorage.setItem("username", response.data.username);
             setUser({
-                "token": res.data.token,
-                "username": res.data.username,
+                "token": response.data.token,
+                "username": response.data.username,
             })
-            swal("Successfully logged in", "Welcome back! You are redirected to the main page", "success");
-            setTimeout(() => {
-                history.push("/");
-                swal.close()
-            }, 2000);
+                authenticationFeedback("Successfully logged in", "Welcome back! You are redirected to the main page", "success", 2000, history, '/')
+        }, (error) => {
+            if (error.response === undefined) {
+                authenticationFeedback("Service unavailable", "Try again later", "error", 5000, history)
+                return;
+            }
 
-        }).catch((error) => {
-            // Store the errors in errorMessages to represent them for the user
             setErrorMessages(error.response.data);
-
-            // Toggle shaking style from the input field
-            Object.keys(error.response.data).forEach(error => {
-                // Shaking only allowed for input fields
-                if (error !== 'failed') {
-                    handleShakingError(error)
-                } else {
-                    // Set the password input field's value to empty after failed authentication
-                    document.getElementById("password").value = "";
-                }
-            })
+            if (Object.keys(error.response.data)[0] === 'failed') {return document.getElementById("password").value = ""}
+            Object.keys(error.response.data).forEach(error => {handleShakingError(error)})
         })
     }
 
