@@ -1,14 +1,18 @@
 import React, {useContext} from 'react';
-import {GoDiffAdded} from "react-icons/go";
-import {AiFillDelete} from "react-icons/ai";
-import {putRequest} from "../../../additionals/Requests";
-import {requestFeedbackError} from "../../../additionals/SweetAlert";
+import {useHistory} from "react-router-dom";
+// Contexts
 import {GardenSizeContext} from "../garden_connected_context/GardenSizeContext";
 import {ActualGardenIdContext} from "../garden_connected_context/ActualGardenIdContext";
-import {useHistory} from "react-router-dom";
+// Icons
+import {GoDiffAdded} from "react-icons/go";
+import {AiFillDelete} from "react-icons/ai";
+// Additional
+import {putRequest} from "../../../additionals/Requests";
+import {requestFeedbackError} from "../../../additionals/SweetAlert";
 
-///////////////////
-// Column option //
+                ///////////////////
+                // Column option //
+                ///////////////////
 export function GardenLineOptionsColumn(props) {
     const index = props.index;
     const refreshGarden = props.refreshGarden;
@@ -60,8 +64,9 @@ export function GardenLineOptionsColumn(props) {
     );
 }
 
-////////////////
-// Row option //
+                ////////////////
+                // Row option //
+                ////////////////
 export function GardenLineOptionsRow(props) {
     const index = props.index;
     const refreshGarden = props.refreshGarden;
