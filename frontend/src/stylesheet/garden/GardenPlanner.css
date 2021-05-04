@@ -256,6 +256,40 @@
   width: 15px;
   height: 15px;
 }
+.garden-option-container .delete-option,
+.option-selection .delete-option {
+  color: darkorange;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+.garden-option-container .delete-option:hover,
+.option-selection .delete-option:hover {
+  color: #be0000;
+}
+.garden-option-container .delete-option svg,
+.option-selection .delete-option svg {
+  width: 20px;
+  height: 20px;
+}
+.garden-option-container .delete-option .tooltip-text,
+.option-selection .delete-option .tooltip-text {
+  visibility: hidden;
+  width: 180px;
+  background-color: #2b2d35;
+  color: #be0000;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  bottom: 100%;
+  left: 50%;
+  position: absolute;
+  z-index: 1;
+}
+.garden-option-container .delete-option:hover .tooltip-text,
+.option-selection .delete-option:hover .tooltip-text {
+  visibility: visible;
+}
 .garden-option-container .active-type,
 .option-selection .active-type {
   color: darkorange;

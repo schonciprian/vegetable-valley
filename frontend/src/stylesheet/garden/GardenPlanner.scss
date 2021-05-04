@@ -311,6 +311,44 @@
     }
   }
 
+  .delete-option {
+    color: darkorange;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    //border-bottom: 1px dotted black;
+
+    &:hover {
+      color: #be0000;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .tooltip-text {
+      visibility: hidden;
+      width: 180px;
+      background-color: #2b2d35;
+      color: #be0000;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+
+      bottom: 100%;
+      left: 50%;
+      //margin-left: -20px;
+
+      position: absolute;
+      z-index: 1;
+    }
+
+    &:hover .tooltip-text {
+      visibility: visible;
+    }
+  }
+
   .active-type {
     color: $color-highlight;
   }
