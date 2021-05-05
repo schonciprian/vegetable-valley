@@ -23,7 +23,7 @@ function Cell(props) {
     }
 
     return (
-        <div className="cell" data-id={cell.id}>
+        <div className={`cell${cell.pictureURL === "" ? " empty" : ""}`} data-id={cell.id}>
             {cell.name.length !== 0
                 ? <div className="remove" onClick={() => removeVegetableFromCell(cell.id)}>X</div>
                 : ""}
