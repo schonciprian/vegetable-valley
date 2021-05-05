@@ -9,7 +9,8 @@ import {AiFillDelete} from "react-icons/ai";
 import {MdAddBox} from "react-icons/md";
 // Methods
 import {deleteRequest, getRequest, postRequest} from "../../additionals/Requests";
-import {authenticationFeedback} from "../../additionals/SweetAlert";
+import {authenticationFeedback, sweetalertErrorPopup} from "../../additionals/SweetAlert";
+import {UserHasMoreGardenContext} from "./garden_connected_context/UserHasMoreGarden";
 
 
 
@@ -17,6 +18,8 @@ function GardenOptionContainer(props) {
     const gardenRef = props.gardenRef;
     const [actualGardenId, setActualGardenId] = useContext(ActualGardenIdContext)
     const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
+    const [userHasMoreGardens] = useContext(UserHasMoreGardenContext)
+
 
     useEffect(() => {
         if (!window.sessionStorage.getItem("token") || actualGardenId === null) return
@@ -47,13 +50,17 @@ function GardenOptionContainer(props) {
     }
 
     const removeGarden = () => {
-        deleteRequest('/api/remove-garden', {garden_id: actualGardenId},
-            (response) => setActualGardenId(null),
-            (error) => {
-                if (error.response === undefined) {
-                    authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
-                }
-            })
+        if (userHasMoreGardens) {
+            deleteRequest('/api/remove-garden', {garden_id: actualGardenId},
+                (response) => setActualGardenId(null),
+                (error) => {
+                    if (error.response === undefined) {
+                        authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
+                    }
+                })
+        } else {
+            sweetalertErrorPopup('You can not delete your only garden...', 'Add a new garden before removing this!', 'error', 4000)
+        }
     }
 
     return (
