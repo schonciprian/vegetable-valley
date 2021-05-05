@@ -83,15 +83,15 @@ function GardenOptionContainer(props) {
 
             <DownloadGarden gardenRef={gardenRef} rows={gardenSize.rows} columns={gardenSize.columns}/>
 
-            <div className="option" onClick={() => modifyGardenSize(gardenSize.rows + 1, gardenSize.columns)}>
-                <AiOutlineInsertRowBelow/>
-                <span>Add row</span>
-            </div>
+            {/*<div className="option" onClick={() => modifyGardenSize(gardenSize.rows + 1, gardenSize.columns)}>*/}
+            {/*    <AiOutlineInsertRowBelow/>*/}
+            {/*    <span>Add row</span>*/}
+            {/*</div>*/}
 
-            <div className="option" onClick={() => modifyGardenSize(gardenSize.rows, gardenSize.columns + 1)}>
-                <AiOutlineInsertRowRight/>
-                <span>Add column</span>
-            </div>
+            {/*<div className="option" onClick={() => modifyGardenSize(gardenSize.rows, gardenSize.columns + 1)}>*/}
+            {/*    <AiOutlineInsertRowRight/>*/}
+            {/*    <span>Add column</span>*/}
+            {/*</div>*/}
 
             <div className="option" onClick={() => addNewGarden()}>
                 <MdAddBox/>

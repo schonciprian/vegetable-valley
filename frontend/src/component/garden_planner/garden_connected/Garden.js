@@ -31,15 +31,19 @@ function Garden(props) {
     // Callbacks
     const fillGardenCells = useCallback((response) => {
         let garden = [];
-        for (let i = 0; i < gardenSize.rows; i++) {
+
+        // gardenSize.rows+1 to add empty row to bottom to show add new row option
+        for (let i = 0; i < gardenSize.rows+1; i++) {
             let row = [];
-            for (let j = 0; j < gardenSize.columns; j++) {
+
+            // gardenSize.columns+1 to add empty column to right to show add new column option
+            for (let j = 0; j < gardenSize.columns+1; j++) {
                 let vegetable = response.data[0].find(cell => cell.cell_row === i && cell.cell_column === j)
                     ?? {
                         cell_row: i,
                         cell_column: j,
                         cell_name: '',
-                        cell_picture_url: dirt
+                        cell_picture_url: (i === gardenSize.rows || j === gardenSize.columns) ? "" : dirt
                     };
                 row.push({
                     id: `${vegetable.cell_row}-${vegetable.cell_column}`,
@@ -97,13 +101,16 @@ function Garden(props) {
                 <div className="line-option-empty-space"/>
                 {garden.map((row, rowindex) =>
                     row.map((cell, index) => rowindex < 1
-                        ? <GardenLineOptionsColumn key={index} index={index} refreshGarden={refreshGarden}/>
+                        ? <GardenLineOptionsColumn key={index}
+                                                   index={index}
+                                                   refreshGarden={refreshGarden}
+                                                   dustbinNeeded={index < row.length - 1}/>
                         : <React.Fragment key={index}/>)
                 )}
             </div>
             {garden.map((row, index) =>
                 <div className="row" key={index}>
-                    <GardenLineOptionsRow index={index} refreshGarden={refreshGarden}/>
+                    <GardenLineOptionsRow index={index} refreshGarden={refreshGarden}  dustbinNeeded={index < garden.length - 1}/>
                     {row.map(cell => <Cell key={cell.id} cell={cell} refreshGarden={refreshGarden}/>)}
                 </div>
             )}

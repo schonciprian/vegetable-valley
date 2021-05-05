@@ -39,7 +39,7 @@ export function GardenLineOptionsColumn(props) {
     return (
         <div className="options options-column" data-column={index}>
             <GoDiffAdded onClick={() => editColumnInGarden(index, 'add')}/>
-            <AiFillDelete onClick={() => editColumnInGarden(index, 'remove')}/>
+            {props.dustbinNeeded ? <AiFillDelete onClick={() => editColumnInGarden(index, 'remove')}/> : ""}
         </div>
     );
 }
@@ -76,7 +76,7 @@ export function GardenLineOptionsRow(props) {
     return (
         <div className="options options-row" data-row={index}>
             <GoDiffAdded onClick={() => editRowInGarden(index, 'add')}/>
-            <AiFillDelete onClick={() => editRowInGarden(index, 'remove')}/>
+            {props.dustbinNeeded ? <AiFillDelete onClick={() => editRowInGarden(index, 'remove')}/> : ""}
         </div>
     );
 }

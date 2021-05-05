@@ -216,7 +216,7 @@
 .garden-option-container,
 .option-selection {
   flex-wrap: wrap;
-  height: 100px;
+  height: 60px;
   margin-bottom: 20px;
   position: relative;
 }
