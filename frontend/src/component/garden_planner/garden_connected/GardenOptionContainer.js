@@ -8,7 +8,7 @@ import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
 import {AiFillDelete} from "react-icons/ai";
 import {MdAddBox} from "react-icons/md";
 // Methods
-import {deleteRequest, getRequest, postRequest, putRequest} from "../../additionals/Requests";
+import {deleteRequest, getRequest, postRequest} from "../../additionals/Requests";
 import {authenticationFeedback} from "../../additionals/SweetAlert";
 
 
