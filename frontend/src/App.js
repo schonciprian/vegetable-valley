@@ -23,6 +23,7 @@ import GardenPlanner from "./component/garden_planner/GardenPlanner";
 import {GardenSizeProvider} from "./component/garden_planner/garden_connected/garden_connected_context/GardenSizeContext";
 import {ActualGardenIdProvider} from "./component/garden_planner/garden_connected/garden_connected_context/ActualGardenIdContext";
 import PageNotFound from "./PageNotFound";
+import {UserHasMoreGardenProvider} from "./component/garden_planner/garden_connected/garden_connected_context/UserHasMoreGarden";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
                         <GardenSizeProvider>
                             <WeatherForecastDataProvider>
                                 <ActualGardenIdProvider>
+                                    <UserHasMoreGardenProvider>
 
                                     <div>
                                         <Header/>
@@ -73,6 +75,7 @@ function App() {
                                             </Switch>
                                         </div>
                                     </div>
+                                    </UserHasMoreGardenProvider>
                                 </ActualGardenIdProvider>
 
                             </WeatherForecastDataProvider>
