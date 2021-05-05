@@ -4,6 +4,7 @@ import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdCo
 import {authenticationFeedback, sweetalertSidePopup} from "../../additionals/SweetAlert";
 import {getRequest, putRequest} from "../../additionals/Requests";
 import {LoadingContext} from "../../../context/LoadingContext";
+import {UserHasMoreGardenContext} from "./garden_connected_context/UserHasMoreGarden";
 
 function GardenSelection(props) {
     // Refs
@@ -13,10 +14,10 @@ function GardenSelection(props) {
     const [gardenTemporaryName, setGardenTemporaryName] = useState(gardenName)
     const [editableTitle, setEditableTitle] = useState(false)
     const [inputError, setInputError] = useState(false)
-    const [userHasMoreGardens, setUserHasMoreGardens] = useState(false)
     // Contexts
     const [actualGardenId, setActualGardenId] = useContext(ActualGardenIdContext)
     const [loading] = useContext(LoadingContext)
+    const [userHasMoreGardens, setUserHasMoreGardens] = useContext(UserHasMoreGardenContext)
     // Callbacks
     const handleClickOutside = useCallback((e) => {
         if (gardenTitleRef.current && gardenTitleRef.current.contains(e.target)) {
