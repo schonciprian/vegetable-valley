@@ -5,7 +5,7 @@ import DownloadGarden from "./garden_settings/DownloadGarden";
 import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
 import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
 // Icons
-import {AiFillDelete, AiOutlineInsertRowBelow, AiOutlineInsertRowRight} from "react-icons/ai";
+import {AiFillDelete} from "react-icons/ai";
 import {MdAddBox} from "react-icons/md";
 // Methods
 import {deleteRequest, getRequest, postRequest, putRequest} from "../../additionals/Requests";
@@ -36,28 +36,6 @@ function GardenOptionContainer(props) {
         })
     }, [setGardenSize, actualGardenId])
 
-    const modifyGardenSize = (rows, columns) => {
-        const data = {
-            garden_id: actualGardenId,
-            row_count: rows,
-            column_count: columns,
-        }
-        putRequest('/api/update-garden-size', data,
-            () => {
-                setGardenSize(prevData => ({
-                    ...prevData,
-                    rows: rows,
-                    columns: columns,
-                }))
-            },
-            (error) => {
-                if (error.response === undefined) {
-                    authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
-                }
-            }
-        )
-    }
-
     const addNewGarden = () => {
         postRequest('/api/add-new-garden', {},
             (response) => setActualGardenId(response.data.id),
@@ -82,16 +60,6 @@ function GardenOptionContainer(props) {
         <div className="garden-option-container">
 
             <DownloadGarden gardenRef={gardenRef} rows={gardenSize.rows} columns={gardenSize.columns}/>
-
-            {/*<div className="option" onClick={() => modifyGardenSize(gardenSize.rows + 1, gardenSize.columns)}>*/}
-            {/*    <AiOutlineInsertRowBelow/>*/}
-            {/*    <span>Add row</span>*/}
-            {/*</div>*/}
-
-            {/*<div className="option" onClick={() => modifyGardenSize(gardenSize.rows, gardenSize.columns + 1)}>*/}
-            {/*    <AiOutlineInsertRowRight/>*/}
-            {/*    <span>Add column</span>*/}
-            {/*</div>*/}
 
             <div className="option" onClick={() => addNewGarden()}>
                 <MdAddBox/>
