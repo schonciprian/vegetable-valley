@@ -5,11 +5,12 @@ import DownloadGarden from "./garden_settings/DownloadGarden";
 import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
 import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
 // Icons
-import {BsFillPlusCircleFill} from "react-icons/bs";
+import {AiFillDelete, AiOutlineInsertRowBelow, AiOutlineInsertRowRight} from "react-icons/ai";
+import {MdAddBox} from "react-icons/md";
 // Methods
 import {deleteRequest, getRequest, postRequest, putRequest} from "../../additionals/Requests";
 import {authenticationFeedback} from "../../additionals/SweetAlert";
-import {AiFillDelete} from "react-icons/ai";
+
 
 
 function GardenOptionContainer(props) {
@@ -82,24 +83,24 @@ function GardenOptionContainer(props) {
 
             <DownloadGarden gardenRef={gardenRef} rows={gardenSize.rows} columns={gardenSize.columns}/>
 
-            <button className="option" onClick={() => modifyGardenSize(gardenSize.rows + 1, gardenSize.columns)}>
-                <BsFillPlusCircleFill/>
+            <div className="option" onClick={() => modifyGardenSize(gardenSize.rows + 1, gardenSize.columns)}>
+                <AiOutlineInsertRowBelow/>
                 <span>Add row</span>
-            </button>
+            </div>
 
-            <button className="option" onClick={() => modifyGardenSize(gardenSize.rows, gardenSize.columns + 1)}>
-                <BsFillPlusCircleFill/>
+            <div className="option" onClick={() => modifyGardenSize(gardenSize.rows, gardenSize.columns + 1)}>
+                <AiOutlineInsertRowRight/>
                 <span>Add column</span>
-            </button>
+            </div>
 
-            <button className="option" onClick={() => addNewGarden()}>
-                <BsFillPlusCircleFill/>
-                <span>New garden</span>
-            </button>
+            <div className="option" onClick={() => addNewGarden()}>
+                <MdAddBox/>
+                <span>Add garden</span>
+            </div>
 
-            <div className="delete-option" onClick={() => removeGarden()}>
+            <div className="option" onClick={() => removeGarden()}>
                 <AiFillDelete/>
-                <span className="tooltip-text">Remove currently selected garden</span>
+                <span>Remove garden</span>
             </div>
 
         </div>
