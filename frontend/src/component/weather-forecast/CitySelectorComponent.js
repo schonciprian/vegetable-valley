@@ -1,54 +1,66 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import axios from "axios";
 import {isSafari} from "react-device-detect";
-import {foreignCities,
-        hungarianCities,
-        hideCitySelection} from "./CitySelectorHelperVariables";
+import {
+    foreignCities,
+    hungarianCities,
+    hideCitySelection
+} from "./CitySelectorHelperVariables";
 import {Search} from "react-feather";
 import {FaSpinner} from "react-icons/fa";
 
 import '../../stylesheet/error/Error.css';
 import {WeatherForecastDataContext} from "../../context/WeatherForecastDataContext";
+import {sweetalertErrorPopup} from "../additionals/SweetAlert";
 
 export default function CitySelectorComponent(props) {
     const [, setWeatherForecastData] = useContext(WeatherForecastDataContext);
+    const cityInputRef = useRef(null)
 
     const [loading, setLoading] = useState(false);
 
     const getCoordinates = (position) => {
         const longitudeCorrection = 0.05;
         axios.get(`https://api.openweathermap.org/data/2.5/weather?` +
-                    `lat=${(position.coords.latitude)}` +
-                    `&lon=${(position.coords.longitude - longitudeCorrection)}` +
-                    `&appid=f913779188ecd17807fa0473780a29fb`)
+            `lat=${(position.coords.latitude)}` +
+            `&lon=${(position.coords.longitude - longitudeCorrection)}` +
+            `&appid=f913779188ecd17807fa0473780a29fb`)
             .then(response => {
-                setWeatherForecastData(prevData => ({
-                    ...prevData,
-                    lat: response.data.coord.lat,
-                    long: response.data.coord.lon,
-                }))
-
                 setWeatherCity(response.data.name)
-
                 setLoading(false);
-                hideCitySelection()
             })
     }
 
     const getLocation = () => {
-        if (!isSafari) {
-            if (navigator.geolocation) {
-                setLoading(true);
-                navigator.geolocation.getCurrentPosition(getCoordinates, () => {
-                    alert("Your location is not available. ");
-                    setLoading(false);
-                })
-            } else {
-                alert("Your location is not available");
-            }
-        } else {
-            alert("This option not available on your device")
+        if (isSafari) {
+            sweetalertErrorPopup("This option is not available on your device",
+                "Try with Chrome for the best user experience", "info", 5000)
+            return;
         }
+        if (!navigator.geolocation) {
+            sweetalertErrorPopup("Your location is not available", "", "info", 5000)
+            return;
+        }
+
+        setLoading(true);
+        navigator.geolocation.getCurrentPosition(getCoordinates, () => {
+            sweetalertErrorPopup("Your location is not available", "", "info", 3000)
+            setLoading(false);
+        })
+
+        // if (!isSafari) {
+        //     if (navigator.geolocation) {
+        //         setLoading(true);
+        //         navigator.geolocation.getCurrentPosition(getCoordinates, () => {
+        //             alert("Your location is not available. ");
+        //             setLoading(false);
+        //         })
+        // } else {
+        //     alert("Your location is not available");
+        // }
+        // } else {
+        //     alert("This option not available on your device")
+        // }
     }
 
     const fetchData = async (cityInputField) => {
@@ -56,9 +68,6 @@ export default function CitySelectorComponent(props) {
             const response = await axios(`https://api.openweathermap.org/data/2.5/weather?q=${cityInputField.value}&appid=f913779188ecd17807fa0473780a29fb`);
             if (response.status === 200) {
                 setWeatherCity(cityInputField.value)
-
-                // props.setCity()
-                hideCitySelection()
             }
         } catch (error) {
             cityInputField.classList.add("input-error");
@@ -66,10 +75,9 @@ export default function CitySelectorComponent(props) {
     };
 
     const handleNewCity = () => {
-        const cityInputField =  document.getElementById("city-input");
-        fetchData(cityInputField);
+        fetchData(cityInputRef.current);
         setTimeout(() => {
-            cityInputField.classList.remove("input-error");
+            cityInputRef.current.classList.remove("input-error");
         }, 1000);
     }
 
@@ -81,12 +89,13 @@ export default function CitySelectorComponent(props) {
 
     const handleCityOnClick = (city) => {
         setWeatherCity(city)
-        hideCitySelection();
     }
 
     const createListItemOfCities = (listOfCities) => {
         return listOfCities.map((city, index) => (
-            <li key={index} onClick={() => {handleCityOnClick(city)}}>
+            <li key={index} onClick={() => {
+                handleCityOnClick(city)
+            }}>
                 {city}
             </li>))
     }
@@ -97,6 +106,7 @@ export default function CitySelectorComponent(props) {
             city: city
         }))
         window.sessionStorage.setItem("city", city);
+        hideCitySelection();
     }
 
     return (
@@ -112,6 +122,7 @@ export default function CitySelectorComponent(props) {
                     <div className="search-box">
                         <input id="city-input"
                                className="city-input"
+                               ref={cityInputRef}
                                onKeyDown={handleKeyDown}/>
                         <div className="search-icon" onClick={handleNewCity}>
                             <Search/>
