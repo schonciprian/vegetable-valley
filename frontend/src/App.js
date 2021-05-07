@@ -30,62 +30,68 @@ function App() {
     return (
         <Router>
             <UserProvider>
-                <LoadingProvider>
-                    <SelectedTypeListProvider>
-                        <GardenSizeProvider>
-                            <WeatherForecastDataProvider>
-                                <ActualGardenIdProvider>
-                                    <UserHasMoreGardenProvider>
+                <div>
+                    <Header/>
+                    <div className="main-container">
+                        <Switch>
 
-                                    <div>
-                                        <Header/>
-                                        <div className="main-container">
-                                            <Switch>
+                            <Route exact path="/" component={Home}/>
+                            <PublicRoute exact path="/register/" component={Registration}/>
+                            <PublicRoute exact path="/login/" component={Login}/>
+                            <PrivateRoute exact path="/profile/" component={Profile}/>
 
-                                                <Route exact path="/" component={Home}/>
-                                                <PublicRoute exact path="/register/" component={Registration}/>
-                                                <PublicRoute exact path="/login/" component={Login}/>
-                                                <PrivateRoute exact path="/profile/" component={Profile}/>
+                            <PrivateRoute exact path="/grow-guides/"
+                                          render={() => (
+                                              <LoadingProvider>
+                                                  <SelectedTypeListProvider>
+                                                      <GrowGuideCard/>
+                                                  </SelectedTypeListProvider>
+                                              </LoadingProvider>
+                                          )}/>
 
-                                                {/*<LoadingProvider>*/}
+                            <PrivateRoute exact path="/grow-guides/:vegetableName/"
+                                          render={() => (
+                                              <LoadingProvider>
+                                                  <SelectedTypeListProvider>
+                                                      <VegetablePage/>
+                                                  </SelectedTypeListProvider>
+                                              </LoadingProvider>
+                                          )}/>
 
-                                                    {/*<SelectedTypeListProvider>*/}
-                                                        <PrivateRoute exact path="/grow-guides/"
-                                                                      component={GrowGuideCard}/>
-                                                        <PrivateRoute exact path="/grow-guides/:vegetableName/"
-                                                                      component={VegetablePage}/>
+                            <PrivateRoute exact path="/garden-planner"
+                                          render={() => (
+                                              <LoadingProvider>
+                                                  <GardenSizeProvider>
+                                                      <UserHasMoreGardenProvider>
+                                                          <ActualGardenIdProvider>
+                                                              <GardenPlanner/>
+                                                          </ActualGardenIdProvider>
+                                                      </UserHasMoreGardenProvider>
+                                                  </GardenSizeProvider>
+                                              </LoadingProvider>
+                                          )}/>
 
-                                                        {/*<GardenSizeProvider>*/}
-                                                        {/*    <ActualGardenIdProvider>*/}
-                                                                <PrivateRoute exact path="/garden-planner"
-                                                                              component={GardenPlanner}/>
-                                                            {/*</ActualGardenIdProvider>*/}
-                                                        {/*</GardenSizeProvider>*/}
+                            <PrivateRoute exact path="/weather"
+                                          render={() => (
+                                              <LoadingProvider>
+                                                  <WeatherForecastDataProvider>
+                                                      <Weather/>
+                                                  </WeatherForecastDataProvider>
+                                              </LoadingProvider>
+                                          )}/>
+                            <PrivateRoute exact path="/charts"
+                                          render={() => (
+                                              <LoadingProvider>
+                                                  <WeatherForecastDataProvider>
+                                                      <Charts/>
+                                                  </WeatherForecastDataProvider>
+                                              </LoadingProvider>
+                                          )}/>
 
-                                                    {/*</SelectedTypeListProvider>*/}
-
-                                                    {/*<WeatherForecastDataProvider>*/}
-                                                        <PrivateRoute exact path="/weather" component={Weather}/>
-                                                        <PrivateRoute exact path="/charts" component={Charts}/>
-                                                    {/*</WeatherForecastDataProvider>*/}
-                                                {/*</LoadingProvider>*/}
-
-                                                <Route exact path="*" component={PageNotFound}/>
-
-                                            </Switch>
-                                        </div>
-                                    </div>
-                                    </UserHasMoreGardenProvider>
-                                </ActualGardenIdProvider>
-
-                            </WeatherForecastDataProvider>
-
-                        </GardenSizeProvider>
-
-                    </SelectedTypeListProvider>
-
-                </LoadingProvider>
-
+                            <Route exact path="*" component={PageNotFound}/>
+                        </Switch>
+                    </div>
+                </div>
             </UserProvider>
         </Router>
     );
