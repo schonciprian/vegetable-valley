@@ -1,6 +1,6 @@
 import React, { useState, createContext } from "react";
 
-export const LoadingContext = createContext(false);
+export const LoadingContext = createContext([false, () => {}]);
 
 export const LoadingProvider = (props) => {
     const [loading, setLoading] = useState(false);
