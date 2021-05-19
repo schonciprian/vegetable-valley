@@ -7,8 +7,8 @@ import {FaSpinner} from "react-icons/fa";
 
 import '../../stylesheet/error/Error.css';
 import {WeatherForecastDataContext} from "../../context/WeatherForecastDataContext";
-import {sweetalertErrorPopup} from "../additionals/SweetAlert";
-import {getRequest, postRequest} from "../additionals/Requests";
+import {serviceUnavailablePopUp, sweetalertErrorPopup} from "../additionals/SweetAlert";
+import {deleteRequest, getRequest, postRequest} from "../additionals/Requests";
 
 export default function CitySelectorComponent(props) {
     const [previousSearchedCities, setPreviousSearchedCities] = useState([]);
@@ -24,7 +24,7 @@ export default function CitySelectorComponent(props) {
             setPreviousSearchedCities(cities)
             },
             () => {})
-    }, [weatherForecastData])
+    }, [weatherForecastData, previousSearchedCities])
 
     const getCoordinates = (position) => {
         const longitudeCorrection = 0.05;
@@ -79,13 +79,30 @@ export default function CitySelectorComponent(props) {
         if (event.key === 'Enter') handleNewCity()
     }
 
+    const removeCity = (cityName) => {
+        let previousSearchedCitiesCopy = [...previousSearchedCities]
+        delete previousSearchedCitiesCopy[cityName]
+        setPreviousSearchedCities(previousSearchedCitiesCopy)
+    }
+
+    const removeSearchedCity = (city) => {
+        deleteRequest('/api/remove-searched-city', {city_name: city},
+            () => {removeCity(city)},
+            (error) => {
+                if (error.response === undefined) {
+                    serviceUnavailablePopUp("Service unavailable", "Try again later", 2000)
+                    return;
+                }
+            })
+    }
+
     const createListItemOfCities = (listOfCities, removeButton) => {
         return listOfCities.map((city, index) => (
             <li key={index} onClick={() => {setWeatherCity(city)}}>
                 {city}
                 {removeButton ? <div className="remove-city" onClick={(event) => {
                     event.stopPropagation()
-                    console.log('remove this')
+                    removeSearchedCity(city)
                 }}>X</div> : ""}
             </li>))
     }
