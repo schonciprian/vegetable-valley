@@ -1,11 +1,7 @@
 import React, {useContext, useRef, useState} from 'react';
 import axios from "axios";
 import {isSafari} from "react-device-detect";
-import {
-    foreignCities,
-    hungarianCities,
-    hideCitySelection
-} from "./CitySelectorHelperVariables";
+import {foreignCities, hungarianCities, hideCitySelection} from "./CitySelectorHelperVariables";
 import {Search} from "react-feather";
 import {FaSpinner} from "react-icons/fa";
 
@@ -47,54 +43,28 @@ export default function CitySelectorComponent(props) {
             sweetalertErrorPopup("Your location is not available", "", "info", 3000)
             setLoading(false);
         })
-
-        // if (!isSafari) {
-        //     if (navigator.geolocation) {
-        //         setLoading(true);
-        //         navigator.geolocation.getCurrentPosition(getCoordinates, () => {
-        //             alert("Your location is not available. ");
-        //             setLoading(false);
-        //         })
-        // } else {
-        //     alert("Your location is not available");
-        // }
-        // } else {
-        //     alert("This option not available on your device")
-        // }
     }
 
-    const fetchData = async (cityInputField) => {
+    const handleNewCity = async () => {
         try {
-            const response = await axios(`https://api.openweathermap.org/data/2.5/weather?q=${cityInputField.value}&appid=f913779188ecd17807fa0473780a29fb`);
+            const response = await axios(`https://api.openweathermap.org/data/2.5/weather?q=${cityInputRef.current.value}&appid=f913779188ecd17807fa0473780a29fb`);
             if (response.status === 200) {
-                setWeatherCity(cityInputField.value)
+                setWeatherCity(cityInputRef.current.value)
             }
         } catch (error) {
-            cityInputField.classList.add("input-error");
+            cityInputRef.current.classList.add("input-error");
+            setTimeout(() => cityInputRef.current.classList.remove("input-error"), 1000);
         }
-    };
-
-    const handleNewCity = () => {
-        fetchData(cityInputRef.current);
-        setTimeout(() => {
-            cityInputRef.current.classList.remove("input-error");
-        }, 1000);
     }
 
     const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            handleNewCity();
-        }
-    }
-
-    const handleCityOnClick = (city) => {
-        setWeatherCity(city)
+        if (event.key === 'Enter') handleNewCity()
     }
 
     const createListItemOfCities = (listOfCities) => {
         return listOfCities.map((city, index) => (
             <li key={index} onClick={() => {
-                handleCityOnClick(city)
+                setWeatherCity(city)
             }}>
                 {city}
             </li>))
