@@ -46,11 +46,18 @@ export default function CitySelectorComponent(props) {
     }
 
     const handleNewCity = async () => {
+        const data = {city_name: cityInputRef.current.value}
         try {
             const response = await axios(`https://api.openweathermap.org/data/2.5/weather?q=${cityInputRef.current.value}&appid=f913779188ecd17807fa0473780a29fb`);
             if (response.status === 200) {
                 setWeatherCity(cityInputRef.current.value)
+
+                // Save available searched city to DB
+                postRequest('/api/save-searched-city', data, () => {
+                }, () => {
+                })
             }
+
         } catch (error) {
             cityInputRef.current.classList.add("input-error");
             setTimeout(() => cityInputRef.current.classList.remove("input-error"), 1000);
