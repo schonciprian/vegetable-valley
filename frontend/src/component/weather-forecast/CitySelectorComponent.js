@@ -1,4 +1,4 @@
-import React, {useContext, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import axios from "axios";
 import {isSafari} from "react-device-detect";
 import {foreignCities, hungarianCities, hideCitySelection} from "./CitySelectorHelperVariables";
@@ -8,12 +8,23 @@ import {FaSpinner} from "react-icons/fa";
 import '../../stylesheet/error/Error.css';
 import {WeatherForecastDataContext} from "../../context/WeatherForecastDataContext";
 import {sweetalertErrorPopup} from "../additionals/SweetAlert";
+import {getRequest, postRequest} from "../additionals/Requests";
 
 export default function CitySelectorComponent(props) {
-    const [, setWeatherForecastData] = useContext(WeatherForecastDataContext);
+    const [previousSearchedCities, setPreviousSearchedCities] = useState([]);
+    const [weatherForecastData, setWeatherForecastData] = useContext(WeatherForecastDataContext);
     const cityInputRef = useRef(null)
 
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        getRequest('/api/get-searched-city', {},
+            (response) => {
+            const cities = response.data.map((city_object) => city_object.city_name)
+            setPreviousSearchedCities(cities)
+            },
+            () => {})
+    }, [weatherForecastData])
 
     const getCoordinates = (position) => {
         const longitudeCorrection = 0.05;
@@ -116,6 +127,14 @@ export default function CitySelectorComponent(props) {
                                 {createListItemOfCities(hungarianCities)}
                             </ul>
                         </div>
+                        {previousSearchedCities.length !== 0
+                            ? <div className="city-list-previous">
+                                <div className="city-list-title">Previous searches</div>
+                                <ul>
+                                    {createListItemOfCities(previousSearchedCities)}
+                                </ul>
+                            </div>
+                            : ""}
                     </div>
 
                     <div className="city-list-abroad">
