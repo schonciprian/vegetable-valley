@@ -16,15 +16,16 @@ export default function CitySelectorComponent(props) {
     const cityInputRef = useRef(null)
 
     const [loading, setLoading] = useState(false);
+    const [refreshPrevCities, setRefreshPrevCities] = useState(false);
 
     useEffect(() => {
         getRequest('/api/get-searched-city', {},
             (response) => {
-            const cities = response.data.map((city_object) => city_object.city_name)
-            setPreviousSearchedCities(cities)
-            },
-            () => {})
-    }, [weatherForecastData, previousSearchedCities])
+                const cities = response.data.map((city_object) => city_object.city_name)
+                setPreviousSearchedCities(cities)
+                setRefreshPrevCities(false)
+            }, () => {})
+    }, [weatherForecastData, refreshPrevCities])
 
     const getCoordinates = (position) => {
         const longitudeCorrection = 0.05;
@@ -87,7 +88,10 @@ export default function CitySelectorComponent(props) {
 
     const removeSearchedCity = (city) => {
         deleteRequest('/api/remove-searched-city', {city_name: city},
-            () => {removeCity(city)},
+            () => {
+                removeCity(city);
+                setRefreshPrevCities(true)
+            },
             (error) => {
                 if (error.response === undefined) {
                     serviceUnavailablePopUp("Service unavailable", "Try again later", 2000)
