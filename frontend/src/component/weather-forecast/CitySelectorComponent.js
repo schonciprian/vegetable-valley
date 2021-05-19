@@ -79,12 +79,14 @@ export default function CitySelectorComponent(props) {
         if (event.key === 'Enter') handleNewCity()
     }
 
-    const createListItemOfCities = (listOfCities) => {
+    const createListItemOfCities = (listOfCities, removeButton) => {
         return listOfCities.map((city, index) => (
-            <li key={index} onClick={() => {
-                setWeatherCity(city)
-            }}>
+            <li key={index} onClick={() => {setWeatherCity(city)}}>
                 {city}
+                {removeButton ? <div className="remove-city" onClick={(event) => {
+                    event.stopPropagation()
+                    console.log('remove this')
+                }}>X</div> : ""}
             </li>))
     }
 
@@ -131,7 +133,7 @@ export default function CitySelectorComponent(props) {
                             ? <div className="city-list-previous">
                                 <div className="city-list-title">Previous searches</div>
                                 <ul>
-                                    {createListItemOfCities(previousSearchedCities)}
+                                    {createListItemOfCities(previousSearchedCities, true)}
                                 </ul>
                             </div>
                             : ""}
