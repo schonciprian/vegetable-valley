@@ -128,10 +128,26 @@
             background-color: $background-color-dark;
             border-radius: $border-radius-smaller;
             cursor: pointer;
+            position: relative;
+
+            .remove-city {
+              position: absolute;
+              top: 5px;
+              right: 5px;
+              font-size: 15px;
+            }
           }
 
           li:hover {
             color: $color-highlight;
+
+            .remove-city {
+              color: $color-text;
+
+              &:hover {
+                color: red;
+              }
+            }
           }
         }
       }
