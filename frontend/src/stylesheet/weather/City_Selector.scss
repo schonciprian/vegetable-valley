@@ -100,7 +100,8 @@
         }
       }
 
-      .city-list-hungary {
+      .city-list-hungary,
+      .city-list-previous {
         max-width: 750px;
         margin: 10px 10px 20px 20px;
         background-color: $background-color-darker;
@@ -118,6 +119,7 @@
             margin: 7px;
             padding: 5px;
             font-size: 18px;
+            text-transform: capitalize;
 
             color: $color-text;
 
