@@ -4,7 +4,7 @@
   width: 90%;
   margin: 50px auto;
   padding: 10px;
-  min-height: 800px;
+  //min-height: 700px;
   border-radius: $border-radius-container;
   background-color: $background-color-dark;
 
@@ -13,24 +13,28 @@
     height: 50px;
     padding: 10px 0;
     background-color: $background-color-normal;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+    border-top-right-radius: $border-radius-container;
+    border-top-left-radius: $border-radius-container;
 
     .image-selection {
-      width: fit-content;
+      width: 500px;
+      //width: fit-content;
       margin: 10px;
-      @extend %display-flex-center;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
 
       input[type="file"] {
         display: none;
       }
 
       .custom-file-upload {
-        width: 110px;
+        width: 130px;
         background-color: $focus-color-lighter;
         border-radius: 10px;
         padding: 6px 12px;
-        margin: 0 20px;
+        margin: 0 10px;
         cursor: pointer;
         @extend %display-flex-space-around;
 
@@ -38,6 +42,43 @@
           color: darkorange;
         }
       }
+
+      .selected-image-name {
+        margin: 0 10px;
+        width: 130px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow-x: hidden;
+      }
+
+      .submit-upload {
+        width: 130px;
+        padding: 6px 12px;
+        border: none;
+        font-size: 16px;
+        background-color: $focus-color-lighter;
+        border-radius: 10px;
+        cursor: pointer;
+        color: $color-text;
+        margin: 0 10px;
+      }
+    }
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
+    grid-gap: 10px 30px;
+    min-height: 280px;
+
+    margin-top: 20px;
+    background-color: $background-color-normal;
+    padding: 10px;
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      margin: auto 0;
     }
   }
 }

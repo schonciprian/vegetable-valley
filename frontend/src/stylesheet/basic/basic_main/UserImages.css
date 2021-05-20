@@ -1,10 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.container .navigation-bar .image-selection {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .container .navigation-bar .image-selection .custom-file-upload {
   display: flex;
   justify-content: space-around;
@@ -15,7 +9,6 @@
   width: 90%;
   margin: 50px auto;
   padding: 10px;
-  min-height: 800px;
   border-radius: 25px;
   background-color: #151A30;
 }
@@ -24,26 +17,61 @@
   height: 50px;
   padding: 10px 0;
   background-color: #1B223E;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
 }
 .container .navigation-bar .image-selection {
-  width: fit-content;
+  width: 500px;
   margin: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .container .navigation-bar .image-selection input[type=file] {
   display: none;
 }
 .container .navigation-bar .image-selection .custom-file-upload {
-  width: 110px;
+  width: 130px;
   background-color: #4B5682;
   border-radius: 10px;
   padding: 6px 12px;
-  margin: 0 20px;
+  margin: 0 10px;
   cursor: pointer;
 }
 .container .navigation-bar .image-selection .custom-file-upload:hover {
   color: darkorange;
+}
+.container .navigation-bar .image-selection .selected-image-name {
+  margin: 0 10px;
+  width: 130px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+.container .navigation-bar .image-selection .submit-upload {
+  width: 130px;
+  padding: 6px 12px;
+  border: none;
+  font-size: 16px;
+  background-color: #4B5682;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #eeeeee;
+  margin: 0 10px;
+}
+.container .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
+  grid-gap: 10px 30px;
+  min-height: 280px;
+  margin-top: 20px;
+  background-color: #1B223E;
+  padding: 10px;
+}
+.container .gallery img {
+  width: 100%;
+  max-width: 400px;
+  margin: auto 0;
 }
 
 /*# sourceMappingURL=UserImages.css.map */
