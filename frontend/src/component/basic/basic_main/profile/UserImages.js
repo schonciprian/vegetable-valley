@@ -6,8 +6,11 @@ import {FaCloudUploadAlt} from "react-icons/fa";
 
 
 function UserImages(props) {
-    const [selectedImage, setSelectedImage] = useState("")
-    const [publicImageId, setPublicImageId] = useState("")
+    const [selectedImage, setSelectedImage] = useState("");
+    const [listOfUserImageIds, setListOfUserImageIds] = useState([
+        "ly5f2k6e2dyeu7dialof", "xrpayghpxko8hjhif4kd", "ww9ef3yfgxnnkj4efh0u", "santrcbvbahrjhuf6jvw",
+        "rxq9mx0ltua3qlftx1wm", "xsvoyjfbm6zwewfinsan", "oj6wjtyl748ujhgcwzwr", "xsvoyjfbm6zwewfinsan",
+        "oj6wjtyl748ujhgcwzwr"]);
 
     const uploadImage = () => {
         const formData = new FormData()
@@ -20,16 +23,25 @@ function UserImages(props) {
             data: formData,
         }).then((response) => {
             console.log(response);
+            // imageId, original_filename, format, type = uploaded
             setSelectedImage("")
-            setPublicImageId(response.data.public_id)
+            setListOfUserImageIds([response.data.public_id, ...listOfUserImageIds])
+        }).catch((error) => {
+            console.log(error.data);
         })
-            .catch((error) => {
-                console.log(error.data);
-            })
+    }
+
+    const createImageContainers = () => {
+        return listOfUserImageIds.map((imageID, index) => (
+            <div key={index} className="image-container">
+                <Image cloudName="dfvo9ybxe" publicId={imageID}/>
+            </div>
+        ))
     }
 
     return (
         <div className="container" style={{color: 'white'}}>
+            <h1 className="title">Image gallery</h1>
             <div className="navigation-bar">
                 <div className="image-selection">
 
@@ -46,21 +58,11 @@ function UserImages(props) {
                     {selectedImage.name &&
                     <button className="submit-upload" onClick={uploadImage}>Upload image</button>}
                 </div>
-
-
             </div>
 
             <div className="gallery">
-                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="ww9ef3yfgxnnkj4efh0u"/></div>
-                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="santrcbvbahrjhuf6jvw"/></div>
-                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="xsvoyjfbm6zwewfinsan"/></div>
-                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="oj6wjtyl748ujhgcwzwr"/></div>
-                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="xsvoyjfbm6zwewfinsan"/></div>
-                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="oj6wjtyl748ujhgcwzwr"/></div>
-
+                {createImageContainers()}
             </div>
-
-
         </div>
     );
 }
