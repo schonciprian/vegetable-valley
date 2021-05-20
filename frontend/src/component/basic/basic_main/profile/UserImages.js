@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import {Image} from 'cloudinary-react';
+import '../../../../stylesheet/basic/basic_main/UserImages.css';
+import {FaCloudUploadAlt} from "react-icons/fa";
+
 
 function UserImages(props) {
     const [selectedImage, setSelectedImage] = useState("")
@@ -27,10 +30,20 @@ function UserImages(props) {
 
     return (
         <div className="container" style={{color: 'white'}}>
-            <input type="file" onChange={(event) => {
-                setSelectedImage(event.target.files[0])
-            }}/>
-            <button onClick={uploadImage}>Upload image</button>
+            <div className="navigation-bar">
+                <div className="image-selection">
+                    <label htmlFor="file-upload" className="custom-file-upload">
+                        <FaCloudUploadAlt/> Select image
+                    </label>
+                    <input id="file-upload" type="file" onChange={(event) => {
+                        setSelectedImage(event.target.files[0])
+                    }}/>
+                    <button onClick={uploadImage}>Upload image</button>
+                </div>
+
+
+            </div>
+
 
             <Image style={{margin: "50px", width: "300px"}} cloudName="dfvo9ybxe" publicId={publicImageId}/>
         </div>
