@@ -24,6 +24,7 @@ import {GardenSizeProvider} from "./component/garden_planner/garden_connected/ga
 import {ActualGardenIdProvider} from "./component/garden_planner/garden_connected/garden_connected_context/ActualGardenIdContext";
 import PageNotFound from "./PageNotFound";
 import {UserHasMoreGardenProvider} from "./component/garden_planner/garden_connected/garden_connected_context/UserHasMoreGarden";
+import UserImages from "./component/basic/basic_main/profile/UserImages";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
                             <PublicRoute exact path="/register/" component={Registration}/>
                             <PublicRoute exact path="/login/" component={Login}/>
                             <PrivateRoute exact path="/profile/" component={Profile}/>
+                            <PrivateRoute exact path="/user-images/" component={UserImages}/>
 
                             <PrivateRoute exact path="/grow-guides/"
                                           render={() => (
