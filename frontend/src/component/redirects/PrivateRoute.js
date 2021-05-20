@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import {UserContext} from "../../context/User";
 
-const PrivateRoute = ({ component: Component, render: render, ...rest }) => {
+const PrivateRoute = ({ component: Component, render, ...rest }) => {
     const [user] = useContext(UserContext);
     const isLoggedIn = user.username;
 
