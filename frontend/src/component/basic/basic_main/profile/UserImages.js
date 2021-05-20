@@ -43,19 +43,20 @@ function UserImages(props) {
 
                     {selectedImage.name && <div className="selected-image-name">{selectedImage.name}</div>}
 
-                    {selectedImage.name && <button className="submit-upload" onClick={uploadImage}>Upload image</button>}
+                    {selectedImage.name &&
+                    <button className="submit-upload" onClick={uploadImage}>Upload image</button>}
                 </div>
 
 
             </div>
 
             <div className="gallery">
-                <Image cloudName="dfvo9ybxe" publicId="hppgo53earj43xy7zikm"/>
-                <Image cloudName="dfvo9ybxe" publicId="santrcbvbahrjhuf6jvw"/>
-                <Image cloudName="dfvo9ybxe" publicId="xsvoyjfbm6zwewfinsan"/>
-                <Image cloudName="dfvo9ybxe" publicId="oj6wjtyl748ujhgcwzwr"/>
-                <Image cloudName="dfvo9ybxe" publicId="xsvoyjfbm6zwewfinsan"/>
-                <Image cloudName="dfvo9ybxe" publicId="oj6wjtyl748ujhgcwzwr"/>
+                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="ww9ef3yfgxnnkj4efh0u"/></div>
+                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="santrcbvbahrjhuf6jvw"/></div>
+                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="xsvoyjfbm6zwewfinsan"/></div>
+                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="oj6wjtyl748ujhgcwzwr"/></div>
+                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="xsvoyjfbm6zwewfinsan"/></div>
+                <div className="image-container"><Image cloudName="dfvo9ybxe" publicId="oj6wjtyl748ujhgcwzwr"/></div>
 
             </div>
 

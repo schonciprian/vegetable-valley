@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+.container .gallery .image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container .navigation-bar .image-selection .custom-file-upload {
   display: flex;
   justify-content: space-around;
@@ -63,15 +69,21 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
   grid-gap: 10px 30px;
+  justify-content: space-evenly;
   min-height: 280px;
-  margin-top: 20px;
+  margin: 20px 0;
   background-color: #1B223E;
   padding: 10px;
 }
-.container .gallery img {
-  width: 100%;
+.container .gallery .image-container {
+  width: 400px;
+  height: 250px;
+}
+.container .gallery .image-container img {
+  width: auto;
   max-width: 400px;
-  margin: auto 0;
+  height: auto;
+  max-height: 250px;
 }
 
 /*# sourceMappingURL=UserImages.css.map */

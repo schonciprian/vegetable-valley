@@ -69,16 +69,26 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
     grid-gap: 10px 30px;
+    justify-content: space-evenly;
+
     min-height: 280px;
 
-    margin-top: 20px;
+    margin: 20px 0;
     background-color: $background-color-normal;
     padding: 10px;
 
-    img {
-      width: 100%;
-      max-width: 400px;
-      margin: auto 0;
+    .image-container {
+      width: 400px;
+      height: 250px;
+      @extend %display-flex-center;
+
+      img {
+        width: auto;
+        max-width: 400px;
+        height: auto;
+        max-height: 250px;
+      }
     }
+
   }
 }
