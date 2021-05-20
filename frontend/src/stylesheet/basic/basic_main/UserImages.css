@@ -17,6 +17,7 @@
   padding: 10px;
   border-radius: 25px;
   background-color: #151A30;
+  font-family: "Montserrat", sans-serif;
 }
 .container .navigation-bar {
   width: 100%;
@@ -65,14 +66,19 @@
   color: #eeeeee;
   margin: 0 10px;
 }
+.container .navigation-bar .image-selection .submit-upload:hover {
+  color: darkorange;
+}
 .container .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
   grid-gap: 10px 30px;
   justify-content: space-evenly;
   min-height: 280px;
-  margin: 20px 0;
+  margin: 20px 0 0;
   background-color: #1B223E;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
   padding: 10px;
 }
 .container .gallery .image-container {

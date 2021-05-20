@@ -7,6 +7,7 @@
   //min-height: 700px;
   border-radius: $border-radius-container;
   background-color: $background-color-dark;
+  font-family: "Montserrat", sans-serif;
 
   .navigation-bar {
     width: 100%;
@@ -61,6 +62,10 @@
         cursor: pointer;
         color: $color-text;
         margin: 0 10px;
+
+        &:hover {
+          color: darkorange;
+        }
       }
     }
   }
@@ -73,8 +78,10 @@
 
     min-height: 280px;
 
-    margin: 20px 0;
+    margin: 20px 0 0;
     background-color: $background-color-normal;
+    border-bottom-right-radius: $border-radius-container;
+    border-bottom-left-radius: $border-radius-container;
     padding: 10px;
 
     .image-container {
