@@ -11,21 +11,44 @@
   align-items: center;
 }
 
+.container .navigation-bar .image-selection .submit-upload, .container .navigation-bar .image-selection .selected-image-name, .container .navigation-bar .image-selection .custom-file-upload {
+  width: 140px;
+  margin: 0 10px;
+}
+
+.container .navigation-bar .image-selection .submit-upload, .container .navigation-bar .image-selection .custom-file-upload {
+  padding: 6px 12px;
+  background-color: #4B5682;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #eeeeee;
+}
+.container .navigation-bar .image-selection .submit-upload:hover, .container .navigation-bar .image-selection .custom-file-upload:hover {
+  color: darkorange;
+}
+
 .container {
   width: 90%;
   margin: 50px auto;
   padding: 10px;
-  border-radius: 25px;
-  background-color: #151A30;
   font-family: "Montserrat", sans-serif;
+  border-radius: 25px;
+  background-color: #0F1329;
+}
+.container .title {
+  font-size: 2vw;
+  color: darkorange;
+  margin: 30px;
+  text-align: center;
 }
 .container .navigation-bar {
   width: 100%;
   height: 50px;
   padding: 10px 0;
-  background-color: #1B223E;
-  border-top-right-radius: 25px;
-  border-top-left-radius: 25px;
+  display: flex;
+  align-items: center;
 }
 .container .navigation-bar .image-selection {
   width: 500px;
@@ -37,59 +60,41 @@
 .container .navigation-bar .image-selection input[type=file] {
   display: none;
 }
-.container .navigation-bar .image-selection .custom-file-upload {
-  width: 130px;
-  background-color: #4B5682;
-  border-radius: 10px;
-  padding: 6px 12px;
-  margin: 0 10px;
-  cursor: pointer;
-}
-.container .navigation-bar .image-selection .custom-file-upload:hover {
-  color: darkorange;
-}
 .container .navigation-bar .image-selection .selected-image-name {
-  margin: 0 10px;
-  width: 130px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow-x: hidden;
 }
 .container .navigation-bar .image-selection .submit-upload {
-  width: 130px;
-  padding: 6px 12px;
   border: none;
-  font-size: 16px;
-  background-color: #4B5682;
-  border-radius: 10px;
-  cursor: pointer;
-  color: #eeeeee;
-  margin: 0 10px;
-}
-.container .navigation-bar .image-selection .submit-upload:hover {
-  color: darkorange;
 }
 .container .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
-  grid-gap: 10px 30px;
+  grid-gap: 15px 30px;
   justify-content: space-evenly;
   min-height: 280px;
   margin: 20px 0 0;
-  background-color: #1B223E;
-  border-bottom-right-radius: 25px;
-  border-bottom-left-radius: 25px;
   padding: 10px;
+  background-color: #1B223E;
+  border-radius: 25px;
 }
 .container .gallery .image-container {
   width: 400px;
   height: 250px;
+  background-color: #040617;
+  border-radius: 10px;
+  border: 1px solid #4B5682;
+}
+.container .gallery .image-container:hover {
+  border: 1px solid #7F8EC0;
+  cursor: pointer;
 }
 .container .gallery .image-container img {
   width: auto;
-  max-width: 400px;
+  max-width: 390px;
   height: auto;
-  max-height: 250px;
+  max-height: 240px;
 }
 
 /*# sourceMappingURL=UserImages.css.map */

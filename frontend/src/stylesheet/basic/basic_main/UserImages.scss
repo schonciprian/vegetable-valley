@@ -1,71 +1,82 @@
 @import "../../Variables.scss";
 
+%width-and-margin {
+  width: 140px;
+  margin: 0 10px;
+}
+
+%button-style {
+  padding: 6px 12px;
+  background-color: $focus-color-lighter;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: $color-text;
+
+  &:hover {
+    color: darkorange;
+  }
+}
+
+///////////////
+// Selectors //
+
 .container {
   width: 90%;
+
   margin: 50px auto;
   padding: 10px;
-  //min-height: 700px;
-  border-radius: $border-radius-container;
-  background-color: $background-color-dark;
+
   font-family: "Montserrat", sans-serif;
+
+  border-radius: $border-radius-container;
+  background-color: $background-color-darker;
+
+  .title {
+    font-size: $font-size-larger-vw;
+    color: $color-highlight;
+    margin: 30px;
+    text-align: center;
+  }
 
   .navigation-bar {
     width: 100%;
     height: 50px;
     padding: 10px 0;
-    background-color: $background-color-normal;
-    border-top-right-radius: $border-radius-container;
-    border-top-left-radius: $border-radius-container;
+    display: flex;
+    align-items: center;
 
     .image-selection {
       width: 500px;
-      //width: fit-content;
       margin: 10px;
       display: flex;
       justify-content: flex-start;
       align-items: center;
-
 
       input[type="file"] {
         display: none;
       }
 
       .custom-file-upload {
-        width: 130px;
-        background-color: $focus-color-lighter;
-        border-radius: 10px;
-        padding: 6px 12px;
-        margin: 0 10px;
-        cursor: pointer;
         @extend %display-flex-space-around;
-
-        &:hover {
-          color: darkorange;
-        }
+        @extend %width-and-margin;
+        @extend %button-style;
       }
 
       .selected-image-name {
-        margin: 0 10px;
-        width: 130px;
+        @extend %width-and-margin;
+
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow-x: hidden;
       }
 
       .submit-upload {
-        width: 130px;
-        padding: 6px 12px;
-        border: none;
-        font-size: 16px;
-        background-color: $focus-color-lighter;
-        border-radius: 10px;
-        cursor: pointer;
-        color: $color-text;
-        margin: 0 10px;
+        @extend %width-and-margin;
+        @extend %button-style;
 
-        &:hover {
-          color: darkorange;
-        }
+        border: none;
       }
     }
   }
@@ -73,29 +84,37 @@
   .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
-    grid-gap: 10px 30px;
+    grid-gap: 15px 30px;
     justify-content: space-evenly;
 
     min-height: 280px;
 
     margin: 20px 0 0;
-    background-color: $background-color-normal;
-    border-bottom-right-radius: $border-radius-container;
-    border-bottom-left-radius: $border-radius-container;
     padding: 10px;
 
+    background-color: $background-color-normal;
+    border-radius: $border-radius-container;
+
     .image-container {
+      @extend %display-flex-center;
+
       width: 400px;
       height: 250px;
-      @extend %display-flex-center;
+      background-color: $background-color-darkest;
+      border-radius: $border-radius-smaller;
+      border: 1px solid $focus-color-lighter;
+
+      &:hover {
+        border: 1px solid $focus-color-lighter-hover;
+        cursor: pointer;
+      }
 
       img {
         width: auto;
-        max-width: 400px;
+        max-width: 390px;
         height: auto;
-        max-height: 250px;
+        max-height: 240px;
       }
     }
-
   }
 }
