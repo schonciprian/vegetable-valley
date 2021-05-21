@@ -1,16 +1,22 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Image} from 'cloudinary-react';
 import '../../../../stylesheet/basic/basic_main/UserImages.css';
 import {FaCloudUploadAlt} from "react-icons/fa";
+import {deleteRequest, getRequest, postRequest} from "../../../additionals/Requests";
 
 
 function UserImages(props) {
-    const [selectedImage, setSelectedImage] = useState("");
-    const [listOfUserImageIds, setListOfUserImageIds] = useState([
-        "ly5f2k6e2dyeu7dialof", "xrpayghpxko8hjhif4kd", "ww9ef3yfgxnnkj4efh0u", "santrcbvbahrjhuf6jvw",
-        "rxq9mx0ltua3qlftx1wm", "xsvoyjfbm6zwewfinsan", "oj6wjtyl748ujhgcwzwr", "xsvoyjfbm6zwewfinsan",
-        "oj6wjtyl748ujhgcwzwr"]);
+    const [selectedImage, setSelectedImage] = useState({});
+    const [listOfUserImageIds, setListOfUserImageIds] = useState([])
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        getRequest('/api/get-images', {}, (response) => {
+            setLoading(false)
+            setListOfUserImageIds(response.data)
+        })
+    }, [loading])
 
     const uploadImage = () => {
         const formData = new FormData()
@@ -22,19 +28,38 @@ function UserImages(props) {
             url: 'https://api.cloudinary.com/v1_1/dfvo9ybxe/image/upload',
             data: formData,
         }).then((response) => {
-            console.log(response);
-            // imageId, original_filename, format, type = uploaded
-            setSelectedImage("")
-            setListOfUserImageIds([response.data.public_id, ...listOfUserImageIds])
+            const imageData = {
+                image_id: response.data.public_id,
+                original_filename: response.data.original_filename,
+                file_format: response.data.format,
+                type: response.data.type,
+            }
+
+            postRequest('/api/save-image', imageData,
+                () => {
+                    setLoading(true)
+                    setSelectedImage({})
+                },
+                (error) => console.log(error.data))
+
         }).catch((error) => {
             console.log(error.data);
         })
     }
 
+    const removeImage = (event) => {
+        deleteRequest('/api/remove-image', {image_id: event.target.dataset.imageid}, () => {
+            setLoading(true)
+        }, (error) => {
+            console.log(error);
+        })
+    }
+
     const createImageContainers = () => {
-        return listOfUserImageIds.map((imageID, index) => (
-            <div key={index} className="image-container">
-                <Image cloudName="dfvo9ybxe" publicId={imageID}/>
+        return listOfUserImageIds.map((image, index) => (
+            <div key={index} className="image-container" data-imageid={image.image_id}
+                 onClick={(event) => removeImage(event)}>
+                <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
             </div>
         ))
     }
@@ -51,6 +76,7 @@ function UserImages(props) {
 
                     <input id="file-upload" type="file" onChange={(event) => {
                         setSelectedImage(event.target.files[0])
+                        event.target.value = ""
                     }}/>
 
                     {selectedImage.name && <div className="selected-image-name">{selectedImage.name}</div>}
@@ -60,9 +86,9 @@ function UserImages(props) {
                 </div>
             </div>
 
-            <div className="gallery">
-                {createImageContainers()}
-            </div>
+            {loading && <div className="gallery">Loading</div>}
+            {!loading && listOfUserImageIds.length !== 0 && <div className="gallery">{createImageContainers()}</div>}
+            {listOfUserImageIds.length === 0 && <div className="gallery">No images available</div>}
         </div>
     );
 }
