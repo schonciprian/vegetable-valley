@@ -85,6 +85,7 @@
   background-color: #040617;
   border-radius: 10px;
   border: 1px solid #4B5682;
+  position: relative;
 }
 .container .gallery .image-container:hover {
   border: 1px solid #7F8EC0;
@@ -96,6 +97,20 @@
   max-width: 390px;
   height: auto;
   max-height: 240px;
+  user-select: none;
+}
+.container .gallery .image-container .remove-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: darkorange;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: none;
+}
+.container .gallery .image-container .active {
+  display: block;
 }
 
 /*# sourceMappingURL=UserImages.css.map */

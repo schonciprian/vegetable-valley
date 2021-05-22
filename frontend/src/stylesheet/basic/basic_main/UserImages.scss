@@ -103,6 +103,7 @@
       background-color: $background-color-darkest;
       border-radius: $border-radius-smaller;
       border: 1px solid $focus-color-lighter;
+      position: relative;
 
       &:hover {
         border: 1px solid $focus-color-lighter-hover;
@@ -115,6 +116,22 @@
         max-width: 390px;
         height: auto;
         max-height: 240px;
+        user-select: none;
+      }
+
+      .remove-container {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: darkorange;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: none;
+      }
+
+      .active {
+        display: block;
       }
     }
   }
