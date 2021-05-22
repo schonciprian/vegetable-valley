@@ -49,8 +49,8 @@ function UserImages(props) {
         })
     }
 
-    const removeImage = (event) => {
-        deleteRequest('/api/remove-image', {image_id: event.target.dataset.imageid}, () => {
+    const removeImage = () => {
+        deleteRequest('/api/remove-image', {image_ids: selectedImagesToRemove}, () => {
             setLoading(true)
         }, (error) => {
             console.log(error);
@@ -68,7 +68,6 @@ function UserImages(props) {
     const createImageContainers = () => {
         return listOfUserImageIds.map((image, index) => (
             <div key={index} className="image-container" data-imageid={image.image_id}
-                 // onClick={(event) => removeImage(event)}
                  onClick={() => toggleImageSelection(image)}
                 >
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
@@ -99,7 +98,7 @@ function UserImages(props) {
                 </div>
 
                 <div className="extra-options">
-                    <div className="remove-button">Remove images</div>
+                    <div className="remove-button" onClick={removeImage}>Remove images</div>
                     <div className="select-all">Select all images</div>
                     <div className="image-per-page">Image per page</div>
                 </div>
