@@ -12,20 +12,25 @@
 }
 
 .container .navigation-bar .image-selection .submit-upload, .container .navigation-bar .image-selection .selected-image-name, .container .navigation-bar .image-selection .custom-file-upload {
-  width: 140px;
+  width: 150px;
   margin: 0 10px;
 }
 
-.container .navigation-bar .image-selection .submit-upload, .container .navigation-bar .image-selection .custom-file-upload {
+.container .navigation-bar .extra-options .remove-button,
+.container .navigation-bar .extra-options .select-all,
+.container .navigation-bar .extra-options .image-per-page, .container .navigation-bar .image-selection .submit-upload, .container .navigation-bar .image-selection .custom-file-upload {
   padding: 6px 12px;
   background-color: #4B5682;
   border-radius: 10px;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
+  font-weight: bold;
   color: #eeeeee;
 }
-.container .navigation-bar .image-selection .submit-upload:hover, .container .navigation-bar .image-selection .custom-file-upload:hover {
+.container .navigation-bar .extra-options .remove-button:hover,
+.container .navigation-bar .extra-options .select-all:hover,
+.container .navigation-bar .extra-options .image-per-page:hover, .container .navigation-bar .image-selection .submit-upload:hover, .container .navigation-bar .image-selection .custom-file-upload:hover {
   color: darkorange;
 }
 
@@ -49,10 +54,10 @@
   padding: 10px 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .container .navigation-bar .image-selection {
-  width: 500px;
-  margin: 10px;
+  width: 520px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -68,9 +73,23 @@
 .container .navigation-bar .image-selection .submit-upload {
   border: none;
 }
+.container .navigation-bar .extra-options {
+  width: calc(100% - 520px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.container .navigation-bar .extra-options .remove-button,
+.container .navigation-bar .extra-options .select-all,
+.container .navigation-bar .extra-options .image-per-page {
+  width: 10vw;
+  max-width: 125px;
+  margin: 0 10px;
+  text-align: center;
+}
 .container .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 30%);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
   grid-gap: 15px 20px;
   justify-content: space-evenly;
   min-height: 280px;
@@ -81,6 +100,7 @@
 }
 .container .gallery .image-container {
   width: 100%;
+  max-width: 350px;
   height: 250px;
   background-color: #040617;
   border-radius: 10px;

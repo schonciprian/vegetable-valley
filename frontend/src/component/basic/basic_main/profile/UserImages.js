@@ -97,6 +97,13 @@ function UserImages(props) {
                     {selectedImage.name &&
                     <button className="submit-upload" onClick={uploadImage}>Upload image</button>}
                 </div>
+
+                <div className="extra-options">
+                    <div className="remove-button">Remove images</div>
+                    <div className="select-all">Select all images</div>
+                    <div className="image-per-page">Image per page</div>
+                </div>
+
             </div>
 
             {loading && <div className="gallery">Loading</div>}

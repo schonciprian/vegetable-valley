@@ -1,7 +1,7 @@
 @import "../../Variables.scss";
 
 %width-and-margin {
-  width: 140px;
+  width: 150px;
   margin: 0 10px;
 }
 
@@ -12,6 +12,7 @@
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
+  font-weight: bold;
   color: $color-text;
 
   &:hover {
@@ -46,10 +47,11 @@
     padding: 10px 0;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .image-selection {
-      width: 500px;
-      margin: 10px;
+      width: 520px;
+      //margin: 10px;
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -79,11 +81,30 @@
         border: none;
       }
     }
+
+    .extra-options {
+      width: calc(100% - 520px);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .remove-button,
+      .select-all,
+      .image-per-page {
+        @extend %button-style;
+        //white-space: nowrap;
+        width: 10vw;
+        max-width: 125px;
+        margin: 0 10px;
+        text-align: center;
+      }
+    }
+
   }
 
   .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 30%);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
     grid-gap: 15px 20px;
     justify-content: space-evenly;
 
@@ -98,6 +119,7 @@
     .image-container {
       @extend %display-flex-center;
       width: 100%;
+      max-width: 350px;
       height: 250px;
       background-color: $background-color-darkest;
       border-radius: $border-radius-smaller;
