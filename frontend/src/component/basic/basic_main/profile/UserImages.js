@@ -51,7 +51,11 @@ function UserImages(props) {
 
     const removeImage = () => {
         deleteRequest('/api/remove-image', {image_ids: selectedImagesToRemove}, () => {
-            setLoading(true)
+            // setLoading(true)
+            getRequest('/api/get-images', {}, (response) => {
+                // setLoading(false)
+                setListOfUserImageIds(response.data)
+            })
         }, (error) => {
             console.log(error);
         })
@@ -98,7 +102,7 @@ function UserImages(props) {
                 </div>
 
                 <div className="extra-options">
-                    <div className="remove-button" onClick={removeImage}>Remove images</div>
+                    <div className="remove-button" onClick={() => removeImage()}>Remove images</div>
                     <div className="select-all">Select all images</div>
                     <div className="image-per-page">Image per page</div>
                 </div>
