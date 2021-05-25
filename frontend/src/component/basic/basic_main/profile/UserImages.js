@@ -5,6 +5,7 @@ import '../../../../stylesheet/basic/basic_main/UserImages.css';
 import {FaCloudUploadAlt} from "react-icons/fa";
 import {deleteRequest, getRequest, postRequest} from "../../../additionals/Requests";
 import {FaCheckCircle} from "react-icons/fa";
+import {GiMagnifyingGlass} from "react-icons/gi";
 
 
 function UserImages(props) {
@@ -76,6 +77,10 @@ function UserImages(props) {
                 >
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
                 <FaCheckCircle className={`remove-container ${selectedImagesToRemove.includes(image.image_id) ? " active" : ""}`}/>
+                <GiMagnifyingGlass className="magnifying-glass" onClick={(event) => {
+                    event.stopPropagation()
+                    console.log("nagyito")
+                }}/>
             </div>
         ))
     }

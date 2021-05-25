@@ -111,6 +111,10 @@
   border: 1px solid #7F8EC0;
   cursor: pointer;
 }
+.container .gallery .image-container:hover .magnifying-glass {
+  display: block;
+  z-index: 10;
+}
 .container .gallery .image-container img {
   pointer-events: none;
   width: auto;
@@ -131,6 +135,18 @@
 }
 .container .gallery .image-container .active {
   display: block;
+}
+.container .gallery .image-container .magnifying-glass {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  width: 25px;
+  height: 25px;
+  display: none;
+}
+.container .gallery .image-container .magnifying-glass:hover {
+  color: darkorange;
 }
 
 /*# sourceMappingURL=UserImages.css.map */
