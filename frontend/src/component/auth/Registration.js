@@ -8,6 +8,7 @@ import {authenticationFeedbackPopUp, serviceUnavailablePopUp} from "../additiona
 // Stylesheets
 import '../../stylesheet/auth/Authentication.css';
 import '../../stylesheet/error/Error.css';
+import {FaSpinner} from "react-icons/fa";
 //**************************************************//
 
 export default function Registration() {
@@ -15,11 +16,14 @@ export default function Registration() {
     const [userData, setUserData] = useState({})
     const [errorMessages, setErrorMessages] = useState({});
     const [shakingInputFields, setShakingInputFields] = useState([])
+    const [registrationLoading, setRegistrationLoading] = useState(false)
 
     const registrationRequest = () => {
+        setRegistrationLoading(true);
         postRequest('/api/register', userData,
             () => {
                 authenticationFeedbackPopUp("Successfully registered", "You are redirected to login page", "success", 2000, history, '/login')
+                setRegistrationLoading(false);
             },
             (error) => {
                 if (error.response === undefined) {
@@ -33,6 +37,8 @@ export default function Registration() {
                 setTimeout(() => {
                     setShakingInputFields([])
                 }, 1000)
+
+                setRegistrationLoading(false);
             })
     }
 
@@ -116,6 +122,7 @@ return (
                    onChange={(event) => setUserData(prevData => ({...prevData, confirm_password: event.target.value}))}
                    onClick={() => removeErrorMessage('confirm_password')}/>
 
+            {registrationLoading && <FaSpinner className="loading-spinner"/>}
             <button type="button" onClick={registrationRequest}>Register</button>
         </form>
     </div>

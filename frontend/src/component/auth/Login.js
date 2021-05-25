@@ -7,6 +7,7 @@ import {authenticationFeedbackPopUp, serviceUnavailablePopUp} from "../additiona
 // Stylesheets
 import '../../stylesheet/auth/Authentication.css';
 import '../../stylesheet/error/Error.css';
+import {FaSpinner} from "react-icons/fa";
 //**************************************************//
 
 export default function Login() {
@@ -16,10 +17,13 @@ export default function Login() {
 
     const [errorMessages, setErrorMessages] = useState({});
     const [shakingInputFields, setShakingInputFields] = useState([])
+    const [registrationLoading, setRegistrationLoading] = useState(false)
 
     const history = useHistory();
 
     const loginRequest = async () => {
+        setRegistrationLoading(true);
+
         postRequest('/api/login', userData,
             (response) => {
                 window.sessionStorage.setItem("token", response.data.token);
@@ -29,6 +33,8 @@ export default function Login() {
                     "username": response.data.username,
                 })
                 authenticationFeedbackPopUp("Successfully logged in", "Welcome back! You are redirected to the main page", "success", 2000, history, '/')
+                setRegistrationLoading(false);
+
             }, (error) => {
                 if (error.response === undefined) {
                     serviceUnavailablePopUp("Service unavailable", "Try again later", 2000)
@@ -45,6 +51,7 @@ export default function Login() {
                     removeUserData('password')
                     passwordRef.current.value = "";
                 }
+                setRegistrationLoading(false);
             })
     }
 
@@ -97,6 +104,8 @@ export default function Login() {
                        onChange={(event) => setUserData(prevData => ({...prevData, password: event.target.value}))}
                        onClick={(event) => removeErrorMessage('password')}
                        required/>
+
+                {registrationLoading && <FaSpinner className="loading-spinner"/>}
 
                 <button type="button" onClick={loginRequest}>Login</button>
             </form>

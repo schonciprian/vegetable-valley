@@ -77,6 +77,22 @@
   box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
 }
 
+.loading-spinner {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 20px;
+  color: darkorange;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 .swal-modal {
   background-color: #1B223E;
   border: 3px solid rgba(255, 140, 0, 0.9);

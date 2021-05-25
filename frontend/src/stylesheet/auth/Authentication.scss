@@ -106,6 +106,23 @@
   }
 }
 
+.loading-spinner {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 20px;
+  color: $color-highlight;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 
 .swal-modal {
   background-color: $background-color-normal;
