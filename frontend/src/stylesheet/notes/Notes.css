@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+.notes-container {
+  width: 90%;
+  background-color: #0F1329;
+  border-radius: 20px;
+  color: #eeeeee;
+  padding: 10px;
+  margin: 50px auto;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=Notes.css.map */

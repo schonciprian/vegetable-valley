@@ -25,6 +25,7 @@ import {ActualGardenIdProvider} from "./component/garden_planner/garden_connecte
 import PageNotFound from "./PageNotFound";
 import {UserHasMoreGardenProvider} from "./component/garden_planner/garden_connected/garden_connected_context/UserHasMoreGarden";
 import UserImages from "./component/basic/basic_main/profile/UserImages";
+import Notes from "./component/notes/Notes";
 
 
 function App() {
@@ -89,6 +90,8 @@ function App() {
                                                   </WeatherForecastDataProvider>
                                               </LoadingProvider>
                                           )}/>
+
+                            <PrivateRoute exact path="/notes" component={Notes}/>
 
                             <Route exact path="*" component={PageNotFound}/>
                         </Switch>

@@ -1,0 +1,14 @@
+@import "../Variables";
+
+.notes-container {
+  width: 90%;
+  background-color: $background-color-darker;
+  border-radius: 20px;
+  color: $color-text;
+  padding: 10px;
+  margin: 50px auto;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

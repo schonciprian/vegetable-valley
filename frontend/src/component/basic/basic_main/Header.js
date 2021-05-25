@@ -42,6 +42,8 @@ function Header() {
                     </div>
                 </div>}
 
+                {user["token"] && <Link to="/notes">Notes</Link>}
+
                 {/**********************/}
                 {/** Profile settings **/}
                 {/**********************/}
