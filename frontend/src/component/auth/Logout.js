@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 // Context
 import {UserContext} from "../../context/User";
 // Helpers
@@ -29,7 +29,7 @@ function Logout(props) {
     }
 
     return (
-        <Link onClick={logoutRequest}>Logout</Link>
+        <div onClick={logoutRequest}>Logout</div>
     );
 }
 

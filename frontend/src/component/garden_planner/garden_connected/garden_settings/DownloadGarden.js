@@ -25,8 +25,9 @@ function DownloadGarden(props) {
     }
 
     const calculateImageWidth = () => {
+        const gardenPaddingRight = 10;
         const row = document.querySelector(".row");
-        const rowWidth = row.offsetWidth
+        const rowWidth = row.offsetWidth - calculateCellSize() - gardenPaddingRight;
         const style = window.getComputedStyle
             ? getComputedStyle(row, null)
             : row.currentStyle;
@@ -49,8 +50,10 @@ function DownloadGarden(props) {
         // Prepare image for screenshot
         const removeButtons = document.querySelectorAll(".remove")
         const optionButtons = document.querySelectorAll(".options")
+        const emptyFields = document.querySelectorAll(".empty")
         removeButtons.forEach((button) => button.style.visibility = "hidden")
         optionButtons.forEach((button) => button.style.visibility = "hidden")
+        emptyFields.forEach((field) => field.style.visibility = "hidden")
         gardenRef.current.style.overflow = "visible"
         window.scrollTo(0, 0)
 
@@ -72,14 +75,15 @@ function DownloadGarden(props) {
         // Set back default values
         removeButtons.forEach((button) => button.style.visibility = "visible")
         optionButtons.forEach((button) => button.style.visibility = "visible")
+        emptyFields.forEach((field) => field.style.visibility = "visible")
         gardenRef.current.style.overflow = "auto"
     };
 
     return (
-        <button className="option" onClick={() => download()}>
+        <div className="option" onClick={() => download()}>
             <FaCloudDownloadAlt/>
             <span>Download</span>
-        </button>
+        </div>
     );
 }
 

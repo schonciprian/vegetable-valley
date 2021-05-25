@@ -1,14 +1,14 @@
 import React from 'react';
 import {Vegetables} from "../Descriptions";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import SowingTable from "./sowing_table/SowingTable";
 import BasicInformation from "./BasicInformation";
 import LongerInformation from "./LongerInformation";
 
 
 function VegetablePage(props) {
-    const vegetableName = props.match.params.vegetableName;
-    const vegetableInfo = Vegetables[vegetableName];
+    const urlParams = useParams();
+    const vegetableInfo = Vegetables[urlParams.vegetableName];
 
     return (
         <div className="vegetable-info-container">

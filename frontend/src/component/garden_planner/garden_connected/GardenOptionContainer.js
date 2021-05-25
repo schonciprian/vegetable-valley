@@ -5,17 +5,21 @@ import DownloadGarden from "./garden_settings/DownloadGarden";
 import {ActualGardenIdContext} from "./garden_connected_context/ActualGardenIdContext";
 import {GardenSizeContext} from "./garden_connected_context/GardenSizeContext";
 // Icons
-import {BsFillPlusCircleFill} from "react-icons/bs";
-// Methods
-import {deleteRequest, getRequest, postRequest, putRequest} from "../../additionals/Requests";
-import {authenticationFeedback} from "../../additionals/SweetAlert";
 import {AiFillDelete} from "react-icons/ai";
+import {MdAddBox} from "react-icons/md";
+// Methods
+import {deleteRequest, getRequest, postRequest} from "../../additionals/Requests";
+import {authenticationFeedback, sweetalertErrorPopup} from "../../additionals/SweetAlert";
+import {UserHasMoreGardenContext} from "./garden_connected_context/UserHasMoreGarden";
+
 
 
 function GardenOptionContainer(props) {
     const gardenRef = props.gardenRef;
     const [actualGardenId, setActualGardenId] = useContext(ActualGardenIdContext)
     const [gardenSize, setGardenSize] = useContext(GardenSizeContext);
+    const [userHasMoreGardens] = useContext(UserHasMoreGardenContext)
+
 
     useEffect(() => {
         if (!window.sessionStorage.getItem("token") || actualGardenId === null) return
@@ -35,28 +39,6 @@ function GardenOptionContainer(props) {
         })
     }, [setGardenSize, actualGardenId])
 
-    const modifyGardenSize = (rows, columns) => {
-        const data = {
-            garden_id: actualGardenId,
-            row_count: rows,
-            column_count: columns,
-        }
-        putRequest('/api/update-garden-size', data,
-            () => {
-                setGardenSize(prevData => ({
-                    ...prevData,
-                    rows: rows,
-                    columns: columns,
-                }))
-            },
-            (error) => {
-                if (error.response === undefined) {
-                    authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
-                }
-            }
-        )
-    }
-
     const addNewGarden = () => {
         postRequest('/api/add-new-garden', {},
             (response) => setActualGardenId(response.data.id),
@@ -68,13 +50,17 @@ function GardenOptionContainer(props) {
     }
 
     const removeGarden = () => {
-        deleteRequest('/api/remove-garden', {garden_id: actualGardenId},
-            (response) => setActualGardenId(null),
-            (error) => {
-                if (error.response === undefined) {
-                    authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
-                }
-            })
+        if (userHasMoreGardens) {
+            deleteRequest('/api/remove-garden', {garden_id: actualGardenId},
+                (response) => setActualGardenId(null),
+                (error) => {
+                    if (error.response === undefined) {
+                        authenticationFeedback("Service unavailable", "Try again later", "error", 3000)
+                    }
+                })
+        } else {
+            sweetalertErrorPopup('You can not delete your only garden...', 'Add a new garden before removing this!', 'error', 4000)
+        }
     }
 
     return (
@@ -82,24 +68,14 @@ function GardenOptionContainer(props) {
 
             <DownloadGarden gardenRef={gardenRef} rows={gardenSize.rows} columns={gardenSize.columns}/>
 
-            <button className="option" onClick={() => modifyGardenSize(gardenSize.rows + 1, gardenSize.columns)}>
-                <BsFillPlusCircleFill/>
-                <span>Add row</span>
-            </button>
+            <div className="option" onClick={() => addNewGarden()}>
+                <MdAddBox/>
+                <span>Add garden</span>
+            </div>
 
-            <button className="option" onClick={() => modifyGardenSize(gardenSize.rows, gardenSize.columns + 1)}>
-                <BsFillPlusCircleFill/>
-                <span>Add column</span>
-            </button>
-
-            <button className="option" onClick={() => addNewGarden()}>
-                <BsFillPlusCircleFill/>
-                <span>New garden</span>
-            </button>
-
-            <div className="delete-option" onClick={() => removeGarden()}>
+            <div className="option" onClick={() => removeGarden()}>
                 <AiFillDelete/>
-                <span className="tooltip-text">Remove currently selected garden</span>
+                <span>Remove garden</span>
             </div>
 
         </div>

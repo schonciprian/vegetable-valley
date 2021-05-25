@@ -5,7 +5,8 @@
   align-items: center;
 }
 
-.city-selector .city-list-container .city-list-abroad ul, .city-selector .city-list-container .city-list-container-left .city-list-hungary ul {
+.city-selector .city-list-container .city-list-abroad ul, .city-selector .city-list-container .city-list-container-left .city-list-hungary ul,
+.city-selector .city-list-container .city-list-container-left .city-list-previous ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -89,31 +90,52 @@
   -ms-transform: scale(0.95);
   transform: scale(0.95);
 }
-.city-selector .city-list-container .city-list-container-left .city-list-hungary {
+.city-selector .city-list-container .city-list-container-left .city-list-hungary,
+.city-selector .city-list-container .city-list-container-left .city-list-previous {
   max-width: 750px;
   margin: 10px 10px 20px 20px;
   background-color: #0F1329;
   border-radius: 10px;
 }
-.city-selector .city-list-container .city-list-container-left .city-list-hungary ul {
+.city-selector .city-list-container .city-list-container-left .city-list-hungary ul,
+.city-selector .city-list-container .city-list-container-left .city-list-previous ul {
   flex-wrap: wrap;
   padding: 10px;
   margin: 0;
 }
-.city-selector .city-list-container .city-list-container-left .city-list-hungary ul li {
+.city-selector .city-list-container .city-list-container-left .city-list-hungary ul li,
+.city-selector .city-list-container .city-list-container-left .city-list-previous ul li {
   list-style: none;
   width: 200px;
   margin: 7px;
   padding: 5px;
   font-size: 18px;
+  text-transform: capitalize;
   color: #eeeeee;
   box-shadow: 2px 2px 1px 0 #4B5682;
   background-color: #151A30;
   border-radius: 10px;
   cursor: pointer;
+  position: relative;
 }
-.city-selector .city-list-container .city-list-container-left .city-list-hungary ul li:hover {
+.city-selector .city-list-container .city-list-container-left .city-list-hungary ul li .remove-city,
+.city-selector .city-list-container .city-list-container-left .city-list-previous ul li .remove-city {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 15px;
+}
+.city-selector .city-list-container .city-list-container-left .city-list-hungary ul li:hover,
+.city-selector .city-list-container .city-list-container-left .city-list-previous ul li:hover {
   color: darkorange;
+}
+.city-selector .city-list-container .city-list-container-left .city-list-hungary ul li:hover .remove-city,
+.city-selector .city-list-container .city-list-container-left .city-list-previous ul li:hover .remove-city {
+  color: #eeeeee;
+}
+.city-selector .city-list-container .city-list-container-left .city-list-hungary ul li:hover .remove-city:hover,
+.city-selector .city-list-container .city-list-container-left .city-list-previous ul li:hover .remove-city:hover {
+  color: red;
 }
 .city-selector .city-list-container .city-list-abroad {
   width: 260px;
