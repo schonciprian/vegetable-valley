@@ -6,6 +6,7 @@ import {FaCloudUploadAlt} from "react-icons/fa";
 import {deleteRequest, getRequest, postRequest} from "../../../additionals/Requests";
 import {FaCheckCircle} from "react-icons/fa";
 import {GiMagnifyingGlass} from "react-icons/gi";
+import FullScreenImage from "../../../gallery/FullScreenImage";
 
 
 function UserImages(props) {
@@ -13,6 +14,7 @@ function UserImages(props) {
     const [listOfUserImageIds, setListOfUserImageIds] = useState([])
     const [loading, setLoading] = useState(true);
     const [selectedImagesToRemove, setSelectedImagesToRemove] = useState([])
+    const [fullScreenImageId, setFullScreenImageId] = useState("")
 
     useEffect(() => {
         getRequest('/api/get-images', {}, (response) => {
@@ -74,49 +76,58 @@ function UserImages(props) {
         return listOfUserImageIds.map((image, index) => (
             <div key={index} className="image-container" data-imageid={image.image_id}
                  onClick={() => toggleImageSelection(image)}
-                >
+            >
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
-                <FaCheckCircle className={`remove-container ${selectedImagesToRemove.includes(image.image_id) ? " active" : ""}`}/>
+                <FaCheckCircle
+                    className={`remove-container ${selectedImagesToRemove.includes(image.image_id) ? " active" : ""}`}/>
                 <GiMagnifyingGlass className="magnifying-glass" onClick={(event) => {
                     event.stopPropagation()
                     console.log("nagyito")
+                    setFullScreenImageId(image.image_id)
                 }}/>
             </div>
         ))
     }
 
     return (
-        <div className="container" style={{color: 'white'}}>
-            <h1 className="title">Image gallery</h1>
-            <div className="navigation-bar">
-                <div className="image-selection">
+        <div>
+            {fullScreenImageId.length !== 0 &&
+                <FullScreenImage imgId={fullScreenImageId} setFullScreenImageId={setFullScreenImageId}/>}
+            <div className="container" style={{color: 'white'}}>
 
-                    <label htmlFor="file-upload" className="custom-file-upload">
-                        <FaCloudUploadAlt/> Select image
-                    </label>
 
-                    <input id="file-upload" type="file" onChange={(event) => {
-                        setSelectedImage(event.target.files[0])
-                        event.target.value = ""
-                    }}/>
+                <h1 className="title">Image gallery</h1>
+                <div className="navigation-bar">
+                    <div className="image-selection">
 
-                    {selectedImage.name && <div className="selected-image-name">{selectedImage.name}</div>}
+                        <label htmlFor="file-upload" className="custom-file-upload">
+                            <FaCloudUploadAlt/> Select image
+                        </label>
 
-                    {selectedImage.name &&
-                    <button className="submit-upload" onClick={uploadImage}>Upload image</button>}
+                        <input id="file-upload" type="file" onChange={(event) => {
+                            setSelectedImage(event.target.files[0])
+                            event.target.value = ""
+                        }}/>
+
+                        {selectedImage.name && <div className="selected-image-name">{selectedImage.name}</div>}
+
+                        {selectedImage.name &&
+                        <button className="submit-upload" onClick={uploadImage}>Upload image</button>}
+                    </div>
+
+                    <div className="extra-options">
+                        <div className="remove-button" onClick={() => removeImage()}>Remove images</div>
+                        <div className="select-all">Select all images</div>
+                        <div className="image-per-page">Image per page</div>
+                    </div>
+
                 </div>
 
-                <div className="extra-options">
-                    <div className="remove-button" onClick={() => removeImage()}>Remove images</div>
-                    <div className="select-all">Select all images</div>
-                    <div className="image-per-page">Image per page</div>
-                </div>
-
+                {loading && <div className="gallery">Loading</div>}
+                {!loading && listOfUserImageIds.length !== 0 &&
+                <div className="gallery">{createImageContainers()}</div>}
+                {listOfUserImageIds.length === 0 && <div className="gallery">No images available</div>}
             </div>
-
-            {loading && <div className="gallery">Loading</div>}
-            {!loading && listOfUserImageIds.length !== 0 && <div className="gallery">{createImageContainers()}</div>}
-            {listOfUserImageIds.length === 0 && <div className="gallery">No images available</div>}
         </div>
     );
 }

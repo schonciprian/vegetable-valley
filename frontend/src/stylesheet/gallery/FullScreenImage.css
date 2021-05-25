@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+.full-screen-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-screen-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(4, 6, 23, 0.9);
+  color: #a70606;
+  width: 100vw;
+  z-index: 100;
+  margin: 0 auto;
+}
+.full-screen-container img {
+  width: auto;
+  max-width: 95%;
+  height: auto;
+  max-height: 700px;
+}
+
+/*# sourceMappingURL=FullScreenImage.css.map */

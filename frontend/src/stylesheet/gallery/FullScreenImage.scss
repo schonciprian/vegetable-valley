@@ -1,0 +1,29 @@
+@import '../Variables';
+
+.full-screen-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  //position: sticky;
+  //top: 80px;
+  //left: 5%;
+
+  //background-color: #34b534;
+  background-color: rgba(4, 6, 23, 0.9);
+  color: #a70606;
+
+  //width: 90vw;
+  width: 100vw;
+  //min-height: 700px;
+  @extend %display-flex-center;
+  z-index: 100;
+  margin: 0 auto;
+
+  img {
+    width: auto;
+    max-width: 95%;
+    height: auto;
+    max-height: 700px;
+  }
+}
