@@ -10,22 +10,24 @@ import FullScreenImage from "../../../gallery/FullScreenImage";
 
 
 function UserImages(props) {
-    const [selectedImage, setSelectedImage] = useState({});
-    const [listOfUserImageIds, setListOfUserImageIds] = useState([])
-    const [loading, setLoading] = useState(true);
-    const [selectedImagesToRemove, setSelectedImagesToRemove] = useState([])
+    const [listOfUserImages, setListOfUserImages] = useState([])
     const [fullScreenImageId, setFullScreenImageId] = useState("")
+
+    const [selectedImageToUpload, setSelectedImageToUpload] = useState({});
+    const [selectedImagesToRemove, setSelectedImagesToRemove] = useState([])
+
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getRequest('/api/get-images', {}, (response) => {
             setLoading(false)
-            setListOfUserImageIds(response.data)
+            setListOfUserImages(response.data)
         })
     }, [loading])
 
     const uploadImage = () => {
         const formData = new FormData()
-        formData.append('file', selectedImage)
+        formData.append('file', selectedImageToUpload)
         formData.append('upload_preset', 'ine3dksf')
 
         axios({
@@ -43,25 +45,17 @@ function UserImages(props) {
             postRequest('/api/save-image', imageData,
                 () => {
                     setLoading(true)
-                    setSelectedImage({})
+                    setSelectedImageToUpload({})
                 },
                 (error) => console.log(error.data))
-
-        }).catch((error) => {
-            console.log(error.data);
-        })
+        }).catch((error) => console.log(error.data))
     }
 
     const removeImage = () => {
         deleteRequest('/api/remove-image', {image_ids: selectedImagesToRemove}, () => {
-            // setLoading(true)
-            getRequest('/api/get-images', {}, (response) => {
-                // setLoading(false)
-                setListOfUserImageIds(response.data)
-            })
-        }, (error) => {
-            console.log(error);
-        })
+            getRequest('/api/get-images', {},
+                (response) => setListOfUserImages(response.data))},
+                (error) => console.log(error))
     }
 
     const toggleImageSelection = (image) => {
@@ -73,9 +67,9 @@ function UserImages(props) {
     }
 
     const createImageContainers = () => {
-        if (listOfUserImageIds.length === 0) return "No images available";
+        if (listOfUserImages.length === 0) return "No images available";
 
-        return listOfUserImageIds.map((image, index) => (
+        return listOfUserImages.map((image, index) => (
             <div key={index} className="image-container" data-imageid={image.image_id}
                  onClick={() => toggleImageSelection(image)}>
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
@@ -99,16 +93,18 @@ function UserImages(props) {
                 <div className="navigation-bar">
                     <div className="image-selection">
 
-                        <label htmlFor="file-upload" className="custom-file-upload"><FaCloudUploadAlt/> Select image</label>
+                        <label htmlFor="file-upload" className="custom-file-upload">
+                            <FaCloudUploadAlt/> Select image
+                        </label>
 
                         <input id="file-upload" type="file" onChange={(event) => {
-                            setSelectedImage(event.target.files[0])
+                            setSelectedImageToUpload(event.target.files[0])
                             event.target.value = ""
                         }}/>
 
-                        {selectedImage.name &&
+                        {selectedImageToUpload.name &&
                         <React.Fragment>
-                            <div className="selected-image-name">{selectedImage.name}</div>
+                            <div className="selected-image-name">{selectedImageToUpload.name}</div>
                             <button className="submit-upload" onClick={uploadImage}>Upload image</button>
                         </React.Fragment>}
                     </div>
