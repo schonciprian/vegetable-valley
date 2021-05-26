@@ -6,12 +6,15 @@ import {FaCheckCircle} from "react-icons/fa";
 import {GiMagnifyingGlass} from "react-icons/gi";
 import FullScreenImage from "./FullScreenImage";
 import UploadImageSelection from "./subcomponents/UploadImageSelection";
+import {AiOutlineCaretRight} from "react-icons/ai";
+import {RiArrowDownSLine} from "react-icons/ri";
 
 function Gallery(props) {
     const [listOfUserImages, setListOfUserImages] = useState([])
     const [fullScreenImageId, setFullScreenImageId] = useState("")
     const [selectedImagesToRemove, setSelectedImagesToRemove] = useState([])
     const [loading, setLoading] = useState(true);
+    const [imagePerPage, setImagePerPage] = useState(12)
 
     useEffect(() => {
         getRequest('/api/get-images', {}, (response) => {
@@ -38,7 +41,7 @@ function Gallery(props) {
     const createImageContainers = () => {
         if (listOfUserImages.length === 0) return "No images available";
 
-        return listOfUserImages.map((image, index) => (
+        return listOfUserImages.slice(0, imagePerPage).map((image, index) => (
             <div key={index} className="image-container" data-imageid={image.image_id}
                  onClick={() => toggleImageSelection(image)}>
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
@@ -84,7 +87,16 @@ function Gallery(props) {
                                 ? "Select all images"
                                 : "Unselect all images"}
                         </div>
-                        <div className="image-per-page">Image per page</div>
+
+                        <div className="img-per-page-dropdown">
+                            <div className="img-per-page-dropdown-button"><RiArrowDownSLine/> Image per page</div>
+                            <div className="img-per-page-dropdown-content">
+                                <div onClick={() => setImagePerPage(3)}>{imagePerPage === 3 && <AiOutlineCaretRight className="active"/>}3</div>
+                                <div onClick={() => setImagePerPage(6)}>{imagePerPage === 6 && <AiOutlineCaretRight className="active"/>}6</div>
+                                <div onClick={() => setImagePerPage(9)}>{imagePerPage === 9 && <AiOutlineCaretRight className="active"/>}9</div>
+                                <div onClick={() => setImagePerPage(12)}>{imagePerPage === 12 && <AiOutlineCaretRight className="active"/>}12</div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

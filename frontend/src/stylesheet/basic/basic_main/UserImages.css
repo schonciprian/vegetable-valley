@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.container .gallery .image-container {
+.img-per-page-dropdown-content div, .container .gallery .image-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@
   margin: 0 10px;
 }
 
-.container .navigation-bar .extra-options .remove-button,
+.img-per-page-dropdown-button, .container .navigation-bar .extra-options .remove-button,
 .container .navigation-bar .extra-options .select-all,
 .container .navigation-bar .extra-options .image-per-page, .container .navigation-bar .upload-image-selection .submit-upload, .container .navigation-bar .upload-image-selection .custom-file-upload {
   padding: 6px 12px;
@@ -28,7 +28,7 @@
   font-weight: bold;
   color: #eeeeee;
 }
-.container .navigation-bar .extra-options .remove-button:hover,
+.img-per-page-dropdown-button:hover, .container .navigation-bar .extra-options .remove-button:hover,
 .container .navigation-bar .extra-options .select-all:hover,
 .container .navigation-bar .extra-options .image-per-page:hover, .container .navigation-bar .upload-image-selection .submit-upload:hover, .container .navigation-bar .upload-image-selection .custom-file-upload:hover {
   color: darkorange;
@@ -50,6 +50,10 @@
   text-align: center;
 }
 .container .navigation-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #0F1329;
   width: 100%;
   height: 50px;
   padding: 10px 0;
@@ -147,6 +151,80 @@
 }
 .container .gallery .image-container .magnifying-glass:hover {
   color: darkorange;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.img-per-page-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style The Dropdown Button */
+.img-per-page-dropdown-button {
+  width: 10vw;
+  max-width: 125px;
+  margin: 0 10px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.img-per-page-dropdown-button svg {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.img-per-page-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 15px;
+  background-color: #1B223E;
+  border: 1px solid darkorange;
+  border-top: none;
+  min-width: fit-content;
+  white-space: nowrap;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Divs inside the dropdown */
+.img-per-page-dropdown-content div {
+  width: 100px;
+  color: #eeeeee;
+  padding: 12px 16px;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+.img-per-page-dropdown-content div:hover {
+  color: darkorange;
+}
+.img-per-page-dropdown-content div svg {
+  position: absolute;
+  left: 20px;
+}
+.img-per-page-dropdown-content div .active {
+  color: darkorange;
+}
+
+.img-per-page-dropdown-content div:nth-child(1n+2):before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(130deg, #0F1329, darkorange 50%, #0F1329 100%);
+}
+
+/* Show the dropdown menu on hover */
+.img-per-page-dropdown:hover .img-per-page-dropdown-content {
+  display: block;
 }
 
 /*# sourceMappingURL=UserImages.css.map */
