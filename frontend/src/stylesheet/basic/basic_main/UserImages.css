@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.img-per-page-dropdown-content div, .container .gallery .image-container {
+.pagination .actual-page, .pagination, .img-per-page-dropdown-content div, .container .gallery .image-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -225,6 +225,29 @@
 /* Show the dropdown menu on hover */
 .img-per-page-dropdown:hover .img-per-page-dropdown-content {
   display: block;
+}
+
+.pagination {
+  width: fit-content;
+  background-color: #1B223E;
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 10px;
+}
+.pagination .pagination-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.pagination .pagination-icon:hover {
+  color: darkorange;
+}
+.pagination .actual-page {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=UserImages.css.map */

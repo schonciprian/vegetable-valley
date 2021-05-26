@@ -7,6 +7,7 @@ import {GiMagnifyingGlass} from "react-icons/gi";
 import FullScreenImage from "./FullScreenImage";
 import UploadImageSelection from "./subcomponents/UploadImageSelection";
 import ImagePerPage from "./subcomponents/ImagePerPage";
+import {FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight} from "react-icons/fi";
 
 function Gallery(props) {
     const [listOfUserImages, setListOfUserImages] = useState([])
@@ -24,9 +25,10 @@ function Gallery(props) {
 
     const removeImage = () => {
         deleteRequest('/api/remove-image', {image_ids: selectedImagesToRemove}, () => {
-            getRequest('/api/get-images', {},
-                (response) => setListOfUserImages(response.data))},
-                (error) => console.log(error))
+                getRequest('/api/get-images', {},
+                    (response) => setListOfUserImages(response.data))
+            },
+            (error) => console.log(error))
     }
 
     const toggleImageSelection = (image) => {
@@ -79,7 +81,7 @@ function Gallery(props) {
 
                     <div className="extra-options">
                         {selectedImagesToRemove.length !== 0 &&
-                            <div className="remove-button" onClick={() => removeImage()}>Remove images</div>}
+                        <div className="remove-button" onClick={() => removeImage()}>Remove images</div>}
 
                         <div className="select-all" onClick={() => selectAllImages()}>
                             {selectedImagesToRemove.length !== listOfUserImages.length
@@ -95,6 +97,14 @@ function Gallery(props) {
                 {loading
                     ? <div className="gallery">Loading</div>
                     : <div className="gallery">{createImageContainers()}</div>}
+
+                <div className="pagination">
+                        <FiChevronsLeft className="pagination-icon"/>
+                        <FiChevronLeft className="pagination-icon"/>
+                        <div className="actual-page">1</div>
+                        <FiChevronRight className="pagination-icon"/>
+                        <FiChevronsRight className="pagination-icon"/>
+                </div>
             </div>
         </div>
     );

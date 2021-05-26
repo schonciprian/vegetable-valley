@@ -280,3 +280,31 @@
 .img-per-page-dropdown:hover .img-per-page-dropdown-content {
   display: block;
 }
+
+.pagination {
+  width: fit-content;
+  @extend %display-flex-center;
+  background-color: #1B223E;
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 10px;
+
+  .pagination-icon {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      color: darkorange;
+    }
+  }
+
+  .actual-page {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    @extend %display-flex-center;
+  }
+}
