@@ -8,8 +8,8 @@ function ImagePerPage(props) {
     const imagePerPageOptions = [3, 6, 9, 12, 15, 18, 21];
 
     const createImagePerPageOptions = () => {
-        return imagePerPageOptions.map(option => (
-            <div onClick={() => {setImagePerPage(option)}}>
+        return imagePerPageOptions.map((option, index) => (
+            <div key={index} onClick={() => {setImagePerPage(option)}}>
                 {imagePerPage === option && <AiOutlineCaretRight className="active"/>}
                 {option}
             </div>
