@@ -6,8 +6,7 @@ import {FaCheckCircle} from "react-icons/fa";
 import {GiMagnifyingGlass} from "react-icons/gi";
 import FullScreenImage from "./FullScreenImage";
 import UploadImageSelection from "./subcomponents/UploadImageSelection";
-import {AiOutlineCaretRight} from "react-icons/ai";
-import {RiArrowDownSLine} from "react-icons/ri";
+import ImagePerPage from "./subcomponents/ImagePerPage";
 
 function Gallery(props) {
     const [listOfUserImages, setListOfUserImages] = useState([])
@@ -88,15 +87,7 @@ function Gallery(props) {
                                 : "Unselect all images"}
                         </div>
 
-                        <div className="img-per-page-dropdown">
-                            <div className="img-per-page-dropdown-button"><RiArrowDownSLine/> Image per page</div>
-                            <div className="img-per-page-dropdown-content">
-                                <div onClick={() => setImagePerPage(3)}>{imagePerPage === 3 && <AiOutlineCaretRight className="active"/>}3</div>
-                                <div onClick={() => setImagePerPage(6)}>{imagePerPage === 6 && <AiOutlineCaretRight className="active"/>}6</div>
-                                <div onClick={() => setImagePerPage(9)}>{imagePerPage === 9 && <AiOutlineCaretRight className="active"/>}9</div>
-                                <div onClick={() => setImagePerPage(12)}>{imagePerPage === 12 && <AiOutlineCaretRight className="active"/>}12</div>
-                            </div>
-                        </div>
+                        <ImagePerPage imagePerPage={imagePerPage} setImagePerPage={setImagePerPage}/>
                     </div>
 
                 </div>
