@@ -88,7 +88,7 @@ function Gallery(props) {
             {fullScreenImageId.length !== 0 &&
             <FullScreenImage imgId={fullScreenImageId} setFullScreenImageId={setFullScreenImageId}/>}
 
-            <div className="container" style={{color: 'white'}}>
+            <div className="container">
                 <h1 className="title">Image gallery</h1>
                 <div className="navigation-bar">
                     <div className="image-selection">
