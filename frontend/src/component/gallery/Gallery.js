@@ -52,6 +52,19 @@ function Gallery(props) {
         ))
     }
 
+    const selectAllImages = () => {
+        if (selectedImagesToRemove.length === listOfUserImages.length) {
+            setSelectedImagesToRemove([])
+            return;
+        }
+
+        listOfUserImages.forEach(image => {
+            if (!selectedImagesToRemove.includes(image.image_id)) {
+                setSelectedImagesToRemove(prevData => ([...prevData, image.image_id]))
+            }
+        })
+    }
+
     return (
         <div>
             {fullScreenImageId.length !== 0 &&
@@ -63,8 +76,14 @@ function Gallery(props) {
                     <UploadImageSelection setLoading={setLoading}/>
 
                     <div className="extra-options">
-                        <div className="remove-button" onClick={() => removeImage()}>Remove images</div>
-                        <div className="select-all">Select all images</div>
+                        {selectedImagesToRemove.length !== 0 &&
+                            <div className="remove-button" onClick={() => removeImage()}>Remove images</div>}
+
+                        <div className="select-all" onClick={() => selectAllImages()}>
+                            {selectedImagesToRemove.length !== listOfUserImages.length
+                                ? "Select all images"
+                                : "Unselect all images"}
+                        </div>
                         <div className="image-per-page">Image per page</div>
                     </div>
 
