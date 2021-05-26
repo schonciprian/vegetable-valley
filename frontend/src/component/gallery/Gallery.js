@@ -15,6 +15,7 @@ function Gallery(props) {
     const [selectedImagesToRemove, setSelectedImagesToRemove] = useState([])
     const [loading, setLoading] = useState(true);
     const [imagePerPage, setImagePerPage] = useState(12)
+    const [actualPageNumber, setActualPageNumber] = useState(1)
 
     useEffect(() => {
         getRequest('/api/get-images', {}, (response) => {
@@ -42,7 +43,7 @@ function Gallery(props) {
     const createImageContainers = () => {
         if (listOfUserImages.length === 0) return "No images available";
 
-        return listOfUserImages.slice(0, imagePerPage).map((image, index) => (
+        return listOfUserImages.slice(imagePerPage * actualPageNumber - imagePerPage, imagePerPage * actualPageNumber).map((image, index) => (
             <div key={index} className="image-container" data-imageid={image.image_id}
                  onClick={() => toggleImageSelection(image)}>
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
@@ -99,11 +100,11 @@ function Gallery(props) {
                     : <div className="gallery">{createImageContainers()}</div>}
 
                 <div className="pagination">
-                        <FiChevronsLeft className="pagination-icon"/>
-                        <FiChevronLeft className="pagination-icon"/>
-                        <div className="actual-page">1</div>
-                        <FiChevronRight className="pagination-icon"/>
-                        <FiChevronsRight className="pagination-icon"/>
+                        <FiChevronsLeft className="pagination-icon" onClick={() => setActualPageNumber(1)}/>
+                        <FiChevronLeft className="pagination-icon" onClick={() => actualPageNumber > 1 ? setActualPageNumber(actualPageNumber - 1) : setActualPageNumber(actualPageNumber)}/>
+                        <div className="actual-page">{actualPageNumber}</div>
+                        <FiChevronRight className="pagination-icon"onClick={() => actualPageNumber < Math.ceil(listOfUserImages.length / imagePerPage) ? setActualPageNumber(actualPageNumber + 1) : setActualPageNumber(actualPageNumber)}/>
+                        <FiChevronsRight className="pagination-icon" onClick={() => setActualPageNumber(Math.ceil(listOfUserImages.length / imagePerPage))}/>
                 </div>
             </div>
         </div>
