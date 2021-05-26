@@ -1,21 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
 import {Image} from 'cloudinary-react';
 import '../../stylesheet/basic/basic_main/UserImages.css';
-import {FaCloudUploadAlt} from "react-icons/fa";
-import {deleteRequest, getRequest, postRequest} from "../additionals/Requests";
+import {deleteRequest, getRequest} from "../additionals/Requests";
 import {FaCheckCircle} from "react-icons/fa";
 import {GiMagnifyingGlass} from "react-icons/gi";
 import FullScreenImage from "./FullScreenImage";
-
+import UploadImageSelection from "./subcomponents/UploadImageSelection";
 
 function Gallery(props) {
     const [listOfUserImages, setListOfUserImages] = useState([])
     const [fullScreenImageId, setFullScreenImageId] = useState("")
-
-    const [selectedImageToUpload, setSelectedImageToUpload] = useState({});
     const [selectedImagesToRemove, setSelectedImagesToRemove] = useState([])
-
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -24,32 +19,6 @@ function Gallery(props) {
             setListOfUserImages(response.data)
         })
     }, [loading])
-
-    const uploadImage = () => {
-        const formData = new FormData()
-        formData.append('file', selectedImageToUpload)
-        formData.append('upload_preset', 'ine3dksf')
-
-        axios({
-            method: "post",
-            url: 'https://api.cloudinary.com/v1_1/dfvo9ybxe/image/upload',
-            data: formData,
-        }).then((response) => {
-            const imageData = {
-                image_id: response.data.public_id,
-                original_filename: response.data.original_filename,
-                file_format: response.data.format,
-                type: response.data.type,
-            }
-
-            postRequest('/api/save-image', imageData,
-                () => {
-                    setLoading(true)
-                    setSelectedImageToUpload({})
-                },
-                (error) => console.log(error.data))
-        }).catch((error) => console.log(error.data))
-    }
 
     const removeImage = () => {
         deleteRequest('/api/remove-image', {image_ids: selectedImagesToRemove}, () => {
@@ -91,23 +60,7 @@ function Gallery(props) {
             <div className="container">
                 <h1 className="title">Image gallery</h1>
                 <div className="navigation-bar">
-                    <div className="image-selection">
-
-                        <label htmlFor="file-upload" className="custom-file-upload">
-                            <FaCloudUploadAlt/> Select image
-                        </label>
-
-                        <input id="file-upload" type="file" onChange={(event) => {
-                            setSelectedImageToUpload(event.target.files[0])
-                            event.target.value = ""
-                        }}/>
-
-                        {selectedImageToUpload.name &&
-                        <React.Fragment>
-                            <div className="selected-image-name">{selectedImageToUpload.name}</div>
-                            <button className="submit-upload" onClick={uploadImage}>Upload image</button>
-                        </React.Fragment>}
-                    </div>
+                    <UploadImageSelection setLoading={setLoading}/>
 
                     <div className="extra-options">
                         <div className="remove-button" onClick={() => removeImage()}>Remove images</div>

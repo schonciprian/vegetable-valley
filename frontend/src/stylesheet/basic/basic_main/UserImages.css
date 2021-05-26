@@ -5,20 +5,20 @@
   align-items: center;
 }
 
-.container .navigation-bar .image-selection .custom-file-upload {
+.container .navigation-bar .upload-image-selection .custom-file-upload {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.container .navigation-bar .image-selection .submit-upload, .container .navigation-bar .image-selection .selected-image-name, .container .navigation-bar .image-selection .custom-file-upload {
+.container .navigation-bar .upload-image-selection .submit-upload, .container .navigation-bar .upload-image-selection .selected-image-name, .container .navigation-bar .upload-image-selection .custom-file-upload {
   width: 150px;
   margin: 0 10px;
 }
 
 .container .navigation-bar .extra-options .remove-button,
 .container .navigation-bar .extra-options .select-all,
-.container .navigation-bar .extra-options .image-per-page, .container .navigation-bar .image-selection .submit-upload, .container .navigation-bar .image-selection .custom-file-upload {
+.container .navigation-bar .extra-options .image-per-page, .container .navigation-bar .upload-image-selection .submit-upload, .container .navigation-bar .upload-image-selection .custom-file-upload {
   padding: 6px 12px;
   background-color: #4B5682;
   border-radius: 10px;
@@ -30,7 +30,7 @@
 }
 .container .navigation-bar .extra-options .remove-button:hover,
 .container .navigation-bar .extra-options .select-all:hover,
-.container .navigation-bar .extra-options .image-per-page:hover, .container .navigation-bar .image-selection .submit-upload:hover, .container .navigation-bar .image-selection .custom-file-upload:hover {
+.container .navigation-bar .extra-options .image-per-page:hover, .container .navigation-bar .upload-image-selection .submit-upload:hover, .container .navigation-bar .upload-image-selection .custom-file-upload:hover {
   color: darkorange;
 }
 
@@ -41,6 +41,7 @@
   font-family: "Montserrat", sans-serif;
   border-radius: 25px;
   background-color: #0F1329;
+  color: #eeeeee;
 }
 .container .title {
   font-size: 2vw;
@@ -56,21 +57,21 @@
   align-items: center;
   justify-content: space-between;
 }
-.container .navigation-bar .image-selection {
+.container .navigation-bar .upload-image-selection {
   width: 520px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-.container .navigation-bar .image-selection input[type=file] {
+.container .navigation-bar .upload-image-selection input[type=file] {
   display: none;
 }
-.container .navigation-bar .image-selection .selected-image-name {
+.container .navigation-bar .upload-image-selection .selected-image-name {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow-x: hidden;
 }
-.container .navigation-bar .image-selection .submit-upload {
+.container .navigation-bar .upload-image-selection .submit-upload {
   border: none;
 }
 .container .navigation-bar .extra-options {
