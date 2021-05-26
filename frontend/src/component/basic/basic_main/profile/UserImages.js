@@ -73,16 +73,16 @@ function UserImages(props) {
     }
 
     const createImageContainers = () => {
+        if (listOfUserImageIds.length === 0) return "No images available";
+
         return listOfUserImageIds.map((image, index) => (
             <div key={index} className="image-container" data-imageid={image.image_id}
-                 onClick={() => toggleImageSelection(image)}
-            >
+                 onClick={() => toggleImageSelection(image)}>
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
                 <FaCheckCircle
                     className={`remove-container ${selectedImagesToRemove.includes(image.image_id) ? " active" : ""}`}/>
                 <GiMagnifyingGlass className="magnifying-glass" onClick={(event) => {
                     event.stopPropagation()
-                    console.log("nagyito")
                     setFullScreenImageId(image.image_id)
                 }}/>
             </div>
@@ -92,27 +92,25 @@ function UserImages(props) {
     return (
         <div>
             {fullScreenImageId.length !== 0 &&
-                <FullScreenImage imgId={fullScreenImageId} setFullScreenImageId={setFullScreenImageId}/>}
+            <FullScreenImage imgId={fullScreenImageId} setFullScreenImageId={setFullScreenImageId}/>}
+
             <div className="container" style={{color: 'white'}}>
-
-
                 <h1 className="title">Image gallery</h1>
                 <div className="navigation-bar">
                     <div className="image-selection">
 
-                        <label htmlFor="file-upload" className="custom-file-upload">
-                            <FaCloudUploadAlt/> Select image
-                        </label>
+                        <label htmlFor="file-upload" className="custom-file-upload"><FaCloudUploadAlt/> Select image</label>
 
                         <input id="file-upload" type="file" onChange={(event) => {
                             setSelectedImage(event.target.files[0])
                             event.target.value = ""
                         }}/>
 
-                        {selectedImage.name && <div className="selected-image-name">{selectedImage.name}</div>}
-
                         {selectedImage.name &&
-                        <button className="submit-upload" onClick={uploadImage}>Upload image</button>}
+                        <React.Fragment>
+                            <div className="selected-image-name">{selectedImage.name}</div>
+                            <button className="submit-upload" onClick={uploadImage}>Upload image</button>
+                        </React.Fragment>}
                     </div>
 
                     <div className="extra-options">
@@ -123,10 +121,9 @@ function UserImages(props) {
 
                 </div>
 
-                {loading && <div className="gallery">Loading</div>}
-                {!loading && listOfUserImageIds.length !== 0 &&
-                <div className="gallery">{createImageContainers()}</div>}
-                {listOfUserImageIds.length === 0 && <div className="gallery">No images available</div>}
+                {loading
+                    ? <div className="gallery">Loading</div>
+                    : <div className="gallery">{createImageContainers()}</div>}
             </div>
         </div>
     );
