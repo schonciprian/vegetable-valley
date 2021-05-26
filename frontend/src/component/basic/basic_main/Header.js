@@ -49,7 +49,7 @@ function Header() {
                     <button className="dropdown-button">{user["username"]}</button>
                     <div className="dropdown-content">
                         <Link to="/profile">Settings</Link>
-                        <Link to="/user-images">Image</Link>
+                        <Link to="/gallery">Gallery</Link>
                         <Logout />
                     </div>
                 </div>}

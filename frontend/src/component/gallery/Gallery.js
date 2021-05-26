@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Image} from 'cloudinary-react';
-import '../../../../stylesheet/basic/basic_main/UserImages.css';
+import '../../stylesheet/basic/basic_main/UserImages.css';
 import {FaCloudUploadAlt} from "react-icons/fa";
-import {deleteRequest, getRequest, postRequest} from "../../../additionals/Requests";
+import {deleteRequest, getRequest, postRequest} from "../additionals/Requests";
 import {FaCheckCircle} from "react-icons/fa";
 import {GiMagnifyingGlass} from "react-icons/gi";
-import FullScreenImage from "../../../gallery/FullScreenImage";
+import FullScreenImage from "./FullScreenImage";
 
 
-function UserImages(props) {
+function Gallery(props) {
     const [listOfUserImages, setListOfUserImages] = useState([])
     const [fullScreenImageId, setFullScreenImageId] = useState("")
 
@@ -125,4 +125,4 @@ function UserImages(props) {
     );
 }
 
-export default UserImages;
+export default Gallery;
