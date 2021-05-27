@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.pagination .actual-page, .pagination, .img-per-page-dropdown-content div, .container .gallery .image-container {
+.pagination .actual-page, .pagination, .img-per-page-dropdown-content div, .container .gallery .image-container, .container .gallery .text {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,6 +102,11 @@
   padding: 10px;
   background-color: #1B223E;
   border-radius: 25px;
+}
+.container .gallery .text {
+  color: darkorange;
+  font-size: 1.5vw;
+  font-weight: bold;
 }
 .container .gallery .image-container {
   width: 100%;

@@ -121,6 +121,13 @@
     background-color: $background-color-normal;
     border-radius: $border-radius-container;
 
+    .text {
+      @extend %display-flex-center;
+      color: darkorange;
+      font-size: $font-size-normal-vw;
+      font-weight: bold;
+    }
+
     .image-container {
       @extend %display-flex-center;
       width: 100%;

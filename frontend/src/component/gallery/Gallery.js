@@ -47,7 +47,7 @@ function Gallery(props) {
     }
 
     const createImageContainers = () => {
-        if (listOfUserImages.length === 0) return "No images available";
+        if (listOfUserImages.length === 0) return <div className="text">No images available</div>;
 
         return listOfUserImages.slice(imagePerPage * actualPageNumber - imagePerPage, imagePerPage * actualPageNumber).map((image, index) => (
             <div key={index} className="image-container" data-imageid={image.image_id}
@@ -106,7 +106,9 @@ function Gallery(props) {
                 </div>
 
                 {loading
-                    ? <div className="gallery">Loading</div>
+                    ? <div className="gallery">
+                        <div className="text">Loading...</div>
+                    </div>
                     : <div className="gallery">{createImageContainers()}</div>}
 
                 <div className="pagination">
