@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.pagination .actual-page, .pagination, .img-per-page-dropdown-content div, .container .gallery .image-container, .container .gallery .text {
+.gallery-pagination .actual-page, .gallery-pagination, .img-per-page-dropdown-content div, .container .gallery .image-container, .container .gallery .text {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -232,27 +232,27 @@
   display: block;
 }
 
-.pagination {
+.gallery-pagination {
   width: 210px;
   background-color: #1B223E;
   margin: 10px auto;
   border-radius: 10px;
   padding: 10px;
 }
-.pagination .hidden {
+.gallery-pagination .hidden {
   visibility: hidden;
 }
-.pagination .pagination-icon {
+.gallery-pagination .pagination-icon {
   width: 30px;
   height: 30px;
   margin: 0 5px;
   border-radius: 50%;
   cursor: pointer;
 }
-.pagination .pagination-icon:hover {
+.gallery-pagination .pagination-icon:hover {
   color: darkorange;
 }
-.pagination .actual-page {
+.gallery-pagination .actual-page {
   width: 30px;
   height: 30px;
   font-size: 20px;

@@ -110,7 +110,7 @@ function Gallery(props) {
                     </div>
                     : <div className="gallery">{createImageContainers()}</div>}
 
-                {listOfUserImages.length !== 0 && <div className="pagination">
+                {listOfUserImages.length !== 0 && <div className="gallery-pagination">
                     <FiChevronsLeft className={`pagination-icon ${actualPageNumber > 2 ? "" : "hidden"}`}
                                     onClick={() => setActualPageNumber(1)}/>
 
