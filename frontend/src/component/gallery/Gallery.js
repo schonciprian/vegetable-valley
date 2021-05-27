@@ -29,7 +29,10 @@ function Gallery(props) {
     const removeImage = () => {
         deleteRequest('/api/remove-image', {image_ids: selectedImagesToRemove}, () => {
                 getRequest('/api/get-images', {},
-                    (response) => setListOfUserImages(response.data))
+                    (response) => {
+                    setListOfUserImages(response.data)
+                        if (actualPageNumber > response.data.length / imagePerPage) setActualPageNumber(Math.ceil(response.data.length / imagePerPage))
+                    })
             },
             (error) => console.log(error))
     }
