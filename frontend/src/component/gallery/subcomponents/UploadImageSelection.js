@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
-import {FaCloudUploadAlt} from "react-icons/fa";
+import {FaCloudUploadAlt, FaSpinner} from "react-icons/fa";
 import axios from "axios";
 import {postRequest} from "../../additionals/Requests";
 
 function UploadImageSelection(props) {
     const [selectedImageToUpload, setSelectedImageToUpload] = useState({});
+    const [uploading, setUploading] = useState(false)
 
     const uploadImage = () => {
+        setUploading(true);
         const formData = new FormData()
         formData.append('file', selectedImageToUpload)
         formData.append('upload_preset', 'ine3dksf')
@@ -26,6 +28,7 @@ function UploadImageSelection(props) {
             postRequest('/api/save-image', imageData,
                 () => {
                     props.setLoading(true)
+                    setUploading(false)
                     setSelectedImageToUpload({})
                 },
                 (error) => console.log(error.data))
@@ -47,6 +50,10 @@ function UploadImageSelection(props) {
                 <div className="selected-image-name">{selectedImageToUpload.name}</div>
                 <button className="submit-upload" onClick={uploadImage}>Upload image</button>
             </React.Fragment>}
+
+            {uploading && <FaSpinner className="uploading-loading-spinner"/>}
+            {/*<FaSpinner className="uploading-loading-spinner"/>*/}
+
         </div>
     );
 }

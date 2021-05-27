@@ -2,7 +2,7 @@
 
 %width-and-margin {
   width: 150px;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 %button-style {
@@ -317,5 +317,21 @@
     height: 30px;
     font-size: 20px;
     @extend %display-flex-center;
+  }
+}
+
+.uploading-loading-spinner {
+  width: 25px;
+  height: 25px;
+  color: $color-highlight;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
   }
 }

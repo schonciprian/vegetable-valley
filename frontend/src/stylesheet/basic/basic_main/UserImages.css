@@ -13,7 +13,7 @@
 
 .container .navigation-bar .upload-image-selection .submit-upload, .container .navigation-bar .upload-image-selection .selected-image-name, .container .navigation-bar .upload-image-selection .custom-file-upload {
   width: 150px;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 .img-per-page-dropdown-button, .container .navigation-bar .extra-options .remove-button,
@@ -256,6 +256,22 @@
   width: 30px;
   height: 30px;
   font-size: 20px;
+}
+
+.uploading-loading-spinner {
+  width: 25px;
+  height: 25px;
+  color: darkorange;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 /*# sourceMappingURL=UserImages.css.map */
