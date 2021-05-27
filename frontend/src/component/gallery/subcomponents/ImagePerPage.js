@@ -5,11 +5,19 @@ import {AiOutlineCaretRight} from "react-icons/ai";
 function ImagePerPage(props) {
     const imagePerPage = props.imagePerPage;
     const setImagePerPage = props.setImagePerPage;
-    const imagePerPageOptions = [3, 6, 9, 12, 15, 18, 21];
+    const actualPageNumber = props.actualPageNumber;
+    const setActualPageNumber = props.setActualPageNumber;
+    const imageCount = props.imageCount;
+    const imagePerPageOptions = [3, 6, 9, 12, 15];
+
+    const refreshPagination = (option) => {
+        setImagePerPage(option)
+        if (actualPageNumber > imageCount / option) setActualPageNumber(Math.ceil(imageCount / option))
+    }
 
     const createImagePerPageOptions = () => {
         return imagePerPageOptions.map((option, index) => (
-            <div key={index} onClick={() => {setImagePerPage(option)}}>
+            <div key={index} onClick={() => refreshPagination(option)}>
                 {imagePerPage === option && <AiOutlineCaretRight className="active"/>}
                 {option}
             </div>

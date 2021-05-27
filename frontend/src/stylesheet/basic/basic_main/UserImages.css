@@ -228,11 +228,14 @@
 }
 
 .pagination {
-  width: fit-content;
+  width: 210px;
   background-color: #1B223E;
   margin: 10px auto;
   border-radius: 10px;
   padding: 10px;
+}
+.pagination .hidden {
+  visibility: hidden;
 }
 .pagination .pagination-icon {
   width: 30px;

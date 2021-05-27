@@ -17,6 +17,8 @@ function Gallery(props) {
     const [imagePerPage, setImagePerPage] = useState(12)
     const [actualPageNumber, setActualPageNumber] = useState(1)
 
+    console.log(actualPageNumber);
+
     useEffect(() => {
         getRequest('/api/get-images', {}, (response) => {
             setLoading(false)
@@ -90,7 +92,11 @@ function Gallery(props) {
                                 : "Unselect all images"}
                         </div>
 
-                        <ImagePerPage imagePerPage={imagePerPage} setImagePerPage={setImagePerPage}/>
+                        <ImagePerPage imagePerPage={imagePerPage}
+                                      setImagePerPage={setImagePerPage}
+                                      actualPageNumber={actualPageNumber}
+                                      setActualPageNumber={setActualPageNumber}
+                                      imageCount={listOfUserImages.length}/>
                     </div>
 
                 </div>
@@ -100,11 +106,23 @@ function Gallery(props) {
                     : <div className="gallery">{createImageContainers()}</div>}
 
                 <div className="pagination">
-                        <FiChevronsLeft className="pagination-icon" onClick={() => setActualPageNumber(1)}/>
-                        <FiChevronLeft className="pagination-icon" onClick={() => actualPageNumber > 1 ? setActualPageNumber(actualPageNumber - 1) : setActualPageNumber(actualPageNumber)}/>
-                        <div className="actual-page">{actualPageNumber}</div>
-                        <FiChevronRight className="pagination-icon"onClick={() => actualPageNumber < Math.ceil(listOfUserImages.length / imagePerPage) ? setActualPageNumber(actualPageNumber + 1) : setActualPageNumber(actualPageNumber)}/>
-                        <FiChevronsRight className="pagination-icon" onClick={() => setActualPageNumber(Math.ceil(listOfUserImages.length / imagePerPage))}/>
+                    <FiChevronsLeft className={`pagination-icon ${actualPageNumber > 2 ? "" : "hidden"}`}
+                                    onClick={() => setActualPageNumber(1)}/>
+
+                    <FiChevronLeft className={`pagination-icon ${actualPageNumber > 1 ? "" : "hidden"}`}
+                                   onClick={() => actualPageNumber > 1
+                                       ? setActualPageNumber(actualPageNumber - 1)
+                                       : setActualPageNumber(actualPageNumber)}/>
+
+                    <div className="actual-page">{actualPageNumber}</div>
+
+                    <FiChevronRight className={`pagination-icon ${actualPageNumber < listOfUserImages.length / imagePerPage ? "" : "hidden"}`}
+                                    onClick={() => actualPageNumber < Math.ceil(listOfUserImages.length / imagePerPage)
+                                        ? setActualPageNumber(actualPageNumber + 1)
+                                        : setActualPageNumber(actualPageNumber)}/>
+
+                    <FiChevronsRight className={`pagination-icon ${actualPageNumber < listOfUserImages.length / imagePerPage -1 ? "" : "hidden"}`}
+                                     onClick={() => setActualPageNumber(Math.ceil(listOfUserImages.length / imagePerPage))}/>
                 </div>
             </div>
         </div>
