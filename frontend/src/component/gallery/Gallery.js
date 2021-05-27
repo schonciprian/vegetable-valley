@@ -17,8 +17,6 @@ function Gallery(props) {
     const [imagePerPage, setImagePerPage] = useState(12)
     const [actualPageNumber, setActualPageNumber] = useState(1)
 
-    console.log(actualPageNumber);
-
     useEffect(() => {
         getRequest('/api/get-images', {}, (response) => {
             setLoading(false)
