@@ -30,7 +30,8 @@ function Gallery(props) {
         deleteRequest('/api/remove-image', {image_ids: selectedImagesToRemove}, () => {
                 getRequest('/api/get-images', {},
                     (response) => {
-                    setListOfUserImages(response.data)
+                        setSelectedImagesToRemove([])
+                        setListOfUserImages(response.data)
                         if (actualPageNumber > response.data.length / imagePerPage) setActualPageNumber(Math.ceil(response.data.length / imagePerPage))
                     })
             },
@@ -119,13 +120,15 @@ function Gallery(props) {
 
                     <div className="actual-page">{actualPageNumber}</div>
 
-                    <FiChevronRight className={`pagination-icon ${actualPageNumber < listOfUserImages.length / imagePerPage ? "" : "hidden"}`}
-                                    onClick={() => actualPageNumber < Math.ceil(listOfUserImages.length / imagePerPage)
-                                        ? setActualPageNumber(actualPageNumber + 1)
-                                        : setActualPageNumber(actualPageNumber)}/>
+                    <FiChevronRight
+                        className={`pagination-icon ${actualPageNumber < listOfUserImages.length / imagePerPage ? "" : "hidden"}`}
+                        onClick={() => actualPageNumber < Math.ceil(listOfUserImages.length / imagePerPage)
+                            ? setActualPageNumber(actualPageNumber + 1)
+                            : setActualPageNumber(actualPageNumber)}/>
 
-                    <FiChevronsRight className={`pagination-icon ${actualPageNumber < listOfUserImages.length / imagePerPage -1 ? "" : "hidden"}`}
-                                     onClick={() => setActualPageNumber(Math.ceil(listOfUserImages.length / imagePerPage))}/>
+                    <FiChevronsRight
+                        className={`pagination-icon ${actualPageNumber < listOfUserImages.length / imagePerPage - 1 ? "" : "hidden"}`}
+                        onClick={() => setActualPageNumber(Math.ceil(listOfUserImages.length / imagePerPage))}/>
                 </div>
             </div>
         </div>
