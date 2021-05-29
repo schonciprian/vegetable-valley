@@ -144,7 +144,7 @@ function Gallery(props) {
                         <div className="color-dropdown">
                             <div className="color-dropdown-button"
                                  style={{backgroundColor: color}}
-                                 onClick={() => setShowColorDropdown(!showColorDropdown)}>Change color
+                                 onClick={() => setShowColorDropdown(!showColorDropdown)}>
                             </div>
                             <CirclePicker className="color-dropdown-content"
                                           circleSpacing="0"
