@@ -10,6 +10,7 @@ import ImagePerPage from "./subcomponents/ImagePerPage";
 import {FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight} from "react-icons/fi";
 import {CirclePicker} from "react-color";
 import {RiArrowDownSLine} from "react-icons/ri";
+import {AiOutlineCaretRight} from "react-icons/ai";
 
 
 function Gallery(props) {
@@ -26,6 +27,12 @@ function Gallery(props) {
     const availableColors = [
         "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688",
         "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "#607d8b"]
+    const [existingTags, setExistingTags] = useState([
+        {tagName: "First", color: "#e91e63"},
+        {tagName: "Second", color: "#795548"},
+        {tagName: "Third", color: "#2196f3"},
+        {tagName: "Forth", color: "#4caf50"},
+        ])
 
     useEffect(() => {
         getRequest('/api/get-images', {}, (response) => {
@@ -84,6 +91,14 @@ function Gallery(props) {
         })
     }
 
+    const returnExistingTags = () => {
+        // if (existingTags.length === 0) return
+
+        return existingTags.map((tag, index) => (
+                 <div key={index} className="tag" style={{backgroundColor: tag.color}}>{tag.tagName}</div>
+             ))
+    }
+
     return (
         <div>
             {fullScreenImageId.length !== 0 &&
@@ -119,7 +134,8 @@ function Gallery(props) {
                         <div className="color-dropdown">
                             <div className="color-dropdown-button"
                                  style={{backgroundColor: color}}
-                                 onClick={() => setShowColorDropdown(!showColorDropdown)}>Change color</div>
+                                 onClick={() => setShowColorDropdown(!showColorDropdown)}>Change color
+                            </div>
                             <CirclePicker className="color-dropdown-content"
                                           circleSpacing="0"
                                           color={color}
@@ -127,11 +143,25 @@ function Gallery(props) {
                                           onChangeComplete={(color) => setColor(color.hex)}/>
                         </div>
 
-                        <div onClick={() => console.log(newTagNameRef.current.value)}>Add</div>
+                        <div onClick={() => {
+                            const newItem = {tagName: newTagNameRef.current.value, color: color}
+                            setExistingTags((prevData) => ([
+                                ...prevData, newItem
+                            ]))
+                        }}>Add
+                        </div>
                     </div>
                     <div className="existing-tag">
-                        <div style={{color: color}}>First tag</div>
-                        <div style={{color: "red"}}>Second tag</div>
+                        {returnExistingTags()}
+                        {/*<div>{existingTags[0]}</div>*/}
+                        {/*{existingTags.forEach((tag, index) => (*/}
+                        {/*    console.log(index)*/}
+                        {/*))}*/}
+                        {/*{existingTags.map((tag, index) => (*/}
+                        {/*    <div style={{color: tag.color}}>{tag.tagName}</div>*/}
+                        {/*))}*/}
+                        {/*<div style={{color: color}}>First tag</div>*/}
+                        {/*<div style={{color: "red"}}>Second tag</div>*/}
                     </div>
                 </div>
 
