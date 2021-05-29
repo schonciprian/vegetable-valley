@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.gallery-pagination .actual-page, .gallery-pagination, .img-per-page-dropdown-content div, .container .gallery .image-container, .container .gallery .text {
+.tag-bar .existing-tag .tag, .gallery-pagination .actual-page, .gallery-pagination, .img-per-page-dropdown-content div, .container .gallery .image-container, .container .gallery .text {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,7 +104,7 @@
   grid-gap: 15px 20px;
   justify-content: space-evenly;
   min-height: 280px;
-  margin: 20px 0 0;
+  margin: 0;
   padding: 10px;
   background-color: #1B223E;
   border-radius: 25px;
@@ -284,15 +284,46 @@
   top: 70px;
   z-index: 2;
   background-color: #0F1329;
+  align-items: flex-start;
   border-top: 1px dashed darkorange;
   padding: 10px 0;
 }
 .tag-bar .add-new-tag {
-  width: 500px;
+  min-width: 400px;
   padding: 0 5px;
+  margin: 5px 0;
 }
-.tag-bar .add-new-tag .hide-color-picker {
-  display: none !important;
+.tag-bar .existing-tag {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  max-height: 80px;
+  overflow-y: scroll;
+}
+.tag-bar .existing-tag::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+.tag-bar .existing-tag::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+.tag-bar .existing-tag::-webkit-scrollbar-thumb {
+  background: #4B5682;
+  border-radius: 10px;
+}
+.tag-bar .existing-tag::-webkit-scrollbar-thumb:hover {
+  background: #7F8EC0;
+}
+.tag-bar .existing-tag::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+.tag-bar .existing-tag .tag {
+  width: 130px;
+  height: 30px;
+  margin: 5px;
+  border-radius: 10px;
 }
 
 .color-dropdown {
