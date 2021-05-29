@@ -22,7 +22,7 @@
   margin: 0 5px;
 }
 
-.color-dropdown-button, .img-per-page-dropdown-button, .container .navigation-bar .extra-options .remove-button,
+.img-per-page-dropdown-button, .container .navigation-bar .extra-options .remove-button,
 .container .navigation-bar .extra-options .select-all,
 .container .navigation-bar .extra-options .image-per-page, .container .navigation-bar .upload-image-selection .submit-upload, .container .navigation-bar .upload-image-selection .custom-file-upload {
   padding: 6px 12px;
@@ -34,7 +34,7 @@
   font-weight: bold;
   color: #eeeeee;
 }
-.color-dropdown-button:hover, .img-per-page-dropdown-button:hover, .container .navigation-bar .extra-options .remove-button:hover,
+.img-per-page-dropdown-button:hover, .container .navigation-bar .extra-options .remove-button:hover,
 .container .navigation-bar .extra-options .select-all:hover,
 .container .navigation-bar .extra-options .image-per-page:hover, .container .navigation-bar .upload-image-selection .submit-upload:hover, .container .navigation-bar .upload-image-selection .custom-file-upload:hover {
   color: darkorange;
@@ -318,7 +318,7 @@
   background-color: #4B5682;
 }
 .tag-bar .add-new-tag .add-tag-button {
-  width: 50px;
+  width: 100px;
   height: 30px;
   background-color: #1B223E;
   border-radius: 10px;
@@ -371,10 +371,12 @@
 }
 
 .color-dropdown-button {
-  width: 120px;
-  height: 18px;
+  padding: 0;
+  width: 100px;
+  height: 30px;
   position: relative;
   text-align: center;
+  border-radius: 10px;
 }
 
 .color-dropdown-content {
@@ -382,8 +384,8 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  right: -274px;
-  top: 0;
+  right: -87px;
+  top: 30px;
   background-color: #151A30;
   border: 1px solid #4B5682;
   z-index: 2;

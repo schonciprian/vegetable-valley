@@ -388,7 +388,7 @@
     }
 
     .add-tag-button {
-      width: 50px;
+      width: 100px;
       height: 30px;
       background-color: $background-color-normal;
       @extend %display-flex-center;
@@ -460,11 +460,12 @@
 }
 
 .color-dropdown-button {
-  @extend %button-style;
-  width: 120px;
-  height: 18px;
+  padding: 0;
+  width: 100px;
+  height: 30px;
   position: relative;
   text-align: center;
+  border-radius: 10px;
 }
 
 .color-dropdown-content {
@@ -473,9 +474,10 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  //top: 30px;
-  right: -274px;
-  top: 0;
+  //right: -274px;
+  //top: 0;
+  right: -87px;
+  top: 30px;
   background-color: #151A30;
   border: 1px solid #4B5682;
   z-index: 2;
