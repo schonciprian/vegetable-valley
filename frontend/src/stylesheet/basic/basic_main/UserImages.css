@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
-.tag-bar .existing-tag .tag, .gallery-pagination .actual-page, .gallery-pagination, .img-per-page-dropdown-content div, .container .gallery .image-container, .container .gallery .text {
+.tag-bar .existing-tag .tag, .tag-bar .add-new-tag .add-tag-button, .gallery-pagination .actual-page, .gallery-pagination, .img-per-page-dropdown-content div, .container .gallery .image-container, .container .gallery .text {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -292,6 +292,45 @@
   min-width: 400px;
   padding: 0 5px;
   margin: 5px 0;
+}
+.tag-bar .add-new-tag input {
+  width: 150px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  outline: none;
+  font-family: "Montserrat", sans-serif !important;
+  background-color: #1B223E;
+  color: #eeeeee;
+  transition: 200ms ease;
+}
+.tag-bar .add-new-tag input::placeholder {
+  font-family: "Montserrat", sans-serif !important;
+  color: #eeeeee;
+}
+.tag-bar .add-new-tag input:focus {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+  background-color: #4B5682;
+}
+.tag-bar .add-new-tag .add-tag-button {
+  width: 50px;
+  height: 30px;
+  background-color: #1B223E;
+  border-radius: 10px;
+  transition: 200ms ease;
+  cursor: pointer;
+}
+.tag-bar .add-new-tag .add-tag-button:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
 }
 .tag-bar .existing-tag {
   display: flex;

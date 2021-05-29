@@ -130,7 +130,17 @@ function Gallery(props) {
 
                 <div className="tag-bar">
                     <div className="add-new-tag">
-                        <input type="text" ref={newTagNameRef}/>
+                        <input type="text" ref={newTagNameRef} placeholder="Tag name"/>
+
+
+                        <div className="add-tag-button" onClick={() => {
+                            const newItem = {tagName: newTagNameRef.current.value, color: color}
+                            setExistingTags((prevData) => ([
+                                ...prevData, newItem
+                            ]))
+                        }}>Add
+                        </div>
+
                         <div className="color-dropdown">
                             <div className="color-dropdown-button"
                                  style={{backgroundColor: color}}
@@ -142,26 +152,9 @@ function Gallery(props) {
                                           colors={availableColors}
                                           onChangeComplete={(color) => setColor(color.hex)}/>
                         </div>
-
-                        <div onClick={() => {
-                            const newItem = {tagName: newTagNameRef.current.value, color: color}
-                            setExistingTags((prevData) => ([
-                                ...prevData, newItem
-                            ]))
-                        }}>Add
-                        </div>
                     </div>
                     <div className="existing-tag">
                         {returnExistingTags()}
-                        {/*<div>{existingTags[0]}</div>*/}
-                        {/*{existingTags.forEach((tag, index) => (*/}
-                        {/*    console.log(index)*/}
-                        {/*))}*/}
-                        {/*{existingTags.map((tag, index) => (*/}
-                        {/*    <div style={{color: tag.color}}>{tag.tagName}</div>*/}
-                        {/*))}*/}
-                        {/*<div style={{color: color}}>First tag</div>*/}
-                        {/*<div style={{color: "red"}}>Second tag</div>*/}
                     </div>
                 </div>
 

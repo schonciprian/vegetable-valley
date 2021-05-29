@@ -354,6 +354,58 @@
     padding: 0 5px;
     margin: 5px 0;
 
+    input {
+      width: 150px;
+      height: 30px;
+
+      padding: 0 10px;
+
+      border-radius: $border-radius-smaller;
+      border: 1px solid transparent;
+      outline: none;
+
+      font-family: $font-family-text !important;
+
+      background-color: $background-color-normal;
+      color: $color-text;
+
+      transition: 200ms ease;
+
+      &::placeholder {
+        font-family: $font-family-text !important;
+
+        color: $color-text;
+      }
+
+      &:focus {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+        -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+        background-color: $focus-color-lighter;
+      }
+    }
+
+    .add-tag-button {
+      width: 50px;
+      height: 30px;
+      background-color: $background-color-normal;
+      @extend %display-flex-center;
+      border-radius: 10px;
+
+      transition: 200ms ease;
+      cursor: pointer;
+
+      &:hover {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+        -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+      }
+    }
+
 
     //.hide-color-picker {
     //  display: none !important;
