@@ -138,7 +138,7 @@ function Gallery(props) {
                             setExistingTags((prevData) => ([
                                 ...prevData, newItem
                             ]))
-                        }}>Add
+                        }}>Add tag
                         </div>
 
                         <div className="color-dropdown">
