@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Image} from 'cloudinary-react';
 import '../../stylesheet/basic/basic_main/UserImages.css';
 import {deleteRequest, getRequest} from "../additionals/Requests";
@@ -8,6 +8,9 @@ import FullScreenImage from "./FullScreenImage";
 import UploadImageSelection from "./subcomponents/UploadImageSelection";
 import ImagePerPage from "./subcomponents/ImagePerPage";
 import {FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight} from "react-icons/fi";
+import {CirclePicker} from "react-color";
+import {RiArrowDownSLine} from "react-icons/ri";
+
 
 function Gallery(props) {
     const [listOfUserImages, setListOfUserImages] = useState([])
@@ -16,6 +19,13 @@ function Gallery(props) {
     const [loading, setLoading] = useState(true);
     const [imagePerPage, setImagePerPage] = useState(12)
     const [actualPageNumber, setActualPageNumber] = useState(1)
+
+    const newTagNameRef = useRef(null)
+    const [showColorDropdown, setShowColorDropdown] = useState(false)
+    const [color, setColor] = useState("#f44336")
+    const availableColors = [
+        "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688",
+        "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "#607d8b"]
 
     useEffect(() => {
         getRequest('/api/get-images', {}, (response) => {
@@ -101,7 +111,28 @@ function Gallery(props) {
                                                                         setActualPageNumber={setActualPageNumber}
                                                                         imageCount={listOfUserImages.length}/>}
                     </div>
+                </div>
 
+                <div className="tag-bar">
+                    <div className="add-new-tag">
+                        <input type="text" ref={newTagNameRef}/>
+                        <div className="color-dropdown">
+                            <div className="color-dropdown-button"
+                                 style={{backgroundColor: color}}
+                                 onClick={() => setShowColorDropdown(!showColorDropdown)}>Change color</div>
+                            <CirclePicker className="color-dropdown-content"
+                                          circleSpacing="0"
+                                          color={color}
+                                          colors={availableColors}
+                                          onChangeComplete={(color) => setColor(color.hex)}/>
+                        </div>
+
+                        <div onClick={() => console.log(newTagNameRef.current.value)}>Add</div>
+                    </div>
+                    <div className="existing-tag">
+                        <div style={{color: color}}>First tag</div>
+                        <div style={{color: "red"}}>Second tag</div>
+                    </div>
                 </div>
 
                 {loading
