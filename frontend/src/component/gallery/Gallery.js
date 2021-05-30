@@ -28,10 +28,10 @@ function Gallery(props) {
         "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688",
         "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "#607d8b"]
     const [existingTags, setExistingTags] = useState([
-        {tagName: "First", color: "#e91e63"},
-        {tagName: "Second", color: "#795548"},
-        {tagName: "Third", color: "#2196f3"},
-        {tagName: "Forth", color: "#4caf50"},
+        {tagName: "First", color: "#e91e63", imageId: ["ntbbiqljxaovxy5dsik6"]},
+        {tagName: "Second", color: "#795548", imageId: ["sxvbxkg5ww4azf2y7ren", "ntbbiqljxaovxy5dsik6"]},
+        {tagName: "Third", color: "#2196f3", imageId: ["sxvbxkg5ww4azf2y7ren"]},
+        {tagName: "Forth", color: "#4caf50", imageId: ["wkoff8gisjrvjrljzhad", "ntbbiqljxaovxy5dsik6"]},
         ])
 
     useEffect(() => {
@@ -68,10 +68,13 @@ function Gallery(props) {
             <div key={index} className="image-container" data-imageid={image.image_id}
                  onClick={() => toggleImageSelection(image)}>
                 <div className="image-tag-list">
-                    <div style={{backgroundColor: "#e91e63", width: "30px", height: "30px"}}/>
-                    <div style={{backgroundColor: "#795548", width: "30px", height: "30px"}}/>
-                    <div style={{backgroundColor: "#2196f3", width: "30px", height: "30px"}}/>
-                    <div style={{backgroundColor: "#4caf50", width: "30px", height: "30px"}}/>
+                    {existingTags.map(tag => (
+                        tag.imageId.includes(image.image_id) ? <div style={{backgroundColor: tag.color, width: "30px", height: "30px"}}/> : ""
+                    ))}
+
+                    {/*<div style={{backgroundColor: "#795548", width: "30px", height: "30px"}}/>*/}
+                    {/*<div style={{backgroundColor: "#2196f3", width: "30px", height: "30px"}}/>*/}
+                    {/*<div style={{backgroundColor: "#4caf50", width: "30px", height: "30px"}}/>*/}
                 </div>
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
                 <FaCheckCircle
@@ -140,7 +143,7 @@ function Gallery(props) {
 
 
                         <div className="add-tag-button" onClick={() => {
-                            const newItem = {tagName: newTagNameRef.current.value, color: color}
+                            const newItem = {tagName: newTagNameRef.current.value, color: color, imageId: []}
                             setExistingTags((prevData) => ([
                                 ...prevData, newItem
                             ]))
