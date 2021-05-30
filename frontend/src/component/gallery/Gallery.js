@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {Image} from 'cloudinary-react';
 import '../../stylesheet/basic/basic_main/UserImages.css';
 import {deleteRequest, getRequest} from "../additionals/Requests";
@@ -9,6 +9,7 @@ import UploadImageSelection from "./subcomponents/UploadImageSelection";
 import ImagePerPage from "./subcomponents/ImagePerPage";
 import {FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight} from "react-icons/fi";
 import {CirclePicker} from "react-color";
+import {GalleryPaginationContext} from "./contexts/GalleryPaginationContext";
 
 
 function Gallery(props) {
@@ -30,8 +31,9 @@ function Gallery(props) {
     const [fullScreenImageId, setFullScreenImageId] = useState("")
     const [selectedImagesToRemove, setSelectedImagesToRemove] = useState([])
     const [loading, setLoading] = useState(true);
-    const [imagePerPage, setImagePerPage] = useState(12)
-    const [actualPageNumber, setActualPageNumber] = useState(1)
+    // const [imagePerPage, setImagePerPage] = useState(12)
+    // const [actualPageNumber, setActualPageNumber] = useState(1)
+    const {imagePerPage, setImagePerPage, actualPageNumber, setActualPageNumber} = useContext(GalleryPaginationContext)
 
     const newTagNameRef = useRef(null)
     const [showColorDropdown, setShowColorDropdown] = useState(false)
