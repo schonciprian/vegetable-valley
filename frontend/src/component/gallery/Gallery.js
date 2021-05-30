@@ -67,6 +67,12 @@ function Gallery(props) {
         return listOfUserImages.slice(imagePerPage * actualPageNumber - imagePerPage, imagePerPage * actualPageNumber).map((image, index) => (
             <div key={index} className="image-container" data-imageid={image.image_id}
                  onClick={() => toggleImageSelection(image)}>
+                <div className="image-tag-list">
+                    <div style={{backgroundColor: "#e91e63", width: "30px", height: "30px"}}/>
+                    <div style={{backgroundColor: "#795548", width: "30px", height: "30px"}}/>
+                    <div style={{backgroundColor: "#2196f3", width: "30px", height: "30px"}}/>
+                    <div style={{backgroundColor: "#4caf50", width: "30px", height: "30px"}}/>
+                </div>
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
                 <FaCheckCircle
                     className={`remove-container ${selectedImagesToRemove.includes(image.image_id) ? " active" : ""}`}/>

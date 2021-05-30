@@ -115,9 +115,10 @@
   font-weight: bold;
 }
 .container .gallery .image-container {
+  flex-direction: column;
   width: 100%;
   max-width: 350px;
-  height: 250px;
+  height: 290px;
   background-color: #040617;
   border-radius: 10px;
   border: 1px solid #4B5682;
@@ -127,8 +128,24 @@
   border: 1px solid #7F8EC0;
   cursor: pointer;
 }
+.container .gallery .image-container:hover .image-tag-list {
+  border-bottom: 1px solid #7F8EC0;
+}
 .container .gallery .image-container:hover .magnifying-glass {
   display: block;
+}
+.container .gallery .image-container .image-tag-list {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+  top: 0;
+  padding: 5px 0;
+  border-bottom: 1px solid #4B5682;
+}
+.container .gallery .image-container .image-tag-list div {
+  margin: 0 5px;
+  border-radius: 50%;
 }
 .container .gallery .image-container img {
   pointer-events: none;
@@ -137,10 +154,11 @@
   height: auto;
   max-height: 240px;
   user-select: none;
+  margin-top: 40px;
 }
 .container .gallery .image-container .remove-container {
   position: absolute;
-  top: 10px;
+  top: 50px;
   left: 10px;
   color: darkorange;
   width: 25px;
@@ -153,7 +171,7 @@
 }
 .container .gallery .image-container .magnifying-glass {
   position: absolute;
-  top: 10px;
+  top: 50px;
   right: 10px;
   color: white;
   width: 25px;
