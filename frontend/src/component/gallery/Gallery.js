@@ -12,7 +12,21 @@ import {CirclePicker} from "react-color";
 
 
 function Gallery(props) {
-    const [listOfUserImages, setListOfUserImages] = useState([])
+    // const [listOfUserImages, setListOfUserImages] = useState([])
+    const [listOfUserImages, setListOfUserImages] = useState([
+        {id: 75, image_id: "ntbbiqljxaovxy5dsik6", original_filename: "screenshot (19)", format: "png", type: "upload", tagIds: [1,3]},
+        {id: 74, image_id: "sxvbxkg5ww4azf2y7ren", original_filename: "screenshot", format: "png", type: "upload", tagIds: [3,6]},
+        {id: 72, image_id: "wkoff8gisjrvjrljzhad", original_filename: "screenshot (16)", format: "png", type: "upload", tagIds: [1,2,3,4]},
+        {id: 70, image_id: "pnrudtk6td7jvytwjpqm", original_filename: "screenshot", format: "png", type: "upload", tagIds: [5]},
+        {id: 69, image_id: "rhiubkzlzwmd1egyqffh", original_filename: "screenshot (3)", format: "png", type: "upload", tagIds: [1,2]},
+        {id: 68, image_id: "mgw0wc8nrpqghitcydrk", original_filename: "screenshot (5)", format: "png", type: "upload", tagIds: [1,3,4,6]},
+        {id: 67, image_id: "it54mqm7dyk2l6eudlpl", original_filename: "screenshot (15)", format: "png", type: "upload", tagIds: [3,4]},
+        {id: 66, image_id: "jhrkgqitbm7klvzeo30l", original_filename: "my_garden_2", format: "jpg", type: "upload", tagIds: [4]},
+        {id: 65, image_id: "zu4ukdpxlyaheniorn4b", original_filename: "my_garden_3", format: "jpg", type: "upload", tagIds: [2,5]},
+        {id: 64, image_id: "yzejop0wsswmzemtihot", original_filename: "my_garden_4", format: "jpg", type: "upload", tagIds: [6]},
+        {id: 63, image_id: "a7quklorpwwuq1arg2by", original_filename: "my_garden_5", format: "jpg", type: "upload", tagIds: [2,4]},
+        {id: 62, image_id: "b3o3accatuxfv2jm6rca", original_filename: "my_garden_6", format: "jpg", type: "upload", tagIds: [1,4,5]},
+        {id: 61, image_id: "vgnah0wz5qhkpb2m0uv5", original_filename: "my_garden_1", format: "jpg", type: "upload", tagIds: [2,3]}])
     const [fullScreenImageId, setFullScreenImageId] = useState("")
     const [selectedImagesToRemove, setSelectedImagesToRemove] = useState([])
     const [loading, setLoading] = useState(true);
@@ -26,17 +40,20 @@ function Gallery(props) {
         "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688",
         "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "#607d8b"]
     const [existingTags, setExistingTags] = useState([
-        {tagName: "First", color: "#e91e63", imageId: ["ntbbiqljxaovxy5dsik6"]},
-        {tagName: "Second", color: "#795548", imageId: ["sxvbxkg5ww4azf2y7ren", "ntbbiqljxaovxy5dsik6"]},
-        {tagName: "Third", color: "#2196f3", imageId: ["sxvbxkg5ww4azf2y7ren"]},
-        {tagName: "Forth", color: "#4caf50", imageId: ["wkoff8gisjrvjrljzhad", "ntbbiqljxaovxy5dsik6"]},
-        ])
+        {id: 1, tagName: "First", color: "#e91e63"},
+        {id: 2, tagName: "Second", color: "#795548"},
+        {id: 3, tagName: "Third", color: "#2196f3"},
+        {id: 4, tagName: "Forth", color: "#4caf50"},
+        {id: 5, tagName: "Fifth", color: "#673ab7"},
+        {id: 6, tagName: "Sixth", color: "#ff9800"},
+    ])
 
     useEffect(() => {
-        getRequest('/api/get-images', {}, (response) => {
+        // getRequest('/api/get-images', {}, (response) => {
             setLoading(false)
-            setListOfUserImages(response.data)
-        })
+        //     setListOfUserImages(response.data)
+        // })
+
     }, [loading])
 
     const removeImage = () => {
@@ -66,13 +83,12 @@ function Gallery(props) {
             <div key={index} className="image-container" data-imageid={image.image_id}
                  onClick={() => toggleImageSelection(image)}>
                 <div className="image-tag-list">
+
                     {existingTags.map((tag, index) => (
-                        tag.imageId.includes(image.image_id) ? <div key={index} style={{backgroundColor: tag.color, width: "30px", height: "30px"}}/> : ""
+                        image.tagIds.includes(tag.id) ?
+                            <div key={index} style={{backgroundColor: tag.color, width: "30px", height: "30px"}}/> : ""
                     ))}
 
-                    {/*<div style={{backgroundColor: "#795548", width: "30px", height: "30px"}}/>*/}
-                    {/*<div style={{backgroundColor: "#2196f3", width: "30px", height: "30px"}}/>*/}
-                    {/*<div style={{backgroundColor: "#4caf50", width: "30px", height: "30px"}}/>*/}
                 </div>
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
                 <FaCheckCircle
@@ -102,8 +118,8 @@ function Gallery(props) {
         // if (existingTags.length === 0) return
 
         return existingTags.map((tag, index) => (
-                 <div key={index} className="tag" style={{backgroundColor: tag.color}}>{tag.tagName}</div>
-             ))
+            <div key={index} className="tag" style={{backgroundColor: tag.color}}>{tag.tagName}</div>
+        ))
     }
 
     return (
