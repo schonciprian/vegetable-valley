@@ -36,9 +36,9 @@ function Gallery(props) {
     const newTagNameRef = useRef(null)
     const [showColorDropdown, setShowColorDropdown] = useState(false)
     const [color, setColor] = useState("#f44336")
-    const availableColors = [
+    const [availableColors, setAvailableColors] = useState([
         "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688",
-        "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "#607d8b"]
+        "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "#607d8b"])
     const [existingTags, setExistingTags] = useState([
         {id: 1, tagName: "First", color: "#e91e63"},
         {id: 2, tagName: "Second", color: "#795548"},
@@ -54,7 +54,12 @@ function Gallery(props) {
         //     setListOfUserImages(response.data)
         // })
 
-    }, [loading])
+        const usedColors = existingTags.map((tag) => tag.color)
+        if (usedColors) {
+            setAvailableColors((availableColors) => availableColors.filter(color => !usedColors.includes(color)))
+        }
+
+    }, [loading, existingTags, color])
 
     const removeImage = () => {
         deleteRequest('/api/remove-image', {image_ids: selectedImagesToRemove}, () => {
@@ -152,7 +157,7 @@ function Gallery(props) {
                 </div>
 
                 <div className="tag-bar">
-                    <div className="add-new-tag">
+                    <div className="add-new-tag" style={availableColors.length === 0 ? {visibility: "hidden"} : {}}>
                         <input type="text" ref={newTagNameRef} placeholder="Tag name"/>
 
 
@@ -161,6 +166,7 @@ function Gallery(props) {
                             setExistingTags((prevData) => ([
                                 ...prevData, newItem
                             ]))
+                            setColor(availableColors[0] === color ? availableColors[1] : availableColors[0] )
                         }}>Add tag
                         </div>
 
