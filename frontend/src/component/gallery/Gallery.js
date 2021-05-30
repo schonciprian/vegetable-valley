@@ -6,7 +6,7 @@ import {FaCheckCircle} from "react-icons/fa";
 import {GiMagnifyingGlass} from "react-icons/gi";
 import FullScreenImage from "./FullScreenImage";
 import UploadImageSelection from "./subcomponents/UploadImageSelection";
-import ImagePerPage from "./subcomponents/ImagePerPage";
+import ImagePerPage from "./subcomponents/gallery_pagination/ImagePerPage";
 import {FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight} from "react-icons/fi";
 import {CirclePicker} from "react-color";
 import {GalleryPaginationContext} from "./contexts/GalleryPaginationContext";

@@ -1,12 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {RiArrowDownSLine} from "react-icons/ri";
 import {AiOutlineCaretRight} from "react-icons/ai";
+import {GalleryPaginationContext} from "../../contexts/GalleryPaginationContext";
 
 function ImagePerPage(props) {
-    const imagePerPage = props.imagePerPage;
-    const setImagePerPage = props.setImagePerPage;
-    const actualPageNumber = props.actualPageNumber;
-    const setActualPageNumber = props.setActualPageNumber;
+    const {imagePerPage, setImagePerPage, actualPageNumber, setActualPageNumber} = useContext(GalleryPaginationContext)
     const imageCount = props.imageCount;
     const imagePerPageOptions = [3, 6, 9, 12, 15];
 
