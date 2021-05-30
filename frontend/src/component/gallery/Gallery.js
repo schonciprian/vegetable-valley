@@ -188,11 +188,9 @@ function Gallery(props) {
                     </div>
                 </div>
 
-                {loading
-                    ? <div className="gallery">
-                        <div className="text">Loading...</div>
-                    </div>
-                    : <div className="gallery">{createImageContainers()}</div>}
+                <div className="gallery">
+                    {loading ? <div className="text">Loading...</div> : createImageContainers()}
+                </div>
 
                 <Pagination listOfUserImagesLength={listOfUserImages.length}/>
             </div>
