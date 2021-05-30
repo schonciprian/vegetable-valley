@@ -9,8 +9,6 @@ import UploadImageSelection from "./subcomponents/UploadImageSelection";
 import ImagePerPage from "./subcomponents/ImagePerPage";
 import {FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight} from "react-icons/fi";
 import {CirclePicker} from "react-color";
-import {RiArrowDownSLine} from "react-icons/ri";
-import {AiOutlineCaretRight} from "react-icons/ai";
 
 
 function Gallery(props) {
@@ -68,8 +66,8 @@ function Gallery(props) {
             <div key={index} className="image-container" data-imageid={image.image_id}
                  onClick={() => toggleImageSelection(image)}>
                 <div className="image-tag-list">
-                    {existingTags.map(tag => (
-                        tag.imageId.includes(image.image_id) ? <div style={{backgroundColor: tag.color, width: "30px", height: "30px"}}/> : ""
+                    {existingTags.map((tag, index) => (
+                        tag.imageId.includes(image.image_id) ? <div key={index} style={{backgroundColor: tag.color, width: "30px", height: "30px"}}/> : ""
                     ))}
 
                     {/*<div style={{backgroundColor: "#795548", width: "30px", height: "30px"}}/>*/}
@@ -156,7 +154,7 @@ function Gallery(props) {
                                  onClick={() => setShowColorDropdown(!showColorDropdown)}>
                             </div>
                             <CirclePicker className="color-dropdown-content"
-                                          circleSpacing="0"
+                                          circleSpacing={0}
                                           color={color}
                                           colors={availableColors}
                                           onChangeComplete={(color) => setColor(color.hex)}/>
