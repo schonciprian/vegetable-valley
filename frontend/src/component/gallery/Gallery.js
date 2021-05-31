@@ -12,6 +12,7 @@ import {CirclePicker} from "react-color";
 import {GalleryPaginationContext} from "./contexts/GalleryPaginationContext";
 import Pagination from "./subcomponents/gallery_pagination/Pagination";
 import {GalleryColorContext} from "./contexts/GalleryColorContext";
+import TagBar from "./subcomponents/gallery_tag/TagBar";
 
 
 function Gallery(props) {
@@ -35,18 +36,18 @@ function Gallery(props) {
     const [loading, setLoading] = useState(true);
     const {imagePerPage, setImagePerPage, actualPageNumber, setActualPageNumber} = useContext(GalleryPaginationContext)
 
-    const newTagNameRef = useRef(null)
-    const [showColorDropdown, setShowColorDropdown] = useState(false)
-    const {selectedColor, setSelectedColor, availableColors, setAvailableColors} = useContext(GalleryColorContext)
+    // const newTagNameRef = useRef(null)
+    // const [showColorDropdown, setShowColorDropdown] = useState(false)
+    // const {selectedColor, setSelectedColor, availableColors, setAvailableColors} = useContext(GalleryColorContext)
 
-    const [existingTags, setExistingTags] = useState([
-        {id: 1, tagName: "First", color: "#e91e63"},
-        {id: 2, tagName: "Second", color: "#795548"},
-        {id: 3, tagName: "Third", color: "#2196f3"},
-        {id: 4, tagName: "Forth", color: "#4caf50"},
-        {id: 5, tagName: "Fifth", color: "#673ab7"},
-        {id: 6, tagName: "Sixth", color: "#ff9800"},
-    ])
+    // const [existingTags, setExistingTags] = useState([
+    //     {id: 1, tagName: "First", color: "#e91e63"},
+    //     {id: 2, tagName: "Second", color: "#795548"},
+    //     {id: 3, tagName: "Third", color: "#2196f3"},
+    //     {id: 4, tagName: "Forth", color: "#4caf50"},
+    //     {id: 5, tagName: "Fifth", color: "#673ab7"},
+    //     {id: 6, tagName: "Sixth", color: "#ff9800"},
+    // ])
 
     useEffect(() => {
         // getRequest('/api/get-images', {}, (response) => {
@@ -54,12 +55,12 @@ function Gallery(props) {
         //     setListOfUserImages(response.data)
         // })
 
-        const usedColors = existingTags.map((tag) => tag.color)
-        if (usedColors) {
-            setAvailableColors((availableColors) => availableColors.filter(color => !usedColors.includes(color)))
-        }
+        // const usedColors = existingTags.map((tag) => tag.color)
+        // if (usedColors) {
+        //     setAvailableColors((availableColors) => availableColors.filter(color => !usedColors.includes(color)))
+        // }
 
-    }, [loading, existingTags, selectedColor])
+    }, [loading, /*existingTags, selectedColor*/])
 
     const removeImage = () => {
         deleteRequest('/api/remove-image', {image_ids: selectedImagesToRemove}, () => {
@@ -89,10 +90,10 @@ function Gallery(props) {
                  onClick={() => toggleImageSelection(image)}>
                 <div className="image-tag-list">
 
-                    {existingTags.map((tag, index) => (
-                        image.tagIds.includes(tag.id) ?
-                            <div key={index} style={{backgroundColor: tag.color, width: "30px", height: "30px"}}/> : ""
-                    ))}
+                    {/*{existingTags.map((tag, index) => (*/}
+                    {/*    image.tagIds.includes(tag.id) ?*/}
+                    {/*        <div key={index} style={{backgroundColor: tag.color, width: "30px", height: "30px"}}/> : ""*/}
+                    {/*))}*/}
 
                 </div>
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
@@ -119,13 +120,13 @@ function Gallery(props) {
         })
     }
 
-    const returnExistingTags = () => {
-        // if (existingTags.length === 0) return
-
-        return existingTags.map((tag, index) => (
-            <div key={index} className="tag" style={{backgroundColor: tag.color}}>{tag.tagName}</div>
-        ))
-    }
+    // const returnExistingTags = () => {
+    //     // if (existingTags.length === 0) return
+    //
+    //     return existingTags.map((tag, index) => (
+    //         <div key={index} className="tag" style={{backgroundColor: tag.color}}>{tag.tagName}</div>
+    //     ))
+    // }
 
     return (
         <div>
@@ -156,36 +157,38 @@ function Gallery(props) {
                     </div>
                 </div>
 
-                <div className="tag-bar">
-                    <div className="add-new-tag" style={availableColors.length === 0 ? {visibility: "hidden"} : {}}>
-                        <input type="text" ref={newTagNameRef} placeholder="Tag name"/>
+
+                <TagBar />
+                {/*<div className="tag-bar">*/}
+                {/*    <div className="add-new-tag" style={availableColors.length === 0 ? {visibility: "hidden"} : {}}>*/}
+                {/*        <input type="text" ref={newTagNameRef} placeholder="Tag name"/>*/}
 
 
-                        <div className="add-tag-button" onClick={() => {
-                            const newItem = {tagName: newTagNameRef.current.value, color: selectedColor, imageId: []}
-                            setExistingTags((prevData) => ([
-                                ...prevData, newItem
-                            ]))
-                            setSelectedColor(availableColors[0] === selectedColor ? availableColors[1] : availableColors[0] )
-                        }}>Add tag
-                        </div>
+                {/*        <div className="add-tag-button" onClick={() => {*/}
+                {/*            const newItem = {tagName: newTagNameRef.current.value, color: selectedColor, imageId: []}*/}
+                {/*            setExistingTags((prevData) => ([*/}
+                {/*                ...prevData, newItem*/}
+                {/*            ]))*/}
+                {/*            setSelectedColor(availableColors[0] === selectedColor ? availableColors[1] : availableColors[0] )*/}
+                {/*        }}>Add tag*/}
+                {/*        </div>*/}
 
-                        <div className="color-dropdown">
-                            <div className="color-dropdown-button"
-                                 style={{backgroundColor: selectedColor}}
-                                 onClick={() => setShowColorDropdown(!showColorDropdown)}>
-                            </div>
-                            <CirclePicker className="color-dropdown-content"
-                                          circleSpacing={0}
-                                          color={selectedColor}
-                                          colors={availableColors}
-                                          onChangeComplete={(color) => setSelectedColor(color.hex)}/>
-                        </div>
-                    </div>
-                    <div className="existing-tag">
-                        {returnExistingTags()}
-                    </div>
-                </div>
+                {/*        <div className="color-dropdown">*/}
+                {/*            <div className="color-dropdown-button"*/}
+                {/*                 style={{backgroundColor: selectedColor}}*/}
+                {/*                 onClick={() => setShowColorDropdown(!showColorDropdown)}>*/}
+                {/*            </div>*/}
+                {/*            <CirclePicker className="color-dropdown-content"*/}
+                {/*                          circleSpacing={0}*/}
+                {/*                          color={selectedColor}*/}
+                {/*                          colors={availableColors}*/}
+                {/*                          onChangeComplete={(color) => setSelectedColor(color.hex)}/>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*    <div className="existing-tag">*/}
+                {/*        {returnExistingTags()}*/}
+                {/*    </div>*/}
+                {/*</div>*/}
 
                 <div className="gallery">
                     {loading ? <div className="text">Loading...</div> : createImageContainers()}
