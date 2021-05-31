@@ -13,11 +13,10 @@ import {GalleryImagesContext} from "./contexts/GalleryImagesContext";
 
 
 function Gallery(props) {
-    // const [listOfUserImages, setListOfUserImages] = useState([])
     const [fullScreenImageId, setFullScreenImageId] = useState("")
     const [loading, setLoading] = useState(true);
 
-    const {listOfUserImages, setListOfUserImages, selectedImagesToRemove, setSelectedImagesToRemove} = useContext(GalleryImagesContext)
+    const {listOfUserImages, selectedImagesToRemove, setSelectedImagesToRemove} = useContext(GalleryImagesContext)
     const {imagePerPage, actualPageNumber} = useContext(GalleryPaginationContext)
     const {existingTags} = useContext(GalleryTagsContext)
 
@@ -69,12 +68,7 @@ function Gallery(props) {
             <div className="container">
                 <h1 className="title">Image gallery</h1>
 
-                <NavigationBar selectedImagesToRemove={selectedImagesToRemove}
-                               setSelectedImagesToRemove={setSelectedImagesToRemove}
-                               listOfUserImages={listOfUserImages}
-                               setListOfUserImages={setListOfUserImages}
-                               setLoading={setLoading}
-                />
+                <NavigationBar setLoading={setLoading}/>
 
                 <TagBar />
 
