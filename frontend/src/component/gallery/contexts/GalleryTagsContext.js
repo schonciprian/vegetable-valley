@@ -1,18 +1,20 @@
-import React, {useState, createContext, useRef} from "react";
+import React, {useState, createContext, useRef, useEffect} from "react";
+import {getRequest} from "../../additionals/Requests";
 
 export const GalleryTagsContext = createContext(null);
 
 export const GalleryTagsProvider = (props) => {
     const newTagNameRef = useRef(null)
+    const [existingTags, setExistingTags] = useState([])
 
-    const [existingTags, setExistingTags] = useState([
-        {id: 1, tagName: "First", color: "#e91e63"},
-        {id: 2, tagName: "Second", color: "#795548"},
-        {id: 3, tagName: "Third", color: "#2196f3"},
-        {id: 4, tagName: "Forth", color: "#4caf50"},
-        {id: 5, tagName: "Fifth", color: "#673ab7"},
-        {id: 6, tagName: "Sixth", color: "#ff9800"},
-    ])
+    useEffect(() => {
+        getRequest("/api/get-tags", {},
+            (response) => {
+                setExistingTags(response.data)
+            },
+            () => {
+            })
+    }, [])
 
     return (
         <GalleryTagsContext.Provider value={{
