@@ -10,6 +10,7 @@ import ImagePerPage from "./subcomponents/gallery_pagination/ImagePerPage";
 import {GalleryPaginationContext} from "./contexts/GalleryPaginationContext";
 import Pagination from "./subcomponents/gallery_pagination/Pagination";
 import TagBar from "./subcomponents/gallery_tag/TagBar";
+import {GalleryTagsContext} from "./contexts/GalleryTagsContext";
 
 
 function Gallery(props) {
@@ -32,7 +33,7 @@ function Gallery(props) {
     const [selectedImagesToRemove, setSelectedImagesToRemove] = useState([])
     const [loading, setLoading] = useState(true);
     const {imagePerPage, setImagePerPage, actualPageNumber, setActualPageNumber} = useContext(GalleryPaginationContext)
-
+    const {existingTags} = useContext(GalleryTagsContext)
 
     useEffect(() => {
         // getRequest('/api/get-images', {}, (response) => {
@@ -69,10 +70,10 @@ function Gallery(props) {
                  onClick={() => toggleImageSelection(image)}>
                 <div className="image-tag-list">
 
-                    {/*{existingTags.map((tag, index) => (*/}
-                    {/*    image.tagIds.includes(tag.id) ?*/}
-                    {/*        <div key={index} style={{backgroundColor: tag.color, width: "30px", height: "30px"}}/> : ""*/}
-                    {/*))}*/}
+                    {existingTags.map((tag, index) => (
+                        image.tagIds.includes(tag.id) ?
+                            <div key={index} style={{backgroundColor: tag.color, width: "30px", height: "30px"}}/> : ""
+                    ))}
 
                 </div>
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>

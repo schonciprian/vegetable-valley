@@ -1,28 +1,22 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {CirclePicker} from "react-color";
 import {GalleryColorContext} from "../../contexts/GalleryColorContext";
+import {GalleryTagsContext} from "../../contexts/GalleryTagsContext";
 
 function TagBar(props) {
-    const newTagNameRef = useRef(null)
-    const { showColorDropdown, setShowColorDropdown,
-            selectedColor, setSelectedColor,
-            availableColors, setAvailableColors } = useContext(GalleryColorContext)
-    const [existingTags, setExistingTags] = useState([
-        {id: 1, tagName: "First", color: "#e91e63"},
-        {id: 2, tagName: "Second", color: "#795548"},
-        {id: 3, tagName: "Third", color: "#2196f3"},
-        {id: 4, tagName: "Forth", color: "#4caf50"},
-        {id: 5, tagName: "Fifth", color: "#673ab7"},
-        {id: 6, tagName: "Sixth", color: "#ff9800"},
-    ])
+    const {
+        showColorDropdown, setShowColorDropdown,
+        selectedColor, setSelectedColor,
+        availableColors, setAvailableColors
+    } = useContext(GalleryColorContext)
+    const {newTagNameRef, existingTags, setExistingTags} = useContext(GalleryTagsContext)
 
     useEffect(() => {
         const usedColors = existingTags.map((tag) => tag.color)
         if (usedColors) {
             setAvailableColors((availableColors) => availableColors.filter(color => !usedColors.includes(color)))
         }
-
-    }, [existingTags, selectedColor])
+    }, [existingTags, selectedColor, setAvailableColors])
 
     const returnExistingTags = () => {
         return existingTags.map((tag, index) => (
@@ -41,7 +35,7 @@ function TagBar(props) {
                     setExistingTags((prevData) => ([
                         ...prevData, newItem
                     ]))
-                    setSelectedColor(availableColors[0] === selectedColor ? availableColors[1] : availableColors[0] )
+                    setSelectedColor(availableColors[0] === selectedColor ? availableColors[1] : availableColors[0])
                 }}>Add tag
                 </div>
 
