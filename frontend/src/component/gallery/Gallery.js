@@ -10,21 +10,22 @@ import TagBar from "./subcomponents/gallery_tag/TagBar";
 import {GalleryTagsContext} from "./contexts/GalleryTagsContext";
 import NavigationBar from "./subcomponents/NavigationBar";
 import {GalleryImagesContext} from "./contexts/GalleryImagesContext";
+import {getRequest} from "../additionals/Requests";
 
 
 function Gallery(props) {
     const [fullScreenImageId, setFullScreenImageId] = useState("")
     const [loading, setLoading] = useState(true);
 
-    const {listOfUserImages, selectedImagesToRemove, setSelectedImagesToRemove} = useContext(GalleryImagesContext)
+    const {listOfUserImages, setListOfUserImages, selectedImagesToRemove, setSelectedImagesToRemove} = useContext(GalleryImagesContext)
     const {imagePerPage, actualPageNumber} = useContext(GalleryPaginationContext)
     const {existingTags} = useContext(GalleryTagsContext)
 
     useEffect(() => {
-        // getRequest('/api/get-images', {}, (response) => {
+        getRequest('/api/get-images', {}, (response) => {
             setLoading(false)
-        //     setListOfUserImages(response.data)
-        // })
+            setListOfUserImages(response.data)
+        })
     }, [loading])
 
     const toggleImageSelection = (image) => {
@@ -43,10 +44,10 @@ function Gallery(props) {
                  onClick={() => toggleImageSelection(image)}>
                 <div className="image-tag-list">
 
-                    {existingTags.map((tag, index) => (
-                        image.tagIds.includes(tag.id) ?
-                            <div key={index} style={{backgroundColor: tag.color, width: "30px", height: "30px"}}/> : ""
-                    ))}
+                    {/*{existingTags.map((tag, index) => (*/}
+                    {/*    image.tagIds.includes(tag.id) ?*/}
+                    {/*        <div key={index} style={{backgroundColor: tag.color, width: "30px", height: "30px"}}/> : ""*/}
+                    {/*))}*/}
 
                 </div>
                 <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
