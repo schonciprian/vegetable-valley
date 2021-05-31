@@ -6,7 +6,7 @@ import {GalleryPaginationContext} from "../contexts/GalleryPaginationContext";
 import {GalleryImagesContext} from "../contexts/GalleryImagesContext";
 
 function NavigationBar(props) {
-    const {imagePerPage, setImagePerPage, actualPageNumber, setActualPageNumber} = useContext(GalleryPaginationContext)
+    const {imagePerPage, actualPageNumber, setActualPageNumber} = useContext(GalleryPaginationContext)
     const {listOfUserImages, setListOfUserImages, selectedImagesToRemove, setSelectedImagesToRemove} = useContext(GalleryImagesContext)
     const setLoading = props.setLoading
 
@@ -50,11 +50,7 @@ function NavigationBar(props) {
                         : "Unselect all images"}
                 </div>}
 
-                {listOfUserImages.length !== 0 && <ImagePerPage imagePerPage={imagePerPage}
-                                                                setImagePerPage={setImagePerPage}
-                                                                actualPageNumber={actualPageNumber}
-                                                                setActualPageNumber={setActualPageNumber}
-                                                                imageCount={listOfUserImages.length}/>}
+                {listOfUserImages.length !== 0 && <ImagePerPage imageCount={listOfUserImages.length}/>}
             </div>
         </div>
     );
