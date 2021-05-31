@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import {CirclePicker} from "react-color";
 import {GalleryColorContext} from "../../contexts/GalleryColorContext";
 import {GalleryTagsContext} from "../../contexts/GalleryTagsContext";
+import {postRequest} from "../../../additionals/Requests";
 
 function TagBar(props) {
     const {
@@ -24,20 +25,26 @@ function TagBar(props) {
         ))
     }
 
+    const addTag = () => {
+        const newItem = {tagName: newTagNameRef.current.value, color: selectedColor}
+
+        postRequest("/api/save-tag", newItem, () => {
+            setExistingTags((prevData) => ([
+                ...prevData, newItem
+            ]))
+            setSelectedColor(availableColors[0] === selectedColor ? availableColors[1] : availableColors[0])
+        }, (error) => {
+            console.log(error.data);
+        })
+
+    }
+
     return (
         <div className="tag-bar">
             <div className="add-new-tag" style={availableColors.length === 0 ? {visibility: "hidden"} : {}}>
                 <input type="text" ref={newTagNameRef} placeholder="Tag name"/>
 
-
-                <div className="add-tag-button" onClick={() => {
-                    const newItem = {tagName: newTagNameRef.current.value, color: selectedColor, imageId: []}
-                    setExistingTags((prevData) => ([
-                        ...prevData, newItem
-                    ]))
-                    setSelectedColor(availableColors[0] === selectedColor ? availableColors[1] : availableColors[0])
-                }}>Add tag
-                </div>
+                <div className="add-tag-button" onClick={() => addTag()}>Add tag</div>
 
                 <div className="color-dropdown">
                     <div className="color-dropdown-button"
