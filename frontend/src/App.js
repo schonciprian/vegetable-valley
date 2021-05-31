@@ -28,6 +28,7 @@ import Gallery from "./component/gallery/Gallery";
 import {GalleryPaginationProvider} from "./component/gallery/contexts/GalleryPaginationContext";
 import {GalleryColorProvider} from "./component/gallery/contexts/GalleryColorContext";
 import {GalleryTagsProvider} from "./component/gallery/contexts/GalleryTagsContext";
+import {GalleryImagesProvider} from "./component/gallery/contexts/GalleryImagesContext";
 
 
 function App() {
@@ -45,13 +46,15 @@ function App() {
                             <PrivateRoute exact path="/profile/" component={Profile}/>
 
                             <PrivateRoute exact path="/gallery/" render={() => (
-                                <GalleryPaginationProvider>
-                                    <GalleryTagsProvider>
-                                        <GalleryColorProvider>
-                                            <Gallery/>
-                                        </GalleryColorProvider>
-                                    </GalleryTagsProvider>
-                                </GalleryPaginationProvider>
+                                <GalleryImagesProvider>
+                                    <GalleryPaginationProvider>
+                                        <GalleryTagsProvider>
+                                            <GalleryColorProvider>
+                                                <Gallery/>
+                                            </GalleryColorProvider>
+                                        </GalleryTagsProvider>
+                                    </GalleryPaginationProvider>
+                                </GalleryImagesProvider>
                             )}/>
 
                             <PrivateRoute exact path="/grow-guides/"

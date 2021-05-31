@@ -3,14 +3,11 @@ import UploadImageSelection from "./UploadImageSelection";
 import ImagePerPage from "./gallery_pagination/ImagePerPage";
 import {deleteRequest, getRequest} from "../../additionals/Requests";
 import {GalleryPaginationContext} from "../contexts/GalleryPaginationContext";
+import {GalleryImagesContext} from "../contexts/GalleryImagesContext";
 
 function NavigationBar(props) {
     const {imagePerPage, setImagePerPage, actualPageNumber, setActualPageNumber} = useContext(GalleryPaginationContext)
-
-    const selectedImagesToRemove = props.selectedImagesToRemove
-    const setSelectedImagesToRemove = props.setSelectedImagesToRemove
-    const listOfUserImages = props.listOfUserImages
-    const setListOfUserImages = props.setListOfUserImages
+    const {listOfUserImages, setListOfUserImages, selectedImagesToRemove, setSelectedImagesToRemove} = useContext(GalleryImagesContext)
     const setLoading = props.setLoading
 
     const selectAllImages = () => {
