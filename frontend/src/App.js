@@ -26,6 +26,7 @@ import PageNotFound from "./PageNotFound";
 import {UserHasMoreGardenProvider} from "./component/garden_planner/garden_connected/garden_connected_context/UserHasMoreGarden";
 import Gallery from "./component/gallery/Gallery";
 import {GalleryPaginationProvider} from "./component/gallery/contexts/GalleryPaginationContext";
+import {GalleryColorProvider} from "./component/gallery/contexts/GalleryColorContext";
 
 
 function App() {
@@ -44,7 +45,9 @@ function App() {
 
                             <PrivateRoute exact path="/gallery/" render={() => (
                                 <GalleryPaginationProvider>
-                                    <Gallery/>
+                                    <GalleryColorProvider>
+                                        <Gallery/>
+                                    </GalleryColorProvider>
                                 </GalleryPaginationProvider>
                             )}/>
 

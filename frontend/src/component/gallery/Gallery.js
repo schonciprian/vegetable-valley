@@ -11,6 +11,7 @@ import {FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight} from "re
 import {CirclePicker} from "react-color";
 import {GalleryPaginationContext} from "./contexts/GalleryPaginationContext";
 import Pagination from "./subcomponents/gallery_pagination/Pagination";
+import {GalleryColorContext} from "./contexts/GalleryColorContext";
 
 
 function Gallery(props) {
@@ -36,10 +37,8 @@ function Gallery(props) {
 
     const newTagNameRef = useRef(null)
     const [showColorDropdown, setShowColorDropdown] = useState(false)
-    const [color, setColor] = useState("#f44336")
-    const [availableColors, setAvailableColors] = useState([
-        "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688",
-        "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "#607d8b"])
+    const {selectedColor, setSelectedColor, availableColors, setAvailableColors} = useContext(GalleryColorContext)
+
     const [existingTags, setExistingTags] = useState([
         {id: 1, tagName: "First", color: "#e91e63"},
         {id: 2, tagName: "Second", color: "#795548"},
@@ -60,7 +59,7 @@ function Gallery(props) {
             setAvailableColors((availableColors) => availableColors.filter(color => !usedColors.includes(color)))
         }
 
-    }, [loading, existingTags, color])
+    }, [loading, existingTags, selectedColor])
 
     const removeImage = () => {
         deleteRequest('/api/remove-image', {image_ids: selectedImagesToRemove}, () => {
@@ -163,24 +162,24 @@ function Gallery(props) {
 
 
                         <div className="add-tag-button" onClick={() => {
-                            const newItem = {tagName: newTagNameRef.current.value, color: color, imageId: []}
+                            const newItem = {tagName: newTagNameRef.current.value, color: selectedColor, imageId: []}
                             setExistingTags((prevData) => ([
                                 ...prevData, newItem
                             ]))
-                            setColor(availableColors[0] === color ? availableColors[1] : availableColors[0] )
+                            setSelectedColor(availableColors[0] === selectedColor ? availableColors[1] : availableColors[0] )
                         }}>Add tag
                         </div>
 
                         <div className="color-dropdown">
                             <div className="color-dropdown-button"
-                                 style={{backgroundColor: color}}
+                                 style={{backgroundColor: selectedColor}}
                                  onClick={() => setShowColorDropdown(!showColorDropdown)}>
                             </div>
                             <CirclePicker className="color-dropdown-content"
                                           circleSpacing={0}
-                                          color={color}
+                                          color={selectedColor}
                                           colors={availableColors}
-                                          onChangeComplete={(color) => setColor(color.hex)}/>
+                                          onChangeComplete={(color) => setSelectedColor(color.hex)}/>
                         </div>
                     </div>
                     <div className="existing-tag">
