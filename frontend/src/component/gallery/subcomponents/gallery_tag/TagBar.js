@@ -34,11 +34,16 @@ function TagBar(props) {
     }
 
     const addTag = () => {
-        const newItem = {tagName: newTagNameRef.current.value, color: selectedColor}
+        const newTag = {tagName: newTagNameRef.current.value, color: selectedColor}
 
-        postRequest("/api/save-tag", newItem, () => {
+        postRequest("/api/save-tag", newTag, (response) => {
+            const addedTag = {
+                id: response.data.id,
+                tagName: response.data.tag_name,
+                color: response.data.tag_color,
+            }
             setExistingTags((prevData) => ([
-                ...prevData, newItem
+                ...prevData, addedTag
             ]))
             setSelectedColor(availableColors[0] === selectedColor ? availableColors[1] : availableColors[0])
         }, (error) => {
