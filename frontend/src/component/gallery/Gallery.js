@@ -76,7 +76,7 @@ function Gallery(props) {
 
                 <GiMagnifyingGlass className="magnifying-glass" onClick={(event) => {
                     event.stopPropagation()
-                    setFullScreenImageId(image.id)
+                    setFullScreenImageId(image.image_id)
                 }}/>
             </div>
         ))
