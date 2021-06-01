@@ -487,7 +487,10 @@
       height: 30px;
       @extend %display-flex-center;
       margin: 5px;
+      opacity: 0.999;
+      position: relative;
       border-radius: 10px;
+      cursor: pointer;
     }
   }
 
