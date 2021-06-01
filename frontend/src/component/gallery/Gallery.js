@@ -40,9 +40,14 @@ function Gallery(props) {
         if (listOfUserImages.length === 0) return <div className="text">No images available</div>;
 
         return listOfUserImages.slice(imagePerPage * actualPageNumber - imagePerPage, imagePerPage * actualPageNumber).map((image, index) => (
-            <div key={index} className="image-container" data-imageid={image.image_id}
+            <div key={index} className={`image-container ${selectedImagesToRemove.includes(image.image_id) ? " active" : ""}`} data-imageid={image.image_id}
                  onClick={() => toggleImageSelection(image)}>
                 <div className="image-tag-list">
+
+                    {image.tagColor
+                        ? image.tagColor.split(',').map((color, index) => (
+                            <div key={index} style={{backgroundColor: color, width: "30px", height: "30px"}}/>))
+                        : ""}
 
                     {/*{existingTags.map((tag, index) => (*/}
                     {/*    image.tagIds.includes(tag.id) ?*/}
@@ -50,9 +55,10 @@ function Gallery(props) {
                     {/*))}*/}
 
                 </div>
-                <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
-                <FaCheckCircle
-                    className={`remove-container ${selectedImagesToRemove.includes(image.image_id) ? " active" : ""}`}/>
+                    <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
+
+                {/*<FaCheckCircle*/}
+                {/*    className={`remove-container ${selectedImagesToRemove.includes(image.image_id) ? " active" : ""}`}/>*/}
                 <GiMagnifyingGlass className="magnifying-glass" onClick={(event) => {
                     event.stopPropagation()
                     setFullScreenImageId(image.image_id)
@@ -71,7 +77,7 @@ function Gallery(props) {
 
                 <NavigationBar setLoading={setLoading}/>
 
-                <TagBar />
+                <TagBar/>
 
                 <div className="gallery">
                     {loading ? <div className="text">Loading...</div> : createImageContainers()}
