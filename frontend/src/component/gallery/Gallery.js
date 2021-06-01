@@ -30,10 +30,10 @@ function Gallery(props) {
     }, [loading, setListOfUserImages])
 
     const toggleImageSelection = (image) => {
-        if (selectedImagesToRemove.includes(image.image_id)) {
-            setSelectedImagesToRemove(selectedImagesToRemove.filter(item => item !== image.image_id))
+        if (selectedImagesToRemove.includes(image.id)) {
+            setSelectedImagesToRemove(selectedImagesToRemove.filter(item => item !== image.id))
         } else {
-            setSelectedImagesToRemove([...selectedImagesToRemove, image.image_id]);
+            setSelectedImagesToRemove([...selectedImagesToRemove, image.id]);
         }
     }
 
@@ -45,6 +45,7 @@ function Gallery(props) {
                 image_id: destination,
                 tag_id: draggedTag.id,
             }
+            console.log(data);
             postRequest('/api/save-tag-to-image', data,
                 () => {
                     sweetalertSidePopup(`"${draggedTag.tagName}" tag added to image`, 3000)
@@ -58,7 +59,7 @@ function Gallery(props) {
         if (listOfUserImages.length === 0) return <div className="text">No images available</div>;
 
         return listOfUserImages.slice(imagePerPage * actualPageNumber - imagePerPage, imagePerPage * actualPageNumber).map((image, index) => (
-            <div key={index} className={`image-container ${selectedImagesToRemove.includes(image.image_id) ? " active" : ""}`}
+            <div key={index} className={`image-container ${selectedImagesToRemove.includes(image.id) ? " active" : ""}`}
                  data-imageid={image.image_id}
                  data-id={image.id}
                  onClick={() => toggleImageSelection(image)}>
@@ -76,7 +77,7 @@ function Gallery(props) {
 
                 <GiMagnifyingGlass className="magnifying-glass" onClick={(event) => {
                     event.stopPropagation()
-                    setFullScreenImageId(image.image_id)
+                    setFullScreenImageId(image.id)
                 }}/>
             </div>
         ))

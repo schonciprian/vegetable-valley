@@ -17,8 +17,8 @@ function NavigationBar(props) {
         }
 
         listOfUserImages.forEach(image => {
-            if (!selectedImagesToRemove.includes(image.image_id)) {
-                setSelectedImagesToRemove(prevData => ([...prevData, image.image_id]))
+            if (!selectedImagesToRemove.includes(image.id)) {
+                setSelectedImagesToRemove(prevData => ([...prevData, image.id]))
             }
         })
     }
