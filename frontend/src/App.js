@@ -29,6 +29,7 @@ import {GalleryPaginationProvider} from "./component/gallery/contexts/GalleryPag
 import {GalleryColorProvider} from "./component/gallery/contexts/GalleryColorContext";
 import {GalleryTagsProvider} from "./component/gallery/contexts/GalleryTagsContext";
 import {GalleryImagesProvider} from "./component/gallery/contexts/GalleryImagesContext";
+import {GalleryDraggedTagProvider} from "./component/gallery/contexts/GalleryDraggedTag";
 
 
 function App() {
@@ -50,7 +51,9 @@ function App() {
                                     <GalleryPaginationProvider>
                                         <GalleryTagsProvider>
                                             <GalleryColorProvider>
-                                                <Gallery/>
+                                                <GalleryDraggedTagProvider>
+                                                    <Gallery/>
+                                                </GalleryDraggedTagProvider>
                                             </GalleryColorProvider>
                                         </GalleryTagsProvider>
                                     </GalleryPaginationProvider>

@@ -3,6 +3,7 @@ import {CirclePicker} from "react-color";
 import {GalleryColorContext} from "../../contexts/GalleryColorContext";
 import {GalleryTagsContext} from "../../contexts/GalleryTagsContext";
 import {postRequest} from "../../../additionals/Requests";
+import {GalleryDraggedTagContext} from "../../contexts/GalleryDraggedTag";
 
 function TagBar(props) {
     const {
@@ -11,6 +12,7 @@ function TagBar(props) {
         availableColors, setAvailableColors
     } = useContext(GalleryColorContext)
     const {newTagNameRef, existingTags, setExistingTags} = useContext(GalleryTagsContext)
+    const {setDraggedTag} = useContext(GalleryDraggedTagContext)
 
     useEffect(() => {
         const usedColors = existingTags.map((tag) => tag.color)
@@ -19,9 +21,15 @@ function TagBar(props) {
         }
     }, [existingTags, selectedColor, setAvailableColors])
 
+    const onDrag = (event, tag) => {
+        event.preventDefault();
+        setDraggedTag(tag)
+    }
+
     const returnExistingTags = () => {
         return existingTags.map((tag, index) => (
-            <div key={index} className="tag" style={{backgroundColor: tag.color}}>{tag.tagName}</div>
+            <div key={index} className="tag" style={{backgroundColor: tag.color}}
+                 draggable onDrag={(event) => onDrag(event, tag)}>{tag.tagName}</div>
         ))
     }
 
