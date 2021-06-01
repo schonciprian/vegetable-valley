@@ -6,7 +6,7 @@ import FullScreenImage from "./FullScreenImage";
 import {GalleryPaginationContext} from "./contexts/GalleryPaginationContext";
 import Pagination from "./subcomponents/gallery_pagination/Pagination";
 import TagBar from "./subcomponents/gallery_tag/TagBar";
-import NavigationBar from "./subcomponents/NavigationBar";
+import NavigationBar from "./subcomponents/gallery_navigation/NavigationBar";
 import {GalleryImagesContext} from "./contexts/GalleryImagesContext";
 import {getRequest, postRequest} from "../additionals/Requests";
 import {sweetalertSidePopup} from "../additionals/SweetAlert";

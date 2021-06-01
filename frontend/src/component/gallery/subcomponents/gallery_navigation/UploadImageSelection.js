@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {FaCloudUploadAlt, FaSpinner} from "react-icons/fa";
 import axios from "axios";
-import {postRequest} from "../../additionals/Requests";
+import {postRequest} from "../../../additionals/Requests";
 
 function UploadImageSelection(props) {
     const [selectedImageToUpload, setSelectedImageToUpload] = useState({});

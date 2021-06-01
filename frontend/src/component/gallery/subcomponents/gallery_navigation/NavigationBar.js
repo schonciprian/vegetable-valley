@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import UploadImageSelection from "./UploadImageSelection";
-import ImagePerPage from "./gallery_pagination/ImagePerPage";
-import {deleteRequest, getRequest} from "../../additionals/Requests";
-import {GalleryPaginationContext} from "../contexts/GalleryPaginationContext";
-import {GalleryImagesContext} from "../contexts/GalleryImagesContext";
+import ImagePerPage from "../gallery_pagination/ImagePerPage";
+import {deleteRequest, getRequest} from "../../../additionals/Requests";
+import {GalleryPaginationContext} from "../../contexts/GalleryPaginationContext";
+import {GalleryImagesContext} from "../../contexts/GalleryImagesContext";
 
 function NavigationBar(props) {
     const {imagePerPage, actualPageNumber, setActualPageNumber} = useContext(GalleryPaginationContext)
