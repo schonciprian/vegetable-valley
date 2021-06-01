@@ -45,7 +45,6 @@ function Gallery(props) {
                 image_id: destination,
                 tag_id: draggedTag.id,
             }
-            console.log(data);
             postRequest('/api/save-tag-to-image', data,
                 () => {
                     sweetalertSidePopup(`"${draggedTag.tagName}" tag added to image`, 3000)
