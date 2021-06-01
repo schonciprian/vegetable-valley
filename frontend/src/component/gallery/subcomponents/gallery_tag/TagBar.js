@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {CirclePicker} from "react-color";
 import {GalleryColorContext} from "../../contexts/GalleryColorContext";
 import {GalleryTagsContext} from "../../contexts/GalleryTagsContext";
@@ -6,6 +6,7 @@ import {postRequest} from "../../../additionals/Requests";
 import {GalleryDraggedTagContext} from "../../contexts/GalleryDraggedTag";
 
 function TagBar(props) {
+    const [tagInputError, setTagInputError] = useState(false)
     const {
         showColorDropdown, setShowColorDropdown,
         selectedColor, setSelectedColor,
@@ -34,8 +35,12 @@ function TagBar(props) {
     }
 
     const addTag = () => {
-        const newTag = {tagName: newTagNameRef.current.value, color: selectedColor}
+        if (newTagNameRef.current.value.length === 0) {
+            setTagInputError(true)
+            return
+        }
 
+        const newTag = {tagName: newTagNameRef.current.value, color: selectedColor}
         postRequest("/api/save-tag", newTag, (response) => {
             const addedTag = {
                 id: response.data.id,
@@ -55,7 +60,9 @@ function TagBar(props) {
     return (
         <div className="tag-bar">
             <div className="add-new-tag" style={availableColors.length === 0 ? {visibility: "hidden"} : {}}>
-                <input type="text" ref={newTagNameRef} placeholder="Tag name"/>
+                <input className={tagInputError ? "input-error" : ""}
+                       type="text" ref={newTagNameRef} placeholder="Tag name"
+                       onClick={() => setTagInputError(false)}/>
 
                 <div className="add-tag-button" onClick={() => addTag()}>Add tag</div>
 
