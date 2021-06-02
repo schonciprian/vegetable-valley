@@ -396,6 +396,9 @@
   border-radius: 10px;
   cursor: pointer;
 }
+.tag-bar .existing-tag .active {
+  border: 2px solid darkorange;
+}
 
 .color-dropdown {
   position: relative;

@@ -12,7 +12,7 @@ function TagBar(props) {
         selectedColor, setSelectedColor,
         availableColors, setAvailableColors
     } = useContext(GalleryColorContext)
-    const {newTagNameRef, existingTags, setExistingTags, setActiveFilterTag} = useContext(GalleryTagsContext)
+    const {newTagNameRef, existingTags, setExistingTags, activeFilterTag, setActiveFilterTag} = useContext(GalleryTagsContext)
     const {setDraggedTag} = useContext(GalleryDraggedTagContext)
 
     useEffect(() => {
@@ -29,7 +29,7 @@ function TagBar(props) {
 
     const returnExistingTags = () => {
         return existingTags.map((tag, index) => (
-            <div key={index} className="tag" style={{backgroundColor: tag.color}}
+            <div key={index} className={`tag ${activeFilterTag === tag.id ? "active" : ""}`} style={{backgroundColor: tag.color}}
                  draggable onDrag={(event) => onDrag(event, tag)}
                  onClick={() => {
                      setActiveFilterTag(tag.id)
