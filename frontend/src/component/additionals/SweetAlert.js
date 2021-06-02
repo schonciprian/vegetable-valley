@@ -66,3 +66,20 @@ export const authenticationFeedbackPopUp = (title, message, type, timeout, histo
         swal.close();
     }, timeout);
 }
+
+export const confirmationWarningPopup = (title, text, callbackYes, callbackNo) => {
+    swal({
+        title: title,
+        text: text,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                callbackYes()
+            } else {
+                callbackNo()
+            }
+        });
+}

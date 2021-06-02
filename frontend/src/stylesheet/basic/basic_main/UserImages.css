@@ -450,4 +450,19 @@
   display: flex !important;
 }
 
+.swal-icon--warning {
+  border-color: red !important;
+}
+.swal-icon--warning .swal-icon--warning__body,
+.swal-icon--warning .swal-icon--warning__dot {
+  background-color: red !important;
+}
+
+.swal-footer {
+  text-align: center;
+}
+.swal-footer .swal-button-container button {
+  margin: 0 10px;
+}
+
 /*# sourceMappingURL=UserImages.css.map */

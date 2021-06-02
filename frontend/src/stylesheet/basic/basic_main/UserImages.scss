@@ -555,3 +555,19 @@
 .color-dropdown:hover .color-dropdown-content {
   display: flex !important;
 }
+
+
+.swal-icon--warning {
+  border-color: red !important;
+  .swal-icon--warning__body,
+  .swal-icon--warning__dot {
+    background-color: red !important;
+  }
+}
+.swal-footer {
+  text-align: center;
+
+  .swal-button-container button {
+    margin: 0 10px;
+  }
+}

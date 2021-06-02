@@ -9,9 +9,10 @@ import TagBar from "./subcomponents/gallery_tag/TagBar";
 import NavigationBar from "./subcomponents/gallery_navigation/NavigationBar";
 import {GalleryImagesContext} from "./contexts/GalleryImagesContext";
 import {deleteRequest, getRequest, postRequest} from "../additionals/Requests";
-import {sweetalertSidePopup} from "../additionals/SweetAlert";
+import {confirmationWarningPopup, sweetalertSidePopup} from "../additionals/SweetAlert";
 import {GalleryDraggedTagContext} from "./contexts/GalleryDraggedTag";
 import {GalleryTagsContext} from "./contexts/GalleryTagsContext";
+import swal from "sweetalert";
 
 
 function Gallery(props) {
@@ -82,10 +83,39 @@ function Gallery(props) {
             image_id: event.target.parentElement.parentNode.dataset.id,
             tag_id: event.target.dataset.id,
         }
-        deleteRequest('/api/remove-tag-from-image', data, () => {
-            sweetalertSidePopup(`"${event.target.dataset.name}" tag removed from image`, 3000)
-            setLoading(true)
-        })
+        confirmationWarningPopup(
+            "Are you sure?",
+            "",
+            () => {
+                deleteRequest('/api/remove-tag-from-image', data, () => {
+                sweetalertSidePopup(`"${event.target.dataset.name}" tag removed from image`, 3000)
+                setLoading(true)
+            })},
+            () => {})
+        // swal({
+        //     title: "Are you sure?",
+        //     text: "Once deleted, you will not be able to recover this imaginary file!",
+        //     icon: "warning",
+        //     buttons: true,
+        //     dangerMode: true,
+        // })
+        //     .then((willDelete) => {
+        //         if (willDelete) {
+        //             // swal("Poof! Your imaginary file has been deleted!", {
+        //             //     icon: "success",
+        //             // });
+        //             deleteRequest('/api/remove-tag-from-image', data, () => {
+        //                 sweetalertSidePopup(`"${event.target.dataset.name}" tag removed from image`, 3000)
+        //                 setLoading(true)
+        //             })
+        //         } else {
+        //             // swal("Your imaginary file is safe!");
+        //         }
+        //     });
+        // deleteRequest('/api/remove-tag-from-image', data, () => {
+        //     sweetalertSidePopup(`"${event.target.dataset.name}" tag removed from image`, 3000)
+        //     setLoading(true)
+        // })
     }
 
     const createImageContainers = () => {
