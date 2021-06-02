@@ -6,6 +6,7 @@ export const GalleryTagsContext = createContext(null);
 export const GalleryTagsProvider = (props) => {
     const newTagNameRef = useRef(null)
     const [existingTags, setExistingTags] = useState([])
+    const [activeFilterTag, setActiveFilterTag] = useState(null)
 
     useEffect(() => {
         getRequest("/api/get-tags", {},
@@ -19,7 +20,8 @@ export const GalleryTagsProvider = (props) => {
     return (
         <GalleryTagsContext.Provider value={{
             newTagNameRef,
-            existingTags, setExistingTags
+            existingTags, setExistingTags,
+            activeFilterTag, setActiveFilterTag
         }}>
             {props.children}
         </GalleryTagsContext.Provider>

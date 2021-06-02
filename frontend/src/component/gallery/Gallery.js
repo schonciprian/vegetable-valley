@@ -11,16 +11,18 @@ import {GalleryImagesContext} from "./contexts/GalleryImagesContext";
 import {getRequest, postRequest} from "../additionals/Requests";
 import {sweetalertSidePopup} from "../additionals/SweetAlert";
 import {GalleryDraggedTagContext} from "./contexts/GalleryDraggedTag";
+import {GalleryTagsContext} from "./contexts/GalleryTagsContext";
 
 
 function Gallery(props) {
     const [fullScreenImageId, setFullScreenImageId] = useState("")
     const [loading, setLoading] = useState(true);
+    const [visibleImages, setVisibleImages] = useState([])
 
     const {listOfUserImages, setListOfUserImages, selectedImagesToRemove, setSelectedImagesToRemove} = useContext(GalleryImagesContext)
     const {imagePerPage, actualPageNumber} = useContext(GalleryPaginationContext)
     const {draggedTag, setDraggedTag} = useContext(GalleryDraggedTagContext)
-
+    const {activeFilterTag} = useContext(GalleryTagsContext)
 
     useEffect(() => {
         getRequest('/api/get-images', {}, (response) => {
@@ -28,6 +30,15 @@ function Gallery(props) {
             setListOfUserImages(response.data)
         })
     }, [loading, setListOfUserImages])
+
+    useEffect(() => {
+        if (!activeFilterTag) return
+
+        setVisibleImages(listOfUserImages.filter((image) => {
+            const tagIds = image.tagId.split(',')
+            if (tagIds.includes(activeFilterTag.toString())) return image
+        }))
+    }, [activeFilterTag])
 
     const toggleImageSelection = (image) => {
         if (selectedImagesToRemove.includes(image.id)) {
@@ -40,7 +51,9 @@ function Gallery(props) {
     const saveTagToImage = (event) => {
         const tags = event.target.childNodes
         let alreadyExistedTag = false;
-        tags.forEach(tag => {if (tag.dataset.name === draggedTag.tagName) alreadyExistedTag = true})
+        tags.forEach(tag => {
+            if (tag.dataset.name === draggedTag.tagName) alreadyExistedTag = true
+        })
 
         if (alreadyExistedTag) return
 
@@ -60,9 +73,9 @@ function Gallery(props) {
     }
 
     const createImageContainers = () => {
-        if (listOfUserImages.length === 0) return <div className="text">No images available</div>;
+        if (visibleImages.length === 0) return <div className="text">No images available</div>;
 
-        return listOfUserImages.slice(imagePerPage * actualPageNumber - imagePerPage, imagePerPage * actualPageNumber).map((image, index) => (
+        return visibleImages.slice(imagePerPage * actualPageNumber - imagePerPage, imagePerPage * actualPageNumber).map((image, index) => (
             <div key={index} className={`image-container ${selectedImagesToRemove.includes(image.id) ? " active" : ""}`}
                  data-imageid={image.image_id}
                  data-id={image.id}
@@ -73,11 +86,12 @@ function Gallery(props) {
 
                     {image.tagColor
                         ? image.tagColor.split(',').map((color, colorIndex) => (
-                            <div key={colorIndex} data-name={image.tagName.split(',')[colorIndex]} style={{backgroundColor: color, width: "30px", height: "30px"}}/>))
+                            <div key={colorIndex} data-name={image.tagName.split(',')[colorIndex]}
+                                 style={{backgroundColor: color, width: "30px", height: "30px"}}/>))
                         : ""}
 
                 </div>
-                    <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
+                <Image cloudName="dfvo9ybxe" publicId={image.image_id}/>
 
                 <GiMagnifyingGlass className="magnifying-glass" onClick={(event) => {
                     event.stopPropagation()
@@ -103,7 +117,7 @@ function Gallery(props) {
                     {loading ? <div className="text">Loading...</div> : createImageContainers()}
                 </div>
 
-                <Pagination listOfUserImagesLength={listOfUserImages.length}/>
+                <Pagination listOfUserImagesLength={visibleImages.length}/>
             </div>
         </div>
     );
