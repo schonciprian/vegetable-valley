@@ -28,11 +28,15 @@ function Gallery(props) {
         getRequest('/api/get-images', {}, (response) => {
             setLoading(false)
             setListOfUserImages(response.data)
+            setVisibleImages(response.data)
         })
     }, [loading, setListOfUserImages])
 
     useEffect(() => {
-        if (!activeFilterTag) return
+        if (activeFilterTag == null) {
+            setVisibleImages(listOfUserImages)
+            return
+        }
 
         setVisibleImages(listOfUserImages.filter((image) => {
             const tagIds = image.tagId.split(',')
