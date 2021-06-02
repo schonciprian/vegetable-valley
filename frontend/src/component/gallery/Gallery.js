@@ -84,7 +84,7 @@ function Gallery(props) {
 
         confirmationWarningPopup(
             "Are you sure?",
-            `Do you want to remove <i style="color: darkorange">${event.target.dataset.name}</i> tag from this image?`,
+            `Do you want to remove [<i style="color: darkorange">${event.target.dataset.name}</i>] tag from this image?`,
             () => {
                 deleteRequest('/api/remove-tag-from-image', data, () => {
                     sweetalertSidePopup(`"${event.target.dataset.name}" tag removed from image`, 3000)
@@ -106,16 +106,15 @@ function Gallery(props) {
                 <div className="image-tag-list"
                      onDragOver={(event => event.preventDefault())}
                      onDrop={(event) => saveTagToImage(event)}
-                     onClick={event => {
-                         removeTagFromImage(event)
-                     }}>
+                     onClick={event => event.stopPropagation()}>
 
                     {image.tagColor
                         ? image.tagColor.split(',').map((color, colorIndex) => (
                             <div key={colorIndex}
                                  data-id={image.tagId.split(',')[colorIndex]}
                                  data-name={image.tagName.split(',')[colorIndex]}
-                                 style={{backgroundColor: color, width: "30px", height: "30px"}}/>))
+                                 style={{backgroundColor: color, width: "30px", height: "30px"}}
+                                 onClick={event => removeTagFromImage(event)}/>))
                         : ""}
 
                 </div>
