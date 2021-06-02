@@ -155,10 +155,12 @@
   top: 0;
   padding: 5px 0;
   border-bottom: 1px solid #4B5682;
+  cursor: auto;
 }
 .container .gallery .image-container .image-tag-list div {
   margin: 0 5px;
   border-radius: 50%;
+  cursor: pointer;
 }
 .container .gallery .image-container img {
   pointer-events: none;

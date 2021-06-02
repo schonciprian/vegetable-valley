@@ -86,7 +86,8 @@ function Gallery(props) {
                  onClick={() => toggleImageSelection(image)}>
                 <div className="image-tag-list"
                      onDragOver={(event => event.preventDefault())}
-                     onDrop={(event) => saveTagToImage(event)}>
+                     onDrop={(event) => saveTagToImage(event)}
+                onClick={event => event.stopPropagation()}>
 
                     {image.tagColor
                         ? image.tagColor.split(',').map((color, colorIndex) => (
