@@ -8,7 +8,7 @@ import Pagination from "./subcomponents/gallery_pagination/Pagination";
 import TagBar from "./subcomponents/gallery_tag/TagBar";
 import NavigationBar from "./subcomponents/gallery_navigation/NavigationBar";
 import {GalleryImagesContext} from "./contexts/GalleryImagesContext";
-import {getRequest, postRequest} from "../additionals/Requests";
+import {deleteRequest, getRequest, postRequest} from "../additionals/Requests";
 import {sweetalertSidePopup} from "../additionals/SweetAlert";
 import {GalleryDraggedTagContext} from "./contexts/GalleryDraggedTag";
 import {GalleryTagsContext} from "./contexts/GalleryTagsContext";
@@ -76,6 +76,18 @@ function Gallery(props) {
         }
     }
 
+    const removeTagFromImage = (event) => {
+        event.stopPropagation()
+        const data = {
+            image_id: event.target.parentElement.parentNode.dataset.id,
+            tag_id: event.target.dataset.id,
+        }
+        deleteRequest('/api/remove-tag-from-image', data, () => {
+            sweetalertSidePopup(`"${event.target.dataset.name}" tag removed from image`, 3000)
+            setLoading(true)
+        })
+    }
+
     const createImageContainers = () => {
         if (visibleImages.length === 0) return <div className="text">No images available</div>;
 
@@ -87,11 +99,13 @@ function Gallery(props) {
                 <div className="image-tag-list"
                      onDragOver={(event => event.preventDefault())}
                      onDrop={(event) => saveTagToImage(event)}
-                onClick={event => event.stopPropagation()}>
+                onClick={event => {removeTagFromImage(event)}}>
 
                     {image.tagColor
                         ? image.tagColor.split(',').map((color, colorIndex) => (
-                            <div key={colorIndex} data-name={image.tagName.split(',')[colorIndex]}
+                            <div key={colorIndex}
+                                 data-id={image.tagId.split(',')[colorIndex]}
+                                 data-name={image.tagName.split(',')[colorIndex]}
                                  style={{backgroundColor: color, width: "30px", height: "30px"}}/>))
                         : ""}
 
