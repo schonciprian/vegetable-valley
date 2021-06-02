@@ -196,7 +196,7 @@
         height: auto;
         max-height: 240px;
         user-select: none;
-        margin-top: 40px;  // image-tag-list height
+        margin-top: 40px; // image-tag-list height
       }
 
       .remove-container {
@@ -557,13 +557,21 @@
 }
 
 
+.swal-content__div {
+  font-family: "Montserrat", sans-serif;
+  color: #eee;
+  font-size: 18px;
+}
+
 .swal-icon--warning {
   border-color: red !important;
+
   .swal-icon--warning__body,
   .swal-icon--warning__dot {
     background-color: red !important;
   }
 }
+
 .swal-footer {
   text-align: center;
 

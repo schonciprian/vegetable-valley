@@ -67,10 +67,15 @@ export const authenticationFeedbackPopUp = (title, message, type, timeout, histo
     }, timeout);
 }
 
-export const confirmationWarningPopup = (title, text, callbackYes, callbackNo) => {
+export const confirmationWarningPopup = (title, contentText, callbackYes, callbackNo) => {
     swal({
         title: title,
-        text: text,
+        content: {
+            element: 'div',
+            attributes: {
+                innerHTML: `${contentText}`,
+            },
+        },
         icon: "warning",
         buttons: true,
         dangerMode: true,

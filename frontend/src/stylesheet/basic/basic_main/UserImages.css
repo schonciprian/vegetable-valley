@@ -450,6 +450,12 @@
   display: flex !important;
 }
 
+.swal-content__div {
+  font-family: "Montserrat", sans-serif;
+  color: #eee;
+  font-size: 18px;
+}
+
 .swal-icon--warning {
   border-color: red !important;
 }
