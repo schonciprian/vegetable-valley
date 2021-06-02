@@ -38,8 +38,13 @@ function Gallery(props) {
     }
 
     const saveTagToImage = (event) => {
-        const destination = event.target.parentElement.dataset.id ?? null;
+        const tags = event.target.childNodes
+        let alreadyExistedTag = false;
+        tags.forEach(tag => {if (tag.dataset.name === draggedTag.tagName) alreadyExistedTag = true})
 
+        if (alreadyExistedTag) return
+
+        const destination = event.target.parentElement.dataset.id ?? null;
         if (destination !== null) {
             const data = {
                 image_id: destination,
@@ -67,8 +72,8 @@ function Gallery(props) {
                      onDrop={(event) => saveTagToImage(event)}>
 
                     {image.tagColor
-                        ? image.tagColor.split(',').map((color, index) => (
-                            <div key={index} style={{backgroundColor: color, width: "30px", height: "30px"}}/>))
+                        ? image.tagColor.split(',').map((color, colorIndex) => (
+                            <div key={colorIndex} data-name={image.tagName.split(',')[colorIndex]} style={{backgroundColor: color, width: "30px", height: "30px"}}/>))
                         : ""}
 
                 </div>
