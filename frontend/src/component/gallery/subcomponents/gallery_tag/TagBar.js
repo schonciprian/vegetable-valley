@@ -32,7 +32,7 @@ function TagBar(props) {
             <div key={index} className={`tag ${activeFilterTag === tag.id ? "active" : ""}`} style={{backgroundColor: tag.color}}
                  draggable onDrag={(event) => onDrag(event, tag)}
                  onClick={() => {
-                     setActiveFilterTag(tag.id)
+                     activeFilterTag === tag.id ? setActiveFilterTag(null) : setActiveFilterTag(tag.id)
                  }}>{tag.tagName}</div>
         ))
     }

@@ -395,6 +395,7 @@
   opacity: 0.999;
   border-radius: 10px;
   cursor: pointer;
+  border: 2px solid transparent;
 }
 .tag-bar .existing-tag .active {
   border: 2px solid darkorange;
